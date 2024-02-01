@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<footer>
+    <p style="color: white; font-size: 25px;">&copy; <%= year %> kitty cat club</p>
+    <br>
+    <a href="https://discord.gg/naar6WztYv">
+    <i class="fa-brands fa-discord"></i>
+</a>
+    <br>
+    <a href="https://github.com/kitty-kat-klub/kitty-cat-unblocker"></a>
+    <i class="fa-brands fa-github"></i>
+    </a>
+</footer>
+
+<style>
+    .fa-brands {
+        color: white;
+        margin-bottom: 5px auto;
+    }
+</style>
+
+<!--get year function-->
+<% const getCurrentYear = () => new Date().getFullYear();
+const year = getCurrentYear(); %>

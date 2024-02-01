@@ -14,17 +14,24 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
-
 app.get("/", (req, res) => {
+  res.render("/", {title: "Home"});
+});
+
+app.get("/gxmes", (req, res) => {
     res.render("gxmes", {title: "Gxmes"});
   });
 
-  app.get("/", (req, res) => {
+  app.get("/apps", (req, res) => {
     res.render("apps", {title: "Apps"});
   });
 
-  app.get("/", (req, res) => {
+  app.get("/settings", (req, res) => {
     res.render("settings", {title: "Settings"});
+  });
+
+  app.get("/*", (req, res) => {
+    res.render("404", {title: "404 Page", error: "Looks like the page you're looking for dosen't exist."});
   });
 
   server.on("request", (req, res) => {
@@ -34,7 +41,6 @@ app.get("/", (req, res) => {
       app(req, res);
     }
   });
-  
   server.on("upgrade", (req, socket, head) => {
     if (bareServer.shouldRoute(req)) {
       bareServer.routeUpgrade(req, socket, head);

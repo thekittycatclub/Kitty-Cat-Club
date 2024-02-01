@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title><%= title %></title>
+</head>
+<style>
+    .error_text{
+      align-content: center;
+      color: white;
+    }
+  
+</style>
+<body>
+    <%- include("partials/navbar") %>
+    <div class = "error_text">
+       <h1>404 Error</h1>
+          <p><%= error %></p>
+    </div>
+</body>
+</html>
