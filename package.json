@@ -1,0 +1,17 @@
+{
+  "name": "kitty-cat-club",
+  "version": "1.0.0",
+  "description": "kcc",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "kcc",
+  "license": "GPL-2.0-only",
+  "dependencies": {
+    "@tomphttp/bare-server-node": "^2.0.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}

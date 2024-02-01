@@ -1,0 +1,48 @@
+const express = require("express");
+const path = require("path");
+const http = require("http");
+const ejs = require("ejs");
+const { createBareServer } = require("@tomphttp/bare-server-node");
+
+const PORT = process.env.PORT || 8080
+const app = express();
+const server = http.createServer();
+const bareServer = createBareServer("/bare/");
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
+
+
+app.get("/", (req, res) => {
+    res.render("gxmes", {title: "Gxmes"});
+  });
+
+  app.get("/", (req, res) => {
+    res.render("apps", {title: "Apps"});
+  });
+
+  app.get("/", (req, res) => {
+    res.render("settings", {title: "Settings"});
+  });
+
+  server.on("request", (req, res) => {
+    if (bareServer.shouldRoute(req)) {
+      bareServer.routeRequest(req, res);
+    } else {
+      app(req, res);
+    }
+  });
+  
+  server.on("upgrade", (req, socket, head) => {
+    if (bareServer.shouldRoute(req)) {
+      bareServer.routeUpgrade(req, socket, head);
+    } else {
+      socket.end();
+    }
+  });
+
+  app.listen(PORT, () => {
+    console.log(`The Kitty Kat Klub is running on http://localhost:${PORT}`);
+  });
