@@ -1,0 +1,52 @@
+button {
+    background-color: #202020;
+    padding: 15px;
+    border: 2px solid #101010;
+    width: auto;
+    transition: background 0.2s ease;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 0.7em;
+    font-size: 15px;
+}
+
+button img {
+    width: 30px;
+}
+
+button:hover {
+    background-color: #252525;
+}
+
+input {
+    background-color: #252525;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #101010;
+    width: 50%;
+    border-radius: 13px;
+    transition: background 0.3s ease-in;
+}
+
+input:hover {
+    background-color: #303030;
+}
+
+input:focus {
+    background-color: #303030;
+}
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #1c1c1c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #101010;
+    border-radius: 2px;
+}

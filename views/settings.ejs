@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/settings.css" />
     <link rel="stylesheet" href="/public/css/navbar.css" />
     <link rel="stylesheet" href="/public/css/footer.css" />
+    <link rel="stylesheet" href="/public/css/all.css" />
     <script src="/public/js/settings.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     
@@ -47,8 +48,7 @@
             </li>
           </ul>
         </div>
-    </div>
-  -->
+    </div>-->
 
     <div style="display: flex;">
     <div class="card">
@@ -97,7 +97,30 @@
             </div>
         </center>
     </div>
-</div>
-</body>
+
+    </div>
+    <div style="display: flex;">
+      <div class="card">
+        <center>
+            <h2>Tab Cloaking</h2>
+            <p>Changes the tab name and icon to something else.</p>
+            <br/>
+            <div>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google.png" alt="" style="width: 26px;"></button>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/Google_Classroom.png" alt=""></button>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google_drive.png" alt="" style="width: 26px;"></button>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google_docs.ico" alt="" style="width: 26px;"></button>
+            </div>
+            <div>
+                <p>Custom tab cloaking:</p>
+                <br/>
+                <input type="text" placeholder="Type your educational title"/>
+                <br/><br/>
+                <input type="text" placeholder="Put tab icon link here"/>
+            </div>
+        </center>
+    </div>
+    </div>
+  </body>
 
 </html>
