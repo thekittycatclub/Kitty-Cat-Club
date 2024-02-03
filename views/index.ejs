@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kitty Cat Club | <%= title %>
   </title>
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="/public/css/navbar.css" />
+  <link rel="stylesheet" href="/public/css/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!--MAIN CSS-->
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
@@ -15,16 +17,46 @@
       font-family: "Poppins", sans-serif;
     }
 
+    a {
+      color: #656565;
+      text-decoration: none;
+    }
+
+    img {
+      width: 10%;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1c1c1c;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #101010;
+      border-radius: 2px;
+    }
+
     body {
       background-color: #1c1c1c;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .center {
+      flex: 1;
     }
 
     #searchbar {
       background-color: #404040;
       border: none;
       border-radius: 10px 0px 0px 10px;
-      width: 15em;
+      width: 20em;
       height: 40px;
       text-align: center;
       color: #ffffff;
@@ -35,10 +67,12 @@
     #searchbar::placeholder {
       color: gray;
     }
+
     #searchbar:focus {
-      width: 20em;
+      width: 25em;
       border: none;
     }
+
     #searchbtn {
       color: gray;
       background-color: #202020;
@@ -49,34 +83,331 @@
       transition: background 0.2s ease-in;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
+
     #searchbtn:hover {
       background: #242424;
     }
 
-
     .search-pack {
       width: 100%;
     }
+
+    .Recbutton {
+      background-color: #202020;
+      padding: 15px;
+      width: 5%;
+      transition: background 0.2s ease;
+      border-radius: 15px;
+      color: #fff;
+      font-size: 0.7em;
+      font-size: 15px;
+      border: none;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .Recbutton img {
+      width: 30px;
+    }
+  </style>
+  <style>
+    .dropdown {
+      width: 300px;
+      height: fit-content;
+      box-sizing: border-box;
+      position: relative;
+      text-shadow: none;
+      color: #000;
+    }
+
+    .input-box {
+      width: 100%;
+      height: 40px;
+      box-sizing: border-box;
+      outline: 0.3mm solid rgba(0, 0, 0, 0.15);
+      border-radius: 2mm;
+      padding: 10px 15px;
+      font-family: poppins;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      background-color: #373737;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .input-box::before {
+      content: "⮟";
+      font-family: "Material Icons";
+      position: absolute;
+      font-size: 18px;
+      top: 50%;
+      right: 15px;
+      transform: translate(0, -50%);
+      width: fit-content;
+      height: fit-content;
+    }
+
+    .input-box.open::before {
+      content: "⮝";
+    }
+
+    .input-box:empty::after {
+      content: "Select search engine";
+    }
+
+    .list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: fit-content;
+      background: white;
+      margin-top: 10px;
+      border-radius: 2mm;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      max-height: 0;
+      transition: 0.25s ease-out;
+    }
+
+    .list input {
+      display: none;
+    }
+
+    .list label {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-start;
+      font-family: poppins;
+      font-size: 14px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .list label .material-icons-outlined,
+    .input-box .material-icons-outlined {
+      margin-right: 5px;
+      font-size: 22px;
+    }
+
+    .list label:hover {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    input:checked+label {
+      color: rgb(47, 47, 47);
+      background: rgb(238, 245, 252);
+    }
+
+    input:checked+label::before {
+      content: "";
+      font-family: "Material Icons";
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translate(0, -50%);
+      font-size: 18px;
+    }
+
+    .open {
+      outline: 0.7mm solid rgb(47, 47, 47);
+    }
+
+    #uv-search-engine {
+      background-color: #272727;
+      padding: 10px;
+      border: 2px solid #000;
+      border-radius: 10px;
+      width: 15%;
+      text-align: center;
+      color: #FFF;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
   </style>
 </head>
 
 <body>
-  <%- include("partials/navbar") %>
-    <center>
-      <h1>Kitty Cat Unblocker</h1>
-      <form action="">
-        <div class="search-pack">
-          <input type="text" id="searchbar" class="text-center" placeholder="Search the web freely..." />
-          <button id="searchbtn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
+
+  <center class=".center">
+
+    <div class="container">
+      <div class="align-left">
+        <img src="/public/logo.png" alt="Logo">
+        <a href="/views/index.ejs">
+          <h2>Kitty cat unblocker</h2>
+        </a>
+      </div>
+      <div class="align-right">
+        <ul>
+          <li>
+            <a href="/views/index.ejs">
+              <i class="fa-solid fa-house"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/views/gxmes.ejs">
+              <i class="fa-solid fa-gamepad"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/views/apps.ejs">
+              <i style="width: 15px;" class="fa-solid fa-bars"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/views/settings.ejs">
+              <i style="width: 15px;" class="fa-solid fa-gear"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!--<%- include("partials/navbar") %>-->
+    <h1>Kitty Cat Unblocker</h1>
+    <img src="/public/logo.png"><br /><br />
+    <form action="">
+      <div class="search-pack">
+        <input type="text" id="searchbar" class="text-center" placeholder="Search the web freely..." />
+        <button id="searchbtn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </form>
+    <div class="text-center" style="display: flexbox;">
+      <div class="center">
+        <div class="dropdown"><br />
+          <div class="input-box"></div>
+          <div class="list">
+            <input type="radio" name="drop1" id="id11" class="radio" />
+            <label for="id11">
+              <span>Google</span>
+            </label>
+
+            <input type="radio" name="drop1" id="id12" class="radio" />
+            <label for="id12">
+              <span>Bing</span>
+            </label>
+
+            <input type="radio" name="drop1" id="id13" class="radio" />
+            <label for="id13">
+              <span>Yahoo</span>
+            </label>
+
+            <input type="radio" name="drop1" id="id14" class="radio" />
+            <label for="id14">
+              <span>Custom URL</span>
+            </label>
+          </div>
         </div>
-      </form>
-    </center>
-    <%- include("partials/footer") %>
-      <script src="./uv/uv.bundle.js"></script>
-      <script src="./uv/uv.config.js"></script>
-      <script src="./js/index.js"></script>
+      </div>
+      <br /><input id="uv-search-engine" class="uv-input-search text-center" type="url"
+        placeholder="[Add search engine link]" value="[Add search engine here]">
+    </div>
+  </center>
+  <%- include("partials/footer") %>
+    <script src="./uv/uv.bundle.js"></script>
+    <script src="./uv/uv.config.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+      const uvSearch = document.getElementById("uv-search-engine");
+      var input = document.querySelector(".input-box");
+      const savedEngine = localStorage.getItem("savedengine");
+      if (savedEngine) {
+        uvSearch.value = getSearchEngineURL(savedEngine);
+        input.textContent = savedEngine;
+      }
+
+      input.onclick = function () {
+        this.classList.toggle("open");
+        let list = this.nextElementSibling;
+        if (list.style.maxHeight) {
+          list.style.maxHeight = null;
+          list.style.boxShadow = null;
+        } else {
+          list.style.maxHeight = list.scrollHeight + "px";
+          list.style.boxShadow =
+            "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
+        }
+      };
+
+      var rad = document.querySelectorAll(".radio");
+      rad.forEach((item) => {
+        item.addEventListener("change", () => {
+          const selectedOption = item.nextElementSibling.querySelector("span").innerText;
+          uvSearch.value = getSearchEngineURL(selectedOption);
+          input.textContent = selectedOption + " (Selected)";
+          saveSelectedEngine(selectedOption);
+          input.click();
+          if (selectedOption === "Custom URL") {
+            uvSearch.removeAttribute("hidden");
+          } else uvSearch.setAttribute('hidden', true);
+        });
+      });
+
+      window.onload = function () {
+        if (savedEngine) {
+          rad.forEach((item) => {
+            const label = item.nextElementSibling.querySelector("span").innerText;
+            if (label === savedEngine) {
+              item.checked = true;
+              if (savedEngine === "Custom URL") uvSearch.removeAttribute("hidden");
+            }
+          });
+        }
+      };
+
+      function saveSelectedEngine(selectedEngine) {
+        localStorage.setItem("savedengine", selectedEngine);
+      }
+
+      function getSearchEngineURL(engineName) {
+        // Replace these URLs with your actual search engine URLs
+        switch (engineName.toLowerCase()) {
+          case "google":
+            return "https://www.google.com/search?q=%s";
+          case "bing":
+            return "https://www.bing.com/search?q=%s";
+          case "yahoo":
+            return "https://search.yahoo.com/search?q=%s";
+          case "custom_url":
+            return uvSearch.textContent = "";
+          default:
+            return "";
+        }
+      }
+      var label = document.querySelectorAll("label");
+      function search(searchin) {
+        let searchVal = searchin.value;
+        searchVal = searchVal.toUpperCase();
+        label.forEach((item) => {
+          let checkVal = item.querySelector(".name").innerHTML;
+          checkVal = checkVal.toUpperCase();
+          if (checkVal.indexOf(searchVal) == -1) {
+            item.style.display = "none";
+          } else {
+            item.style.display = "flex";
+          }
+          let list = input.nextElementSibling;
+          list.style.maxHeight = list.scrollHeight + "px";
+        });
+      }
+    </script>
+    <%= year %>
+      <center>
+        <footer>
+          <p style="color: white; font-size: 25px;">&copy;2024 Kitty Cat Club. All rights reserved.</p>
+        </footer>
+      </center>
 </body>
 
 </html>

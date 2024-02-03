@@ -1,14 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitty Cat Club | <%= title %>
     </title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="/public/css/settings.css" />
+    <link rel="stylesheet" href="/public/css/navbar.css" />
+    <link rel="stylesheet" href="/public/css/footer.css" />
+    <script src="/public/js/settings.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
-<body>
     
+</head>
+
+<body>
+    <!--<%- include("partials/navbar") %>-->
+    <div class="container">
+        <div class="align-left">
+          <img src="/public/logo.png" alt="Logo">
+          <a href="/views/index.ejs">
+            <h2 style="margin-top: 18px;">Kitty cat unblocker</h2>
+          </a>
+        </div>
+        <div class="align-right">
+          <ul>
+            <li>
+              <a href="/views/index.ejs">
+                <i class="fa-solid fa-house"></i>
+              </a>
+            </li>
+            <li>
+              <a href="/views/gxmes.ejs">
+                <i class="fa-solid fa-gamepad"></i>
+              </a>
+            </li>
+            <li>
+              <a href="/views/apps.ejs">
+                <i style="width: 15px;" class="fa-solid fa-bars"></i>
+              </a>
+            </li>
+            <li>
+              <a href="/views/settings.ejs">
+                <i style="width: 15px;" class="fa-solid fa-gear"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <div style="display: flex;">
+    <div class="card">
+        <center>
+            <h2>Tab Cloaking</h2>
+            <p>Changes the tab name and icon to something else.</p>
+            <br/>
+            <div>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google.png" alt="" style="width: 26px;"></button>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/Google_Classroom.png" alt=""></button>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google_drive.png" alt="" style="width: 26px;"></button>
+                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google_docs.ico" alt="" style="width: 26px;"></button>
+            </div>
+            <div>
+                <p>Custom tab cloaking:</p>
+                <br/>
+                <input type="text" placeholder="Type your educational title"/>
+                <br/><br/>
+                <input type="text" placeholder="Put tab icon link here"/>
+            </div>
+        </center>
+    </div>
+
+    <div class="card" style="margin-left: 20px;">
+        <center>
+            <h2>Panic key system</h2>
+                <p>Used to redirect to another website when pressing a specific key.</p>
+                <button style="padding: 12px; width: 50%;">Record keystroke</button>                <br/><br/>
+                <div id="RecordPanel">
+                    <p>Recorded keystroke:</p>
+                    <p id="ksText">Record a keystroke!</p>
+                </div>
+                <br/>
+                <input type="text" placeholder="Add educational link..."/>
+                <br/>
+        </center>
+    </div>
+
+    <div class="card" style="margin-left: 20px; height: 50%;">
+        <center>
+            <h2>about:blank cloak</h2>
+            <p>Opens the current page in a new about:blank page.</p>
+            <br/>
+            <div>
+                <button onclick="changeTabName()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
+            </div>
+        </center>
+    </div>
+</div>
 </body>
+
 </html>

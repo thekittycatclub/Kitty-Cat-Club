@@ -12,36 +12,37 @@ const bareServer = createBareServer("/bare/");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
+app.set("views", path.join(__dirname, "views"));
 
 app.get("/", (req, res) => {
-  res.render("/", {title: "Home"});
+  res.render("index", { title: "Home" });
 });
 
 app.get("/gxmes", (req, res) => {
-    res.render("gxmes", {title: "Gxmes"});
+    res.render("gxmes", { title: "Gxmes" });
   });
 
-  app.get("/apps", (req, res) => {
-    res.render("apps", {title: "Apps"});
-  });
+app.get("/apps", (req, res) => {
+    res.render("apps", { title: "Apps" });
+});
 
-  app.get("/settings", (req, res) => {
-    res.render("settings", {title: "Settings"});
-  });
+app.get("/settings", (req, res) => {
+    res.render("settings", { title: "Settings" });
+});
 
-  app.get("/*", (req, res) => {
-    res.render("404", {title: "404 Page", error: "Looks like the page you're looking for dosen't exist."});
-  });
+app.get("/*", (req, res) => {
+    res.render("404", { title: "404 Page", error: "Looks like the page you're looking for doesn't exist." });
+});
 
-  server.on("request", (req, res) => {
+server.on("request", (req, res) => {
     if (bareServer.shouldRoute(req)) {
       bareServer.routeRequest(req, res);
     } else {
       app(req, res);
     }
   });
-  server.on("upgrade", (req, socket, head) => {
+
+server.on("upgrade", (req, socket, head) => {
     if (bareServer.shouldRoute(req)) {
       bareServer.routeUpgrade(req, socket, head);
     } else {
@@ -49,6 +50,6 @@ app.get("/gxmes", (req, res) => {
     }
   });
 
-  app.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`The Kitty Kat Klub is running on http://localhost:${PORT}`);
-  });
+});
