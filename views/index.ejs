@@ -222,6 +222,17 @@
     <script src="./uv/uv.config.js"></script>
     <script src="./js/index.js"></script>
     <script>
+      let savedTitle = localStorage.getItem("tabName");
+      let savedFavicon = localStorage.getItem("favicon");
+      let favicon = document.getElementById("icon");
+      if (savedTitle) {
+        document.title = savedTitle;
+      }
+      if (savedFavicon) {
+        favicon.href = savedFavicon;
+      }
+    </script>
+    <script>
       const uvSearch = document.getElementById("uv-search-engine");
       var input = document.querySelector(".input-box");
       const savedEngine = localStorage.getItem("savedengine");

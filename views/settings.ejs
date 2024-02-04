@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitty Cat Club | <%= title %>
     </title>
+    <link id="favicon" rel="icon" href=""/>
     <link rel="stylesheet" href="./css/settings.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
     <link rel="stylesheet" href="./css/footer.css" />
@@ -17,39 +18,6 @@
 
 <body>
     <%- include("partials/navbar") %>
-    <!--<div class="container">
-        <div class="align-left">
-          <img src="/public/logo.png" alt="Logo">
-          <a href="/views/index.ejs">
-            <h2 style="margin-top: 18px;">Kitty cat unblocker</h2>
-          </a>
-        </div>
-        <div class="align-right">
-          <ul>
-            <li>
-              <a href="/">
-                <i class="fa-solid fa-house"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/gxmes">
-                <i class="fa-solid fa-gamepad"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/apps">
-                <i style="width: 15px;" class="fa-solid fa-bars"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/settings">
-                <i style="width: 15px;" class="fa-solid fa-gear"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-    </div>-->
-
     <div style="display: flex;">
     <div class="card">
         <center>
@@ -65,9 +33,9 @@
             <div>
                 <p>Custom tab cloaking:</p>
                 <br/>
-                <input type="text" placeholder="Type your educational title"/>
+                <input id="changetitle" onkeyup="setTabTitle()" type="text" placeholder="Type your educational title"/>
                 <br/><br/>
-                <input type="text" placeholder="Put tab icon link here"/>
+                <input id="changefavicon" onkeyup="setFavicon()" type="text" placeholder="Put tab icon link here"/>
             </div>
         </center>
     </div>
@@ -102,25 +70,28 @@
     <div style="display: flex;">
       <div class="card">
         <center>
-            <h2>Tab Cloaking</h2>
-            <p>Changes the tab name and icon to something else.</p>
+            <h2>Change Background</h2>
+            <p>Changes the background to the specified URL.</p>
             <br/>
             <div>
-                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google.png" alt="" style="width: 26px;"></button>
-                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/Google_Classroom.png" alt=""></button>
-                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google_drive.png" alt="" style="width: 26px;"></button>
-                <button onclick="changeTabName()" style="width: 17%;" class="tabbtn"><img src="/public/google_docs.ico" alt="" style="width: 26px;"></button>
-            </div>
-            <div>
-                <p>Custom tab cloaking:</p>
                 <br/>
-                <input type="text" placeholder="Type your educational title"/>
-                <br/><br/>
-                <input type="text" placeholder="Put tab icon link here"/>
+                <input id="" type="text" placeholder="Add background URL..."/>
+                <button onclick="changeBG">Change Background</button>
             </div>
         </center>
     </div>
     </div>
+    <script>
+      let savedTitle = localStorage.getItem("tabName");
+      let savedFavicon = localStorage.getItem("favicon");
+      let favicon = document.getElementById("icon");
+      if (savedTitle) {
+        document.title = savedTitle;
+      }
+      if (savedFavicon) {
+        favicon.href = savedFavicon;
+      }
+    </script>
   </body>
 
 </html>

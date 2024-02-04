@@ -51,5 +51,16 @@
         <input placeholder="Search..." id="searchbar">
     </form>
 </div>
+<script>
+  let savedTitle = localStorage.getItem("tabName");
+  let savedFavicon = localStorage.getItem("favicon");
+  let favicon = document.getElementById("icon");
+  if (savedTitle) {
+    document.title = savedTitle;
+  }
+  if (savedFavicon) {
+    favicon.href = savedFavicon;
+  }
+</script>
 </body>
 </html>
