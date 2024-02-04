@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="./css/all.css" />
-  <link id="favicon" rel="icon" type="image/x-icon" href="./img/logo.png" />
+  <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
     <!--DROPDOWN CSS-->
   <style>
     .dropdown {
@@ -135,50 +135,13 @@
       color: #FFF;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
-
   </style>
 </head>
-
 <body>
-
   <center class="center">
-
-    <!--<div class="container">
-      <div class="align-left">
-        <img src="/public/logo.png" alt="Logo">
-        <a href="/views/index.ejs">
-          <h2>Kitty cat unblocker</h2>
-        </a>
-      </div>
-      <div class="align-right">
-        <ul>
-          <li>
-            <a href="/views/index.ejs">
-              <i class="fa-solid fa-house"></i>
-            </a>
-          </li>
-          <li>
-            <a href="/views/gxmes.ejs">
-              <i class="fa-solid fa-gamepad"></i>
-            </a>
-          </li>
-          <li>
-            <a href="/views/apps.ejs">
-              <i style="width: 15px;" class="fa-solid fa-bars"></i>
-            </a>
-          </li>
-          <li>
-            <a href="/views/settings.ejs">
-              <i style="width: 15px;" class="fa-solid fa-gear"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
--->
     <%- include("partials/navbar") %>
     <h1>Kitty Cat Unblocker</h1>
-    <img src="/public/logo.png"><br /><br />
+    <img src="./img/logo.png"/><br /><br />
     <form action="">
       <div class="search-pack">
         <input type="text" id="searchbar" class="text-center" placeholder="Search the web freely..." />
@@ -222,6 +185,7 @@
     <script src="./uv/uv.bundle.js"></script>
     <script src="./uv/uv.config.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/mobile.js"></script>
     <script>
       let savedTitle = localStorage.getItem("tabName");
       let savedFavicon = localStorage.getItem("favicon");
@@ -233,95 +197,5 @@
         favicon.href = savedFavicon;
       }
     </script>
-    <script>
-      const uvSearch = document.getElementById("uv-search-engine");
-      var inputbox = document.querySelector(".input-box");
-      const savedEngine = localStorage.getItem("savedengine");
-      if (savedEngine) {
-        uvSearch.value = getSearchEngineURL(savedEngine);
-        input.textContent = savedEngine;
-      }
-
-      inputbox.onclick = function () {
-        this.classList.toggle("open");
-        let list = this.nextElementSibling;
-        if (list.style.maxHeight) {
-          list.style.maxHeight = null;
-          list.style.boxShadow = null;
-        } else {
-          list.style.maxHeight = list.scrollHeight + "px";
-          list.style.boxShadow =
-            "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
-        }
-      };
-
-      var rad = document.querySelectorAll(".radio");
-      rad.forEach((item) => {
-        item.addEventListener("change", () => {
-          const selectedOption = item.nextElementSibling.querySelector("span").innerText;
-          uvSearch.value = getSearchEngineURL(selectedOption);
-          inputbox.textContent = selectedOption + " (Selected)";
-          saveSelectedEngine(selectedOption);
-          inputbox.click();
-          if (selectedOption === "Custom URL") {
-            uvSearch.removeAttribute("hidden");
-          } else uvSearch.setAttribute('hidden', true);
-        });
-      });
-
-      window.onload = function () {
-        if (savedEngine) {
-          rad.forEach((item) => {
-            const label = item.nextElementSibling.querySelector("span").innerText;
-            if (label === savedEngine) {
-              item.checked = true;
-              if (savedEngine === "Custom URL") uvSearch.removeAttribute("hidden");
-            }
-          });
-        }
-      };
-
-      function saveSelectedEngine(selectedEngine) {
-        localStorage.setItem("savedengine", selectedEngine);
-      }
-
-      function getSearchEngineURL(engineName) {
-        // Replace these URLs with your actual search engine URLs
-        switch (engineName.toLowerCase()) {
-          case "google":
-            return "https://www.google.com/search?q=%s";
-          case "bing":
-            return "https://www.bing.com/search?q=%s";
-          case "yahoo":
-            return "https://search.yahoo.com/search?q=%s";
-          case "custom_url":
-            return uvSearch.textContent = "";
-          default:
-            return "";
-        }
-      }
-      var label = document.querySelectorAll("label");
-      function search(searchin) {
-        let searchVal = searchin.value;
-        searchVal = searchVal.toUpperCase();
-        label.forEach((item) => {
-          let checkVal = item.querySelector(".name").innerHTML;
-          checkVal = checkVal.toUpperCase();
-          if (checkVal.indexOf(searchVal) == -1) {
-            item.style.display = "none";
-          } else {
-            item.style.display = "flex";
-          }
-          let list = inputbox.nextElementSibling;
-          list.style.maxHeight = list.scrollHeight + "px";
-        });
-      }
-    </script>
-      <center>
-        <footer>
-          <p style="color: white; font-size: 25px;">&copy;2024 Kitty Cat Club. All rights reserved.</p>
-        </footer>
-      </center>
 </body>
-
 </html>

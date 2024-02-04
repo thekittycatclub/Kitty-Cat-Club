@@ -4,7 +4,7 @@ const http = require("http");
 const ejs = require("ejs");
 const { createBareServer } = require("@tomphttp/bare-server-node");
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 const app = express();
 const server = http.createServer();
 const bareServer = createBareServer("/bare/");
@@ -27,6 +27,10 @@ app.get("/apps", (req, res) => {
 
 app.get("/settings", (req, res) => {
     res.render("settings", { title: "Settings" });
+});
+
+app.get("/mobile", (req, res) => {
+  res.render("mobile", { title: "Mobile Edition" });
 });
 
 app.get("/*", (req, res) => {

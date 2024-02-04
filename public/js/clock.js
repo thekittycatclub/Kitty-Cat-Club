@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Your code here
+
   function showTime() {
-    var date = new Date();
-    var h = date.getHours();
-    var m = date.getMinutes();
-    var s = date.getSeconds();
-    var session = "AM";
+    let date = new Date();
+    let h = date.getHours();
+    let m = date.getMinutes();
+    let s = date.getSeconds();
+    let session = "AM";
   
     if (h == 0) {
       h = 12;
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     m = (m < 10) ? "0" + m : m;
     s = (s < 10) ? "0" + s : s;
   
-    var time = h + ":" + m + ":" + s + " " + session;
+    let time = h + ":" + m + ":" + s + " " + session;
     document.getElementById("timer").innerText = time;
     document.getElementById("timer").textContent = time;
   
