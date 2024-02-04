@@ -13,13 +13,14 @@ function setTabTitle() {
 function setFavicon() {
     let url = document.getElementById("changefavicon").value;
     if (url === "") {
-        localStorage.setItem("favicon", "./img/logo.png");
         alert("You need to put a valid url here!");
+        localStorage.setItem("favicon", "./img/logo.png");
     } else {
         localStorage.setItem("favicon", url);
     }
 }
-//what if i make a button that will change the favicon instead of automatically changing it
+
+
 function openAboutBlack() {
     let url = window.location.href;
     let win = window.open();
@@ -33,8 +34,14 @@ function openAboutBlack() {
 
 function changeBG() {
     let url = document.getElementById("changebg").value; 
+    if (url === "") {
+        alert("You need to put a valid url!");
+        document.body.style.backgroundImage = "none"
+        document.body.style.backgroundColor = "#252525"
+    } else {
     localStorage.setItem("BG", url);
     window.location.reload(); 
+    }
 }
 
 function changeFaviconToGoogle() {

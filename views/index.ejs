@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="./css/all.css" />
-  <!--DROPDOWN CSS-->
+  <link id="favicon" rel="icon" type="image/x-icon" href="./img/logo.png" />
+    <!--DROPDOWN CSS-->
   <style>
     .dropdown {
       width: 300px;
@@ -213,7 +214,7 @@
           </div>
         </div>
       </div>
-      <br /><input id="uv-search-engine" class="uv-input-search text-center" type="url"
+      <br /><input hidden id="uv-search-engine" class="uv-input-search text-center" type="url"
         placeholder="[Add search engine link]" value="[Add search engine here]">
     </div>
   </center>
@@ -234,14 +235,14 @@
     </script>
     <script>
       const uvSearch = document.getElementById("uv-search-engine");
-      var input = document.querySelector(".input-box");
+      var inputbox = document.querySelector(".input-box");
       const savedEngine = localStorage.getItem("savedengine");
       if (savedEngine) {
         uvSearch.value = getSearchEngineURL(savedEngine);
         input.textContent = savedEngine;
       }
 
-      input.onclick = function () {
+      inputbox.onclick = function () {
         this.classList.toggle("open");
         let list = this.nextElementSibling;
         if (list.style.maxHeight) {
@@ -259,9 +260,9 @@
         item.addEventListener("change", () => {
           const selectedOption = item.nextElementSibling.querySelector("span").innerText;
           uvSearch.value = getSearchEngineURL(selectedOption);
-          input.textContent = selectedOption + " (Selected)";
+          inputbox.textContent = selectedOption + " (Selected)";
           saveSelectedEngine(selectedOption);
-          input.click();
+          inputbox.click();
           if (selectedOption === "Custom URL") {
             uvSearch.removeAttribute("hidden");
           } else uvSearch.setAttribute('hidden', true);
@@ -311,7 +312,7 @@
           } else {
             item.style.display = "flex";
           }
-          let list = input.nextElementSibling;
+          let list = inputbox.nextElementSibling;
           list.style.maxHeight = list.scrollHeight + "px";
         });
       }
