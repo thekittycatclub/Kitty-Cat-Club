@@ -3,8 +3,8 @@ function setTabTitle() {
   let newTabName = input.value;
 
   if (newTabName === "") {
-    document.title = defaultTitle;
-    localStorage.setItem("tabName", document.title);
+    document.title = "Kitty Cat Club | Settings";
+    localStorage.setItem("tabName", "");
   } else {
     document.title = newTabName;
     localStorage.setItem("tabName", newTabName);
@@ -39,7 +39,7 @@ function openAboutBlack() {
 function changeBG() {
   let url = document.getElementById("changebg").value;
   if (url === "") {
-    alert("You need to put a valid url!");
+    alert("You need to put a valid url! Changing background to default...");
     document.body.style.backgroundImage = "none";
     document.body.style.backgroundColor = "#1c1c1c";
     localStorage.setItem("BG", document.body.style.backgroundColor);

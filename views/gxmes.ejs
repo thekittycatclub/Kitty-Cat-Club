@@ -1,67 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitty Cat Club | <%= title %></title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/all.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitty Cat Club | <%= title %>
+  </title>
+  <link rel="stylesheet" href="./css/gxmes.css">
+  <link rel="stylesheet" href="./css/all.css" />
+
 </head>
 <style>
-  body {
-    background-color: #1c1c1c;
-  }
-      form {
-    position: relative;
-    display: inline-block;
-    font-size: 0;
-    margin-top: 2in;
-  }
-  
-  #searchbar {
-    background-color: rgba(7, 7, 7, 0.171);
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    width: 600px;
-    height: 60px;
-    text-align: center;
-    border: solid 1px;
-    border-radius: 10px;
-    outline: none;
-    transition: .2s;
-  }
-  
-  #searchbar:hover {
-    background-color: rgba(7, 7, 7, 0.459);
-    color: white;
-    transition: .2s;
-  }
-  
-  #searchbar:focus {
-    background-color: rgba(7, 7, 7, 0.582);
-    color: white;
-    transition: .2s;
-  }
+
 </style>
+
 <body>
-    <%- include("partials/navbar") %>
-    <br>
-    <div style="align-content: center;">
-    <form>
-        <input placeholder="Search..." id="searchbar">
-    </form>
-</div>
-<script>
-  let savedTitle = localStorage.getItem("tabName");
-  let savedFavicon = localStorage.getItem("favicon");
-  let favicon = document.getElementById("icon");
-  if (savedTitle) {
-    document.title = savedTitle;
-  }
-  if (savedFavicon) {
-    favicon.href = savedFavicon;
-  }
-</script>
-<script src="./js/mobile.js"></script>
+  <%- include("partials/navbar") %>
+    <center>
+      <br>
+      <div style="align-content: center;">
+        <form>
+          <input placeholder="Search..." id="searchbar" />
+        </form>
+      </div>
+    </center>
+    <script>
+      let savedTitle = localStorage.getItem("tabName");
+      let savedFavicon = localStorage.getItem("favicon");
+      let favicon = document.getElementById("icon");
+      if (savedTitle) {
+        document.title = savedTitle;
+      }
+      if (savedFavicon) {
+        favicon.href = savedFavicon;
+      }
+    </script>
+    <script src="./js/mobile.js"></script>
 </body>
+
 </html>
