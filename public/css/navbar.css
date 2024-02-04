@@ -1,88 +1,79 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+* {
+    font-family: 'Poppins', sans-serif;
+}
 .container {
-  background-color: #303030;
-  padding: 3px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
+    background-color: #303030;
+    padding: 3px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.align-left,
-.align-right {
-  flex: 1; /* Equal distribution of space for both align-left and align-right */
-  display: flex;
-  align-items: center;
+.align-left {
+    display: flex;
+    align-items: center;
 }
 
 .align-left a {
-  text-decoration: none;
-  color: #fff;
-  transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .align-left a:hover {
-  color: #000;
+    color: #000;
 }
 
 .align-left img {
-  width: 30px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.align-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Align items to the right */
-}
-
-.align-right p {
-  margin: 0;
-  text-align: center;
-  white-space: nowrap;
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .align-right ul {
-  list-style: none;
-  display: flex;
+    list-style: none;
+    display: flex;
 }
 
 .align-right li {
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .align-right a {
-  color: #fff;
-  transition: color 0.3s ease;
-  text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .align-right a:hover {
-  color: #252525;
+    color: #252525;
 }
 
 .align-right i {
-  background-color: #252525;
-  width: 19px;
-  padding: 10px;
-  border-radius: 10px;
-  transition: background 0.2s ease;
+    background-color: #252525;
+    width: 19px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
 }
 
 .align-right a:hover i {
-  background: #FFF;
+    background: #FFF;
 }
 
-h2, p {
-  color: #FFF;
-  transition: color 0.2s ease;
+h2,
+p {
+    color: #FFF;
+    transition: color 0.2s ease;
 }
 h2:hover {
-  color: #505050
+    color: #505050;
 }

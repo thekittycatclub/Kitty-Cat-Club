@@ -1,100 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="./css/navbar.css"/>
+<script src="./js/clock.js"></script>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kitty Cat Club | <%= title %>
-    </title>
-    <link rel="stylesheet" href="/public/css/navbar.css" />
-    <script src="/public/js/clock.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-        .container {
-            background-color: #303030;
-            padding: 3px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            border-radius: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .align-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .align-left a {
-            text-decoration: none;
-            color: #fff;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .align-left a:hover {
-            color: #000;
-        }
-
-        .align-left img {
-            width: 30px;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-
-        .align-right ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .align-right li {
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .align-right a {
-            color: #fff;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-
-        .align-right a:hover {
-            color: #252525;
-        }
-
-        .align-right i {
-            background-color: #252525;
-            width: 19px;
-            padding: 10px;
-            border-radius: 10px;
-            transition: background 0.2s ease;
-        }
-
-        .align-right a:hover i {
-            background: #FFF;
-        }
-
-        h2,
-        p {
-            color: #FFF;
-            transition: color 0.2s ease;
-        }
-        h2:hover {
-            color: #505050;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div class="align-left">
             <img src="/public/logo.png" alt="Logo">
-            <a href="/views/index.ejs">
+            <a href="/">
                 <h2>Kitty cat unblocker</h2>
             </a>
         </div>
@@ -102,22 +15,22 @@
             <p id="timer"></p>
             <ul>
                 <li>
-                    <a href="/views/index.ejs">
+                    <a href="/">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/views/gxmes.ejs">
+                    <a href="/gxmes">
                         <i class="fa-solid fa-gamepad"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/views/apps.ejs">
+                    <a href="/apps">
                         <i style="width: 15px;" class="fa-solid fa-bars"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/views/settings.ejs">
+                    <a href="/settings">
                         <i style="width: 15px;" class="fa-solid fa-gear"></i>
                     </a>
                 </li>
@@ -125,4 +38,3 @@
         </div>
     </div>
 </body>
-</html>
