@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     position: sticky;
+    width: 50%;
   }
   .align-left,
   .align-right {

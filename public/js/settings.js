@@ -1,10 +1,10 @@
 function setTabTitle() {
   let input = document.getElementById("changetitle");
   let newTabName = input.value;
-  
+
   if (newTabName === "") {
     document.title = defaultTitle;
-    localStorage.setItem("tabName", document.title); 
+    localStorage.setItem("tabName", document.title);
   } else {
     document.title = newTabName;
     localStorage.setItem("tabName", newTabName);
@@ -13,14 +13,14 @@ function setTabTitle() {
 
 
 function setFavicon() {
-    let url = document.getElementById("changefavicon").value;
-    if (url === "") {
-        alert("You need to put a valid url here!");
-        favicon.href = "./img/logo.png";
-        localStorage.setItem("favicon", "./img/logo.png");
-    } else {
-        localStorage.setItem("favicon", url);
-    }
+  let url = document.getElementById("changefavicon").value;
+  if (url === "") {
+    favicon.href = "./img/logo.png";
+    localStorage.setItem("favicon", "./img/logo.png");
+  } else {
+    favicon.href = url;
+    localStorage.setItem("favicon", url);
+  }
 }
 
 function openAboutBlack() {
@@ -30,22 +30,40 @@ function openAboutBlack() {
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
+  iframe.style.top = iframe.style.bottom = iframe.style.left = iframe.style.right = "0";
   iframe.src = url;
   win.document.body.appendChild(iframe);
 }
 
 
-function changeBG () {
-    let url = document.getElementById("changebg").value; 
-    if (url === "") {
-        alert("You need to put a valid url!");
-        document.body.style.backgroundImage = "none"
-        document.body.style.backgroundColor = "#1c1c1c"
-        localStorage.setItem("BG", document.body.style.backgroundColor);
-    } else {
+function changeBG() {
+  let url = document.getElementById("changebg").value;
+  if (url === "") {
+    alert("You need to put a valid url!");
+    document.body.style.backgroundImage = "none";
+    document.body.style.backgroundColor = "#1c1c1c";
+    localStorage.setItem("BG", document.body.style.backgroundColor);
+  } else {
     localStorage.setItem("BG", url);
     window.location.reload();
-    }
+  }
+}
+
+function pageCloaking() {
+  var win = window.open();
+  var url = document.getElementById("pagecloak");
+  var iframe = win.document.createElement("iframe");
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "none";
+  iframe.style.top = iframe.style.bottom = iframe.style.left = iframe.style.right = 0;
+
+  if (url.value.includes("https://")) {
+     iframe.src = url;   
+  } else {
+    url = "https://" + url;
+  }
+  win.document.body.appendChild(iframe);
 }
 
 function changeFaviconToGoogle() {
@@ -128,7 +146,7 @@ function saveSelectedEngine(selectedEngine) {
 }
 
 function getSearchEngineURL(engineName) {
-    
+
   switch (engineName.toLowerCase()) {
     case "google":
       return "https://www.google.com/search?q=%s";

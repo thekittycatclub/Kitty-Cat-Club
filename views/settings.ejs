@@ -12,10 +12,11 @@
     <script src="./js/settings.js"></script>
     <script src="./js/mobile.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
 
+</head>
+<%- include("partials/navbar") %>
 <body>
-    <%- include("partials/navbar") %>
+    
     <div style="display: flex;">
     <div class="card" style="margin-left: 1%;">
         <center>
@@ -42,14 +43,15 @@
         <center>
             <h1  style="font-size: 30px;">Panic key system</h1>
                 <p>Used to redirect to another website when pressing a specific key.</p>
-                <button style="padding: 12px; width: 50%;">Record keystroke</button>
+                <button id="recordbtn" style="padding: 12px; width: 50%;">Record keystroke</button>
                 <br/><br/>
                 <div id="RecordPanel">
                     <p>Recorded keystroke:</p>
                     <p id="ksText">Record a keystroke!</p>
                 </div>
                 <br/>
-                <input type="text" placeholder="Add educational link..."/>
+                <input id="eduInput" type="text" placeholder="Add educational link..."/>
+                <button id="changeUrl" style="margin-left: 10px; padding: 9px; width: 25%;">Save link</button>
                 <br/>
         </center>
     </div>
@@ -60,9 +62,9 @@
             <br/>
             <div>
                 <br/>
-                <input id="changetitle" onkeyup="setTabTitle()" type="text" placeholder="Type your educational title"/>
+                <input id="pagecloak" type="text" placeholder="Insert your URL here..."/>
                 <br/><br/>
-                <button>Open the page!</button>
+                <button onkeyup="pageCloaking()">Open the page!</button>
             </div>
         </center>
     </div>
@@ -85,11 +87,12 @@
             <div>
                 <br/>
                 <input id="changebg" type="text" placeholder="Add background URL..."/>
-                <button onclick="changeBG()">Change Background</button>
+                <button onclick="changeBG()" style="padding: 10px; width: auto;">Change Background</button>
             </div>
         </center>
     </div>
     </div>
+    <script src="./js/panickey.js"></script>
     <script>
       let savedTitle = localStorage.getItem("tabName");
       let savedBG = localStorage.getItem("BG");

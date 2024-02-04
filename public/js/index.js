@@ -1,7 +1,15 @@
-let form = document.querySelector('form');
-let input = document.querySelector('input');
+const form = document.querySelector('form');
+const input = document.querySelector('input');
+function frameLoad(url) {
 
-if (form) {
+
+    window.navigator.serviceWorker.register('/sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        document.getElementById("pf").src=__uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+}
+if(form) {
 form.addEventListener('submit', async event => {
     event.preventDefault();
     window.navigator.serviceWorker.register('./sw.js', {
@@ -14,6 +22,17 @@ form.addEventListener('submit', async event => {
     });
 });
 }
+
+function openApp(url) {
+
+    window.navigator.serviceWorker.register('/sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        location.href=__uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+
+}
+
 function isUrl(val = "") {
   if (
     /^http(s?):\/\//.test(val) ||

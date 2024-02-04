@@ -9,16 +9,23 @@
 <body>
     
 </body>
+<script src="./js/panickey.js"></script>
 <script>
-    let savedTitle = localStorage.getItem("tabName");
-    let savedFavicon = localStorage.getItem("favicon");
-    let favicon = document.getElementById("icon");
-    if (savedTitle) {
-      document.title = savedTitle;
-    }
-    if (savedFavicon) {
-      favicon.href = savedFavicon;
-    }
-  </script>
-      <script src="./js/mobile.js"></script>
+  let savedTitle = localStorage.getItem("tabName");
+  let savedBG = localStorage.getItem("BG");
+  let savedFavicon = localStorage.getItem("favicon");
+  let favicon = document.getElementById("icon");
+  if (savedTitle) {
+    document.title = savedTitle;
+  }
+  if (savedFavicon) {
+    favicon.href = savedFavicon;
+  }
+  
+  if (savedBG) {
+    document.body.style.backgroundImage = `url("${savedBG}")`;
+    document.body.style.backgroundRepeat = "no-repeat"
+    document.body.style.backgroundSize = "cover";
+  }
+</script>
 </html>

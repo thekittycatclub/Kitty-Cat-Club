@@ -138,6 +138,7 @@
   </style>
 </head>
 <body>
+  <div style = "margin-bottom: 50%;">
   <center class="center">
     <%- include("partials/navbar") %>
     <h1>Kitty Cat Unblocker</h1>
@@ -150,37 +151,7 @@
         </button>
       </div>
     </form>
-    <div class="text-center" style="display: flexbox;">
-      <div class="center">
-        <div class="dropdown"><br />
-          <div class="input-box"></div>
-          <div class="list">
-            <input type="radio" name="drop1" id="id11" class="radio" />
-            <label for="id11">
-              <span>Google</span>
-            </label>
-
-            <input type="radio" name="drop1" id="id12" class="radio" />
-            <label for="id12">
-              <span>Bing</span>
-            </label>
-
-            <input type="radio" name="drop1" id="id13" class="radio" />
-            <label for="id13">
-              <span>Yahoo</span>
-            </label>
-
-            <input type="radio" name="drop1" id="id14" class="radio" />
-            <label for="id14">
-              <span>Custom URL</span>
-            </label>
-          </div>
-        </div>
-      </div>
-      <br /><input hidden id="uv-search-engine" class="uv-input-search text-center" type="url"
-        placeholder="[Add search engine link]" value="[Add search engine here]">
-    </div>
-  </center>
+  </div>
   <%- include("partials/footer") %>
     <script src="./uv/uv.bundle.js"></script>
     <script src="./uv/uv.config.js"></script>
@@ -188,14 +159,34 @@
     <script src="./js/mobile.js"></script>
     <script>
       let savedTitle = localStorage.getItem("tabName");
+      let savedBG = localStorage.getItem("BG");
       let savedFavicon = localStorage.getItem("favicon");
       let favicon = document.getElementById("icon");
+      let savedLink = localStorage.getItem("savedLink");
+      let savedKey = localStorage.getItem("savedKey");
+      
       if (savedTitle) {
         document.title = savedTitle;
       }
       if (savedFavicon) {
         favicon.href = savedFavicon;
       }
+      
+      if (savedBG) {
+        document.body.style.backgroundImage = `url("${savedBG}")`;
+        document.body.style.backgroundRepeat = "no-repeat"
+        document.body.style.backgroundSize = "cover";
+      }
+      function handleKeyPress(event) {
+        if (event.key === savedKey || event.key === savedKey) {
+          if (savedLink.includes("https://")) {
+            window.location.href = savededulink;
+          } else {
+            window.location.href = "https://" + savedLink;
+          }
+        }
+      }
+      document.addEventListener("keydown", handleKeyPress);
     </script>
 </body>
 </html>
