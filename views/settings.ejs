@@ -1,115 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitty Cat Club | <%= title %>
     </title>
-    <link id="favicon" rel="icon" href=""/>
+    <link id="favicon" rel="icon" href="" />
     <link rel="stylesheet" href="./css/settings.css" />
     <link rel="stylesheet" href="./css/all.css" />
     <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
     <script src="./js/settings.js"></script>
     <script src="./js/mobile.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
 
+        .dropdown {
+            width: 300px;
+            height: fit-content;
+            box-sizing: border-box;
+            position: relative;
+            text-shadow: none;
+            color: #000;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 40px;
+            box-sizing: border-box;
+            outline: 0.3mm solid rgba(0, 0, 0, 0.15);
+            border-radius: 2mm;
+            padding: 10px 15px;
+            font-family: poppins;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            background-color: #373737;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .input-box::before {
+            content: "⮟";
+            font-family: "Material Icons";
+            position: absolute;
+            font-size: 18px;
+            top: 50%;
+            right: 15px;
+            transform: translate(0, -50%);
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .input-box.open::before {
+            content: "⮝";
+        }
+
+        .input-box:empty::after {
+            content: "Select search engine";
+        }
+
+        .list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: fit-content;
+            background: white;
+            margin-top: 10px;
+            border-radius: 2mm;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            max-height: 0;
+            transition: 0.25s ease-out;
+        }
+
+        .list input {
+            display: none;
+        }
+
+        .list label {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: poppins;
+            font-size: 14px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .list label .material-icons-outlined,
+        .input-box .material-icons-outlined {
+            margin-right: 5px;
+            font-size: 22px;
+        }
+
+        .list label:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        input:checked+label {
+            color: rgb(47, 47, 47);
+            background: rgb(238, 245, 252);
+        }
+
+        input:checked+label::before {
+            content: "";
+            font-family: "Material Icons";
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translate(0, -50%);
+            font-size: 18px;
+        }
+
+        .open {
+            outline: 0.7mm solid rgb(47, 47, 47);
+        }
+
+        #uv-search-engine {
+            width: 50%;
+        }
+    </style>
 </head>
 <%- include("partials/navbar") %>
-<body>
-    
-    <div style="display: flex;">
-    <div class="card" style="margin-left: 1%;">
-        <center>
-            <h1 style="font-size: 30px;">Tab Cloaking</h1>
-            <p>Changes the tab name and icon to something else.</p>
-            <br/>
-            <div>
-                <button onclick="changeFaviconToGoogle()" style="width: 17%;" class="tabbtn"><img src="./img/google.png" alt="" style="width: 26px;"></button>
-                <button onclick="changeFaviconToGoogleClassroom()" style="width: 17%;" class="tabbtn"><img src="./img/Google_Classroom.png" alt=""></button>
-                <button onclick="changeFaviconToGoogleDrive()" style="width: 17%;" class="tabbtn"><img src="./img/google_drive.png" alt="" style="width: 26px;"></button>
-                <button onclick="changeFaviconToGoogleDocs()" style="width: 17%;" class="tabbtn"><img src="./img/google_docs.ico" alt="" style="width: 26px;"></button>
-            </div>
-            <div>
-                <p>Custom tab cloaking:</p>
-                <br/>
-                <input id="changetitle" onkeyup="setTabTitle()" type="text" placeholder="Type your educational title"/>
-                <br/><br/>
-                <input id="changefavicon" onkeyup="setFavicon()" type="text" placeholder="Put tab icon link here"/>
-            </div>
-        </center>
-    </div>
 
-    <div class="card" style="margin-left: 20px;">
-        <center>
-            <h1  style="font-size: 30px;">Panic key system</h1>
-                <p>Used to redirect to another website when pressing a specific key.</p>
-                <button id="recordbtn" style="padding: 12px; width: 50%;">Record keystroke</button>
-                <br/><br/>
-                <div id="RecordPanel">
-                    <p>Recorded keystroke:</p>
-                    <p id="ksText">Record a keystroke!</p>
-                </div>
-                <br/>
-                <input id="eduInput" type="text" placeholder="Add educational link..."/>
-                <button id="changeUrl" style="margin-left: 10px; padding: 9px; width: 25%;">Save link</button>
-                <br/>
-        </center>
-    </div>
-    <div class="card" style="margin-left: 20px; margin-right: 20px;">
-        <center>
-            <h1 style="font-size: 30px;">Page cloaking</h1>
-            <p>Opens the provided URL in a new about:blank page</p>
-            <br/>
-            <div>
-                <br/>
-                <input id="pagecloak" type="text" placeholder="Insert your URL here..."/>
-                <br/><br/>
-                <button onkeyup="pageCloaking()">Open the page!</button>
+    <body>
+
+        <div style="display: flex;">
+            <div class="card" style="margin-left: 1%;">
+                <center>
+                    <h1 style="font-size: 30px;">Tab Cloaking</h1>
+                    <p>Changes the tab name and icon to something else.</p>
+                    <br />
+                    <div>
+                        <button onclick="changeFaviconToGoogle()" style="width: 17%;" class="tabbtn"><img
+                                src="./img/google.png" alt="" style="width: 26px;"></button>
+                        <button onclick="changeFaviconToGoogleClassroom()" style="width: 17%;" class="tabbtn"><img
+                                src="./img/Google_Classroom.png" alt=""></button>
+                        <button onclick="changeFaviconToGoogleDrive()" style="width: 17%;" class="tabbtn"><img
+                                src="./img/google_drive.png" alt="" style="width: 26px;"></button>
+                        <button onclick="changeFaviconToGoogleDocs()" style="width: 17%;" class="tabbtn"><img
+                                src="./img/google_docs.ico" alt="" style="width: 26px;"></button>
+                    </div>
+                    <div>
+                        <p>Custom tab cloaking:</p>
+                        <br />
+                        <input id="changetitle" onkeyup="setTabTitle()" type="text"
+                            placeholder="Type your educational title" />
+                        <br /><br />
+                        <input id="changefavicon" onkeyup="setFavicon()" type="text"
+                            placeholder="Put tab icon link here" />
+                    </div>
+                </center>
             </div>
-        </center>
-    </div>
-    </div>
-    <div style="display: flex;">
-        <div class="card" style="margin-left: 15%; height: 50%;">
-            <center>
-                <h1  style="font-size: 30px;">about:blank Cloak</h1>
-                <p>Opens the current page in a new about:blank page.</p>
-                <br/>
-                <div>
-                    <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
-                </div>
+
+            <div class="card" style="margin-left: 20px;">
+                <center>
+                    <h1 style="font-size: 30px;">Panic key system</h1>
+                    <p>Used to redirect to another website when pressing a specific key.</p>
+                    <button id="recordbtn" style="padding: 12px; width: 50%;">Record keystroke</button>
+                    <br /><br />
+                    <div id="RecordPanel">
+                        <p>Recorded keystroke:</p>
+                        <p id="ksText">Record a keystroke!</p>
+                    </div>
+                    <br />
+                    <input id="eduInput" type="text" placeholder="Add educational link..." />
+                    <button id="changeUrl" style="margin-left: 10px; padding: 9px; width: 25%;">Save link</button>
+                    <br />
+                </center>
+            </div>
+            <div class="card" style="margin-left: 20px; margin-right: 1%;">
+                <center>
+                    <h1 style="font-size: 30px;">Search engine</h1>
+                    <p>Switches the proxy search engine. (Default is google)</p>
+                    <br />
+                    <div class="text-center" style="display: flexbox;">
+                        <div class="center">
+                            <div class="dropdown"><br>
+                                <div class="input-box custom-cursor-on-hover"></div>
+                                <div class="list">
+                                    <input type="radio" name="drop1" id="id11" class="radio">
+                                    <label for="id11">
+                                        <span>Google</span>
+                                    </label>
+
+                                    <input type="radio" name="drop1" id="id12" class="radio">
+                                    <label for="id12">
+                                        <span>Bing</span>
+                                    </label>
+
+                                    <input type="radio" name="drop1" id="id13" class="radio">
+                                    <label for="id13">
+                                        <span>Yahoo</span>
+                                    </label>
+
+                                    <input type="radio" name="drop1" id="id14" class="radio">
+                                    <label for="id14">
+                                        <span>Custom URL</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <br><input hidden id="uv-search-engine" class="uv-input-search text-center" type="url"
+                            placeholder="[Add search engine link]" value="[Add search engine here]">
+                    </div>
+            </div>
             </center>
         </div>
-      <div class="card" style="margin-left: 20px;">
-        <center>
-            <h1  style="font-size: 30px;">Change Background</h1>
-            <p>Changes the background to the specified URL.</p>
-            <div>
-                <br/>
-                <input id="changebg" type="text" placeholder="Add background URL..."/>
-                <button onclick="changeBG()" style="padding: 10px; width: auto;">Change Background</button>
+        </div>
+        <div style="display: flex;">
+            <div class="card" style="margin-left: 10%; height: 50%;">
+                <center>
+                    <h1 style="font-size: 30px;">about:blank Cloak</h1>
+                    <p>Opens the current page in a new about:blank page.</p>
+                    <br />
+                    <div>
+                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
+                    </div>
+                </center>
             </div>
-        </center>
-    </div>
-    </div>
-    <script src="./js/panickey.js"></script>
-    <script>
-      let savedTitle = localStorage.getItem("tabName");
-      let savedBG = localStorage.getItem("BG");
-      let savedFavicon = localStorage.getItem("favicon");
-      let favicon = document.getElementById("icon");
-      if (savedTitle) {
-        document.title = savedTitle;
-      }
-      if (savedFavicon) {
-        favicon.href = savedFavicon;
-      }
-      
-      if (savedBG) {
-        document.body.style.backgroundImage = `url("${savedBG}")`;
-        document.body.style.backgroundRepeat = "no-repeat"
-        document.body.style.backgroundSize = "cover";
-      }
-    </script>
-  </body>
+            <div class="card" style="margin-left: 20px; height: 100%;">
+                <center>
+                    <h1 style="font-size: 30px;">Change Background</h1>
+                    <p>Changes the background to the specified URL.</p><br/>
+                    <div>
+                        <br />
+                        <input id="changebg" type="text" placeholder="Add background URL..." />
+                        <button onclick="changeBG()" style="padding: 10px; width: auto;">Change Background</button>
+                    </div>
+                </center>
+            </div>
+            <div class="card" style="margin-left: 20px; margin-right: 10%; height: 50%;">
+                <center>
+                    <h1 style="font-size: 30px;">Page cloaking</h1>
+                    <p>Opens the provided URL in a new about:blank page</p>
+                    <div>
+                        <br />
+                        <input id="pagecloak" type="text" placeholder="Insert your URL here..." />
+                        <button onkeyup="pageCloaking()">Open the page!</button>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <script src="./js/panickey.js"></script>
+        <script>
+            let savedTitle = localStorage.getItem("tabName");
+            let savedBG = localStorage.getItem("BG");
+            let savedFavicon = localStorage.getItem("favicon");
+            let favicon = document.getElementById("icon");
+            if (savedTitle) {
+                document.title = savedTitle;
+            }
+            if (savedFavicon) {
+                favicon.href = savedFavicon;
+            }
+
+            if (savedBG) {
+                document.body.style.backgroundImage = `url("${savedBG}")`;
+                document.body.style.backgroundRepeat = "no-repeat"
+                document.body.style.backgroundSize = "cover";
+            }
+        </script>
+        <script>
+            const uvSearch = document.getElementById("uv-search-engine");
+            var inputbox = document.querySelector(".input-box");
+            const savedEngine = localStorage.getItem("savedengine");
+            if (savedEngine) {
+                uvSearch.value = getSearchEngineURL(savedEngine);
+                inputbox.textContent = savedEngine;
+            }
+
+            inputbox.onclick = function () {
+                this.classList.toggle("open");
+                let list = this.nextElementSibling;
+                if (list.style.maxHeight) {
+                    list.style.maxHeight = null;
+                    list.style.boxShadow = null;
+                } else {
+                    list.style.maxHeight = list.scrollHeight + "px";
+                    list.style.boxShadow =
+                        "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
+                }
+            };
+
+            var rad = document.querySelectorAll(".radio");
+            rad.forEach((item) => {
+                item.addEventListener("change", () => {
+                    const selectedOption = item.nextElementSibling.querySelector("span").innerText;
+                    uvSearch.value = getSearchEngineURL(selectedOption);
+                    inputbox.textContent = selectedOption + " (Selected)";
+                    saveSelectedEngine(selectedOption);
+                    inputbox.click();
+                    if (selectedOption === "Custom URL") {
+                        uvSearch.removeAttribute("hidden");
+                    } else uvSearch.setAttribute('hidden', true);
+                });
+            });
+
+            window.onload = function () {
+                if (savedEngine) {
+                    rad.forEach((item) => {
+                        const label = item.nextElementSibling.querySelector("span").innerText;
+                        if (label === savedEngine) {
+                            item.checked = true;
+                            if (savedEngine === "Custom URL") uvSearch.removeAttribute("hidden");
+                        }
+                    });
+                }
+            };
+
+            function saveSelectedEngine(selectedEngine) {
+                localStorage.setItem("savedengine", selectedEngine);
+            }
+
+            function getSearchEngineURL(engineName) {
+
+                switch (engineName.toLowerCase()) {
+                    case "google":
+                        return "https://www.google.com/search?q=%s";
+                    case "bing":
+                        return "https://www.bing.com/search?q=%s";
+                    case "yahoo":
+                        return "https://search.yahoo.com/search?q=%s";
+                    case "custom_url":
+                        return uvSearch.textContent = "";
+                    default:
+                        return "";
+                }
+            }
+            var label = document.querySelectorAll("label");
+            function search(searchin) {
+                let searchVal = searchin.value;
+                searchVal = searchVal.toUpperCase();
+                label.forEach((item) => {
+                    let checkVal = item.querySelector(".name").innerHTML;
+                    checkVal = checkVal.toUpperCase();
+                    if (checkVal.indexOf(searchVal) == -1) {
+                        item.style.display = "none";
+                    } else {
+                        item.style.display = "flex";
+                    }
+                    let list = inputbox.nextElementSibling;
+                    list.style.maxHeight = list.scrollHeight + "px";
+                });
+            }
+        </script>
+    </body>
+
 </html>

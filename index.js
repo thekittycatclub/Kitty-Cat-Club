@@ -2,12 +2,14 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const ejs = require("ejs");
+const fs = require("fs"); 
 const { createBareServer } = require("@tomphttp/bare-server-node");
 
 const PORT = process.env.PORT || 3000
 const app = express();
 const server = http.createServer();
 const bareServer = createBareServer("/bare/");
+
 
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
@@ -34,24 +36,24 @@ app.get("/mobile", (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-    res.render("404", { title: "404 Page", error: "Looks like the page you're looking for doesn't exist." });
+    res.render("404", { title: "404 Page", error: "Looks like the page you're looking for doesn't exist. (womp womp)" });
 });
 
 server.on("request", (req, res) => {
-    if (bareServer.shouldRoute(req)) {
-      bareServer.routeRequest(req, res);
-    } else {
-      app(req, res);
-    }
-  });
+  if (bareServer.shouldRoute(req)) {
+    bareServer.routeRequest(req, res);
+  } else {
+    app.handle(req, res); 
+  }
+});
 
 server.on("upgrade", (req, socket, head) => {
-    if (bareServer.shouldRoute(req)) {
-      bareServer.routeUpgrade(req, socket, head);
-    } else {
-      socket.end();
-    }
-  });
+  if (bareServer.shouldRoute(req)) {
+    bareServer.routeUpgrade(req, socket, head);
+  } else {
+    socket.end();
+  }
+});
 
 app.listen(PORT, () => {
     console.log(`The Kitty Kat Klub is running on http://localhost:${PORT}`);

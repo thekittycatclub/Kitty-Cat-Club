@@ -1,192 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="width: 100%; height: 100%;">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kitty Cat Club | <%= title %>
-  </title>
+  <title>Kitty Cat Club | <%= title %></title>
   <link rel="stylesheet" href="./css/navbar.css" />
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="./css/all.css" />
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
-    <!--DROPDOWN CSS-->
-  <style>
-    .dropdown {
-      width: 300px;
-      height: fit-content;
-      box-sizing: border-box;
-      position: relative;
-      text-shadow: none;
-      color: #000;
-    }
+  <!--DROPDOWN CSS-->
 
-    .input-box {
-      width: 100%;
-      height: 40px;
-      box-sizing: border-box;
-      outline: 0.3mm solid rgba(0, 0, 0, 0.15);
-      border-radius: 2mm;
-      padding: 10px 15px;
-      font-family: poppins;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      position: relative;
-      background-color: #373737;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .input-box::before {
-      content: "⮟";
-      font-family: "Material Icons";
-      position: absolute;
-      font-size: 18px;
-      top: 50%;
-      right: 15px;
-      transform: translate(0, -50%);
-      width: fit-content;
-      height: fit-content;
-    }
-
-    .input-box.open::before {
-      content: "⮝";
-    }
-
-    .input-box:empty::after {
-      content: "Select search engine";
-    }
-
-    .list {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: fit-content;
-      background: white;
-      margin-top: 10px;
-      border-radius: 2mm;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-direction: column;
-      max-height: 0;
-      transition: 0.25s ease-out;
-    }
-
-    .list input {
-      display: none;
-    }
-
-    .list label {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: flex-start;
-      font-family: poppins;
-      font-size: 14px;
-      padding: 10px 15px;
-      box-sizing: border-box;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .list label .material-icons-outlined,
-    .input-box .material-icons-outlined {
-      margin-right: 5px;
-      font-size: 22px;
-    }
-
-    .list label:hover {
-      background: rgba(0, 0, 0, 0.08);
-    }
-
-    input:checked+label {
-      color: rgb(47, 47, 47);
-      background: rgb(238, 245, 252);
-    }
-
-    input:checked+label::before {
-      content: "";
-      font-family: "Material Icons";
-      position: absolute;
-      top: 50%;
-      right: 15px;
-      transform: translate(0, -50%);
-      font-size: 18px;
-    }
-
-    .open {
-      outline: 0.7mm solid rgb(47, 47, 47);
-    }
-
-    #uv-search-engine {
-      background-color: #272727;
-      padding: 10px;
-      border: 2px solid #000;
-      border-radius: 10px;
-      width: 15%;
-      text-align: center;
-      color: #FFF;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-  </style>
 </head>
+
 <body>
-  <div style = "margin-bottom: 50%;">
-  <center class="center">
-    <%- include("partials/navbar") %>
-    <h1>Kitty Cat Unblocker</h1>
-    <img src="./img/logo.png"/><br /><br />
-    <form action="">
-      <div class="search-pack">
-        <input type="text" id="searchbar" class="text-center" placeholder="Search the web freely..." />
-        <button id="searchbtn">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-    </form>
+  <div>
+    <center class="center">
+      <%- include("partials/navbar") %>
+      <h1>Kitty Cat Unblocker</h1>
+      <img src="./img/logo.png" /><br /><br />
+      <form action="">
+        <div class="search-pack">
+          <input type="text" id="searchbar" class="text-center" placeholder="Search the web freely..." />
+          <button id="searchbtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
+    </center>
   </div>
-  <%- include("partials/footer") %>
-    <script src="./uv/uv.bundle.js"></script>
-    <script src="./uv/uv.config.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/mobile.js"></script>
-    <script>
-      let savedTitle = localStorage.getItem("tabName");
-      let savedBG = localStorage.getItem("BG");
-      let savedFavicon = localStorage.getItem("favicon");
-      let favicon = document.getElementById("icon");
-      let savedLink = localStorage.getItem("savedLink");
-      let savedKey = localStorage.getItem("savedKey");
-      
-      if (savedTitle) {
-        document.title = savedTitle;
-      }
-      if (savedFavicon) {
-        favicon.href = savedFavicon;
-      }
-      
-      if (savedBG) {
-        document.body.style.backgroundImage = `url("${savedBG}")`;
-        document.body.style.backgroundRepeat = "no-repeat"
-        document.body.style.backgroundSize = "cover";
-      }
-      function handleKeyPress(event) {
-        if (event.key === savedKey || event.key === savedKey) {
-          if (savedLink.includes("https://")) {
-            window.location.href = savededulink;
-          } else {
-            window.location.href = "https://" + savedLink;
-          }
+  <script src="./uv/uv.bundle.js"></script>
+  <script src="./uv/uv.config.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/mobile.js"></script>
+  <script>
+    let savedTitle = localStorage.getItem("tabName");
+    let savedBG = localStorage.getItem("BG");
+    let savedFavicon = localStorage.getItem("favicon");
+    let favicon = document.getElementById("icon");
+    let savedLink = localStorage.getItem("savedLink");
+    let savedKey = localStorage.getItem("savedKey");
+
+    if (savedTitle) {
+      document.title = savedTitle;
+    }
+    if (savedFavicon) {
+      favicon.href = savedFavicon;
+    }
+
+    if (savedBG) {
+      document.body.style.backgroundImage = `url("${savedBG}")`;
+      document.body.style.backgroundRepeat = "no-repeat"
+      document.body.style.backgroundSize = "cover";
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === savedKey || event.key === savedKey) {
+        if (savedLink.includes("https://")) {
+          window.location.href = savededulink;
+        } else {
+          window.location.href = "https://" + savedLink;
         }
       }
-      document.addEventListener("keydown", handleKeyPress);
-    </script>
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+  </script>
 </body>
+
 </html>

@@ -10,25 +10,31 @@
   <link rel="stylesheet" href="./css/all.css" />
 
 </head>
-<style>
 
-</style>
-
+<%- include("partials/navbar") %>
 <body>
-  <%- include("partials/navbar") %>
     <center>
       <br>
       <div style="align-content: center;">
         <form>
-          <input placeholder="Search..." id="searchbar" />
+          <input placeholder="Search..." id="searchbar" style="margin-bottom: 100%; width: 500px; height: 30px;"/>
         </form>
+      </div>
+      <div class="gxmes">
+          <a href="">
+            <button>
+              <img src="./img/1v1lol.png"/>
+              <br/>
+              <p>1v1.lol</p>  
+            </button>
+          </a>
       </div>
     </center>
     <script>
       let savedTitle = localStorage.getItem("tabName");
       let savedFavicon = localStorage.getItem("favicon");
       let favicon = document.getElementById("icon");
-      if (savedTitle) {
+      if (savedTitle) {  
         document.title = savedTitle;
       }
       if (savedFavicon) {
