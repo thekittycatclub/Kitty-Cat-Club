@@ -8,40 +8,84 @@
   </title>
   <link rel="stylesheet" href="./css/gxmes.css">
   <link rel="stylesheet" href="./css/all.css" />
-
+  <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
 
 <%- include("partials/navbar") %>
-<body>
+
+  <body>
     <center>
       <br>
-      <div style="align-content: center;">
+      <div style="align-content: center;" id="searchdiv">
         <form>
-          <input placeholder="Search..." id="searchbar" style="margin-bottom: 100%; width: 500px; height: 30px;"/>
+          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
         </form>
       </div>
       <div class="gxmes">
-          <a href="">
-            <button>
-              <img src="./img/1v1lol.png"/>
-              <br/>
-              <p>1v1.lol</p>  
-            </button>
-          </a>
+        <a href="">
+          <div class="card" style="margin-left: 350px;">
+            <img src="./img/gxmes/1v1lol.png" />
+            <br />
+            <p>1v1.lol</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card" style="margin-left: 20px;">
+            <img src="./img/gxmes/cookieclicker.png" />
+            <br />
+            <p>Cookie clicker</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card" style="margin-left: 20px;">
+            <img src="./img/gxmes/roblox.webp" />
+            <br />
+            <p>Roblox</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card" style="margin-left: 20px;">
+            <img src="./img/gxmes/eagtek.jpg" />
+            <br />
+            <p>Eaglercraft</p>
+          </div>
+        </a>
       </div>
     </center>
     <script>
       let savedTitle = localStorage.getItem("tabName");
+      let savedBG = localStorage.getItem("BG");
       let savedFavicon = localStorage.getItem("favicon");
       let favicon = document.getElementById("icon");
-      if (savedTitle) {  
+      let savedLink = localStorage.getItem("savedLink");
+      let savedKey = localStorage.getItem("savedKey");
+  
+      if (savedTitle) {
         document.title = savedTitle;
       }
       if (savedFavicon) {
         favicon.href = savedFavicon;
       }
+  
+      if (savedBG) {
+        document.body.style.backgroundImage = `url("${savedBG}")`;
+        document.body.style.backgroundRepeat = "no-repeat"
+        document.body.style.backgroundSize = "cover";
+      }
+  
+      function handleKeyPress(event) {
+        if (event.key === savedKey || event.key === savedKey) {
+          if (savedLink.includes("https://")) {
+            window.location.href = savededulink;
+          } else {
+            window.location.href = "https://" + savedLink;
+          }
+        }
+      }
+  
+      document.addEventListener("keydown", handleKeyPress);
     </script>
     <script src="./js/mobile.js"></script>
-</body>
+  </body>
 
 </html>

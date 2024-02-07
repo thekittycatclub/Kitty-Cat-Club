@@ -7,6 +7,7 @@
 body {
     background-color: #1c1c1c;
     color: #fff;
+    height: 20px;
 }
 
 form {
@@ -16,6 +17,39 @@ form {
     margin-top: 2in;
 }
 
+#searchdiv {
+    margin-top: -50px;
+}
+
 #searchbar {
     width: 100%;
+}
+
+.gxmes {
+    display: flex;
+    margin-top: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card {
+    background-color: #202020;
+    padding: 15px;
+    border: 2px solid #101010;
+    width: 250px;
+    transition: background 0.2s ease;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.card img {
+    width: 200px;
+    border-radius: 20px;
+}
+
+.card:hover {
+    background-color: #252525;
 }

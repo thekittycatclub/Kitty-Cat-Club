@@ -27,10 +27,18 @@ function openAboutBlack() {
   var win = window.open();
   var url = window.location.href;
   var iframe = win.document.createElement("iframe");
+  iframe.style.position = "fixed";
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
-  iframe.style.top = iframe.style.bottom = iframe.style.left = iframe.style.right = "0";
+  iframe.style.top = "0";
+  iframe.style.bottom = "0";
+  iframe.style.left = "0";
+  iframe.style.right = "0";
+  iframe.style.margin = "0";
+  iframe.style.padding = "0";
+  iframe.style.overflow = "hidden";
+  iframe.style.backgroundColor = "#000";
   iframe.src = url;
   win.document.body.appendChild(iframe);
 }
@@ -49,22 +57,35 @@ function changeBG() {
   }
 }
 
-function pageCloaking() {
+function pageCloaking(event) {
+  event.preventDefault(); 
+  event.stopPropagation(); 
+  
   var win = window.open();
-  var url = document.getElementById("pagecloak");
+  var url = document.getElementById("pagecloak").value;
   var iframe = win.document.createElement("iframe");
+  iframe.style.position = "fixed";
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
-  iframe.style.top = iframe.style.bottom = iframe.style.left = iframe.style.right = 0;
+  iframe.style.top = "0";
+  iframe.style.bottom = "0";
+  iframe.style.left = "0";
+  iframe.style.right = "0";
+  iframe.style.margin = "0";
+  iframe.style.padding = "0";
+  iframe.style.overflow = "hidden";
 
-  if (url.value.includes("https://")) {
+  if (url.includes("https://")) {
      iframe.src = url;   
   } else {
     url = "https://" + url;
+    iframe.src = url;
   }
   win.document.body.appendChild(iframe);
 }
+
+
 
 function changeFaviconToGoogle() {
   document.title = "Google";

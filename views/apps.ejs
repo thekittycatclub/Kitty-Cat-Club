@@ -6,6 +6,7 @@
     <title>Kitty Cat Club | <%= title %></title>
     <link rel="stylesheet" href="./css/all.css" />
     <link rel="stylesheet" href="./css/gxmes.css" />
+    <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
 <%- include("partials/navbar") %>
 <body>
@@ -18,18 +19,21 @@
     let savedBG = localStorage.getItem("BG");
     let savedFavicon = localStorage.getItem("favicon");
     let favicon = document.getElementById("icon");
+
     if (savedTitle) {
       document.title = savedTitle;
     }
     if (savedFavicon) {
       favicon.href = savedFavicon;
     }
-    
+
     if (savedBG) {
       document.body.style.backgroundImage = `url("${savedBG}")`;
       document.body.style.backgroundRepeat = "no-repeat"
       document.body.style.backgroundSize = "cover";
     }
+
+    document.addEventListener("keydown", handleKeyPress);
   </script>
 </body>
 

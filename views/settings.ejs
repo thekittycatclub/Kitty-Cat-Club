@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitty Cat Club | <%= title %>
     </title>
-    <link id="favicon" rel="icon" href="" />
     <link rel="stylesheet" href="./css/settings.css" />
     <link rel="stylesheet" href="./css/all.css" />
     <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
@@ -135,10 +134,8 @@
         }
     </style>
 </head>
-<%- include("partials/navbar") %>
-
     <body>
-
+        <%- include("partials/navbar") %>
         <div style="display: flex;">
             <div class="card" style="margin-left: 1%;">
                 <center>
@@ -251,7 +248,7 @@
                     <div>
                         <br />
                         <input id="pagecloak" type="text" placeholder="Insert your URL here..." />
-                        <button onkeyup="pageCloaking()">Open the page!</button>
+                        <button onclick="pageCloaking(event)">Open the page!</button>
                     </div>
                 </center>
             </div>
