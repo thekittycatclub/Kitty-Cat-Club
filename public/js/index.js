@@ -1,5 +1,5 @@
-const form = document.querySelector('form');
-const input = document.querySelector('input');
+const form = document.getElementById('form');
+const input = document.getElementById('input');
 function frameLoad(url) {
 
 
