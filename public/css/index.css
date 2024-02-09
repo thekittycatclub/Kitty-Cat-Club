@@ -35,7 +35,7 @@ body {
   text-align: center;
   color: #ffffff;
   transition: width 0.3s ease;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -53,8 +53,8 @@ body {
   background-color: #202020;
   border: none;
 
-  padding: 20px;
-  width: 3.5em;
+  padding: 15px;
+  width: 4em;
 
   border-radius: 0px 10px 10px 0px;
   transition: background 0.2s ease-in;
@@ -63,6 +63,20 @@ body {
 
 #searchbtn:hover {
   background: #242424;
+}
+
+.browserbtn {
+  width: 5%;
+  padding: 12px;
+  background-color: #252525;
+  border: 2px solid #101010;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: .2s;
+}
+
+.browserbtn:hover {
+  background: #303030;
 }
 
 .search-pack {
@@ -84,4 +98,18 @@ body {
 
 .Recbutton img {
   width: 30px;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 3rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1c1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #101010;
+  border-radius: 2px;
 }

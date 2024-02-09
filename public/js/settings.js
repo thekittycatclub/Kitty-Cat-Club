@@ -114,4 +114,9 @@ function changeFaviconToGoogleDocs() {
   favicon.href = "./img/google_docs.ico";
   localStorage.setItem("favicon", "./img/google_docs.ico");
 }
-
+function changeFaviconToNormal() {
+  document.title = "Kitty Cat Club | Settings";
+  localStorage.setItem("tabName", "");
+  favicon.href = "./img/logo.png";
+  localStorage.setItem("favicon", "./img/logo.png");
+}

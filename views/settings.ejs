@@ -134,10 +134,11 @@
         }
     </style>
 </head>
-    <body>
-        <%- include("partials/navbar") %>
-        <div style="display: flex;">
-            <div class="card" style="margin-left: 1%;">
+
+<body>
+    <%- include("partials/navbar") %>
+        <div class="settingsList">
+            <div class="card" style="">
                 <center>
                     <h1 style="font-size: 30px;">Tab Cloaking</h1>
                     <p>Changes the tab name and icon to something else.</p>
@@ -151,6 +152,8 @@
                                 src="./img/google_drive.png" alt="" style="width: 26px;"></button>
                         <button onclick="changeFaviconToGoogleDocs()" style="width: 17%;" class="tabbtn"><img
                                 src="./img/google_docs.ico" alt="" style="width: 26px;"></button>
+                        <button onclick="changeFaviconToNormal()" style="width: 13%; padding: 15px;" class="tabbtn"><img
+                                src="./img/logo.png" alt="" style="width: 32px;"></button>
                     </div>
                     <div>
                         <p>Custom tab cloaking:</p>
@@ -180,7 +183,7 @@
                     <br />
                 </center>
             </div>
-            <div class="card" style="margin-left: 20px; margin-right: 1%;">
+            <div class="card" style="margin-left: 20px;">
                 <center>
                     <h1 style="font-size: 30px;">Search engine</h1>
                     <p>Switches the proxy search engine. (Default is google)</p>
@@ -220,20 +223,21 @@
         </div>
         </div>
         <div style="display: flex;">
-            <div class="card" style="margin-left: 10%; height: 50%;">
+            <div class="card" style="margin-left: 25px; height: 50%;">
                 <center>
                     <h1 style="font-size: 30px;">about:blank Cloak</h1>
                     <p>Opens the current page in a new about:blank page.</p>
                     <br />
                     <div>
-                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
+                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click
+                            here to activate!</button>
                     </div>
                 </center>
             </div>
             <div class="card" style="margin-left: 20px; height: 100%;">
                 <center>
                     <h1 style="font-size: 30px;">Change Background</h1>
-                    <p>Changes the background to the specified URL.</p><br/>
+                    <p>Changes the background to the specified URL.</p><br />
                     <div>
                         <br />
                         <input id="changebg" type="text" placeholder="Add background URL..." />
@@ -241,14 +245,14 @@
                     </div>
                 </center>
             </div>
-            <div class="card" style="margin-left: 20px; margin-right: 10%; height: 50%;">
+            <div class="card" style="margin-left: 20px; height: 50%;">
                 <center>
                     <h1 style="font-size: 30px;">Page cloaking</h1>
                     <p>Opens the provided URL in a new about:blank page</p>
                     <div>
                         <br />
                         <input id="pagecloak" type="text" placeholder="Insert your URL here..." />
-                        <button onclick="pageCloaking(event)">Open the page!</button>
+                        <button onclick="pageCloaking(event)" style="padding: 12px;">Open the page!</button>
                     </div>
                 </center>
             </div>
@@ -356,6 +360,6 @@
                 });
             }
         </script>
-    </body>
+</body>
 
 </html>

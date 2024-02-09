@@ -17,6 +17,11 @@ body {
     border-radius: 25px;
 }
 
+.settingsList {
+    display: flex;
+    justify-content: center;
+}
+
 #RecordPanel {
     border: 2px solid #000;
     border-radius: 20px;
