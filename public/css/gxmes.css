@@ -27,8 +27,10 @@ form {
 
 .gxmes {
     display: flex;
+    justify-content: center; /* Center align items horizontally */
     margin-top: 30px;
 }
+
 
 a {
     text-decoration: none;
@@ -43,6 +45,7 @@ a {
     border-radius: 10px;
     color: #fff;
     font-size: 1.5em;
+    margin-left: 20px;
 }
 
 .card img {
