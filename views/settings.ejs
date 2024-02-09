@@ -333,10 +333,13 @@
                 switch (engineName.toLowerCase()) {
                     case "google":
                         return "https://www.google.com/search?q=%s";
+                        localStorage.setItem("searchengine", "https://www.google.com/search?q=%s");
                     case "bing":
                         return "https://www.bing.com/search?q=%s";
+                        localStorage.setItem("searchengine", "https://www.bing.com/search?q=%s");
                     case "yahoo":
                         return "https://search.yahoo.com/search?q=%s";
+                        localStorage.setItem("searchengine", "https://search.yahoo.com/search?q=%s");
                     case "custom_url":
                         return uvSearch.textContent = "";
                     default:
