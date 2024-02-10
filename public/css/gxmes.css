@@ -27,7 +27,7 @@ form {
 
 .gxmes {
     display: flex;
-    justify-content: center; /* Center align items horizontally */
+    justify-content: center; 
     margin-top: 30px;
 }
 
@@ -40,19 +40,29 @@ a {
     background-color: #202020;
     padding: 15px;
     border: 2px solid #101010;
-    width: 250px;
+    width: 200px;
     transition: background 0.2s ease;
     border-radius: 10px;
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1em;
     margin-left: 20px;
 }
 
 .card img {
-    width: 200px;
+    width: 150px;
     border-radius: 20px;
 }
 
 .card:hover {
     background-color: #252525;
+}
+
+.resize-card {
+    transition: transform 0.3s ease; 
+}
+
+@media screen and (max-width: 600px) {
+    .resize-card {
+        transform: scale(0.8);
+    }
 }

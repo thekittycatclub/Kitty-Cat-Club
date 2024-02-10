@@ -17,41 +17,95 @@
     <center>
       <br>
       <div style="align-content: center;" id="searchdiv">
-          <form>
-              <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
-          </form>
+        <form>
+          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
+        </form>
       </div>
       <div class="gxmes">
-          <a href="">
-              <div class="card resizable-card">
-                  <img src="./img/gxmes/1v1lol.png" />
-                  <br />
-                  <p>1v1.lol</p>
-              </div>
-          </a>
-          <a href="">
-              <div class="card resizable-card">
-                  <img src="./img/gxmes/cookieclicker.png" />
-                  <br />
-                  <p>Cookie clicker</p>
-              </div>
-          </a>
-          <a href="">
-              <div class="card resizable-card">
-                  <img src="./img/gxmes/roblox.webp" />
-                  <br />
-                  <p>Roblox</p>
-              </div>
-          </a>
-          <a href="">
-              <div class="card resizable-card">
-                  <img src="./img/gxmes/eagtek.jpg" />
-                  <br />
-                  <p>Eaglercraft</p>
-              </div>
-          </a>
+        <a href="">
+          <div class="card resizable-card">
+            <img src="./img/gxmes/1v1lol.png" />
+            <br />
+            <p>1v1.lol</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resizable-card">
+            <img src="./img/gxmes/cookieclicker.png" />
+            <br />
+            <p>Cookie clicker</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resizable-card">
+            <img src="./img/gxmes/roblox.webp" />
+            <br />
+            <p>Roblox</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resizable-card">
+            <img src="./img/gxmes/bitlife.jpg" />
+            <br />
+            <p>Bitlife</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resizable-card">
+            <img src="./img/gxmes/fnaf.png" />
+            <br />
+            <p>FNAF</p> 
+          </div>
+        </a>
       </div>
-  </center>  
+      <div class="gxmes">
+        <a href="">
+          <div class="card resize-card">
+            <img src="./img/gxmes/motox3m.avif" />
+            <br />
+            <p>Moto X3M</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resize-card">
+            <img src="./img/gxmes/whg.png" />
+            <br />
+            <p>Worlds Hardest game</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resize-card">
+            <img src="./img/gxmes/rooftop_snipers.avif" />
+            <br />
+            <p>Rooftop Snipers</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resize-card">
+            <img src="./img/gxmes/bloontd4.jpg" />
+            <br />
+            <p>Bloons TD 4</p>
+          </div>
+        </a>
+        <a href="">
+          <div class="card resize-card">
+            <img src="./img/gxmes/ss.webp" />
+            <br />
+            <p>Subway Surfers</p>
+          </div>
+        </a>
+      </div>
+      <div class="gxmes">
+        <a href="">
+          <div class="card resize-card">
+            <img src="./img/gxmes/retrobowl.webp" />
+            <br />
+            <p>Retro Bowl</p>
+          </div>
+        </a>
+      </div>
+    </center>
+    <%- include("partials/footer") -%>
     <script>
       let savedTitle = localStorage.getItem("tabName");
       let savedBG = localStorage.getItem("BG");
@@ -59,20 +113,20 @@
       let favicon = document.getElementById("icon");
       let savedLink = localStorage.getItem("savedLink");
       let savedKey = localStorage.getItem("savedKey");
-  
+
       if (savedTitle) {
         document.title = savedTitle;
       }
       if (savedFavicon) {
         favicon.href = savedFavicon;
       }
-  
+
       if (savedBG) {
         document.body.style.backgroundImage = `url("${savedBG}")`;
         document.body.style.backgroundRepeat = "no-repeat"
         document.body.style.backgroundSize = "cover";
       }
-  
+
       function handleKeyPress(event) {
         if (event.key === savedKey || event.key === savedKey) {
           if (savedLink.includes("https://")) {
@@ -82,7 +136,7 @@
           }
         }
       }
-  
+
       document.addEventListener("keydown", handleKeyPress);
     </script>
     <script src="./js/mobile.js"></script>
