@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const ejs = require("ejs");
-const fs = require("fs"); 
 const { createBareServer } = require("@tomphttp/bare-server-node");
 
 const PORT = process.env.PORT || 3000
@@ -11,7 +10,8 @@ const server = http.createServer();
 const bareServer = createBareServer("/bare/");
 
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 

@@ -6,11 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
-        .a {
-            text-decoration: none;
-            transition: 0.3s;
-            color: #fff;
-        }
         .footer {
             background-color: #101010;
             padding: 3px;
@@ -30,25 +25,26 @@
         .footer i {
             font-size: 40px;
             text-align: center;
+            color: #fff;
+            transition: color 0.3s; 
         }
-        #github {
+        .footer a {
+            text-decoration: none;
+            color: #fff;
+        }
+        #github:hover i { 
+            color: #404040;
+        }
+        #discord:hover i { 
+            color: #006afe;
+        }
+        #github, #discord {
             border: none;
+            width: 5%;
             border-radius: 0;
         }
         #discord {
-            border: none;
             border-radius: 0px 20px 20px 0px;
-        }
-        .a:hover {
-            color: #404040;
-        }
-        .b {
-            text-decoration: none;
-            transition: 0.3s;
-            color: #fff;
-        }
-        .b:hover {
-            color: #006afe;
         }
     </style>
 </head>
@@ -58,15 +54,15 @@
             <footer class="footer">
                 <p>&copy; 2024 Kitty Cat Unblocker.</p>
             </footer>
-            <footer id="github" class="footer" style="width: 5%; border: none;"> 
-                <a class="a">
-                <i class="fab fa-github"></i> 
-            </a>
+            <footer id="github" class="footer">
+                <a title="View our repository." href="https://github.com/mecharis-420/Kitty-Cat-Club">
+                    <i class="fab fa-github"></i>
+                </a>
             </footer>
-            <footer id="discord" class="footer" style="width: 5%; border: none;"> 
-                <a class="b">
-                <i class="fab fa-discord"></i> 
-            </a>
+            <footer id="discord" class="footer"> 
+                <a title="Join the discord!" href="https://discord.gg/rqBgxP9Gnj">
+                    <i class="fab fa-discord"></i>
+                </a>
             </footer>
         </div>
     </center>
