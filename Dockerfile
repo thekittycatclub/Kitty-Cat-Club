@@ -1,4 +1,4 @@
-FROM node:19-bullseye
+FROM node:18-bullseye
 ENV NODE_ENV=production
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
