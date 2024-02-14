@@ -56,6 +56,6 @@ server.on("upgrade", (req, socket, head) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`The Kitty Kat Klub is running on http://localhost:${PORT}`);
+    console.log(`The Kitty Cat Club is running on http://localhost:${PORT}`);
 });
 
