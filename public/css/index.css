@@ -31,7 +31,7 @@ body {
   background-color: #404040;
   border: none;
   border-radius: 10px 0px 0px 10px;
-  width: 20em;
+  width: 27em;
   text-align: center;
   color: #ffffff;
   transition: width 0.3s ease;
@@ -44,7 +44,7 @@ body {
 }
 
 #searchbar:focus {
-  width: 25em;
+  width: 31em;
   border: none;
 }
 

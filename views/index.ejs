@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kitty Cat Club | <%= title %></title>
+  <title>Kitty Cat Club | <%= title %>
+  </title>
   <link rel="stylesheet" href="./css/navbar.css" />
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/index.css" />
@@ -14,29 +15,38 @@
   <!--DROPDOWN CSS-->
 
 </head>
+
 <body>
   <div>
     <center class="center">
       <%- include("partials/navbar") %>
-      <div class="content"><br/><br/><br/>
-      <h1>Kitty Cat Unblocker</h1>
-      <img src="./img/logo.png" /><br /><br />
-      <form>
-          <input type="text" id="searchbar" placeholder="Search the web freely..." />
-          <button id="searchbtn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-      </form>
-      <br/>
-      <div style="display: flex; justify-content: center;">
-        <button onclick="openApp('https://www.google.com')" class="browserbtn">
-          <img src="./img/google.png" style="width: 32px;"/>
-        </button>
-        <button onclick="openApp('https://www.bing.com')" class="browserbtn" style="margin-left: 10px;">
-          <img src="./img/bing.svg" style="width: 32px;"/>
-        </button>
-      </div>
-      <%- include("partials/footer") -%>
+        <div class="content"><br /><br /><br />
+          <h1>Kitty Cat Unblocker</h1>
+          <img src="./img/logo.png" /><br /><br />
+          <form>
+            <input type="text" id="searchbar" placeholder="Search the web freely..." />
+            <button id="searchbtn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+          <br />
+          <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <button onclick="openApp('https://www.google.com')" class="browserbtn">
+              <img src="./img/google.png" style="width: 32px;" />
+            </button>
+            <button onclick="openApp('https://www.bing.com')" class="browserbtn" style="margin-left: 10px;">
+              <img src="./img/bing.jpg" style="width: 32px; border-radius: 5px;" />
+            </button>
+            <button onclick="openApp('https://www.yahoo.com')" class="browserbtn" style="margin-left: 10px;">
+              <img src="./img/yahoo.png" style="width: 32px; border-radius: 5px;" />
+            </button>
+          </div>
+          <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <button onclick="openApp('https://duckduckgo.com/')" class="browserbtn">
+              <img src="./img/duckduckgo.png" style="width: 32px;" />
+            </button>
+          </div>
+          <%- include("partials/footer") -%>
     </center>
   </div>
   </div>
@@ -57,7 +67,6 @@
       background-color: rgb(15, 115, 255);
       color: #fff;
     }
-    
   </style>
   <script src="./uv/uv.bundle.js"></script>
   <script src="./uv/uv.config.js"></script>

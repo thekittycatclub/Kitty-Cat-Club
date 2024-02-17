@@ -138,10 +138,10 @@
 <body>
     <%- include("partials/navbar") %>
         <div class="settingsList" style="margin-top: 5%; justify-content: center;">
-            <div class="card" style="margin-left: 20px;">
+            <div class="card">
                 <center>
-                    <h1 style="font-size: 30px;">Tab Cloaking</h1>
-                    <p>Changes the tab name and icon to something else.</p>
+                    <h1 style="font-size: 30px;">Tab cloaking</h1>
+                    <p>Changes the tab name and favicon to something else.</p>
                     <br />
                     <div>
                         <button onclick="changeFaviconToGoogle()" style="width: 17%;" class="tabbtn"><img
@@ -165,7 +165,7 @@
                 </center>
             </div>
 
-            <div class="card" style="margin-left: 20px;">
+            <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Panic key system</h1>
                     <p>Used to redirect to another website when pressing a specific key.</p>
@@ -181,7 +181,7 @@
                     <br />
                 </center>
             </div>
-            <div class="card" style="margin-left: 20px; margin-right: 20px; ">
+            <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Search engine</h1>
                     <p>Switches the proxy search engine. (Default is google)</p>
@@ -205,6 +205,11 @@
                                     <label for="id13">
                                         <span>Yahoo</span>
                                     </label>
+
+                                    <input type="radio" name="drop1" id="id14" class="radio">
+                                    <label for="id14">
+                                        <span>DuckDuckGo</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -213,10 +218,7 @@
                     </div>
             </div>
             </center>
-        </div>
-        </div>
-        <div style="display: flex; align-content: center; justify-content: center;">
-            <div class="card" style="margin-left: 25px; height: 50%;">
+            <div class="card" style="height: 50%;">
                 <center>
                     <h1 style="font-size: 30px;">about:blank Cloak</h1>
                     <p>Opens the current page in a new about:blank page.</p>
@@ -226,7 +228,7 @@
                     </div>
                 </center>
             </div>
-            <div class="card" style="margin-left: 20px; height: 100%;">
+            <div class="card" style="height: 100%;">
                 <center>
                     <h1 style="font-size: 30px;">Change Background</h1>
                     <p>Changes the background to the specified URL.</p><br />
@@ -237,14 +239,14 @@
                     </div>
                 </center>
             </div>
-            <div class="card" style="margin-left: 20px; height: 50%;">
+            <div class="card" style="height: 50%;">
                 <center>
                     <h1 style="font-size: 30px;">Page cloaking</h1>
                     <p>Opens the provided URL in a new about:blank page</p>
                     <div>
                         <br />
                         <input id="pagecloak" type="text" placeholder="Insert your URL here..." />
-                        <button onclick="pageCloaking(event)" style="padding: 12px;">Open the page!</button>
+                        <button onclick="PageCloakFunction()" style="padding: 12px;">Open the page!</button>
                     </div>
                 </center>
             </div>
@@ -252,6 +254,8 @@
         <%- include("partials/footer") -%>
         <script src="./js/panickey.js"></script>
         <script src="./js/index.js"></script>
+        <script src="./uv/uv.bundle.js"></script>
+        <script src="./uv/uv.config.js"></script>
         <script>
             let savedTitle = localStorage.getItem("tabName");
             let savedBG = localStorage.getItem("BG");
@@ -335,6 +339,9 @@
                     case "yahoo":
                     localStorage.setItem("searchengine", 'https://search.yahoo.com/search?q=');
                     return "https://search.yahoo.com/search?q=";
+                    case "duckduckgo":
+                    localStorage.setItem("searchengine", 'https://duckduckgo.com/?q=');
+                    return "https://duckduckgo.com/?q=";
                     default:
                     return "";
                 }

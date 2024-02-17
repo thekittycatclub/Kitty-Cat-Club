@@ -57,7 +57,7 @@ function changeBG() {
   }
 }
 
-function pageCloaking(event) {
+function pageCloaking2(event) {
   event.preventDefault(); 
   event.stopPropagation(); 
   
