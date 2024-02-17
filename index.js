@@ -40,6 +40,10 @@ app.get('/learning', (req, res) => {
   res.render('learning');
 });
 
+app.get('/mobile', (req, res) => {
+  res.render('mobile',  { title: "Mobile" });
+});
+
 app.use((req, res) => {
   res.statusCode = 404;
   res.render("404", { title: "404 | Error" });

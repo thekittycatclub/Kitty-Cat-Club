@@ -118,9 +118,9 @@
 <body>
   <iframe id="result" src="" onkeydown="handleKeyPress()" allowfullscreen></iframe>
   <div class="searchbar">
-    <form id="searchform">
+    <form id="searchform"  style="display: flex; justify-content: center;">
       <input type="text" class="searchinput" placeholder="Search the web freely..." />
-      <button class="searchbtn">
+      <button class="searchbtn" style="margin-left: 5px;">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
@@ -144,7 +144,6 @@
   <script src="./uv/uv.bundle.js"></script>
   <script src="./uv/uv.config.js"></script>
   <script src="./js/index.js"></script>
-  <script src="./js/mobile.js"></script>
 
   <script>
     let iframe = document.getElementById("result");
