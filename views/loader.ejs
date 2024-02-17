@@ -1,20 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kitty Cat Club | <%= title %></title>
+  <title>Kitty Cat Club | <%= title %>
+  </title>
   <link rel="stylesheet" href="./css/all.css" />
+  <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .panel {
+      width: 25%;
+      padding: 20px;
+      border: 2px solid #000;
+      background-color: rgba(20, 20, 20, 0.612);
+      border-radius: 10px;
+      margin-top: 15%;
+    }
+  </style>
 </head>
+
 <body>
-  <script>
-    window.onload = function () {
-          let encodedUrl = localStorage.getItem("encodedUrl");
-          encodedUrl = "/class/" + encodedUrl;
-          document.querySelector("#siteurl").src = encodedUrl;
-        };
+  <%- include("partials/navbar") %>
+    <center>
+      <div>
+        <div class="panel">
+          <h1>Loading site...</h1>
+          <div>
+            <img id="kitty" src="" alt="kitty!!1!" style="width: 20%; border-radius: 20px;">
+          </div>
+          <p>
+            If it dosen't load at all, please report it in our discord.
+            <br />
+          </p>
+        </div>
+      </div>
+    </center>
+    <script>
+      let savedTitle = localStorage.getItem("tabName");
+      let savedBG = localStorage.getItem("BG");
+      let savedFavicon = localStorage.getItem("favicon");
+      let favicon = document.getElementById("icon");
+      let savedLink = localStorage.getItem("savedLink");
+      let savedKey = localStorage.getItem("savedKey");
+
+      if (savedTitle) {
+        document.title = savedTitle;
+      }
+      if (savedFavicon) {
+        favicon.href = savedFavicon;
+      }
+
+      if (savedBG) {
+        document.body.style.backgroundImage = `url("${savedBG}")`;
+        document.body.style.backgroundRepeat = "no-repeat"
+        document.body.style.backgroundSize = "cover";
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === savedKey || event.key === savedKey) {
+          if (savedLink.includes("https://")) {
+            window.location.href = savededulink;
+          } else {
+            window.location.href = "https://" + savedLink;
+          }
+        }
+      }
+
+      document.addEventListener("keydown", handleKeyPress);
+    </script>
+    <script>
+      let kitty = document.getElementById("kitty");
+      let kitties = [
+        "./img/kitty/kitty1.gif",
+        "./img/kitty/kitty2.gif",
+        "./img/kitty/kitty3.gif",
+        "./img/kitty/kitty4.gif",
+        "./img/kitty/kitty5.gif",
+        "./img/kitty/kitty7.gif",
+      ];
+
+
+      let randomKitty = Math.floor(Math.random() * kitties.length);
+
+      kitty.src = kitties[randomKitty];
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function delay(milliseconds) {
+          return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+          });
+        }
+
+        delay(500).then(() => {
+          location.href = "/learning";
+        });
+      });
     </script>
     <script src="./js/index.js"></script>
-    
 </body>
+
 </html>

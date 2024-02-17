@@ -1,38 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitty Cat Club | <%= title %></title>
-    <link rel="stylesheet" href="./css/all.css" />
-    <link rel="stylesheet" href="./css/gxmes.css" />
-    <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitty Cat Club | <%= title %>
+  </title>
+  <link rel="stylesheet" href="./css/all.css" />
+  <link rel="stylesheet" href="./css/gxmes.css" />
+  <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
 <%- include("partials/navbar") %>
-<body>
-  <%- include("partials/footer") -%>
-  <script src="./js/panickey.js"></script>
-  <script>
-    let savedTitle = localStorage.getItem("tabName");
-    let savedBG = localStorage.getItem("BG");
-    let savedFavicon = localStorage.getItem("favicon");
-    let favicon = document.getElementById("icon");
 
-    if (savedTitle) {
-      document.title = savedTitle;
-    }
-    if (savedFavicon) {
-      favicon.href = savedFavicon;
-    }
+  <body>
+    <center>
+      <br>
+      <div style="align-content: center;" id="searchdiv">
+        <form>
+          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" onkeyup="startSearch()" />
+        </form>
+      </div>
+      <div class="apps">
+        <button class="card resizable-card" onclick="openApp('https://youtube.com')">
+          <img src="./img/gxmes/youtube.png" />
+          <br />
+          <p>Youtube</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://discord.com/app')">
+          <img src="./img/gxmes/discord.jpg" />
+          <br />
+          <p>Discord</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://tiktok.com')">
+          <img src="./img/gxmes/Tiktok.png" />
+          <br />
+          <p>Tiktok</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://anura.pro/')">
+          <img src="./img/gxmes/AnuraOS.png" />
+          <br />
+          <p>AnuraOS</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://open.spotify.com/?')">
+          <img src="./img/gxmes/spotify.png" />
+          <br />
+          <p>Spotify</p>
+          </button> 
+        <button class="card resizable-card" onclick="openApp('https://www.reddit.com')">
+          <img src="./img/gxmes/reddit.png" />
+          <br />
+          <p>Reddit</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://www.github.com')">
+          <img src="./img/gxmes/github.jpg" />
+          <br />
+          <p>Github</p>
+        </button>
+      </div>
+    </center>
+    <%- include("partials/footer") -%>
+      <script src="./js/panickey.js"></script>
+      <script src="./uv/uv.bundle.js"></script>
+      <script src="./uv/uv.config.js"></script>
+      <script src="./js/index.js"></script>
+      <script>
+        let savedTitle = localStorage.getItem("tabName");
+        let savedBG = localStorage.getItem("BG");
+        let savedFavicon = localStorage.getItem("favicon");
+        let favicon = document.getElementById("icon");
+        let savedLink = localStorage.getItem("savedLink");
+        let savedKey = localStorage.getItem("savedKey");
 
-    if (savedBG) {
-      document.body.style.backgroundImage = `url("${savedBG}")`;
-      document.body.style.backgroundRepeat = "no-repeat"
-      document.body.style.backgroundSize = "cover";
-    }
+        if (savedTitle) {
+          document.title = savedTitle;
+        }
+        if (savedFavicon) {
+          favicon.href = savedFavicon;
+        }
 
-    document.addEventListener("keydown", handleKeyPress);
-  </script>
-</body>
+        if (savedBG) {
+          document.body.style.backgroundImage = `url("${savedBG}")`;
+          document.body.style.backgroundRepeat = "no-repeat"
+          document.body.style.backgroundSize = "cover";
+        }
+
+        function handleKeyPress(event) {
+          if (event.key === savedKey || event.key === savedKey) {
+            if (savedLink.includes("https://")) {
+              window.location.href = savededulink;
+            } else {
+              window.location.href = "https://" + savedLink;
+            }
+          }
+        }
+
+        document.addEventListener("keydown", handleKeyPress);
+      </script>
+
+<script>
+  function startSearch() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("searchbar");
+    filter = input.value.toUpperCase();
+    ul = document.querySelector(".apps");
+    li = ul.getElementsByTagName("button");
+
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("p")[0];
+      if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+</script>
+
+  </body>
 
 </html>

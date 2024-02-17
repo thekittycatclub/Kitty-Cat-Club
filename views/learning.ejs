@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics</title>
+  <link id="icon" rel="icon" type="image/x-icon" href="" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+    * {
+      font-family: "Poppins", sans-serif;
+    }
+
+    #topmost {
+      position: relative;
+      z-index: 999;
+      display: block;
+      /* Added to make it a block element */
+      margin-bottom: 20px;
+      /* Adjust this value as needed */
+    }
+
+    iframe {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      border: none;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .searchbar {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 10px;
+      bottom: -100px;
+    }
+
+    .searchinput {
+      background-color: rgb(64, 64, 64, 0.75);
+      border: none;
+      border-radius: 10px 0px 0px 10px;
+      width: 20em;
+      text-align: center;
+      color: #ffffff;
+      transition: width 0.3s ease;
+      padding: 15px;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      transition: 0.2s;
+    }
+
+    .searchinput::placeholder {
+      color: gray;
+    }
+
+    .searchbtn {
+      color: gray;
+      background-color: rgb(32, 32, 32);
+      border: none;
+
+      padding: 15px;
+      width: 4em;
+
+      border-radius: 0px 10px 10px 0px;
+      transition: background 0.2s ease-in;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .searchbtn:hover {
+      background: #242424;
+    }
+
+    .mainbtns {
+      padding: 10px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .navbtn {
+      border: 1px solid #000;
+      border-radius: 10000px;
+      background-color: rgb(64, 64, 64, 0.75);
+      color: #000;
+      padding: 15px;
+      justify-content: space-between;
+      width: 70px;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      margin-left: 10px;
+    }
+
+    .navbtn:hover {
+      transition: ease-in-out(0.1s);
+    }
+  </style>
+</head>
+
+<body>
+  <iframe id="result" src="" onkeydown="handleKeyPress()" allowfullscreen></iframe>
+  <div class="searchbar">
+    <form id="searchform">
+      <input type="text" class="searchinput" placeholder="Search the web freely..." />
+      <button class="searchbtn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
+  <div class="mainbtns">
+    <a href="/">
+      <button class="navbtn" style="transition: ease-in-out(0.1); width: 55px;"><i
+          class="fa-solid fa-house"></i></button>
+    </a>
+    <br>
+    <button class="navbtn" style="transition: ease-in-out(0.1); width: 55px;" onclick="reloadPX()"><i
+        class="fa-solid fa-rotate-right"></i></button>
+    <br>
+    <button class="navbtn" style="transition: ease-in-out(0.1); width: 55px;" onclick="searchshow()"><i
+        class="fa-solid fa-search"></i></button>
+    <br>
+    <button class="navbtn" style="transition: ease-in-out(0.1); width: 55px;" onclick="devTools()"><i
+        class="fa-solid fa-code"></i></button>
+  </div>
+  </div>
+  <script src="./uv/uv.bundle.js"></script>
+  <script src="./uv/uv.config.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/mobile.js"></script>
+
+  <script>
+    let iframe = document.getElementById("result");
+    function reloadPX() {
+      iframe.src = iframe.src;
+    }
+
+    function shootTheNigger() {
+      var nigger = "a1rg3mm"
+      if (nigger === null || !nigger || nigger === "") {
+        alert("a1rg3mm is  i=nigger");
+      } else {
+        alert("sex");
+      }//beautiful code
+    }
+
+    function devTools() {
+      alert("balls. (in developement)");
+    }
+
+    function delay(milliseconds) {
+      return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+      });
+    }
+
+    function searchshow() {
+      let searchbar = document.querySelector(".searchbar");
+      let mainbtndiv = document.querySelector(".mainbtns");
+
+      if (searchbar.style.bottom === "-100px") {
+        //bring buttons up
+        mainbtndiv.style.transition = "0.2s";
+        mainbtndiv.style.bottom = "90px";
+        searchbar.style.transition = "0.2s";
+        searchbar.style.bottom = "30px";
+      } else {
+        //bring buttons down
+        mainbtndiv.style.transition = "0.2s";
+        mainbtndiv.style.bottom = "20px";
+        searchbar.style.transition = "0.4s";
+        searchbar.style.bottom = "-100px";
+      }
+    }
+  </script>
+
+  <script>
+    let savedTitle = localStorage.getItem("tabName");
+    let savedBG = localStorage.getItem("BG");
+    let savedFavicon = localStorage.getItem("favicon");
+    let favicon = document.getElementById("icon");
+    let savedLink = localStorage.getItem("savedLink");
+    let savedKey = localStorage.getItem("savedKey");
+
+    if (savedTitle) {
+      document.title = savedTitle;
+    }
+    if (savedFavicon) {
+      favicon.href = savedFavicon;
+    }
+
+    if (savedBG) {
+      document.body.style.backgroundImage = `url("${savedBG}")`;
+      document.body.style.backgroundRepeat = "no-repeat"
+      document.body.style.backgroundSize = "cover";
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === savedKey || event.key === savedKey) {
+        if (savedLink.includes("https://")) {
+          window.location.href = savededulink;
+        } else {
+          window.location.href = "https://" + savedLink;
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+  </script>
+</body>
+
+</html>

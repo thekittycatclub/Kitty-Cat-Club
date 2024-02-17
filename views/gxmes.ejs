@@ -14,133 +14,132 @@
 <%- include("partials/navbar") %>
 
   <body>
-    <center>
+    <center style="margin-top: 15%;">
       <br>
       <div style="align-content: center;" id="searchdiv">
-        <form>
-          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
-        </form>
+        <input onkeyup="startSearch()" placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
       </div>
       <div class="gxmes">
-        <a href="">
-          <div class="card resizable-card">
-            <img src="./img/gxmes/1v1lol.png" />
-            <br />
-            <p>1v1.lol</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resizable-card">
-            <img src="./img/gxmes/cookieclicker.png" />
-            <br />
-            <p>Cookie clicker</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resizable-card">
-            <img src="./img/gxmes/roblox.webp" />
-            <br />
-            <p>Roblox</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resizable-card">
-            <img src="./img/gxmes/bitlife.jpg" />
-            <br />
-            <p>Bitlife</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resizable-card">
-            <img src="./img/gxmes/fnaf.png" />
-            <br />
-            <p>FNAF</p> 
-          </div>
-        </a>
-      </div>
-      <div class="gxmes">
-        <a href="">
-          <div class="card resize-card">
-            <img src="./img/gxmes/motox3m.avif" />
-            <br />
-            <p>Moto X3M</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resize-card">
-            <img src="./img/gxmes/whg.png" />
-            <br />
-            <p>Worlds Hardest game</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resize-card">
-            <img src="./img/gxmes/rooftop_snipers.avif" />
-            <br />
-            <p>Rooftop Snipers</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resize-card">
-            <img src="./img/gxmes/bloontd4.jpg" />
-            <br />
-            <p>Bloons TD 4</p>
-          </div>
-        </a>
-        <a href="">
-          <div class="card resize-card">
-            <img src="./img/gxmes/ss.webp" />
-            <br />
-            <p>Subway Surfers</p>
-          </div>
-        </a>
-      </div>
-      <div class="gxmes">
-        <a href="">
-          <div class="card resize-card">
-            <img src="./img/gxmes/retrobowl.webp" />
-            <br />
-            <p>Retro Bowl</p>
-          </div>
-        </a>
+        <button class="card resizable-card" onclick="openApp('https://1v1.lol/')">
+          <img src="./img/gxmes/1v1lol.png" />
+          <br />
+          <p>1v1.lol</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://eli-schwartz.github.io/cookieclicker')">
+          <img src="./img/gxmes/cookieclicker.png" />
+          <br />
+          <p>Cookie clicker</p>
+        </button>
+        <button class="card resizable-card"
+          onclick="openApp('https://now.gg/iframe/snippet?app_pkg=com.roblox.client&partner=gamenora')">
+          <img src="./img/gxmes/roblox.webp" />
+          <br />
+          <p>Roblox</p>
+        </button>
+        <button class="card resizable-card"
+          onclick="openApp('https://ubg365.github.io/bitlife-life-simulator/play.html')">
+          <img src="./img/gxmes/bitlife.jpg" />
+          <br />
+          <p>Bitlife</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://run3.io/popgame/fnaf/fnaf1/')">
+          <img src="./img/gxmes/FNAF.png" />
+          <br />
+          <p>FNAF</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://webglmath.github.io/moto-x3m/')">
+          <img src="./img/gxmes/motox3m.avif" />
+          <br />
+          <p>Moto X3M</p>
+        </button>
+        <button class="card resizable-card"
+          onclick="openApp('https://watchdocumentaries.com/wp-content/uploads/games/worlds-hardest-game/')">
+          <img src="./img/gxmes/whg.png" />
+          <br />
+          <p>Worlds Hardest Game</p>
+        </button>
+        <button class="card resizable-card"
+          onclick="openApp('https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/version@f8de953e5d955baef80e3994a1105d74ad76315b/Rooftop-Snipers.xml')">
+          <img src="./img/gxmes/rooftop_snipers.avif" />
+          <br />
+          <p>Rooftop Snipers</p>
+        </button>
+        <button class="card resizable-card"
+          onclick="openApp('https://www.silvergames.com/en/bloons-tower-defense-4/gameframe')">
+          <img src="./img/gxmes/bloontd4.jpg" />
+          <br />
+          <p>Bloons TD 4</p>
+        </button>
+        <button class="card resizable-card" onclick="openApp('https://subwaysurfersgame.io/subway-surfers.embed')">
+          <img src="./img/gxmes/ss.webp" />
+          <br />
+          <p>Subway Surfers</p>
+        </button>
+        <button class="card resizable-card"
+          onclick="openApp('https://game316009.konggames.com/gamez/0031/6009/live/index.html')">
+          <img src="./img/gxmes/retrobowl.webp" />
+          <br />
+          <p>Retro Bowl</p>
+        </button>
       </div>
     </center>
     <%- include("partials/footer") -%>
-    <script>
-      let savedTitle = localStorage.getItem("tabName");
-      let savedBG = localStorage.getItem("BG");
-      let savedFavicon = localStorage.getItem("favicon");
-      let favicon = document.getElementById("icon");
-      let savedLink = localStorage.getItem("savedLink");
-      let savedKey = localStorage.getItem("savedKey");
+      <script>
+        function startSearch() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("searchbar");
+          filter = input.value.toUpperCase();
+          ul = document.querySelector(".gxmes");
+          li = ul.getElementsByTagName("button");
 
-      if (savedTitle) {
-        document.title = savedTitle;
-      }
-      if (savedFavicon) {
-        favicon.href = savedFavicon;
-      }
-
-      if (savedBG) {
-        document.body.style.backgroundImage = `url("${savedBG}")`;
-        document.body.style.backgroundRepeat = "no-repeat"
-        document.body.style.backgroundSize = "cover";
-      }
-
-      function handleKeyPress(event) {
-        if (event.key === savedKey || event.key === savedKey) {
-          if (savedLink.includes("https://")) {
-            window.location.href = savededulink;
-          } else {
-            window.location.href = "https://" + savedLink;
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("p")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
           }
         }
-      }
+      </script>
+      <script>
+        let savedTitle = localStorage.getItem("tabName");
+        let savedBG = localStorage.getItem("BG");
+        let savedFavicon = localStorage.getItem("favicon");
+        let favicon = document.getElementById("icon");
+        let savedLink = localStorage.getItem("savedLink");
+        let savedKey = localStorage.getItem("savedKey");
 
-      document.addEventListener("keydown", handleKeyPress);
-    </script>
-    <script src="./js/mobile.js"></script>
-    <script src="./js/index.js"></script>
+        if (savedTitle) {
+          document.title = savedTitle;
+        }
+        if (savedFavicon) {
+          favicon.href = savedFavicon;
+        }
+
+        if (savedBG) {
+          document.body.style.backgroundImage = `url("${savedBG}")`;
+          document.body.style.backgroundRepeat = "no-repeat"
+          document.body.style.backgroundSize = "cover";
+        }
+
+        function handleKeyPress(event) {
+          if (event.key === savedKey || event.key === savedKey) {
+            if (savedLink.includes("https://")) {
+              window.location.href = savededulink;
+            } else {
+              window.location.href = "https://" + savedLink;
+            }
+          }
+        }
+
+        document.addEventListener("keydown", handleKeyPress);
+      </script>
+      <script src="./js/mobile.js"></script>
+      <script src="./uv/uv.bundle.js"></script>
+      <script src="./uv/uv.config.js"></script>
+      <script src="./js/index.js"></script>
+
   </body>
 
 </html>

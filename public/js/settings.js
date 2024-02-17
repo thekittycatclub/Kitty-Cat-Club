@@ -14,7 +14,7 @@ function setTabTitle() {
 
 function setFavicon() {
   let url = document.getElementById("changefavicon").value;
-  if (url === "") {
+  if (url === "" || url === null || !url) {
     favicon.href = "./img/logo.png";
     localStorage.setItem("favicon", "./img/logo.png");
   } else {

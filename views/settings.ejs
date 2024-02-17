@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +7,7 @@
     </title>
     <link rel="stylesheet" href="./css/settings.css" />
     <link rel="stylesheet" href="./css/all.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
     <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
     <script src="./js/settings.js"></script>
     <script src="./js/mobile.js"></script>
@@ -62,7 +62,7 @@
         }
 
         .input-box:empty::after {
-            content: "Select search engine";
+            content: "Google";
         }
 
         .list {
@@ -137,8 +137,8 @@
 
 <body>
     <%- include("partials/navbar") %>
-        <div class="settingsList">
-            <div class="card" style="">
+        <div class="settingsList" style="margin-top: 5%;">
+            <div class="card" style="margin-left: 20px;">
                 <center>
                     <h1 style="font-size: 30px;">Tab Cloaking</h1>
                     <p>Changes the tab name and icon to something else.</p>
@@ -152,8 +152,6 @@
                                 src="./img/google_drive.png" alt="" style="width: 26px;"></button>
                         <button onclick="changeFaviconToGoogleDocs()" style="width: 17%;" class="tabbtn"><img
                                 src="./img/google_docs.ico" alt="" style="width: 26px;"></button>
-                        <button onclick="changeFaviconToNormal()" style="width: 13%; padding: 15px;" class="tabbtn"><img
-                                src="./img/logo.png" alt="" style="width: 32px;"></button>
                     </div>
                     <div>
                         <p>Custom tab cloaking:</p>
@@ -183,7 +181,7 @@
                     <br />
                 </center>
             </div>
-            <div class="card" style="margin-left: 20px;">
+            <div class="card" style="margin-left: 20px; margin-right: 20px; ">
                 <center>
                     <h1 style="font-size: 30px;">Search engine</h1>
                     <p>Switches the proxy search engine. (Default is google)</p>
@@ -207,11 +205,6 @@
                                     <label for="id13">
                                         <span>Yahoo</span>
                                     </label>
-
-                                    <input type="radio" name="drop1" id="id14" class="radio">
-                                    <label for="id14">
-                                        <span>Custom URL</span>
-                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -229,8 +222,7 @@
                     <p>Opens the current page in a new about:blank page.</p>
                     <br />
                     <div>
-                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click
-                            here to activate!</button>
+                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
                     </div>
                 </center>
             </div>
@@ -240,7 +232,7 @@
                     <p>Changes the background to the specified URL.</p><br />
                     <div>
                         <br />
-                        <input id="changebg" type="text" placeholder="Add background URL..." />
+                        <input id="changebg" type="text" placeholder="Add background URL..." style="width: 40%;"/>
                         <button onclick="changeBG()" style="padding: 10px; width: auto;">Change Background</button>
                     </div>
                 </center>
@@ -258,6 +250,7 @@
             </div>
         </div>
         <script src="./js/panickey.js"></script>
+        <script src="./js/index.js"></script>
         <script>
             let savedTitle = localStorage.getItem("tabName");
             let savedBG = localStorage.getItem("BG");
@@ -280,6 +273,7 @@
             const uvSearch = document.getElementById("uv-search-engine");
             var inputbox = document.querySelector(".input-box");
             const savedEngine = localStorage.getItem("savedengine");
+            const se2 = localStorage.getItem("searchengine");
             if (savedEngine) {
                 uvSearch.value = getSearchEngineURL(savedEngine);
                 inputbox.textContent = savedEngine;
@@ -332,18 +326,16 @@
 
                 switch (engineName.toLowerCase()) {
                     case "google":
-                        return "https://www.google.com/search?q=";
-                        localStorage.setItem("searchengine", 'https://www.google.com/search?q=');
+                    localStorage.setItem("searchengine", 'https://www.google.com/search?q=');
+                    return "https://www.google.com/search?q=";
                     case "bing":
-                        return "https://www.bing.com/search?q=";
-                        localStorage.setItem("searchengine", 'https://www.bing.com/search?q=');
+                    localStorage.setItem("searchengine", 'https://www.bing.com/search?q=');
+                    return "https://www.bing.com/search?q=";
                     case "yahoo":
-                        return "https://search.yahoo.com/search?q=";
-                        localStorage.setItem("searchengine", 'https://search.yahoo.com/search?q=');
-                    case "custom_url":
-                        return uvSearch.textContent = "";
+                    localStorage.setItem("searchengine", 'https://search.yahoo.com/search?q=');
+                    return "https://search.yahoo.com/search?q=";
                     default:
-                        return "";
+                    return "";
                 }
             }
             var label = document.querySelectorAll("label");
@@ -364,5 +356,4 @@
             }
         </script>
 </body>
-
 </html>

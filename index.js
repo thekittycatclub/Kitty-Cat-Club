@@ -1,49 +1,55 @@
-const express = require("express");
-const path = require("path");
-const http = require("http");
-const ejs = require("ejs");
-const { createBareServer } = require("@tomphttp/bare-server-node");
+import express from "express";
+import http from "node:http";
+import path from "path";
+import ejs from "ejs";
+import { createBareServer }  from "@tomphttp/bare-server-node"
 
-const PORT = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 const app = express();
+const __dirname = process.cwd();
 const server = http.createServer();
 const bareServer = createBareServer("/bare/");
 
-
 app.use(express.static("public"));
+app.use(express.urlencoded({extended: false}));
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   res.render("index", { title: "Home" });
 });
 
-app.get("/gxmes", (req, res) => {
-    res.render("gxmes", { title: "Gxmes" });
-  });
-
-app.get("/apps", (req, res) => {
-    res.render("apps", { title: "Apps" });
+app.get('/gxmes', (req, res) => {
+  res.render("gxmes", { title: "Geometry" });
 });
 
-app.get("/settings", (req, res) => {
-    res.render("settings", { title: "Settings" });
+app.get('/apps', (req, res) => {
+  res.render("apps", { title: "Algebra" });
 });
 
-app.get("/mobile", (req, res) => {
-  res.render("mobile", { title: "Mobile Edition" });
+app.get('/settings', (req, res) => {
+  res.render("settings", { title: "Settings" });
 });
 
-app.get("/*", (req, res) => {
-    res.render("404", { title: "404 Page", error: "Looks like the page you're looking for doesn't exist. (womp womp)" });
+app.get('/textbook', (req, res) => {
+  res.render('loader',  { title: "Textbook" });
+});
+
+app.use((req, res) => {
+  res.statusCode = 404;
+  res.render("404");
+});
+
+app.get('/learning', (req, res) => {
+  res.render('learning');
 });
 
 server.on("request", (req, res) => {
   if (bareServer.shouldRoute(req)) {
     bareServer.routeRequest(req, res);
   } else {
-    app.handle(req, res); 
+    app(req, res);
   }
 });
 
@@ -55,7 +61,12 @@ server.on("upgrade", (req, socket, head) => {
   }
 });
 
-app.listen(PORT, () => {
-    console.log(`The Kitty Cat Club is running on: http://localhost:${PORT}`);
+server.on("listening", () => {
+  console.log(`Kitty Cat Club is running on: http://localhost:${port}`);
 });
+
+server.listen({
+  port: 3000,
+});
+
 

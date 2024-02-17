@@ -18,9 +18,10 @@
   <div>
     <center class="center">
       <%- include("partials/navbar") %>
+      <div class="content"><br/><br/><br/>
       <h1>Kitty Cat Unblocker</h1>
       <img src="./img/logo.png" /><br /><br />
-      <form id="uv-form">
+      <form>
           <input type="text" id="searchbar" placeholder="Search the web freely..." />
           <button id="searchbtn">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -28,16 +29,42 @@
       </form>
       <br/>
       <div style="display: flex; justify-content: center;">
-        <button onclick="" class="browserbtn">
+        <button onclick="openApp('https://www.google.com')" class="browserbtn">
           <img src="./img/google.png" style="width: 32px;"/>
         </button>
-        <button onclick="" class="browserbtn" style="margin-left: 10px;">
+        <button onclick="openApp('https://www.bing.com')" class="browserbtn" style="margin-left: 10px;">
           <img src="./img/bing.svg" style="width: 32px;"/>
         </button>
       </div>
+      <div id="discord">
+        <a href="https://discord.gg/TGpkh7W3Xy" target="_blank">
+        <button class="joinbutton">
+          <p>Join our Discord!</p>
+        </button>
+      </a>
+      </div>
     </center>
   </div>
-  <%- include("partials/footer") -%>
+  </div>
+  <style>
+    .joinbutton {
+      margin-top: 10px;
+      width: 150px;
+      padding: 2px;
+      border-radius: 15px;
+      background-color: #202020;
+      border: 2px solid #101010;
+      border-radius: 25px;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      transition: 0.2s;
+    }
+
+    .joinbutton:hover {
+      background-color: rgb(0, 136, 255);
+      color: #fff;
+    }
+    
+  </style>
   <script src="./uv/uv.bundle.js"></script>
   <script src="./uv/uv.config.js"></script>
   <script src="./js/index.js"></script>

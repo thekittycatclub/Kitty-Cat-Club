@@ -113,3 +113,9 @@ body {
   background: #101010;
   border-radius: 2px;
 }
+
+@media screen and (max-width: 1451px) {
+  .content {
+    margin-top:1%;
+  }
+}

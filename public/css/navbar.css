@@ -6,10 +6,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0; 
   width: 50%; 
   z-index: 999; 
+  margin-top: 10px;
+  justify-content: center; 
+  left: 25%;
 }
   .align-left,
   .align-right {
@@ -39,7 +42,7 @@
   .align-right {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Align items to the right */
+    justify-content: flex-end; 
   }
   
   .align-right p {
@@ -89,3 +92,14 @@
   h2:hover {
     color: #505050;
   }  
+
+  @media screen and (max-width: 1211px) {
+    #timer {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1140px) {
+    #esad {
+      display: none;
+    }
+  }
