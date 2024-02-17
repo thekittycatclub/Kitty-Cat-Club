@@ -36,13 +36,13 @@ app.get('/textbook', (req, res) => {
   res.render('loader',  { title: "Textbook" });
 });
 
-app.use((req, res) => {
-  res.statusCode = 404;
-  res.render("404");
-});
-
 app.get('/learning', (req, res) => {
   res.render('learning');
+});
+
+app.use((req, res) => {
+  res.statusCode = 404;
+  res.render("404", { title: "404 | Error" });
 });
 
 server.on("request", (req, res) => {

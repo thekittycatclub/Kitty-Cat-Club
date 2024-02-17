@@ -50,7 +50,7 @@
     }
 
     .searchinput {
-      background-color: rgb(64, 64, 64, 0.75);
+      background-color: rgb(64, 64, 64, 0.8);
       border: none;
       border-radius: 10px 0px 0px 10px;
       width: 20em;
@@ -62,13 +62,16 @@
       transition: 0.2s;
     }
 
+    .searchinput:focus {
+      background-color: rgb(64, 64, 64);
+    }
     .searchinput::placeholder {
       color: gray;
     }
 
     .searchbtn {
       color: gray;
-      background-color: rgb(32, 32, 32);
+      background-color: rgb(32, 32, 32, 0.8);
       border: none;
 
       padding: 15px;
@@ -149,17 +152,8 @@
       iframe.src = iframe.src;
     }
 
-    function shootTheNigger() {
-      var nigger = "a1rg3mm"
-      if (nigger === null || !nigger || nigger === "") {
-        alert("a1rg3mm is  i=nigger");
-      } else {
-        alert("sex");
-      }//beautiful code
-    }
-
     function devTools() {
-      alert("balls. (in developement)");
+      alert("balls. (in development!)");
     }
 
     function delay(milliseconds) {
@@ -186,6 +180,8 @@
         searchbar.style.bottom = "-100px";
       }
     }
+
+    document.addEventListener("DOMContentLoaded", searchshow);
   </script>
 
   <script>
