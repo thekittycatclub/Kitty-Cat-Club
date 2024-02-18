@@ -1,6 +1,7 @@
+<div align="center">
+  
 # Kitty Cat Club
-<div style="text-align: center;">
-  <h3>What is Kitty Cat Club?</h3>
 <br/>
-<p>Kitty Cat Club is an Ultraviolet proxy that allows you to search the internet bypassing restrictions.</p>
+## What is Kitty Cat Club?
+Kitty Cat Club is an Ultraviolet Proxy that allows you to search the web, bypassing internet restrictions.
 </div>
