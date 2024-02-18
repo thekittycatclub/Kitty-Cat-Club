@@ -32,6 +32,10 @@ app.get('/settings', (req, res) => {
   res.render("settings", { title: "Settings" });
 });
 
+app.get('/extra', (req, res) => {
+  res.render('extra',  { title: "Extra" });
+});
+
 app.get('/textbook', (req, res) => {
   res.render('loader',  { title: "Textbook" });
 });

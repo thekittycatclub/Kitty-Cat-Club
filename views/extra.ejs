@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kitty Cat Club | <%= title %>
+    </title>
+    <link rel="stylesheet" href="./css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
+    <style>
+        .extra {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 7%;
+        }
+
+        .panel {
+            background-color: #1a1a1a;
+            width: auto;
+            padding: 20px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("partials/navbar") %>
+        <center>
+            <div class="extra">
+                <div class="panel" style="width: 25%;">
+                    <h1>Projects</h1>
+                    <p>A list of other projects we are making.</p>
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <div class="panel" style="background-color: #1e1e1e; border-radius: 10px; width: 25%;"
+                            onclick="window.open('https://github.com/ahoyproject/ahoy', '_blank').focus()">
+                            <img src="./img/projects/ahoy.png" style="width: 80%;" />
+                            <p>Ahoy</p>
+                        </div>
+                        <div class="panel" style="background-color: #1e1e1e; border-radius: 10px; width: 25%;"
+                            onclick="window.open('https://cloud.tlch.xyz').focus()">
+                            <img src="./img/projects/cloud.png" style="width: 80%;" />
+                            <p>Cloud</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h1>Credits</h1>
+                    <p>@xineese - Founder of KCC.</p>
+                    <p>@A1RG3MM - Making proxy and Frontend for website.</p>
+                    <p>@tlochsta - Purchasing domains and VPS.</p>
+                    <p>@Xordas - Mental support.</p>
+                    <p>@questioningliferightnow - Link bot, fixing VPS, and making links.</p>
+                </div>
+            </div>
+        </center>
+</body>
+
+</html>
