@@ -23,9 +23,7 @@ body {
   min-height: 100vh;
 }
 
-.center {
-  flex: 1;
-}
+
 
 #searchbar {
   background-color: #404040;

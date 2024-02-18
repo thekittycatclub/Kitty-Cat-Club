@@ -33,7 +33,19 @@
 
         .card {
             background-color: #1e1e1e;
-            width: auto;
+            width: 25%;
+            padding: 20px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(0.9);
+            background-color: #1f1f1f;
         }
     </style>
 </head>
@@ -46,12 +58,12 @@
                     <h1>Projects</h1>
                     <p>A list of other projects we are making.</p>
                     <div style="display: flex; justify-content: center; width: 100%;">
-                        <div class="panel" style="background-color: #1e1e1e; border-radius: 10px; width: 25%;"
+                        <div class="card"
                             onclick="window.open('https://github.com/ahoyproject/ahoy', '_blank').focus()">
                             <img src="./img/projects/ahoy.png" style="width: 80%;" />
                             <p>Ahoy</p>
                         </div>
-                        <div class="panel" style="background-color: #1e1e1e; border-radius: 10px; width: 25%;"
+                        <div class="card"
                             onclick="window.open('https://cloud.tlch.xyz').focus()">
                             <img src="./img/projects/cloud.png" style="width: 80%;" />
                             <p>Cloud</p>
