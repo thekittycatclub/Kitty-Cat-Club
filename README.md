@@ -1,6 +1,8 @@
 <div style="text-align: center;">
-  <h1>Kitty Cat Club</h1>
+  # Kitty Cat Club
   <br/>
   <h2>What is Kitty Cat Club?</h2>
-  <p>Kitty Cat Club is an upcoming proxy that allows you to search through the internet without censorship.</p>
+  <p>Kitty Cat Club is an ultraviolet proxy that allows you to search through the internet without restrictions.</p>
+  <br/>
+  
 </div>
