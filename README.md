@@ -14,4 +14,3 @@ Kitty Cat Club is an Ultraviolet Proxy that allows you to search the web, bypass
 <li>🎨 | Customizable settings.</li>
 <li>🐱 | Cat pictures.</li>
 </ul>
-
