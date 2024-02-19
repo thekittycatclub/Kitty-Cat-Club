@@ -17,7 +17,7 @@
       <br>
       <div style="align-content: center;" id="searchdiv">
         <form>
-          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" onkeyup="startSearch()" />
+          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" onkeyup="search()" />
         </form>
       </div>
       <div class="apps" style="width: 75%;">
@@ -61,10 +61,14 @@
           <br />
           <p>Twitter</p>
         </button>
+        <button class="card resizable-card" onclick="openApp('https://vscode.dev')">
+          <img src="./img/gxmes/vsc.png" />
+          <br />
+          <p>Visual Studio Code</p>
+        </button>
       </div>
     </center>
     <%- include("partials/footer") -%>
-      <script src="./js/panickey.js"></script>
       <script src="./uv/uv.bundle.js"></script>
       <script src="./uv/uv.config.js"></script>
       <script src="./js/index.js"></script>
@@ -77,45 +81,44 @@
         let savedKey = localStorage.getItem("savedKey");
 
         if (savedTitle) {
-          document.title = savedTitle;
+            document.title = savedTitle;
         }
         if (savedFavicon) {
-          favicon.href = savedFavicon;
+            favicon.href = savedFavicon;
         }
 
         if (savedBG) {
-          document.body.style.backgroundImage = `url("${savedBG}")`;
-          document.body.style.backgroundRepeat = "no-repeat"
-          document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundImage = `url("${savedBG}")`;
+            document.body.style.backgroundRepeat = "no-repeat"
+            document.body.style.backgroundSize = "cover";
         }
 
         function handleKeyPress(event) {
-          if (event.key === savedKey || event.key === savedKey) {
-            if (savedLink.includes("https://")) {
-              window.location.href = savededulink;
-            } else {
-              window.location.href = "https://" + savedLink;
+            if (event.key === savedKey || event.key === savedKey) {
+                if (savedLink.includes("https://")) {
+                    window.location.href = savededulink;
+                } else {
+                    window.location.href = "https://" + savedLink;
+                }
             }
-          }
         }
 
         document.addEventListener("keydown", handleKeyPress);
-      </script>
+    </script>
 
 <script>
-  function startSearch() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("searchbar");
-    filter = input.value.toUpperCase();
-    ul = document.querySelector(".apps");
-    li = ul.getElementsByTagName("button");
+  function search() {
+    var input, list, btn, p, i;
+    input = document.getElementById("searchbar").value.toUpperCase();
+    list = document.querySelector(".apps");
+    btn = list.getElementsByTagName("button");
 
-    for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("p")[0];
-      if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        li[i].style.display = "";
+    for (i = 0; i < btn.length; i++) {
+      p = btn[i].getElementsByTagName("p")[0];
+      if (p.innerHTML.toUpperCase().indexOf(input) > -1) {
+        btn[i].style.display = "";
       } else {
-        li[i].style.display = "none";
+        btn[i].style.display = "none";
       }
     }
   }

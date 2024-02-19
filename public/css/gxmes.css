@@ -45,7 +45,7 @@ a {
 }
 
 .card {
-    background-color: #202020;
+    background-color: rgb(32, 32, 32, 0.75);
     padding: 15px;
     border: 2px solid #101010;
     width: 230px;
@@ -64,7 +64,7 @@ a {
 }
 
 .card:hover {
-    background-color: #252525;
+    background-color: rgb(37, 37, 37);
     transform: scale(1.1);
 }
 
