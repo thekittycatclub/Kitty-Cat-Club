@@ -16,7 +16,7 @@
             margin-top: 30px;
             flex-wrap: wrap;
             width: 100%;
-            margin-top: 7%;
+            margin-top: 5%;
         }
 
         .panel {
@@ -30,10 +30,21 @@
             margin-right: 10px;
             margin-top: 20px;
         }
-
-        .card {
-            background-color: #1e1e1e;
+        .project-cards {
+            background-color: rgb(30, 30, 30, 0.25);
             width: 25%;
+            padding: 20px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .card {
+            background-color: rgb(30, 30, 30);
+            width: 10%;
             padding: 20px;
             height: auto;
             border-radius: 10px;
@@ -45,7 +56,11 @@
         }
         .card:hover {
             transform: scale(0.9);
-            background-color: #1f1f1f;
+            background-color: rgb(37, 37, 37);
+        }
+        .project-cards:hover {
+            transform: scale(0.9);
+            background-color: #252525;
         }
     </style>
 </head>
@@ -54,18 +69,53 @@
     <%- include("partials/navbar") %>
         <center>
             <div class="extra">
+                <div class="panel" style="width: 80%;">
+                    <h1>Partners</h1>
+                    <div style="display: flex; justify-content: center; width: 100%; flex-wrap: wrap;">
+                        <div class="card"
+                            onclick="window.open('https://dogesurf.app/', '_blank').focus()">
+                            <img src="./img/partners/doge.png" style="width: 90%; border-radius: 10px;" />
+                            <p style="font-size: 1em;">Doge Unblocker</p>
+                        </div>
+                        <div class="card"
+                            onclick="window.open('https://goshadow.net/').focus()">
+                            <img src="./img/partners/shadow.png" style="width: 90%; border-radius: 10px;" />
+                            <p>Shadow Tabbed</p>
+                        </div>
+                        <div class="card"
+                            onclick="window.open('https://sites.google.com/view/lunargamehubsite/').focus()">
+                            <img src="./img/partners/LunarGameHub.png" style="width: 90%; border-radius: 10px;" />
+                            <p>Lunar Game Hub</p>
+                        </div>
+                        <div class="card"
+                            onclick="window.open('https://sites.google.com/view/ubg2127/').focus()">
+                            <img src="./img/partners/gamezonex.png" style="width: 90%; border-radius: 10px;" />
+                            <p>GameZoneX</p>
+                        </div>
+                        <div class="card"
+                            onclick="window.open('https://sites.google.com/view/ubg2127/').focus()">
+                            <img src="./img/partners/xivi.webp" style="width: 90%; border-radius: 10px;" />
+                            <p>Xivi</p>
+                        </div>
+                        <div class="card"
+                            onclick="window.open('https://sites.google.com/view/ubg2127/').focus()">
+                            <img src="./img/partners/crumbler.webp" style="width: 90%; border-radius: 10px;" />
+                            <p>Crumbler</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="panel" style="width: 25%;">
                     <h1>Projects</h1>
                     <p>A list of other projects we are making.</p>
-                    <div style="display: flex; justify-content: center; width: 100%;">
-                        <div class="card"
+                    <div style="display: flex; justify-content: center; width: auto">
+                        <div class="project-cards"
                             onclick="window.open('https://github.com/ahoyproject/ahoy', '_blank').focus()">
-                            <img src="./img/projects/ahoy.png" style="width: 80%;" />
+                            <img src="./img/projects/ahoy.png" style="width: 80%; border-radius: 10px;" />
                             <p>Ahoy</p>
                         </div>
-                        <div class="card"
+                        <div class="project-cards"
                             onclick="window.open('https://cloud.tlch.xyz').focus()">
-                            <img src="./img/projects/cloud.png" style="width: 80%;" />
+                            <img src="./img/projects/cloud.png" style="width: 80%; border-radius: 10px;" />
                             <p>Cloud</p>
                         </div>
                     </div>
@@ -80,6 +130,7 @@
                 </div>
             </div>
         </center>
+        <%- include("partials/footer") %>
 </body>
 
 </html>
