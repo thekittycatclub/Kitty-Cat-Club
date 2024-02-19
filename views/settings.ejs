@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -169,8 +170,12 @@
                 <center>
                     <h1 style="font-size: 30px;">Panic key system</h1>
                     <p>Used to redirect to another website when pressing a specific key.</p>
-                    <button id="recordbtn" style="padding: 12px; width: 50%;">Record keystroke</button>
-                    <button onclick="localStorage.removeItem('savedKey')" style="padding: 12px; width: 50%;">Clear keystroke</button>
+                    <div class="keystrokebtns">
+                        <button id="recordbtn" id="clearbtn" style="padding: 12px;">Record
+                            keystroke</button>
+                        <button onclick="localStorage.removeItem('savedKey'); localStorage.removeItem('savedLink'); location.reload()" style="padding: 12px;">Clear
+                            keystroke</button>
+                    </div>
                     <br /><br />
                     <div id="RecordPanel">
                         <p>Recorded keystroke:</p>
@@ -225,7 +230,8 @@
                     <p>Opens the current page in a new about:blank page.</p>
                     <br />
                     <div>
-                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
+                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click
+                            here to activate!</button>
                     </div>
                 </center>
             </div>
@@ -235,7 +241,7 @@
                     <p>Changes the background to the specified URL.</p><br />
                     <div>
                         <br />
-                        <input id="changebg" type="text" placeholder="Add background URL..." style="width: 40%;"/>
+                        <input id="changebg" type="text" placeholder="Add background URL..." style="width: 40%;" />
                         <button onclick="changeBG()" style="padding: 10px; width: auto;">Change Background</button>
                     </div>
                 </center>
@@ -253,116 +259,117 @@
             </div>
         </div>
         <%- include("partials/footer") -%>
-        <script src="./js/panickey.js"></script>
-        <script src="./js/index.js"></script>
-        <script src="./uv/uv.bundle.js"></script>
-        <script src="./uv/uv.config.js"></script>
-        <script>
-            let savedTitle = localStorage.getItem("tabName");
-            let savedBG = localStorage.getItem("BG");
-            let savedFavicon = localStorage.getItem("favicon");
-            let favicon = document.getElementById("icon");
-            if (savedTitle) {
-                document.title = savedTitle;
-            }
-            if (savedFavicon) {
-                favicon.href = savedFavicon;
-            }
-
-            if (savedBG) {
-                document.body.style.backgroundImage = `url("${savedBG}")`;
-                document.body.style.backgroundRepeat = "no-repeat"
-                document.body.style.backgroundSize = "cover";
-            }
-        </script>
-        <script>
-            const uvSearch = document.getElementById("uv-search-engine");
-            var inputbox = document.querySelector(".input-box");
-            const savedEngine = localStorage.getItem("savedengine");
-            const se2 = localStorage.getItem("searchengine");
-            if (savedEngine) {
-                uvSearch.value = getSearchEngineURL(savedEngine);
-                inputbox.textContent = savedEngine;
-            }
-
-            inputbox.onclick = function () {
-                this.classList.toggle("open");
-                let list = this.nextElementSibling;
-                if (list.style.maxHeight) {
-                    list.style.maxHeight = null;
-                    list.style.boxShadow = null;
-                } else {
-                    list.style.maxHeight = list.scrollHeight + "px";
-                    list.style.boxShadow =
-                        "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
+            <script src="./js/panickey.js"></script>
+            <script src="./js/index.js"></script>
+            <script src="./uv/uv.bundle.js"></script>
+            <script src="./uv/uv.config.js"></script>
+            <script>
+                let savedTitle = localStorage.getItem("tabName");
+                let savedBG = localStorage.getItem("BG");
+                let savedFavicon = localStorage.getItem("favicon");
+                let favicon = document.getElementById("icon");
+                if (savedTitle) {
+                    document.title = savedTitle;
                 }
-            };
+                if (savedFavicon) {
+                    favicon.href = savedFavicon;
+                }
 
-            var rad = document.querySelectorAll(".radio");
-            rad.forEach((item) => {
-                item.addEventListener("change", () => {
-                    const selectedOption = item.nextElementSibling.querySelector("span").innerText;
-                    uvSearch.value = getSearchEngineURL(selectedOption);
-                    inputbox.textContent = selectedOption + " (Selected)";
-                    saveSelectedEngine(selectedOption);
-                    inputbox.click();
-                    if (selectedOption === "Custom URL") {
-                        uvSearch.removeAttribute("hidden");
-                    } else uvSearch.setAttribute('hidden', true);
-                });
-            });
-
-            window.onload = function () {
+                if (savedBG) {
+                    document.body.style.backgroundImage = `url("${savedBG}")`;
+                    document.body.style.backgroundRepeat = "no-repeat"
+                    document.body.style.backgroundSize = "cover";
+                }
+            </script>
+            <script>
+                const uvSearch = document.getElementById("uv-search-engine");
+                var inputbox = document.querySelector(".input-box");
+                const savedEngine = localStorage.getItem("savedengine");
+                const se2 = localStorage.getItem("searchengine");
                 if (savedEngine) {
-                    rad.forEach((item) => {
-                        const label = item.nextElementSibling.querySelector("span").innerText;
-                        if (label === savedEngine) {
-                            item.checked = true;
-                            if (savedEngine === "Custom URL") uvSearch.removeAttribute("hidden");
+                    uvSearch.value = getSearchEngineURL(savedEngine);
+                    inputbox.textContent = savedEngine;
+                }
+
+                inputbox.onclick = function () {
+                    this.classList.toggle("open");
+                    let list = this.nextElementSibling;
+                    if (list.style.maxHeight) {
+                        list.style.maxHeight = null;
+                        list.style.boxShadow = null;
+                    } else {
+                        list.style.maxHeight = list.scrollHeight + "px";
+                        list.style.boxShadow =
+                            "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
+                    }
+                };
+
+                var rad = document.querySelectorAll(".radio");
+                rad.forEach((item) => {
+                    item.addEventListener("change", () => {
+                        const selectedOption = item.nextElementSibling.querySelector("span").innerText;
+                        uvSearch.value = getSearchEngineURL(selectedOption);
+                        inputbox.textContent = selectedOption + " (Selected)";
+                        saveSelectedEngine(selectedOption);
+                        inputbox.click();
+                        if (selectedOption === "Custom URL") {
+                            uvSearch.removeAttribute("hidden");
+                        } else uvSearch.setAttribute('hidden', true);
+                    });
+                });
+
+                window.onload = function () {
+                    if (savedEngine) {
+                        rad.forEach((item) => {
+                            const label = item.nextElementSibling.querySelector("span").innerText;
+                            if (label === savedEngine) {
+                                item.checked = true;
+                                if (savedEngine === "Custom URL") uvSearch.removeAttribute("hidden");
+                            }
+                        });
+                    }
+                };
+
+                function saveSelectedEngine(selectedEngine) {
+                    localStorage.setItem("savedengine", selectedEngine);
+                }
+
+                function getSearchEngineURL(engineName) {
+
+                    switch (engineName.toLowerCase()) {
+                        case "google":
+                            localStorage.setItem("searchengine", 'https://www.google.com/search?q=');
+                            return "https://www.google.com/search?q=";
+                        case "bing":
+                            localStorage.setItem("searchengine", 'https://www.bing.com/search?q=');
+                            return "https://www.bing.com/search?q=";
+                        case "yahoo":
+                            localStorage.setItem("searchengine", 'https://search.yahoo.com/search?q=');
+                            return "https://search.yahoo.com/search?q=";
+                        case "duckduckgo":
+                            localStorage.setItem("searchengine", 'https://start.duckduckgo.com/?q=');
+                            return "https://start.duckduckgo.com/?q=";
+                        default:
+                            return "";
+                    }
+                }
+                var label = document.querySelectorAll("label");
+                function search(searchin) {
+                    let searchVal = searchin.value;
+                    searchVal = searchVal.toUpperCase();
+                    label.forEach((item) => {
+                        let checkVal = item.querySelector(".name").innerHTML;
+                        checkVal = checkVal.toUpperCase();
+                        if (checkVal.indexOf(searchVal) == -1) {
+                            item.style.display = "none";
+                        } else {
+                            item.style.display = "flex";
                         }
+                        let list = inputbox.nextElementSibling;
+                        list.style.maxHeight = list.scrollHeight + "px";
                     });
                 }
-            };
-
-            function saveSelectedEngine(selectedEngine) {
-                localStorage.setItem("savedengine", selectedEngine);
-            }
-
-            function getSearchEngineURL(engineName) {
-
-                switch (engineName.toLowerCase()) {
-                    case "google":
-                    localStorage.setItem("searchengine", 'https://www.google.com/search?q=');
-                    return "https://www.google.com/search?q=";
-                    case "bing":
-                    localStorage.setItem("searchengine", 'https://www.bing.com/search?q=');
-                    return "https://www.bing.com/search?q=";
-                    case "yahoo":
-                    localStorage.setItem("searchengine", 'https://search.yahoo.com/search?q=');
-                    return "https://search.yahoo.com/search?q=";
-                    case "duckduckgo":
-                    localStorage.setItem("searchengine", 'https://start.duckduckgo.com/?q=');
-                    return "https://start.duckduckgo.com/?q=";
-                    default:
-                    return "";
-                }
-            }
-            var label = document.querySelectorAll("label");
-            function search(searchin) {
-                let searchVal = searchin.value;
-                searchVal = searchVal.toUpperCase();
-                label.forEach((item) => {
-                    let checkVal = item.querySelector(".name").innerHTML;
-                    checkVal = checkVal.toUpperCase();
-                    if (checkVal.indexOf(searchVal) == -1) {
-                        item.style.display = "none";
-                    } else {
-                        item.style.display = "flex";
-                    }
-                    let list = inputbox.nextElementSibling;
-                    list.style.maxHeight = list.scrollHeight + "px";
-                });
-            }
-        </script>
+            </script>
 </body>
+
 </html>

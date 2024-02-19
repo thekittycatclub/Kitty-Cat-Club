@@ -20,6 +20,15 @@ body {
     margin-right: 10px;
 }
 
+.keystrokebtns {
+    display: flex;
+    justify-content: center;
+  }
+#recordbtn, #clearbtn {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .settingsList {
     display: flex;
     justify-content: center; 
