@@ -53,11 +53,15 @@ input:focus {
 
 ::-webkit-scrollbar-track {
     background: #1c1c1c;
+    width: 0.4rem;
+    height: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #101010;
     border-radius: 2px;
+    width: 0.4rem;
+    height: 0.5rem;
 }
 
 
