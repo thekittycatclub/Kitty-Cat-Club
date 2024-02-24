@@ -8,11 +8,11 @@
   align-items: center;
   position: fixed;
   top: 0; 
-  width: 50%; 
+  width: 60%; 
   z-index: 999; 
   margin-top: 10px;
   justify-content: center; 
-  left: 25%;
+  left: 20%;
 }
   .align-left,
   .align-right {

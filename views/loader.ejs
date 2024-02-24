@@ -72,6 +72,8 @@
     </script>
     <script>
       let kitty = document.getElementById("kitty");
+      let newLoader = localStorage.getItem("loader");
+
       let kitties = [
         "./img/kitty/kitty1.gif",
         "./img/kitty/kitty2.gif",
@@ -85,6 +87,13 @@
       let randomKitty = Math.floor(Math.random() * kitties.length);
 
       kitty.src = kitties[randomKitty];
+
+      if (newLoader) {
+        kitty.src = `${newLoader}`;
+      } else {
+        kitty.src = kitties[randomKitty];
+      }
+
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -94,10 +103,11 @@
           });
         }
 
-        delay(500).then(() => {
+        delay(750).then(() => {
           location.href = "/learning";
         });
       });
+      
     </script>
     <script src="./js/index.js"></script>
 </body>

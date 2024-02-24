@@ -48,9 +48,17 @@ app.get('/mobile', (req, res) => {
   res.render('mobile',  { title: "Mobile" });
 });
 
+app.get('/testing', (req, res) => {
+  res.render('partials/testing');
+});
+
+app.get('/tos', (req, res) => {
+  res.render('tos');
+});
+
 app.use((req, res) => {
   res.statusCode = 404;
-  res.render("404", { title: "404 | Error" });
+  res.render("404", { title: "404 | Error", error: "It looks like the page you were looking for doesn't exist.",});
 });
 
 server.on("request", (req, res) => {

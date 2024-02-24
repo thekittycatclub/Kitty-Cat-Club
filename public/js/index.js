@@ -18,7 +18,7 @@ function frameLoad(url) {
 }
 
 if (form) {
-    form.addEventListener('submit', async event => {
+    form.addEventListener("submit", async event => {
         event.preventDefault();
         window.navigator.serviceWorker.register('./sw.js', {
             scope: __uv$config.prefix
@@ -39,7 +39,7 @@ if (form) {
 }
 
 if (searchbar) {
-    searchbar.addEventListener('submit', async event => {
+    searchbar.addEventListener("submit", async event => {
         event.preventDefault();
         window.navigator.serviceWorker.register('./sw.js', {
             scope: __uv$config.prefix
@@ -56,7 +56,7 @@ if (searchbar) {
         });
     });
 } else {
-    console.log("no form detected");
+    console.log("balls");
 }
 
 function openApp(url) {

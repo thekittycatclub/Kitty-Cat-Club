@@ -10,7 +10,12 @@
   <link rel="stylesheet" href="./css/all.css" />
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
-
+<script>
+  let visited = localStorage.getItem("visited");
+  if (visited === "" || visited === null || !visited) {
+    alert("Before using our website, please read our Terms of Service. (Located in our extra page!)");
+  }
+</script>
 <%- include("partials/navbar") %>
 
   <body>
@@ -19,19 +24,7 @@
       <div id="searchdiv">
         <input onkeyup="search()" placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
       </div>
-      <div style="display: flex; align-content: center;">
-        <div style="margin-left: auto;">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '92e37525b44e4820b9da8c1d40df81ad',
-              'format': 'iframe',
-              'height': 600,
-              'width': 160,
-              'params': {}
-            };
-            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
-          </script>
-        </div>
+      <div style="display: flex; align-content: center; width: 95%;">
         <div class="gxmes">
           <button class="card resizable-card" onclick="openApp('https://1v1.lol/')">
             <img src="./img/gxmes/1v1lol.png" />
@@ -55,7 +48,7 @@
             <br />
             <p>Bitlife</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://run3.io/popgame/fnaf/fnaf1/')">
+          <button class="card resizable-card" onclick="openApp('https://lagged.com/games/fnaf/?mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=209606&mp_game_uid=five-nights-at-freddys&mp_game_url=https%3A%2F%2Fwww.miniplay.com%2Fembed%2Ffive-nights-at-freddys&mp_int=1&mp_locale=en_US&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_site_name=miniplay.com&mp_site_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_timezone=America%2FChicago&mp_view_type=')">
             <img src="./img/gxmes/fnaf.png" />
             <br />
             <p>FNAF</p>
@@ -141,19 +134,6 @@
             <p>Basketbros</p>
           </button>
         </div>
-        <div style="margin-right: auto;">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '92e37525b44e4820b9da8c1d40df81ad',
-              'format': 'iframe',
-              'height': 600,
-              'width': 160,
-              'params': {}
-            };
-            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
-          </script>
-          </div>
-      </div>
     </center>
     <%- include("partials/footer") -%>
       <script>

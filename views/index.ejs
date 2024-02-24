@@ -14,29 +14,22 @@
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
   <%- include("partials/navbar") %>
 </head>
-
+<script>
+  let visited = localStorage.getItem("visited");
+  if (visited === "" || visited === null || !visited) {
+    alert("Before using our website, please read our Terms of Service. (Located in our extra page!)");
+  }
+</script>
 <body>
   <div>
-    <center class="center" style="margin-top: 3%;">
-      <div style="display: flex; justify-content: center;">
-        <div style="margin-left: auto;">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '92e37525b44e4820b9da8c1d40df81ad',
-              'format': 'iframe',
-              'height': 600,
-              'width': 160,
-              'params': {}
-            };
-            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
-          </script>
-        </div>
-        <div class="content" style="width: 100%;"><br /><br /><br />
+    <center class="center" style="margin-top: 3%;"><br /><br /><br />
+      <div style="display: flex; justify-content: center; background-color: rgb(28, 28, 28, 0.75); padding: 20px; width: 25%; border: 2px solid #1c1c1c; border-radius: 12px;">
+        <div class="content">
           <h1>Kitty Cat Unblocker</h1>
-          <img src="./img/logo.png" /><br /><br />
-          <form>
+          <img src="./img/logo.png" style="width: 25%;"/><br /><br />
+          <form style="width: 100%; display: flex; justify-content: center;">
             <input type="text" id="searchbar" placeholder="Search the web freely..." />
-            <button id="searchbtn">
+            <button id="searchbtn" style="margin-left: 5px;">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
@@ -60,18 +53,6 @@
           <div>
           </div>
           </div>
-        <div style="margin-right: auto;">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '92e37525b44e4820b9da8c1d40df81ad',
-              'format': 'iframe',
-              'height': 600,
-              'width': 160,
-              'params': {}
-            };
-            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
-          </script>
-        </div>
       </div>
         <%- include("partials/footer") -%>
     </center>
