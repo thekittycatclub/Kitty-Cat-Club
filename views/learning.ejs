@@ -23,7 +23,7 @@
         <button onclick="proxyURL()" id="proxybtn">Show proxy URL</button>
         <button onclick="preventClosing()" id="tabclosebtn">Enable Tab Closing Preventer</button>
         <br /><br />
-        <p>(Want more settings? Tell it to us in the Discord!)</p>
+        <p>(Want more settings? Tell it to us in our Discord!)</p>
         <button onclick="
         let settingspanel = document.querySelector('.settingspanel');
         settingspanel.style.bottom = '-1000px';
@@ -31,15 +31,15 @@
       </div>
     </center>
   </div>
-  <div class="mainbtns" onmouseover="hover_event()" onmouseleave="hover_stop()">
+  <div class="mainbtns">
     <button class="navbtn" onclick="location.href = '/';"><i class="fa-solid fa-house"></i></button>
     <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
     <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
-    <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
     <button class="navbtn" onclick="fullscreen()"><i class="fa-solid fa-eye-slash"></i></button>
     <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
+    <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
   </div>
-  <div class="searchbar" onmouseover="hover_event_search()">
+  <div class="searchbar">
     <form id="searchform" style="display: flex; justify-content: center;">
       <input type="text" class="searchinput" placeholder="Search the web freely..." />
       <button class="searchbtn" style="margin-left: 5px;">
@@ -49,7 +49,7 @@
   </div>
   <div class="flex-box">
     <div class="proxyurl">
-      <input placeholder="If you can't see the URL, please reach out to A1RG3MM on discord!" id="proxyurl" value=""
+      <input placeholder="Initializing . . ." id="proxyurl" value=""
         readonly style="color: #909090;" />
     </div>
   </div>
@@ -60,10 +60,6 @@
   <script src="./js/learning.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      searchbarClass.style.top = '-70px';
-    })
-
     let savedTitle = localStorage.getItem("tabName");
     let savedBG = localStorage.getItem("BG");
     let savedFavicon = localStorage.getItem("favicon");

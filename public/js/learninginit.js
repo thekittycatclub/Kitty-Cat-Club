@@ -2,9 +2,8 @@ let searchEngine = localStorage.getItem('searchengine');
 const iframeRes = document.getElementById("result");
 let savedurl = localStorage.getItem("savedURL");
 if (!searchEngine) {
-    searchEngine = "https://www.google.com/search?q=";
+    searchEngine = "https://www.google.com/search?q="; //Uses Google if no search engine has been selected.
 }
-
 const searchbar = document.getElementById("searchform");
 const input = document.querySelector('.searchinput');
 if (searchbar) {

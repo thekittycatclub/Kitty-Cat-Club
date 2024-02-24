@@ -11,7 +11,12 @@
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
 <%- include("partials/navbar") %>
-
+<script>
+  let visited = localStorage.getItem("visited");
+  if (visited === "" || visited === null || !visited) {
+    alert("Before using our website, please read our Terms of Service. (Located in our extra page!)");
+  }
+</script>
   <body>
     <center>
       <br>
@@ -84,7 +89,7 @@
             <br />
             <p>Aptoide</p>
           </button>
-          <!--if u see this, ur black-->
+          <!--if you see this, you like balls-->
         </div>
         <div style="margin-right: auto;">
           <script type="text/javascript">

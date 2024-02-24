@@ -4,9 +4,8 @@ let tabclosing = document.getElementById("tabclosebtn");
 let devtools = document.getElementById("devtools");
 let proxyurl = document.getElementById("proxyurl");
 let proxybtn = document.getElementById("proxybtn");
-let mainbuttons = document.querySelector('.mainbtns');
-let searchbarClass = document.querySelector('.searchbar');
 let pageSrc = iframe.src;
+
 ////Load saved data////
 let newLoader = localStorage.getItem("loader");
 let tabclosingval = localStorage.getItem("tabcloseval");
@@ -43,8 +42,6 @@ if (tabclosingval === "true") {
 }
 
 ////Functions////
-proxyurl.value = pageSrc + savedlinkurl;
-proxyurl.value = proxyurl.value.replace("/learning", "");
 
 function delay(milliseconds) {
   return new Promise(resolve => {
@@ -52,17 +49,33 @@ function delay(milliseconds) {
   });
 }
 
+function foreverloop() {
+  setTimeout(function () {
+    proxyurl.value = iframe.contentWindow.location.href;
+    proxyurl.value = proxyurl.value.replace("/learning", "");
+    localStorage.setItem("savedURL", iframe.contentWindow.location.href);
+    foreverloop();
+  }, 1000);
+}
+foreverloop();
+
 function searchshow() {
   let searchbar = document.querySelector(".searchbar");
+  let searchinput = document.querySelector(".searchinput");
+  let mainbtndiv = document.querySelector(".mainbtns");
 
-  if (searchbar.style.top === "-100px") {
+  if (searchbar.style.top === "20px") {
     searchbar.style.transition = "0.3s";
     searchbar.style.top = "90px";
+    searchinput.style.width = "20em";
   } else {
     searchbar.style.transition = "0.3s";
-    searchbar.style.top = "-100px";
+    searchbar.style.top = "20px";
+    searchinput.style.width = "1em";
   }
 }
+document.addEventListener("DOMContentLoaded", searchshow);
+
 
 function reloadPX() {
   iframe.contentWindow.location.reload(true);
@@ -142,22 +155,6 @@ function proxyURL() {
   }
 }
 
-function hover_event() {
-  mainbuttons.style.transition = '0.5s';
-  mainbuttons.style.top = '5px';
-}
-
-function hover_event_search() {
-  mainbuttons.style.transition = '0.5s';
-  mainbuttons.style.top = '5px';
-  searchbarClass.style.top = '90px';
-}
-
-function hover_stop() {
-  mainbuttons.style.transition = '0.5s';
-  mainbuttons.style.top = '-65px';
-  searchbarClass.style.top = '-100px';
-}
 
 function changeloader() {
   let input = document.getElementById("loaderinput");
@@ -168,13 +165,14 @@ function changeloader() {
 
 function preventClosing() {
   if (tabclosing.innerHTML === "Enable Tab Closing Preventer") {
-    tabclosing.innerHTML = "Disable Tab Closing Preventer";
+    tabclosing.innerHTML = "Disable Tab Cloaking Preventer";
     localStorage.setItem("tabcloseval", "true");
+    alert("Please note that you will NOT be able to use the search bar by turning this on.");
     window.onbeforeunload = () => {
       return "Do you want to leave the current tab?";
     }
   } else {
-    tabclosing.innerHTML = "Enable Tab Closing Preventer";
+    tabclosing.innerHTML = "Enable Tab Cloaking Preventer";
     localStorage.setItem("tabcloseval", "false");
   }
 }
