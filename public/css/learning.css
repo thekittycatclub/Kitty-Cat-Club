@@ -36,14 +36,14 @@ iframe {
   justify-content: center;
   width: 100%;
   margin-top: 10px;
-  top: 25px;
+  top: -100px;
 }
 
 .searchinput {
   background-color: rgb(64, 64, 64, 0.8);
   border: none;
   border-radius: 10px 0px 0px 10px;
-  width: 1px;
+  width: 20em;
   text-align: center;
   color: #ffffff;
   transition: width 0.3s ease;
@@ -96,6 +96,7 @@ iframe {
   z-index: 999;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
   flex-wrap: nowrap;
+  top: -65px;
 }
 
 .navbtn {

@@ -21,6 +21,7 @@
         <br />
         <button onclick="showorhidedevtools()">Enable/disable Devtools</button>
         <button onclick="proxyURL()" id="proxybtn">Show proxy URL</button>
+        <button onclick="preventClosing()" id="tabclosebtn">Enable Tab Closing Preventer</button>
         <br /><br />
         <p>(Want more settings? Tell it to us in the Discord!)</p>
         <button onclick="
@@ -30,7 +31,7 @@
       </div>
     </center>
   </div>
-  <div class="mainbtns">
+  <div class="mainbtns" onmouseover="hover_event()" onmouseleave="hover_stop()">
     <button class="navbtn" onclick="location.href = '/';"><i class="fa-solid fa-house"></i></button>
     <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
     <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
@@ -38,7 +39,7 @@
     <button class="navbtn" onclick="fullscreen()"><i class="fa-solid fa-eye-slash"></i></button>
     <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
   </div>
-  <div class="searchbar">
+  <div class="searchbar" onmouseover="hover_event_search()">
     <form id="searchform" style="display: flex; justify-content: center;">
       <input type="text" class="searchinput" placeholder="Search the web freely..." />
       <button class="searchbtn" style="margin-left: 5px;">
@@ -57,96 +58,12 @@
   <script src="./uv/uv.config.js"></script>
   <script src="./js/learninginit.js"></script>
   <script src="./js/learning.js"></script>
-  <script>
-    let devtoolsVal = localStorage.getItem("devtoolsval");
-    let proxyURLVal = localStorage.getItem("proxyurlval");
-    let devtools = document.getElementById("devtools");
-    let proxyurl = document.getElementById("proxyurl");
-    let savedlinkurl = localStorage.getItem("savedURL");
-    let proxybtn = document.getElementById("proxybtn");
-    let pageSrc = iframe.src;
-    proxyurl.value = pageSrc + savedlinkurl;
-    proxyurl.value = proxyurl.value.replace("/learning", "");
-    let newLoader = localStorage.getItem("loader");
-    if (newLoader) {
-      iframe.style.background = `url('${newLoader}}')`;
-    }
-    if (devtoolsVal === "true") {
-      devtools.style.display = "";
-    }
-    if (devtoolsVal === "false") {
-      devtools.style.display = "none";
-    }
-
-    if (proxyURLVal === "true") {
-      proxyurl.style.visibility = "visible";
-      proxybtn.innerHTML = "Hide proxy URL";
-    }
-    if (proxyURLVal === "false") {
-      proxyurl.style.visibility = "hidden";
-      proxybtn.innerHTML = "Show proxy URL";
-    }
-
-    function showorhidedevtools() {
-      if (devtools.style.display === "") {
-        devtools.style.display = "none";
-        localStorage.setItem("devtoolsval", 'false');
-      } else {
-        devtools.style.display = "";
-        localStorage.setItem("devtoolsval", 'true');
-      }
-    }
-
-    function devTools() {
-      if (!iframe) return
-      let erudaWindow = iframe.contentWindow
-      let erudaDocument = iframe.contentDocument
-
-      if (!erudaWindow || !erudaDocument) return
-
-      if (erudaWindow.eruda?._isInit) {
-        erudaWindow.eruda.destroy()
-      } else {
-        let script = erudaDocument.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/eruda'
-        script.onload = function () {
-          if (!erudaWindow) return
-          erudaWindow.eruda.init();
-          erudaWindow.eruda.show();
-        }
-        erudaDocument.head.appendChild(script);
-      }
-    }
-
-
-    function proxyURL() {
-
-      if (proxyurl.style.visibility === "visible") {
-        proxyurl.style.visibility = "hidden";
-        proxybtn.innerHTML = "Show proxy URL";
-        localStorage.setItem("proxyurlval", 'false');
-      } else {
-        proxyurl.style.visibility = "visible";
-        proxybtn.innerHTML = "Hide proxy URL";
-        localStorage.setItem("proxyurlval", 'true');
-      }
-    }
-    function hover() {
-      let navbar = document.querySelector("");
-    }
-
-
-    function changeloader() {
-      let input = document.getElementById("loaderinput");
-      let newLoader = localStorage.getItem("loader");
-      iframe.style.background = `url('${input.value}}')`;
-      localStorage.setItem("loader", input);
-    }
-
-
-  </script>
 
   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      searchbarClass.style.top = '-70px';
+    })
+
     let savedTitle = localStorage.getItem("tabName");
     let savedBG = localStorage.getItem("BG");
     let savedFavicon = localStorage.getItem("favicon");
