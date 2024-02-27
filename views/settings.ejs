@@ -169,12 +169,14 @@
             <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Panic key system</h1>
-                    <p>Used to redirect to another website when pressing a specific key.</p>
+                    <p>Redirects you to the inputted website whenever you pressed on the recorded keystroke.</p>
                     <div class="keystrokebtns">
-                        <button id="recordbtn" id="clearbtn" style="padding: 12px;">Record
-                            keystroke</button>
-                        <button onclick="localStorage.removeItem('savedKey'); localStorage.removeItem('savedLink'); location.reload()" style="padding: 12px;">Clear
-                            keystroke</button>
+                        <button id="recordbtn" id="clearbtn" style="padding: 12px;">
+                            Record keystroke
+                        </button>
+                        <button onclick="localStorage.removeItem('savedKey'); localStorage.removeItem('savedLink'); location.reload();" style="padding: 12px;">
+                            Clear all
+                        </button>
                     </div>
                     <br /><br />
                     <div id="RecordPanel">

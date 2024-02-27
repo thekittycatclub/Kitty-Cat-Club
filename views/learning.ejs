@@ -14,6 +14,12 @@
 <body>
   <iframe id="result" src="" onkeydown="handleKeyPress()" allowfullscreen></iframe>
   <div class="flex-box">
+    <div class="notification">
+      <h3 class="title">Title</h3>
+      <p class="content">Content</p>
+    </div>
+  </div>
+  <div class="flex-box">
     <center>
       <div class="settingspanel">
         <h1 style="font-size: 30px;">Proxy Settings</h1>
@@ -49,8 +55,8 @@
   </div>
   <div class="flex-box">
     <div class="proxyurl">
-      <input placeholder="Initializing . . ." id="proxyurl" value=""
-        readonly style="color: #909090;" />
+      <input placeholder="Processing . . ." id="proxyurl" value=""
+        readonly title="Click to copy link." style="color: #909090;" onclick="CopyLink('proxyurl')"/>
     </div>
   </div>
   </div>

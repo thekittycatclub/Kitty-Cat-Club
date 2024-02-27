@@ -4,6 +4,7 @@ let tabclosing = document.getElementById("tabclosebtn");
 let devtools = document.getElementById("devtools");
 let proxyurl = document.getElementById("proxyurl");
 let proxybtn = document.getElementById("proxybtn");
+let notification = document.querySelector(".notification");
 let pageSrc = iframe.src;
 
 ////Load saved data////
@@ -42,6 +43,10 @@ if (tabclosingval === "true") {
 }
 
 ////Functions////
+
+document.addEventListener("DOMContentLoaded", function () {
+  notification.style.visibility = "hidden";
+});
 
 function delay(milliseconds) {
   return new Promise(resolve => {
@@ -167,12 +172,40 @@ function preventClosing() {
   if (tabclosing.innerHTML === "Enable Tab Closing Preventer") {
     tabclosing.innerHTML = "Disable Tab Cloaking Preventer";
     localStorage.setItem("tabcloseval", "true");
-    alert("Please note that you will NOT be able to use the search bar by turning this on.");
+    notify("Search button", "Please note that the search bar will NOT work by turning this on.");
     window.onbeforeunload = () => {
       return "Do you want to leave the current tab?";
     }
   } else {
     tabclosing.innerHTML = "Enable Tab Cloaking Preventer";
     localStorage.setItem("tabcloseval", "false");
+    location.reload("");
   }
+}
+
+function notify(title, content) {
+  let notifTitle = document.querySelector(".title");
+  let notifContent = document.querySelector(".content");
+  notification.style.visibility = "visible";
+  notification.style.transition = "0.2s";
+  notification.style.opacity = "1";
+  notifTitle.innerHTML = title;
+  notifContent.innerHTML = content;
+  delay(2000).then(() => {
+    notification.style.opacity = "0";
+    notification.style.visibility = "hidden";
+  });
+}
+
+function CopyLink(classorid) {
+  let copything;
+  if (classorid.includes(".")) {
+    copything = document.querySelector(classorid);
+  } else {
+    copything = document.getElementById(classorid);
+  }
+  copything.select();
+  document.execCommand("copy");
+  copything.setSelectionRange(0, 0);
+  notify("Link Copied!", "Your link has been copied to the clipboard!");
 }
