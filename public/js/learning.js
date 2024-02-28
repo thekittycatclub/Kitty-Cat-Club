@@ -222,6 +222,7 @@ function hideui() {
   let searchbar = document.querySelector(".searchbar");
   let searchinput = document.querySelector(".searchinput");
   navigation_bar.style.top = "-70px";
+  navigation_bar.style.boxShadow = "none";
   searchbar.style.top = "-67px";
   searchbar.style.transition = "0.5s";
   searchinput.style.width = "1em";
@@ -235,6 +236,7 @@ function hideui() {
 function showui() { 
   let searchbar = document.querySelector(".searchbar");
   navigation_bar.style.top = "7px";
+  navigation_bar.style.boxShadow = "0px 4px 4px 0px rgba(0, 0, 0, 0.5)";
   showorhideui.style.transition = "1s";
   showorhideui.style.opacity = "0";
   searchbar.style.top = "20px";
