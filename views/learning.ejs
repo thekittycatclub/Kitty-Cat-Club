@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <iframe id="result" src="" onkeydown="handleKeyPress()" allowfullscreen></iframe>
+  <iframe id="result" src="" onkeydown="panic()" allowfullscreen></iframe>
   <div class="flex-box">
     <div class="notification">
       <h3 class="title">Title</h3>
@@ -41,9 +41,14 @@
     <button class="navbtn" onclick="location.href = '/';"><i class="fa-solid fa-house"></i></button>
     <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
     <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
-    <button class="navbtn" onclick="fullscreen()"><i class="fa-solid fa-eye-slash"></i></button>
+    <button class="navbtn" onclick="hideui()"><i class="fa-solid fa-eye-slash"></i></button>
     <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
     <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
+  </div>
+  <div style="display: flex; justify-content: center;">
+    <div class="dropdown" onclick="showui()">
+      Show UI
+    </div>
   </div>
   <div class="searchbar">
     <form id="searchform" style="display: flex; justify-content: center;">
@@ -56,7 +61,7 @@
   <div class="flex-box">
     <div class="proxyurl">
       <input placeholder="Processing . . ." id="proxyurl" value=""
-        readonly title="Click to copy link." style="color: #909090;" onclick="CopyLink('proxyurl')"/>
+        readonly title="Click to copy link." style="color: #909090;" onclick="CopyLink('proxyurl');"/>
     </div>
   </div>
   </div>
@@ -72,21 +77,21 @@
     let favicon = document.getElementById("icon");
     let savedLink = localStorage.getItem("savedLink");
     let savedKey = localStorage.getItem("savedKey");
-
+  
     if (savedTitle) {
       document.title = savedTitle;
     }
     if (savedFavicon) {
       favicon.href = savedFavicon;
     }
-
+  
     if (savedBG) {
       document.body.style.backgroundImage = `url("${savedBG}")`;
       document.body.style.backgroundRepeat = "no-repeat"
       document.body.style.backgroundSize = "cover";
     }
-
-    function handleKeyPress(event) {
+  
+    function panic(event) {
       if (event.key === savedKey) {
         if (savedLink.includes("https://")) {
           window.location.href = savededulink;
@@ -95,11 +100,11 @@
         }
       }
     }
-
-    document.addEventListener("keydown", handleKeyPress);
-
-
+  
+    document.addEventListener("keydown", panic);
+  
   </script>
+  
 </body>
 
 </html>

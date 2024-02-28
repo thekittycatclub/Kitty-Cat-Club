@@ -6,7 +6,8 @@ let proxyurl = document.getElementById("proxyurl");
 let proxybtn = document.getElementById("proxybtn");
 let notification = document.querySelector(".notification");
 let pageSrc = iframe.src;
-
+let navigation_bar = document.querySelector(".mainbtns");
+let showorhideui = document.querySelector(".dropdown");
 ////Load saved data////
 let newLoader = localStorage.getItem("loader");
 let tabclosingval = localStorage.getItem("tabcloseval");
@@ -44,13 +45,44 @@ if (tabclosingval === "true") {
 
 ////Functions////
 
+// site onload function
 document.addEventListener("DOMContentLoaded", function () {
   notification.style.visibility = "hidden";
+  showorhideui.style.visibility = "hidden";
 });
+
+//Tool functions
 
 function delay(milliseconds) {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
+  });
+}
+
+function CopyLink(classorid) {
+  let copything;
+  if (classorid.includes(".")) {
+    copything = document.querySelector(classorid);
+  } else {
+    copything = document.getElementById(classorid);
+  }
+  copything.select();
+  document.execCommand("copy");
+  copything.setSelectionRange(0, 0);
+  notify("Link Copied!", "Your link has been copied to the clipboard!");
+}
+
+function notify(title, content) {
+  let notifTitle = document.querySelector(".title");
+  let notifContent = document.querySelector(".content");
+  notification.style.visibility = "visible";
+  notification.style.transition = "0.2s";
+  notification.style.opacity = "1";
+  notifTitle.innerHTML = title;
+  notifContent.innerHTML = content;
+  delay(2000).then(() => {
+    notification.style.opacity = "0";
+    notification.style.visibility = "hidden";
   });
 }
 
@@ -64,10 +96,13 @@ function foreverloop() {
 }
 foreverloop();
 
+
+
+//Button functions
+
 function searchshow() {
   let searchbar = document.querySelector(".searchbar");
   let searchinput = document.querySelector(".searchinput");
-  let mainbtndiv = document.querySelector(".mainbtns");
 
   if (searchbar.style.top === "20px") {
     searchbar.style.transition = "0.3s";
@@ -172,7 +207,7 @@ function preventClosing() {
   if (tabclosing.innerHTML === "Enable Tab Closing Preventer") {
     tabclosing.innerHTML = "Disable Tab Cloaking Preventer";
     localStorage.setItem("tabcloseval", "true");
-    notify("Search button", "Please note that the search bar will NOT work by turning this on.");
+    notify("Search bar update", "Please note that the search bar will NOT work by turning this on. (You can use the search engine instead.)");
     window.onbeforeunload = () => {
       return "Do you want to leave the current tab?";
     }
@@ -183,29 +218,26 @@ function preventClosing() {
   }
 }
 
-function notify(title, content) {
-  let notifTitle = document.querySelector(".title");
-  let notifContent = document.querySelector(".content");
-  notification.style.visibility = "visible";
-  notification.style.transition = "0.2s";
-  notification.style.opacity = "1";
-  notifTitle.innerHTML = title;
-  notifContent.innerHTML = content;
-  delay(2000).then(() => {
-    notification.style.opacity = "0";
-    notification.style.visibility = "hidden";
+function hideui() {
+  let searchbar = document.querySelector(".searchbar");
+  let searchinput = document.querySelector(".searchinput");
+  navigation_bar.style.top = "-70px";
+  searchbar.style.top = "-67px";
+  searchbar.style.transition = "0.5s";
+  searchinput.style.width = "1em";
+  showorhideui.style.top = "5px";
+  delay(1000).then(() => {
+    showorhideui.style.visibility = "visible";
+    showorhideui.style.opacity = "1";
   });
 }
 
-function CopyLink(classorid) {
-  let copything;
-  if (classorid.includes(".")) {
-    copything = document.querySelector(classorid);
-  } else {
-    copything = document.getElementById(classorid);
-  }
-  copything.select();
-  document.execCommand("copy");
-  copything.setSelectionRange(0, 0);
-  notify("Link Copied!", "Your link has been copied to the clipboard!");
+function showui() { 
+  let searchbar = document.querySelector(".searchbar");
+  navigation_bar.style.top = "7px";
+  showorhideui.style.transition = "1s";
+  showorhideui.style.opacity = "0";
+  searchbar.style.top = "20px";
+  searchbar.style.transition = "0.5s";
+  showorhideui.style.visibility = "hidden";
 }
