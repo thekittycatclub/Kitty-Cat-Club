@@ -214,7 +214,8 @@ function preventClosing() {
   } else {
     tabclosing.innerHTML = "Enable Tab Cloaking Preventer";
     localStorage.setItem("tabcloseval", "false");
-    location.reload("");
+    alert("Make sure you click on reload in the next alert!");
+    location.reload();
   }
 }
 
@@ -226,10 +227,12 @@ function hideui() {
   searchbar.style.top = "-67px";
   searchbar.style.transition = "0.5s";
   searchinput.style.width = "1em";
-  showorhideui.style.top = "5px";
+  showorhideui.style.top = "-20px";
   delay(1000).then(() => {
     showorhideui.style.visibility = "visible";
     showorhideui.style.opacity = "1";
+    showorhideui.style.transition = "0.5s";
+    showorhideui.style.top = "5px";
   });
 }
 

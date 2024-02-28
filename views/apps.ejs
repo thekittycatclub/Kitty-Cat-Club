@@ -11,12 +11,6 @@
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
 <%- include("partials/navbar") %>
-<script>
-  let visited = localStorage.getItem("visited");
-  if (visited === "" || visited === null || !visited) {
-    alert("Before using our website, please read our Terms of Service. (Located in our extra page!)");
-  }
-</script>
   <body>
     <center>
       <br>
@@ -57,7 +51,7 @@
           <button class="card resizable-card" onclick="openApp('https://i-love-math-770.vercel.app')">
             <img src="./img/gxmes/movieweb.png" />
             <br />
-            <p>Movie-web</p>
+            <p>Movie Web</p>
           </button>
           <button class="card resizable-card" onclick="openApp('https://anura.pro/')">
             <img src="./img/gxmes/AnuraOS.png" />
