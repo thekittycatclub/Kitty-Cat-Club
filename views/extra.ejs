@@ -74,6 +74,12 @@
         }
     </style>
 </head>
+<script>
+    const isLoggedIn = localStorage.getItem("loggedin");
+    if (!isLoggedIn) {
+        location.href = "/";
+    }
+</script>
 
 <body>
     <%- include("partials/navbar") %>
@@ -118,15 +124,19 @@
                     <p><strong>@tlochsta</strong> - Founder of KCC.</p>
                     <p><strong>@xineese</strong> - Co-Founder/Working on proxy.</p>
                     <p><strong>@a1rg3mm</strong> - Frontend of Website.</p>
-                    <p><strong>@.xordas</strong> - Mental support & editing line 128 of extra.ejs and line one in apps.ejs</p>
+                    <p><strong>@.xordas</strong> - Mental support & editing line 128 of extra.ejs and line one in
+                        apps.ejs</p>
                     <p><strong>@questioningliferightnow</strong> - Link bot, fixing VPS, and making links.</p>
                 </div>
                 <div class="panel">
                     <h1>Resources</h1>
-                    <p>Resources, or other stuff to use. (Some optional, some required.)</p><br/>
+                    <p>Resources, or other stuff to use. (Some optional, some required.)</p><br />
                     <button onclick="window.location.href = '/tos'">
                         Terms of Service
-                    </button><br/>
+                    </button><br /><br />
+                    <button onclick="window.location.href = '/tos'">
+                        Keyboard shortcuts
+                    </button><br />
                 </div>
             </div>
         </center>
@@ -151,7 +161,13 @@
                     document.body.style.backgroundRepeat = "no-repeat"
                     document.body.style.backgroundSize = "cover";
                 }
+                let tabclosingval = localStorage.getItem("tabcloseval");
 
+                window.onbeforeunload = () => {
+                    if (tabclosingval == "true") {
+                        return "Do you want to leave the current tab?";
+                    }
+                }
                 function panic(event) {
                     if (event.key === savedKey || event.key === savedKey) {
                         if (savedLink.includes("https://")) {

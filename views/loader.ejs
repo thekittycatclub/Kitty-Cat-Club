@@ -20,7 +20,12 @@
     }
   </style>
 </head>
-
+<script>
+  const isLoggedIn = localStorage.getItem("loggedin");
+  if (!isLoggedIn) {
+    location.href = "/";
+  }
+</script>
 <body>
   <%- include("partials/navbar") %>
     <center>
@@ -80,7 +85,11 @@
         "./img/kitty/kitty3.gif",
         "./img/kitty/kitty4.gif",
         "./img/kitty/kitty5.gif",
+        "./img/kitty/kitty6.gif",
         "./img/kitty/kitty7.gif",
+        "./img/kitty/kitty8.gif",
+        "./img/kitty/kitty9.gif",
+        "./img/kitty/kitty10.gif",
       ];
 
 

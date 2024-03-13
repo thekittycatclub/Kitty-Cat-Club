@@ -1,3 +1,45 @@
+////vars////
+let tab_Close = document.querySelector(".tabclosebtn");
+let card = document.querySelector(".card");
+let notification = document.querySelector(".notification");
+let clock = document.getElementById("clock");
+////load data////
+let tabclosingval = localStorage.getItem("tabcloseval");
+if (tabclosingval == "true") {
+  tab_Close.innerHTML = "Disable Tab Closing Preventer";
+  window.onbeforeunload = () => {
+    return "Do you want to leave the current tab?";
+  }
+} else {
+  tab_Close.innerHTML = "Enable Tab Closing Preventer";
+}
+
+
+////Functions////
+document.addEventListener("DOMContentLoaded", function () {
+  card.style.background = "rgba(26, 26, 26, 0.75)";
+});
+
+function delay(milliseconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+function notify(title, content) {
+  let notifTitle = document.querySelector(".title");
+  let notifContent = document.querySelector(".content");
+  notification.style.visibility = "visible";
+  notification.style.transition = "0.2s";
+  notification.style.opacity = "1";
+  notifTitle.innerHTML = title;
+  notifContent.innerHTML = content;
+  delay(2000).then(() => {
+    notification.style.opacity = "0";
+    notification.style.visibility = "hidden";
+  });
+}
+
 function setTabTitle() {
   let input = document.getElementById("changetitle");
   let newTabName = input.value;
@@ -57,35 +99,6 @@ function changeBG() {
   }
 }
 
-function pageCloaking2(event) {
-  event.preventDefault(); 
-  event.stopPropagation(); 
-  
-  var win = window.open();
-  var url = document.getElementById("pagecloak").value;
-  var iframe = win.document.createElement("iframe");
-  iframe.style.position = "fixed";
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.border = "none";
-  iframe.style.top = "0";
-  iframe.style.bottom = "0";
-  iframe.style.left = "0";
-  iframe.style.right = "0";
-  iframe.style.margin = "0";
-  iframe.style.padding = "0";
-  iframe.style.overflow = "hidden";
-
-  if (url.includes("https://")) {
-     iframe.src = url;   
-  } else {
-    url = "https://" + url;
-    iframe.src = url;
-  }
-  win.document.body.appendChild(iframe);
-}
-
-
 
 function changeFaviconToGoogle() {
   document.title = "Google";
@@ -119,4 +132,31 @@ function changeFaviconToNormal() {
   localStorage.setItem("tabName", "");
   favicon.href = "./img/logo.png";
   localStorage.setItem("favicon", "./img/logo.png");
+}
+
+function preventClosing() {
+  if (tab_Close.innerHTML === "Enable Tab Closing Preventer") {
+    tab_Close.innerHTML = "Disable Tab Cloaking Preventer";
+    localStorage.setItem("tabcloseval", "true");
+    notify("Changes saved", "New changes have been saved!");
+    window.onbeforeunload = () => {
+      return "Do you want to leave the current tab?";
+    }
+  } else {
+    tab_Close.innerHTML = "Enable Tab Closing Preventer";
+    localStorage.setItem("tabcloseval", "false");
+    alert("Make sure you click on reload in the next alert!");
+    location.reload();
+  }
+}
+
+function toggleClockVisiblity() {
+  if (clock.style.display == "none") {
+    localStorage.setItem("clockvisibility", "false");
+    clock.style.display = "";
+  } else {
+    clock.style.display = "none";
+    localStorage.setItem("clockvisibility", "true");
+  }
+  notify("Changes Saved", "Changes has been saved!");
 }

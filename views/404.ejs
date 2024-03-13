@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="./css/all.css"/>
     <title><%= title %></title>
 </head>
+<script>
+    const isLoggedIn = localStorage.getItem("loggedin");
+    if (!isLoggedIn) {
+      location.href = "/";
+    }
+  </script>
 <style>
     * {
         font-family: 'Poppins', sans-serif;

@@ -36,7 +36,7 @@ iframe {
   justify-content: center;
   width: 1em;
   margin-top: 10px;
-  top: 20px;
+  top: 15px;
 }
 
 .searchinput {
@@ -122,17 +122,24 @@ iframe {
 }
 
 .settingspanel {
-  bottom: -500px;
-  left: 50%;
-  transform: translateX(-50%);
-  position: fixed;
   background-color: #151515;
   width: auto;
   padding: 20px;
   height: auto;
   border: 2px solid #101010;
   border-radius: 20px;
-  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+}
+.settingsbtn {
+  margin-bottom: 5px;
 }
 
 .proxyurl {
@@ -144,25 +151,11 @@ iframe {
   visibility: hidden;
 }
 
-.notification {
-  position: fixed;
-  background-color: #151515;
-  color: #FFF;
-  border-radius: 15px;
-  right: 30px;
-  padding: 15px;
-  bottom: 20px;
-  opacity: 0;
-  width: 20%;
-  height: auto;
-  transition: opacity 0.2s ease;
-  border: 2px solid #101010;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-}
+
 
 .dropdown {
   position: fixed;
-  top: 80px;
+  top: -10px;
   background-color: #242424;
   border: 2px solid #151515;
   border-radius: 0 0 10px 10px;

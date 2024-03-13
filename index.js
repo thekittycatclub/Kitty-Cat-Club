@@ -52,6 +52,14 @@ app.get('/testing', (req, res) => {
   res.render('partials/testing');
 });
 
+app.get('/dashboard', (req, res) => {
+  res.render('dashboard', { title: "Dashboard" });
+});
+
+app.get('/teachers', (req, res) => {
+  res.render('teachers');
+});
+
 app.get('/tos', (req, res) => {
   res.render('tos');
 });

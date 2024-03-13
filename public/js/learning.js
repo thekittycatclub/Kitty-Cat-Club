@@ -1,20 +1,23 @@
 ////Variables////
 let iframe = document.getElementById("result");
-let tabclosing = document.getElementById("tabclosebtn");
 let devtools = document.getElementById("devtools");
 let proxyurl = document.getElementById("proxyurl");
 let proxybtn = document.getElementById("proxybtn");
-let notification = document.querySelector(".notification");
 let pageSrc = iframe.src;
 let navigation_bar = document.querySelector(".mainbtns");
 let showorhideui = document.querySelector(".dropdown");
+let notification = document.querySelector(".notification");
+let hideuibtn = document.getElementById("hideui");
+//temp variables
+let isHidden = 0;
+let varhidenav = "false";
+let btnhidenav = "false";
 ////Load saved data////
 let newLoader = localStorage.getItem("loader");
-let tabclosingval = localStorage.getItem("tabcloseval");
+let hideNavbar = localStorage.getItem("hidenavbar");
 let savedlinkurl = localStorage.getItem("savedURL");
 let devtoolsVal = localStorage.getItem("devtoolsval");
 let proxyURLVal = localStorage.getItem("proxyurlval");
-
 if (newLoader) {
   iframe.style.background = `url('${newLoader}}')`;
 }
@@ -27,30 +30,25 @@ if (devtoolsVal === "false") {
 
 if (proxyURLVal === "true") {
   proxyurl.style.visibility = "visible";
-  proxybtn.innerHTML = "Hide proxy URL";
+  proxybtn.innerHTML = "Hide encoded URL";
 }
 if (proxyURLVal === "false") {
   proxyurl.style.visibility = "hidden";
-  proxybtn.innerHTML = "Show proxy URL";
+  proxybtn.innerHTML = "Show encoded URL";
+}
+if (hideNavbar == "false") {
+  searchshow();
+  hideuibtn.style.display = "";
+} else if (hideNavbar == "true") {
+  hideuibtn.style.display = "none";
+  document.getElementById("hideuibtn").innerHTML = "Show navbar";
+}
+if (!hideNavbar) {
+  localStorage.setItem("hidenavbar", 'false');
 }
 
-if (tabclosingval === "true") {
-  tabclosing.innerHTML = "Disable Tab Closing Preventer";
-  window.onbeforeunload = () => {
-    return "Do you want to leave the current tab?";
-  }
-} else {
-  tabclosing.innerHTML = "Enable Tab Closing Preventer";
-}
 
 ////Functions////
-
-// site onload function
-document.addEventListener("DOMContentLoaded", function () {
-  notification.style.visibility = "hidden";
-  showorhideui.style.visibility = "hidden";
-});
-
 //Tool functions
 
 function delay(milliseconds) {
@@ -92,29 +90,107 @@ function foreverloop() {
     proxyurl.value = proxyurl.value.replace("/learning", "");
     localStorage.setItem("savedURL", iframe.contentWindow.location.href);
     foreverloop();
-  }, 1000);
+  }, 500);
 }
 foreverloop();
 
 
+//UI functions
+function togglenavbar() {
+  if (hideNavbar == 'true') {
+    localStorage.setItem("hidenavbar", "false");
+    varhidenav = "false";
+    showui();
+    location.reload();
+  } else {
+    localStorage.setItem("hidenavbar", "true");
+    varhidenav = "true";
+    location.reload();
+  }
+}
+
+function hideui() {
+  let searchbar = document.querySelector(".searchbar");
+  let searchinput = document.querySelector(".searchinput");
+  if (hideNavbar == 'true') {
+    if (searchbar.style.top !== "75px") {
+      navigation_bar.style.top = "-65px";
+      searchbar.style.top = "-65px";
+      searchbar.style.transition = "0.5s";
+      searchinput.style.width = "1em";
+      isHidden = 1;
+    }
+  }
+}
+
+function buttonhideui() {
+  let searchinput = document.querySelector(".searchinput");
+  let searchbar = document.querySelector(".searchbar");
+  navigation_bar.style.top = "-65px";
+  searchbar.style.top = "-65px";
+  searchbar.style.transition = "0.5s";
+  searchinput.style.width = "1em";
+  delay(500).then(() => {
+    btnhidenav = "true";
+  });
+}
+
+function detecthiddenui() {
+  let searchbar = document.querySelector(".searchbar");
+  if (isHidden == 1) {
+    isHidden = 0;
+    navigation_bar.style.top = "0px";
+  }
+  if (btnhidenav == "true") {
+    navigation_bar.style.top = "7px";
+    searchbar.style.top = "20px";
+    btnhidenav = "false"
+  }
+}
+
+function hideshowhiddenui() {
+  showorhideui.style.opacity = "1";
+  showorhideui.style.top = "-40px";
+  showorhideui.style.visibility = "hidden";
+}
+
+function showui() {
+  isHidden = 0;
+  let searchbar = document.querySelector(".searchbar");
+  navigation_bar.style.top = "7px";
+  navigation_bar.style.boxShadow = "0px 4px 4px 0px rgba(0, 0, 0, 0.5)";
+  searchbar.style.top = "20px";
+  searchbar.style.transition = "0.5s";
+}
 
 //Button functions
 
 function searchshow() {
   let searchbar = document.querySelector(".searchbar");
   let searchinput = document.querySelector(".searchinput");
-
-  if (searchbar.style.top === "20px") {
-    searchbar.style.transition = "0.3s";
-    searchbar.style.top = "90px";
-    searchinput.style.width = "20em";
-  } else {
-    searchbar.style.transition = "0.3s";
-    searchbar.style.top = "20px";
-    searchinput.style.width = "1em";
+  if (hideNavbar == "true"){
+    if (searchbar.style.top === "-65px") {
+      searchbar.style.transition = "0.3s";
+      searchbar.style.top = "75px";
+      searchinput.style.width = "20em";
+    } else {
+      searchbar.style.transition = "0.3s";
+      searchbar.style.top = "-65px";
+      searchinput.style.width = "1em";
+    }
+  }
+  if (hideNavbar == "false") {
+    if (searchbar.style.top === "20px") {
+      searchbar.style.transition = "0.3s";
+      searchbar.style.top = "90px";
+      searchinput.style.width = "20em";
+    } else {
+      searchbar.style.transition = "0.3s";
+      searchbar.style.top = "20px";
+      searchinput.style.width = "1em";
+    }
   }
 }
-document.addEventListener("DOMContentLoaded", searchshow);
 
 
 function reloadPX() {
@@ -140,16 +216,17 @@ function fullscreen() {
 
 function showsettings() {
   let settingspanel = document.querySelector(".settingspanel");
-
-  if (settingspanel.style.bottom === "-1000px") {
-    settingspanel.style.transition = "0.5s";
-    settingspanel.style.bottom = "10px";
+  if (settingspanel.style.visibility === "visible") {
+    settingspanel.style.transition = "0.3s";
+    settingspanel.style.opacity = "0";
+    settingspanel.style.visibility = "hidden";
   } else {
-    settingspanel.style.transition = "0.5s";
-    settingspanel.style.bottom = "-1000px";
+    settingspanel.style.transition = "0.3s";
+    settingspanel.style.opacity = "1";
+    settingspanel.style.visibility = "visible";
   }
 }
-document.addEventListener("DOMContentLoaded", showsettings);
+
 
 function showorhidedevtools() {
   if (devtools.style.display === "") {
@@ -186,63 +263,109 @@ function devTools() {
 function proxyURL() {
   if (proxyurl.style.visibility === "visible") {
     proxyurl.style.visibility = "hidden";
-    proxybtn.innerHTML = "Show proxy URL";
+    proxybtn.innerHTML = "Show encoded URL";
     localStorage.setItem("proxyurlval", 'false');
   } else {
     proxyurl.style.visibility = "visible";
-    proxybtn.innerHTML = "Hide proxy URL";
+    proxybtn.innerHTML = "Hide encoded URL";
     localStorage.setItem("proxyurlval", 'true');
   }
 }
 
 
 function changeloader() {
+  var iframe = document.getElementById("result");
+  
   let input = document.getElementById("loaderinput");
-  let newLoader = localStorage.getItem("loader");
-  iframe.style.background = `url('${input.value}}')`;
-  localStorage.setItem("loader", input);
-}
-
-function preventClosing() {
-  if (tabclosing.innerHTML === "Enable Tab Closing Preventer") {
-    tabclosing.innerHTML = "Disable Tab Cloaking Preventer";
-    localStorage.setItem("tabcloseval", "true");
-    notify("Search bar update", "Please note that the search bar will NOT work by turning this on. (You can use the search engine instead.)");
-    window.onbeforeunload = () => {
-      return "Do you want to leave the current tab?";
-    }
+  localStorage.getItem("loader");
+  if (!input.value) {
+    alert("Removed Background Image!");
+    iframe.style.backgroundImage = "none";
+    iframe.style.background = "#000";
+    localStorage.setItem("loader", "");
   } else {
-    tabclosing.innerHTML = "Enable Tab Cloaking Preventer";
-    localStorage.setItem("tabcloseval", "false");
-    alert("Make sure you click on reload in the next alert!");
-    location.reload();
+    if (!input.value.includes("https://")) {
+      alert("Make sure you include https:// first!");
+    } else {
+      iframe.style.backgroundImage = `url('${input.value}')`;
+      iframe.style.backgroundSize = "cover";
+      iframe.style.backgroundRepeat = "no-repeat";
+      localStorage.setItem("loader", input.value);
+      alert("Changes have been saved!");
+    }
   }
 }
 
-function hideui() {
-  let searchbar = document.querySelector(".searchbar");
-  let searchinput = document.querySelector(".searchinput");
-  navigation_bar.style.top = "-70px";
-  navigation_bar.style.boxShadow = "none";
-  searchbar.style.top = "-67px";
-  searchbar.style.transition = "0.5s";
-  searchinput.style.width = "1em";
-  showorhideui.style.top = "-20px";
-  delay(1000).then(() => {
-    showorhideui.style.visibility = "visible";
-    showorhideui.style.opacity = "1";
-    showorhideui.style.transition = "0.5s";
-    showorhideui.style.top = "5px";
-  });
+function aboutBlank() {
+  let win = window.open();
+  let url = window.location.href;
+  let popoutIframe = win.document.createElement("iframe");
+  let faviconLink = win.document.createElement('link');
+  popoutIframe.style.position = "fixed";
+  popoutIframe.style.width = "100%";
+  popoutIframe.style.height = "100%";
+  popoutIframe.style.border = "none";
+  popoutIframe.style.top = "0";
+  popoutIframe.style.bottom = "0";
+  popoutIframe.style.left = "0";
+  popoutIframe.style.right = "0";
+  popoutIframe.style.margin = "0";
+  popoutIframe.style.padding = "0";
+  popoutIframe.style.overflow = "hidden";
+  popoutIframe.style.backgroundColor = "#000";
+  popoutIframe.src = url;
+  if (!localStorage.getItem("tabName")) {
+    win.document.title = "Mathematics";
+  } else {
+    win.document.title = localStorage.getItem("tabName");
+  }
+  faviconLink.rel = 'shortcut icon';
+  if (localStorage.getItem("favicon")) {
+    faviconLink.href = localStorage.getItem("favicon");
+  } else {
+    faviconLink.href = "";
+  }
+  win.document.head.appendChild(faviconLink);
+  win.document.body.appendChild(popoutIframe);
+  window.location.href = "https://classroom.google.com";
 }
 
-function showui() { 
-  let searchbar = document.querySelector(".searchbar");
-  navigation_bar.style.top = "7px";
-  navigation_bar.style.boxShadow = "0px 4px 4px 0px rgba(0, 0, 0, 0.5)";
-  showorhideui.style.transition = "1s";
-  showorhideui.style.opacity = "0";
-  searchbar.style.top = "20px";
-  searchbar.style.transition = "0.5s";
-  showorhideui.style.visibility = "hidden";
+function popoutRes() {
+  let win = window.open();
+  let url = iframe.src;
+  let popoutIframe = win.document.createElement("iframe");
+  let faviconLink = win.document.createElement('link');
+  popoutIframe.style.position = "fixed";
+  popoutIframe.style.width = "100%";
+  popoutIframe.style.height = "100%";
+  popoutIframe.style.border = "none";
+  popoutIframe.style.top = "0";
+  popoutIframe.style.bottom = "0";
+  popoutIframe.style.left = "0";
+  popoutIframe.style.right = "0";
+  popoutIframe.style.margin = "0";
+  popoutIframe.style.padding = "0";
+  popoutIframe.style.overflow = "hidden";
+  popoutIframe.style.backgroundColor = "#000";
+  popoutIframe.src = url;
+  if (!localStorage.getItem("tabName")) {
+    win.document.title = "Mathematics";
+  } else {
+    win.document.title = localStorage.getItem("tabName");
+  }
+  faviconLink.rel = 'shortcut icon';
+  if (localStorage.getItem("favicon")) {
+    faviconLink.href = localStorage.getItem("favicon");
+  } else {
+    faviconLink.href = "";
+  }
+  win.document.head.appendChild(faviconLink);
+  win.document.body.appendChild(popoutIframe);
 }
+
+hideui();
+document.addEventListener("DOMContentLoaded", function() {
+  let settingspanel = document.querySelector(".settingspanel");
+  settingspanel.style.opacity = "0";
+  settingspanel.style.visibility = "hidden";
+})

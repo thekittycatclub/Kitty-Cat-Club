@@ -10,58 +10,74 @@
   <link rel="stylesheet" href="./css/all.css">
   <link rel="stylesheet" href="./css/learning.css">
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-MZ5T2ZY0DZ');
+</script>
 
 <body>
   <iframe id="result" src="" onkeydown="panic()" allowfullscreen></iframe>
   <div class="flex-box">
-    <div class="notification">
-      <h3 class="title">Title</h3>
-      <p class="content">Content</p>
-    </div>
-  </div>
-  <div class="flex-box">
     <center>
-      <div class="settingspanel">
-        <h1 style="font-size: 30px;">Proxy Settings</h1>
-        <p>Settings to modify the proxy.</p>
-        <br />
-        <button onclick="showorhidedevtools()">Enable/disable Devtools</button>
-        <button onclick="proxyURL()" id="proxybtn">Show proxy URL</button>
-        <button onclick="preventClosing()" id="tabclosebtn">Enable Tab Closing Preventer</button>
-        <br /><br />
-        <p>(Want more settings? Tell it to us in our Discord!)</p>
-        <button onclick="
-        let settingspanel = document.querySelector('.settingspanel');
-        settingspanel.style.bottom = '-1000px';
-        ">Close panel</button>
+      <div class="notification">
+        <h3 class="title"></h3>
+        <p class="content"></p>
       </div>
     </center>
   </div>
-  <div class="mainbtns">
-    <button class="navbtn" onclick="location.href = '/';"><i class="fa-solid fa-house"></i></button>
-    <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
-    <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
-    <button class="navbtn" onclick="hideui()"><i class="fa-solid fa-eye-slash"></i></button>
-    <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
-    <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
-  </div>
-  <div style="display: flex; justify-content: center;">
-    <div class="dropdown" onclick="showui()">
-      Show UI
+  <div class="settingspanel">
+    <button style="float: right; font-size: 17px; margin-top: -10px; margin-right: -10px;" onclick="showsettings()">Exit
+      menu</button>
+    <h1 style="margin-top: -1px;">Settings Panel</h1>
+    <p style="margin-top: -7px; font-size: 18px;">A Settings Menu that can be used for your customization.</p>
+    <br />
+    <div class="card">
+      <center>
+        <button onclick="togglenavbar()" id="hideuibtn">Automatically hide navbar</button>
+        <button class="settingsbtn" onclick="aboutBlank()">About:blank cloak</button>
+        <button class="settingsbtn" onclick="proxyURL()" id="proxybtn">Show encoded URL</button><br />
+        <button class="settingsbtn" onclick="showorhidedevtools()">Enable/disable Devtools</button>
+        <p>Background changer</p>
+        <input id="loaderinput" placeholder="Add background URL...">
+        <button style="padding: 9px;" onclick="changeloader()">Save background</button>
+      </center>
+      <br />
     </div>
   </div>
-  <div class="searchbar">
-    <form id="searchform" style="display: flex; justify-content: center;">
-      <input type="text" class="searchinput" placeholder="Search the web freely..." />
-      <button class="searchbtn" style="margin-left: 5px;">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
+  <div>
+    <center>
+      <div class="mainbtns" onmouseover="detecthiddenui()" onmouseleave="hideui()">
+        <button class="navbtn" onclick="location.href = '/';"><i class="fa-solid fa-house"></i></button>
+        <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
+        <button class="navbtn" onclick="popoutRes()"><i class="fa-solid fa-up-right-from-square"></i></button>
+        <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
+        <button class="navbtn" onclick="buttonhideui()" id="hideui"><i class="fa-solid fa-eye-slash"></i></button>
+        <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
+        <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
+      </div>
+    </center>
+    <!--<div style="display: flex; justify-content: center;">
+    <div class="dropdown" onclick="showui()" onmouseleave="hideshowhiddenui()">
+      Show UI
+    </div>
+  </div>-->
+    <div class="searchbar">
+      <form id="searchform" style="display: flex; justify-content: center;">
+        <input type="text" class="searchinput" placeholder="Search the web freely..." />
+        <button class="searchbtn" style="margin-left: 5px;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
   </div>
   <div class="flex-box">
     <div class="proxyurl">
-      <input placeholder="Processing . . ." id="proxyurl" value=""
-        readonly title="Click to copy link." style="color: #909090;" onclick="CopyLink('proxyurl');"/>
+      <input placeholder="Processing . . ." id="proxyurl" value="" title="Click to copy link." style="color: #909090;"
+        onclick="CopyLink('proxyurl');" readonly />
     </div>
   </div>
   </div>
@@ -77,34 +93,54 @@
     let favicon = document.getElementById("icon");
     let savedLink = localStorage.getItem("savedLink");
     let savedKey = localStorage.getItem("savedKey");
-  
+    let savedIframeBackground = localStorage.getItem("loader");
+
     if (savedTitle) {
       document.title = savedTitle;
     }
     if (savedFavicon) {
       favicon.href = savedFavicon;
     }
-  
+
     if (savedBG) {
       document.body.style.backgroundImage = `url("${savedBG}")`;
-      document.body.style.backgroundRepeat = "no-repeat"
+      document.body.style.backgroundRepeat = "no-repeat";
       document.body.style.backgroundSize = "cover";
     }
-  
+
+    if (savedIframeBackground) {
+      iframe.style.backgroundImage = `url('${savedIframeBackground}')`;
+      iframe.style.backgroundSize = "cover";
+      iframe.style.backgroundRepeat = "no-repeat";
+    }
+
+    let tabclosingval = localStorage.getItem("tabcloseval");
+
+    window.onbeforeunload = () => {
+      if (tabclosingval == "true") {
+        return "Do you want to leave the current tab?";
+      }
+    }
+
     function panic(event) {
       if (event.key === savedKey) {
+        focusIframe();
         if (savedLink.includes("https://")) {
-          window.location.href = savededulink;
+          window.location.href = savedLink;
         } else {
           window.location.href = "https://" + savedLink;
         }
       }
     }
-  
+
+    function focusIframe() {
+      document.getElementById("result").focus();
+    }
+
     document.addEventListener("keydown", panic);
-  
   </script>
-  
+
+
 </body>
 
 </html>

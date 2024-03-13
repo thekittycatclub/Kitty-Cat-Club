@@ -22,6 +22,12 @@
     </style>
 </head>
 <%- include("partials/navbar") -%>
+<script>
+  const isLoggedIn = localStorage.getItem("loggedin");
+  if (!isLoggedIn) {
+      location.href = "/";
+  }
+</script>
 <body>
     <center style="margin-top: 5%;">
         <div class="terms">

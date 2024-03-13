@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./css/all.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
     <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
-    <script src="./js/settings.js"></script>
     <script src="./js/mobile.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
@@ -135,9 +134,24 @@
         }
     </style>
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MZ5T2ZY0DZ');
+</script>
 
 <body>
     <%- include("partials/navbar") %>
+        <center>
+            <div class="flex-box">
+                <div class="notification">
+                    <h3 class="title"></h3>
+                    <p class="content"></p>
+                </div>
+            </div>
+        </center>
         <div class="settingsList" style="margin-top: 5%; justify-content: center;">
             <div class="card">
                 <center>
@@ -165,7 +179,12 @@
                     </div>
                 </center>
             </div>
-
+            <script>
+                const isLoggedIn = localStorage.getItem("loggedin");
+                if (!isLoggedIn) {
+                    location.href = "/";
+                }
+            </script>
             <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Panic key system</h1>
@@ -174,7 +193,9 @@
                         <button id="recordbtn" id="clearbtn" style="padding: 12px;">
                             Record keystroke
                         </button>
-                        <button onclick="localStorage.removeItem('savedKey'); localStorage.removeItem('savedLink'); location.reload();" style="padding: 12px;">
+                        <button
+                            onclick="localStorage.removeItem('savedKey'); localStorage.removeItem('savedLink'); location.reload();"
+                            style="padding: 12px;">
                             Clear all
                         </button>
                     </div>
@@ -191,8 +212,63 @@
             </div>
             <div class="card">
                 <center>
+                    <h1 style="font-size: 30px;">Change Credentials</h1>
+                    <p>Changes your username and password.</p>
+                    <br />
+                    <div>
+                        <input placeholder="New username..." type="text" id="username" /><br /><br />
+                        <input placeholder="New password..." type="password" id="password" /><br /><br />
+                        <script>
+                            let userInput = document.getElementById("username");
+                            let passInput = document.getElementById("password");
+                            let saveduser = localStorage.getItem("savedUser");
+                            let savedpass = localStorage.getItem("savedPass");
+                            function saveUser() {
+                                if (!userInput.value) {
+                                    notify("Username error", "You can't set a blank username!");
+                                } else {
+                                    localStorage.setItem("savedUser", userInput.value);
+                                    notify("Username saved", "Username has been saved!");
+                                }
+                            }
+                            function savePass() {
+                                if (!passInput.value) {
+                                    notify("Password error", "You can't set a blank password!");
+                                } else {
+                                    localStorage.setItem("savedPass", passInput.value);
+                                    notify("Password saved", `Password has been saved! <br/> (New password: ${localStorage.getItem("savedPass")})`);
+                                }
+                            }
+                            function savedBoth() {
+                                if (!userInput.value && !passInput.value) {
+                                    notify("Credentials Error", "Both inputs have a blank value!");
+                                } else if (!userInput.value || !passInput.value) {
+                                    notify("Credentials Error", "One of the inputs have a blank value!");
+                                }
+                                else {
+                                    localStorage.setItem("savedUser", userInput.value);
+                                    localStorage.setItem("savedPass", passInput.value);
+                                    notify("Credentials saved", `Both Credentials have been saved! <br/> (New password: ${localStorage.getItem("savedPass")})`);
+                                }
+                            }
+                        </script>
+                        <button onclick="saveUser()">
+                            Save Username
+                        </button>
+                        <button onclick="savePass()">
+                            Save Password
+                        </button>
+                        <br /><br />
+                        <button onclick="savedBoth()">
+                            Save Both Credentials
+                        </button>
+                    </div>
+                </center>
+            </div>
+            <div class="card">
+                <center>
                     <h1 style="font-size: 30px;">Search engine</h1>
-                    <p>Switches the proxy search engine. (Default is google)</p>
+                    <p>Switches the proxy search engine. (Default is Google)</p>
                     <br />
                     <div class="text-center" style="display: flexbox;">
                         <div class="center">
@@ -226,17 +302,18 @@
                     </div>
             </div>
             </center>
-            <div class="card" style="height: 50%;">
+            <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">about:blank Cloak</h1>
                     <p>Opens the current page in a new about:blank page.</p>
                     <br />
                     <div>
-                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
+                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click
+                            here to activate!</button>
                     </div>
                 </center>
             </div>
-            <div class="card" style="height: 100%;">
+            <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Change Background</h1>
                     <p>Changes the background to the specified URL.</p><br />
@@ -247,18 +324,37 @@
                     </div>
                 </center>
             </div>
-            <div class="card" style="height: 50%;">
+            <div class="card">
                 <center>
-                    <h1 style="font-size: 30px;">Page cloaking</h1>
-                    <p>Opens the provided URL in a new about:blank page</p>
+                    <h1 style="font-size: 30px;">Tab Close Prevention</h1>
+                    <p>When teachers close the tab, it will show an alert preventing it from being closed.</p>
                     <div>
-                        <br />
-                        <input id="pagecloak" type="text" placeholder="Insert your URL here..." />
-                        <button onclick="PageCloakFunction()" style="padding: 12px;">Open the page!</button>
+                        <button onclick="preventClosing()" class="tabclosebtn">Enable Tab Closing Preventer</button>
+                    </div>
+                </center>
+            </div>
+            <div class="card">
+                <center>
+                    <h1 style="font-size: 30px;">Toggle Clock</h1>
+                    <p>Toggles the clock visiblity from showing or not.</p>
+                    <div><br />
+                        <button onclick="toggleClockVisiblity()" class="tabclosebtn">Change Visiblity</button>
+                    </div>
+                </center>
+            </div>
+            <div class="card">
+                <center>
+                    <h1 style="font-size: 30px;">Logout</h1>
+                    <p>Log out of Kitty Cat Club.</p>
+                    <br />
+                    <div>
+                        <button onclick="localStorage.removeItem('loggedin'); location.reload();"
+                            style="padding: 15px; font-size: 15px;" id="logout">Log out</button>
                     </div>
                 </center>
             </div>
         </div>
+        <script src="./js/settings.js"></script>
         <%- include("partials/footer") -%>
             <script src="./js/panickey.js"></script>
             <script src="./js/index.js"></script>
@@ -281,7 +377,15 @@
                     document.body.style.backgroundRepeat = "no-repeat"
                     document.body.style.backgroundSize = "cover";
                 }
+                let tabclosingval = localStorage.getItem("tabcloseval");
+
+                window.onbeforeunload = () => {
+                    if (tabclosingval == "true") {
+                        return "Do you want to leave the current tab?";
+                    }
+                }
             </script>
+            <!--Dropdown js-->
             <script>
                 const uvSearch = document.getElementById("uv-search-engine");
                 var inputbox = document.querySelector(".input-box");

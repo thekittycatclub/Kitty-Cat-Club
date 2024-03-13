@@ -11,6 +11,20 @@
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
 <%- include("partials/navbar") %>
+  <script>
+    const isLoggedIn = localStorage.getItem("loggedin");
+    if (!isLoggedIn) {
+      location.href = "/";
+    }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MZ5T2ZY0DZ');
+  </script>
+
   <body>
     <center>
       <br>
@@ -32,58 +46,50 @@
             document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
           </script>
         </div>
-        <div class="apps" style="width: 75%;">
-          <button class="card resizable-card" onclick="openApp('https://youtube.com')">
+        <div class="apps">
+          <button class="card" onclick="openApp('https://youtube.com')">
             <img src="./img/gxmes/youtube.png" />
             <br />
             <p>Youtube</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://discord.com/app')">
+          <button class="card" onclick="openApp('https://discord.com/app')">
             <img src="./img/gxmes/discord.jpg" />
             <br />
             <p>Discord</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://tiktok.com')">
+          <button class="card" onclick="openApp('https://tiktok.com')">
             <img src="./img/gxmes/Tiktok.png" />
             <br />
             <p>Tiktok</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://i-love-math-770.vercel.app')">
-            <img src="./img/gxmes/movieweb.png" />
-            <br />
-            <p>Movie Web</p>
-          </button>
-          <button class="card resizable-card" onclick="openApp('https://anura.pro/')">
-            <img src="./img/gxmes/AnuraOS.png" />
-            <br />
-            <p>AnuraOS</p>
-          </button>
-          <button class="card resizable-card" onclick="openApp('https://www.github.com')">
+          <button class="card" onclick="openApp('https://www.github.com')">
             <img src="./img/gxmes/github.jpg" />
             <br />
             <p>Github</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://poki.com')">
+          <button class="card" onclick="openApp('https://poki.com')">
             <img src="./img/gxmes/poki.png" />
             <br />
             <p>Poki</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://www.crazygames.com/')">
+          <button class="card" onclick="openApp('https://www.crazygames.com/')">
             <img src="./img/gxmes/crazygames.png" />
             <br />
             <p>Crazygames</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://twitter.com/home')">
+          <button class="card" onclick="openApp('https://twitter.com/home')">
             <img src="./img/gxmes/twitter.png" />
             <br />
             <p>Twitter</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://vscode.dev')">
+          <button class="card" onclick="openApp('https://vscode.dev')">
             <img src="./img/gxmes/vsc.png" />
             <br />
             <p>Visual Studio Code</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://https://now.gg/iframe/snippet?app_pkg=com.aptoide.partners.nowgg.store&partner=interstellar')"> <!---I bare-->
+          <button class="card"
+            onclick="openApp('https://https://now.gg/iframe/snippet?app_pkg=com.aptoide.partners.nowgg.store&partner=interstellar')">
+            <!---I bare-->
             <img src="./img/gxmes/aptoide.png" />
             <br />
             <p>Aptoide</p>
@@ -127,6 +133,13 @@
           document.body.style.backgroundImage = `url("${savedBG}")`;
           document.body.style.backgroundRepeat = "no-repeat"
           document.body.style.backgroundSize = "cover";
+        }
+        let tabclosingval = localStorage.getItem("tabcloseval");
+
+        window.onbeforeunload = () => {
+          if (tabclosingval == "true") {
+            return "Do you want to leave the current tab?";
+          }
         }
 
         function panic(event) {

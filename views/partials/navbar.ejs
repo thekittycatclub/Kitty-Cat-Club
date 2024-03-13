@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-<link rel="stylesheet" href="./css/navbar.css"/>
+<link rel="stylesheet" href="./css/navbar.css" />
 <script src="./js/clock.js"></script>
-
 <center>
     <div id="container">
         <div class="align-left">
@@ -9,10 +8,10 @@
             <h2><a href="/" id="esad">Kitty Cat Unblocker</a></h2>
         </div>
         <div class="align-right">
-            <p id="timer"></p>
+            <p id="clock"></p>
             <ul>
                 <li>
-                    <a href="/">
+                    <a href="/dashboard">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
@@ -40,3 +39,12 @@
         </div>
     </div>
 </center>
+<script>
+    let hideclock = localStorage.getItem("clockvisibility");
+    let clack = document.getElementById("clock");
+    if (hideclock === "true") {
+        clack.style.display = "none";
+    } else {
+        clack.style.display = "";
+    }
+</script>

@@ -47,3 +47,7 @@ body {
     font-size: 30px;
     color: #FFFFFF;
 }
+
+#logout:hover {
+    background-color: rgb(242, 74, 74);
+  }
