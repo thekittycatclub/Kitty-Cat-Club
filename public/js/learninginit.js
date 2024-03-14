@@ -19,7 +19,7 @@ if (searchbar) {
                 url = 'http://' + url;
             }
             localStorage.setItem("savedURL", __uv$config.prefix + __uv$config.encodeUrl(url));
-            location.reload();
+            iframeRes.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 
         });
     });
