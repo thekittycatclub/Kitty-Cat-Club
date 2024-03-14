@@ -48,8 +48,8 @@ app.get('/mobile', (req, res) => {
   res.render('mobile',  { title: "Mobile" });
 });
 
-app.get('/testing', (req, res) => {
-  res.render('partials/testing');
+app.get('/testingfortnite012948', (req, res) => {
+  res.render('extra/testing');
 });
 
 app.get('/dashboard', (req, res) => {
