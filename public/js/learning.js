@@ -38,9 +38,7 @@ if (proxyURLVal === "false") {
 }
 if (hideNavbar == "false") {
   searchshow();
-  hideuibtn.style.display = "";
 } else if (hideNavbar == "true") {
-  hideuibtn.style.display = "none";
   document.getElementById("hideuibtn").innerHTML = "Show navbar";
 }
 if (!hideNavbar) {
@@ -275,7 +273,6 @@ function proxyURL() {
 
 function changeloader() {
   var iframe = document.getElementById("result");
-  
   let input = document.getElementById("loaderinput");
   localStorage.getItem("loader");
   if (!input.value) {
