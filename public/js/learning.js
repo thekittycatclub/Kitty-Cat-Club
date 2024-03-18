@@ -12,6 +12,7 @@ let hideuibtn = document.getElementById("hideui");
 let isHidden = 0;
 let varhidenav = "false";
 let btnhidenav = "false";
+let aboutblankcloak;
 ////Load saved data////
 let newLoader = localStorage.getItem("loader");
 let hideNavbar = localStorage.getItem("hidenavbar");
@@ -38,15 +39,12 @@ if (proxyURLVal === "false") {
 }
 if (hideNavbar == "false") {
   searchshow();
-  hideuibtn.style.display = "";
 } else if (hideNavbar == "true") {
-  hideuibtn.style.display = "none";
   document.getElementById("hideuibtn").innerHTML = "Show navbar";
 }
 if (!hideNavbar) {
   localStorage.setItem("hidenavbar", 'false');
 }
-
 
 ////Functions////
 //Tool functions
@@ -305,38 +303,51 @@ function changeloader() {
 }
 
 function aboutBlank() {
-  let win = window.open();
-  let url = window.location.href;
-  let popoutIframe = win.document.createElement("iframe");
-  let faviconLink = win.document.createElement('link');
-  popoutIframe.style.position = "fixed";
-  popoutIframe.style.width = "100%";
-  popoutIframe.style.height = "100%";
-  popoutIframe.style.border = "none";
-  popoutIframe.style.top = "0";
-  popoutIframe.style.bottom = "0";
-  popoutIframe.style.left = "0";
-  popoutIframe.style.right = "0";
-  popoutIframe.style.margin = "0";
-  popoutIframe.style.padding = "0";
-  popoutIframe.style.overflow = "hidden";
-  popoutIframe.style.backgroundColor = "#000";
-  popoutIframe.src = url;
-  if (!localStorage.getItem("tabName")) {
-    win.document.title = "Mathematics";
-  } else {
-    win.document.title = localStorage.getItem("tabName");
+    let win = window.open();
+    let url = window.location.href;
+    let popoutIframe = win.document.createElement("iframe");
+    let faviconLink = win.document.createElement('link');
+    popoutIframe.style.position = "fixed";
+    popoutIframe.style.width = "100%";
+    popoutIframe.style.height = "100%";
+    popoutIframe.style.border = "none";
+    popoutIframe.style.top = "0";
+    popoutIframe.style.bottom = "0";
+    popoutIframe.style.left = "0";
+    popoutIframe.style.right = "0";
+    popoutIframe.style.margin = "0";
+    popoutIframe.style.padding = "0";
+    popoutIframe.style.overflow = "hidden";
+    popoutIframe.style.backgroundColor = "#000";
+    popoutIframe.src = url;
+    if (!localStorage.getItem("tabName")) {
+      win.document.title = "Mathematics";
+    } else {
+      win.document.title = localStorage.getItem("tabName");
+    }
+    faviconLink.rel = 'shortcut icon';
+    if (localStorage.getItem("favicon")) {
+      faviconLink.href = localStorage.getItem("favicon");
+    } else {
+      faviconLink.href = "";
+    }
+    win.document.head.appendChild(faviconLink);
+    win.document.body.appendChild(popoutIframe);
+    isCloaked = 1;
+    if (aboutblankcloak == 1) {
+      window.location.href = "https://classroom.google.com";
+    }
   }
-  faviconLink.rel = 'shortcut icon';
-  if (localStorage.getItem("favicon")) {
-    faviconLink.href = localStorage.getItem("favicon");
-  } else {
-    faviconLink.href = "";
-  }
-  win.document.head.appendChild(faviconLink);
-  win.document.body.appendChild(popoutIframe);
-  window.location.href = "https://classroom.google.com";
-}
+
+document.getElementById("aboutblank").addEventListener("click", function() {
+  aboutblankcloak = 1;
+  aboutBlank();
+});
+
+document.getElementById("aboutblankwithoutcloak").addEventListener("click", function() {
+  aboutblankcloak = 0;
+  aboutBlank();
+});
 
 function popoutRes() {
   let win = window.open();
@@ -372,8 +383,3 @@ function popoutRes() {
 }
 
 hideui();
-document.addEventListener("DOMContentLoaded", function() {
-  let settingspanel = document.querySelector(".settingspanel");
-  settingspanel.style.opacity = "0";
-  settingspanel.style.visibility = "hidden";
-})
