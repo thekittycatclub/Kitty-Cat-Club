@@ -304,12 +304,11 @@
             </center>
             <div class="card">
                 <center>
-                    <h1 style="font-size: 30px;">about:blank Cloak</h1>
-                    <p>Opens the current page in a new about:blank page.</p>
-                    <br />
+                    <h1 style="font-size: 30px;">Page cloaking</h1>
+                    <p>Opens the provided URL in a new about:blank page</p><br />
                     <div>
-                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click
-                            here to activate!</button>
+                        <input id="aboutblankval" type="text" placeholder="Insert your URL here..." style="width: 40%;" />
+                        <button id="cloakbtn" style="padding: 10px; width: auto;">Open the page!</button>
                     </div>
                 </center>
             </div>
@@ -318,7 +317,6 @@
                     <h1 style="font-size: 30px;">Change Background</h1>
                     <p>Changes the background to the specified URL.</p><br />
                     <div>
-                        <br />
                         <input id="changebg" type="text" placeholder="Add background URL..." style="width: 40%;" />
                         <button onclick="changeBG()" style="padding: 10px; width: auto;">Change Background</button>
                     </div>
@@ -333,6 +331,16 @@
                     </div>
                 </center>
             </div>
+            <div class="card">
+                 <center>
+                     <h1 style="font-size: 30px;">about:blank Cloak</h1>
+                     <p>Opens the current page in a new about:blank page.</p>
+                     <br />
+                     <div>
+                         <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
+                     </div>
+                 </center>
+             </div>
             <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Toggle Clock</h1>
@@ -377,8 +385,6 @@
                     document.body.style.backgroundRepeat = "no-repeat"
                     document.body.style.backgroundSize = "cover";
                 }
-                let tabclosingval = localStorage.getItem("tabcloseval");
-
                 window.onbeforeunload = () => {
                     if (tabclosingval == "true") {
                         return "Do you want to leave the current tab?";

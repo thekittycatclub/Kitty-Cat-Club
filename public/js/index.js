@@ -103,5 +103,9 @@ function isUrl(val = "") {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    iframeRes.src = savedurl;
+    if (!iframeRes) {
+        return;
+    } else {
+        iframeRes.src = savedurl;
+    }
 });

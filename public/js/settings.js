@@ -66,9 +66,9 @@ function setFavicon() {
 }
 
 function openAboutBlack() {
-  var win = window.open();
-  var url = window.location.href;
-  var iframe = win.document.createElement("iframe");
+  let win = window.open();
+  let url = window.location.href;
+  let iframe = win.document.createElement("iframe");
   iframe.style.position = "fixed";
   iframe.style.width = "100%";
   iframe.style.height = "100%";
@@ -85,6 +85,35 @@ function openAboutBlack() {
   win.document.body.appendChild(iframe);
 }
 
+document.getElementById("cloakbtn").addEventListener("click", sitecloak);
+
+function sitecloak() {
+  let givenurl = document.getElementById("aboutblankval").value.trim();
+  if (givenurl === "") {
+    notify("Cloaking error", "The given site can't be a blank value!");
+  } else {
+    if (!(givenurl.startsWith("https://") || givenurl.startsWith("http://"))) {
+      notify("Cloaking error", "Make sure the site starts with https://")
+    } else {
+      let win = window.open();
+      let iframe = win.document.createElement("iframe");
+      iframe.style.position = "fixed";
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "none";
+      iframe.style.top = "0";
+      iframe.style.bottom = "0";
+      iframe.style.left = "0";
+      iframe.style.right = "0";
+      iframe.style.margin = "0";
+      iframe.style.padding = "0";
+      iframe.style.overflow = "hidden";
+      iframe.style.backgroundColor = "#000";
+      iframe.src = __uv$config.prefix + __uv$config.encodeUrl(givenurl);
+      win.document.body.appendChild(iframe);
+    }
+  }
+}
 
 function changeBG() {
   let url = document.getElementById("changebg").value;
