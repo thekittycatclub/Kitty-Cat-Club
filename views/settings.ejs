@@ -155,8 +155,8 @@
         <div class="settingsList" style="margin-top: 5%; justify-content: center;">
             <div class="card">
                 <center>
-                    <h1 style="font-size: 30px;">Tab cloaking</h1>
-                    <p>Changes the tab name and favicon to something else.</p>
+                    <h1 style="font-size: 30px;">Change title and icon</h1>
+                    <p>Allows you to change the title of the tab, or change the favicon.</p>
                     <br />
                     <div>
                         <button onclick="changeFaviconToGoogle()" style="width: auto;" class="tabbtn"><img
@@ -172,10 +172,10 @@
                         <p>Custom tab cloaking:</p>
                         <br />
                         <input id="changetitle" onkeyup="setTabTitle()" type="text"
-                            placeholder="Type your educational title" />
+                            placeholder="Your educational title.." />
                         <br /><br />
                         <input id="changefavicon" onkeyup="setFavicon()" type="text"
-                            placeholder="Put tab icon link here" />
+                            placeholder="Paste Favicon URL.." />
                     </div>
                 </center>
             </div>
@@ -307,7 +307,8 @@
                     <h1 style="font-size: 30px;">Page cloaking</h1>
                     <p>Opens the provided URL in a new about:blank page</p><br />
                     <div>
-                        <input id="aboutblankval" type="text" placeholder="Insert your URL here..." style="width: 40%;" />
+                        <input id="aboutblankval" type="text" placeholder="Insert your URL here..."
+                            style="width: 40%;" />
                         <button id="cloakbtn" style="padding: 10px; width: auto;">Open the page!</button>
                     </div>
                 </center>
@@ -332,21 +333,22 @@
                 </center>
             </div>
             <div class="card">
-                 <center>
-                     <h1 style="font-size: 30px;">about:blank Cloak</h1>
-                     <p>Opens the current page in a new about:blank page.</p>
-                     <br />
-                     <div>
-                         <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click here to activate!</button>
-                     </div>
-                 </center>
-             </div>
+                <center>
+                    <h1 style="font-size: 30px;">about:blank Cloak</h1>
+                    <p>Opens the current page in a new about:blank page.</p>
+                    <br />
+                    <div>
+                        <button onclick="openAboutBlack()" style="padding: 15px; font-size: 15px;" class="tabbtn">Click
+                            here to activate!</button>
+                    </div>
+                </center>
+            </div>
             <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Toggle Clock</h1>
                     <p>Toggles the clock visiblity from showing or not.</p>
                     <div><br />
-                        <button onclick="toggleClockVisiblity()" class="tabclosebtn">Change Visiblity</button>
+                        <button onclick="toggleClockVisiblity()">Change Visiblity</button>
                     </div>
                 </center>
             </div>

@@ -69,6 +69,7 @@ function openAboutBlack() {
   let win = window.open();
   let url = window.location.href;
   let iframe = win.document.createElement("iframe");
+  let faviconLink = win.document.createElement("link");
   iframe.style.position = "fixed";
   iframe.style.width = "100%";
   iframe.style.height = "100%";
@@ -82,7 +83,20 @@ function openAboutBlack() {
   iframe.style.overflow = "hidden";
   iframe.style.backgroundColor = "#000";
   iframe.src = url;
+  if (!localStorage.getItem("tabName")) {
+    win.document.title = "Mathematics";
+  } else {
+    win.document.title = localStorage.getItem("tabName");
+  }
+  faviconLink.rel = 'shortcut icon';
+  if (localStorage.getItem("favicon")) {
+    faviconLink.href = localStorage.getItem("favicon");
+  } else {
+    faviconLink.href = "";
+  }
+  win.document.head.appendChild(faviconLink);
   win.document.body.appendChild(iframe);
+  location.replace("https://classroom.google.com");
 }
 
 document.getElementById("cloakbtn").addEventListener("click", sitecloak);

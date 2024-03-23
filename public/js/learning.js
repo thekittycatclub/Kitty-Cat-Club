@@ -335,7 +335,7 @@ function aboutBlank() {
       win.document.body.appendChild(popoutIframe);
       isCloaked = 1;
       if (aboutblankcloak == 1) {
-        window.location.href = "https://classroom.google.com";
+        window.location.replace("https://classroom.google.com");
       }
     }
 
