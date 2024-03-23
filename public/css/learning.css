@@ -123,8 +123,8 @@ iframe {
 
 .settingspanel {
   background-color: #151515;
-  width: auto;
-  padding: 20px;
+  width: 40em;
+  padding: 15px;
   height: auto;
   border: 2px solid #101010;
   border-radius: 20px;
@@ -134,6 +134,8 @@ iframe {
   transform: translate(-50%, -50%);
   visibility: hidden;
   opacity: 0;
+  transition: 0.3s ease;
+  z-index: 9999999;
 }
 
 .card {
