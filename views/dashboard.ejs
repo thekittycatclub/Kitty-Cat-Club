@@ -47,7 +47,7 @@
         <div class="content" style="width: 2000px">
           <h1>Kitty Cat Unblocker</h1>
           <img src="./img/logo.png" style="width: 15%;" /><br /><br />
-          <form style="width: 100%; display: flex; justify-content: center;">
+          <form style="width: 100%; display: flex; justify-content: center;" id="indexform">
             <input type="text" id="searchbar" placeholder="Search the web freely..." />
             <button id="searchbtn" style="margin-left: 5px;">
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -140,9 +140,9 @@
     function panic(event) {
       if (event.key === savedKey || event.key === savedKey) {
         if (savedLink.includes("https://")) {
-          window.location.href = savededulink;
+          location.replace(savedLink);
         } else {
-          window.location.href = "https://" + savedLink;
+          location.replace("https://" + savedLink);
         }
       }
     }

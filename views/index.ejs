@@ -105,7 +105,7 @@
             savedpass = "welovekittens";
         }
         if (isLoggedIn) {
-            location.href = "/dashboard";
+            location.replace("/dashboard");
         }
         document.addEventListener("DOMContentLoaded", function () {
             err.style.display = "none";
@@ -124,7 +124,7 @@
             const password = document.getElementById("password").value;
 
             if (username === saveduser && password === savedpass) {
-                location.href = "/dashboard";
+                location.replace("/dashboard");
                 localStorage.setItem("loggedin", true);
             } else {
                 error.innerHTML = "Error: Invalid credentials!";

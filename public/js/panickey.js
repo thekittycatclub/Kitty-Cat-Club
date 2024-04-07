@@ -37,9 +37,9 @@ changeURL.addEventListener("click", function () {
 function keyPressed(event) {
     if (event.key === savedKey) {
         if (savedLink.includes("https://")) {
-            window.location.href = savedLink;
+            location.replace(savedLink);
         } else {
-            window.location.href = "https://" + savedLink;
+            location.replace("https://" + savedLink);
         }
     }
 }

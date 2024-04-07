@@ -61,6 +61,7 @@ body {
 
 #searchbtn:hover {
   background: #242424;
+  cursor: pointer;
 }
 
 .browserbtn {

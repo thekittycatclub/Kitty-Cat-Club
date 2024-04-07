@@ -41,7 +41,7 @@
               'width': 160,
               'params': {}
             };
-            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/aa249c8fbb3f9d7f78f0b6fd4886c613/invoke.js"></scr' + 'ipt>');
+            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
           </script>
         </div>
         <div class="gxmes">
@@ -56,7 +56,13 @@
             <p>Cookie clicker</p>
           </button>
           <button class="card resizable-card"
-            onclick="openApp('https://now.gg/apps/roblox-corporation/5349/roblox.html')">
+            onclick="
+            if (!localStorage.getItem('hasalert')) {
+              alert('Credits go to @xderpman on Discord! (This is a one-time alert)');
+              localStorage.setItem('hasalert', 1);
+            }
+            openApp('https://now.derpman.lol');
+            ">
             <img src="./img/gxmes/roblox.webp" />
             <br />
             <p>Roblox</p>
@@ -163,15 +169,80 @@
             <br />
             <p>Basketbros</p>
           </button>
-          <button class="card" onclick="openApp('https://taming.io')">
-            <img src="./img/gxmes/taming.png" />
-            <br />
-            <p>Taming.io</p>
-          </button>
           <button class="card" onclick="openApp('https://www.google.com/logos/2019/july4th19/r6/july4th19.html?hl=en')">
             <img src="./img/gxmes/googleb.png" />
             <br />
             <p>Google Baseball</p>
+          </button>
+          <button class="card" onclick="openApp('https://gnhustgames.org/the-binding-of-isaac-source/')">
+            <img src="./img/gxmes/tboi.avif" />
+            <br />
+            <p>The Binding of Issac</p>
+          </button>
+          <button class="card" onclick="openApp('https://deadshot.io')">
+            <img src="./img/gxmes/deadshot-io.png" />
+            <br />
+            <p>Deadshot.io</p>
+          </button>
+          <button class="card" onclick="openApp('https://games.voodoo.com/paperio2')">
+            <img src="./img/gxmes/paperio2.png" />
+            <br />
+            <p>Paper.io</p>
+          </button>
+          <button class="card" onclick="openApp('https://www.coolmathgames.com/0-ovo/play')">
+            <img src="./img/gxmes/ovo.png" />
+            <br />
+            <p>OvO</p>
+          </button>
+          <button class="card" onclick="openApp('https://www.mathplayground.com/drift-boss-v3/index.html')">
+            <img src="./img/gxmes/driftboss.png" />
+            <br />
+            <p>Drift Boss</p>
+          </button>
+          <button class="card" onclick="openApp('https://w8.snokido.com/games/unity-webgl/cluster-rush/index.html')">
+            <img src="./img/gxmes/clusterrush.png" />
+            <br />
+            <p>Cluster Rush</p>
+          </button>
+          <button class="card" onclick="
+          if (!localStorage.getItem('fnfalert')) {
+            alert('In order for the game to load, you have to click on the black screen! (This is a one-time alert)');
+            localStorage.setItem('fnfalert', 1);
+          }
+          openApp('https://uploads.ungrounded.net/alternate/1528000/1528775_alternate_113347_r88.zip/?NewgroundsAPI_PublisherID=1&NewgroundsAPI_SandboxID=661197f20386c&NewgroundsAPI_SessionID=&NewgroundsAPI_UserName=%26lt%3Bdeleted%26gt%3B&NewgroundsAPI_UserID=0&ng_username=%26lt%3Bdeleted%26gt%3B')">
+            <img src="./img/gxmes/fnf.jpg" />
+            <br />
+            <p>Friday Night Funkin</p>
+          </button>
+          <button class="card" onclick="openApp('https://wrestlebros.io')">
+            <img src="./img/gxmes/wreslebros.png" />
+            <br />
+            <p>Wrestle Bros</p>
+          </button>
+          <button class="card" onclick="openApp('https://soccerbros.gg')">
+            <img src="./img/gxmes/soccerbros.png" />
+            <br />
+            <p>Soccer Bros</p>
+          </button>
+          <button class="card" onclick="openApp('https://geometrylite.io/game/geometry-lite/')">
+            <img src="./img/gxmes/geodash.svg" />
+            <br />
+            <p>Geometry Dash</p>
+          </button>
+          <button class="card" onclick="openApp('https://bonk.io')">
+            <img src="./img/gxmes/bonk.io.jpg" />
+            <br />
+            <p>Bonk.io</p>
+          </button>
+          <button class="card" onclick="openApp('https://drift-hunters.pages.dev/')">
+            <img src="./img/gxmes/dh.png" />
+            <br />
+            <p>Drift Hunters</p>
+          </button>
+          <button class="card" onclick="openApp('https://backrooms-ad8.pages.dev/')">
+            <img src="./img/gxmes/backrooms.png" />
+            <br />
+            <p>Backrooms</p>
           </button>
         </div>
         <div style="margin-right: auto;">
@@ -188,7 +259,7 @@
         </div>
     </center><br/>
     <center>
-      <div style="border: 2px solid #000; border-radius: 12px; width: 25%;">
+      <div style="border: 2px solid #000; border-radius: 12px; width: 30em; padding: 10px;">
         <h2>Cant find your game?</h2>
         <p>It seems that your game wasn't added to our site yet.</p>
         <p>(If you want a game on here, <a href="https://docs.google.com/forms/d/e/1FAIpQLScCXe-HBWW5WmP87kQR8fqMU6RLFLMN4Tl0ILENfK6UtU3A-g/viewform?usp=sf_link" target="_blank" style="color: rgb(0, 132, 255);">click this text!</a>)</p>
@@ -244,9 +315,9 @@
         function panic(event) {
           if (event.key === savedKey || event.key === savedKey) {
             if (savedLink.includes("https://")) {
-              window.location.href = savededulink;
+              location.replace(savededulink);
             } else {
-              window.location.href = "https://" + savedLink;
+              location.replace("https://" + savedLink);
             }
           }
         }

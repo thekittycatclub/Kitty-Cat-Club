@@ -47,7 +47,7 @@
 
         .card {
             background-color: rgb(30, 30, 30);
-            width: 10%;
+            width: 10em;
             padding: 20px;
             height: auto;
             border-radius: 10px;
@@ -70,14 +70,14 @@
         }
 
         .card p {
-            font-size: 0.9vw;
+            font-size: 1em;
         }
     </style>
 </head>
 <script>
     const isLoggedIn = localStorage.getItem("loggedin");
     if (!isLoggedIn) {
-        location.href = "/";
+        location.replace("/");
     }
 </script>
 
@@ -121,17 +121,16 @@
                 </div>
                 <div class="panel">
                     <h1>Credits</h1>
-                    <p><strong>@tlochsta</strong> - Founder of KCC.</p>
-                    <p><strong>@xineese</strong> - Co-Founder/Working on proxy.</p>
-                    <p><strong>@a1rg3mm</strong> - Frontend of Website.</p>
-                    <p><strong>@.xordas</strong> - Mental support & editing line 128 of extra.ejs and line one in
-                        apps.ejs</p>
-                    <p><strong>@questioningliferightnow</strong> - Link bot, fixing VPS, and making links.</p>
+                    <p><strong>@tlochsta</strong> - Founder of KCC. (VPS provider)</p>
+                    <p><strong>@xineese</strong> - Co-Founder & Developer</p>
+                    <p><strong>@a1rg3mm</strong> - Basically making the entire website</p>
+                    <p><strong>@.xordas</strong> - Mental support</p>
+                    <p><strong>@questionedlife</strong> - Developer and making Link-bot</p>
                 </div>
                 <div class="panel">
                     <h1>Resources</h1>
                     <p>Resources, or other stuff to use. (Some optional, some required.)</p><br />
-                    <button onclick="window.location.href = '/tos'">
+                    <button onclick="location.replace('/tos')">
                         Terms of Service
                     </button><br /><br />
                     <br />
@@ -169,9 +168,9 @@
                 function panic(event) {
                     if (event.key === savedKey || event.key === savedKey) {
                         if (savedLink.includes("https://")) {
-                            window.location.href = savededulink;
+                            location.replace(savedLink);
                         } else {
-                            window.location.href = "https://" + savedLink;
+                            location.replace("https://" + savedLink);
                         }
                     }
                 }

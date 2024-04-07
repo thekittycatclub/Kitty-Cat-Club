@@ -83,6 +83,7 @@ iframe {
 
 .searchbtn:hover {
   background: #242424;
+  cursor: pointer;
 }
 
 .mainbtns {
@@ -96,9 +97,9 @@ iframe {
   border: 2px solid #151515;
   transition: 0.5s;
   z-index: 999;
-  flex-wrap: nowrap;
   top: 7px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: auto;
 }
 
 .navbtn {
@@ -119,6 +120,7 @@ iframe {
 .navbtn:hover {
   background-color: rgb(64, 64, 64);
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 .settingspanel {

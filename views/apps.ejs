@@ -14,7 +14,7 @@
   <script>
     const isLoggedIn = localStorage.getItem("loggedin");
     if (!isLoggedIn) {
-      location.href = "/";
+      location.replace("/");
     }
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
@@ -110,6 +110,11 @@
             <p>Aptoide</p>
           </button>
           <!--if you see this, you like balls-->
+          <button class="card" onclick="openApp('https://www.coolmathgames.com/')">
+            <img src="./img/gxmes/cmg.png" />
+            <br />
+            <p>Cool math games</p>
+          </button>
         </div>
         <div style="margin-right: auto;">
           <script type="text/javascript">
@@ -160,9 +165,9 @@
         function panic(event) {
           if (event.key === savedKey || event.key === savedKey) {
             if (savedLink.includes("https://")) {
-              window.location.href = savededulink;
+              location.replace(savedLink);
             } else {
-              window.location.href = "https://" + savedLink;
+              location.replace("https://" + savedLink);
             }
           }
         }

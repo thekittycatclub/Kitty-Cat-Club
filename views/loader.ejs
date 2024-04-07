@@ -65,9 +65,9 @@
       function panic(event) {
         if (event.key === savedKey || event.key === savedKey) {
           if (savedLink.includes("https://")) {
-            window.location.href = savededulink;
+            location.replace(savedLink);
           } else {
-            window.location.href = "https://" + savedLink;
+            location.replace("https://" + savedLink);
           }
         }
       }
@@ -112,7 +112,7 @@
         }
 
         delay(500).then(() => {
-          location.href = "/learning";
+          location.replace("/learning");
         });
       });
       

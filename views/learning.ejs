@@ -2,13 +2,209 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mathematics</title>
-  <link id="icon" rel="icon" type="image/x-icon" href="" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="./css/all.css">
-  <link rel="stylesheet" href="./css/learning.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics
+    </title>
+    <link rel="stylesheet" href="./css/all.css" />
+    <link id="icon" rel="icon" type="image/x-icon" href="./img/math.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .main {
+            position: fixed;
+            top: 0;
+            background-color: #202020;
+            width: auto;
+            left: 0;
+            right: 0;
+            padding: 1em;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+
+        button {
+            margin-right: 3px;
+            margin-left: 3px;
+            margin-bottom: 5px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .navbtn {
+            background-color: #252525;
+            border: 1px solid #151515;
+            border-radius: 150px;
+            padding: 25px;
+        }
+
+        .navbtn:hover {
+            background-color: #8c8c8c;
+        }
+
+        .searchinput {
+            background-color: #272727;
+            border: 1.5px solid #151515;
+            width: 100vh;
+            padding: 5px;
+            margin-top: 1px;
+            height: 35px;
+        }
+
+        .searchinput:hover {
+            cursor: pointer;
+        }
+
+        .searchinput:focus {
+            cursor: text;
+        }
+
+        .align-left,
+        .align-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .align-left a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .align-left a:hover {
+            color: #000;
+        }
+
+        .align-left img {
+            width: 30px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .align-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .align-right p {
+            margin: 0;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .align-right ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .align-right li {
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .align-right a {
+            color: #fff;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .align-right a:hover {
+            color: #252525;
+        }
+
+        .align-right a:hover i {
+            background: #FFF;
+        }
+
+        h2,
+        p {
+            color: #FFF;
+            transition: color 0.2s ease;
+        }
+
+        p {
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .navbtn {
+            width: 3em;
+            padding: 9px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 2px;
+        }
+
+        .menu {
+            position: fixed;
+            top: 5.5em;
+            right: 10px;
+            padding: 20px;
+            background-color: #202020;
+            border: 2px solid #000;
+            width: 32em;
+            border-radius: 15px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .menu p {
+            font-size: 1em;
+        }
+
+        .clockdisplay {
+            background-color: #252525;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 3.5em;
+            width: 8.5em;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            visibility: visible;
+        }
+
+        iframe {
+            position: fixed;
+            height: calc(100vh - 5em);
+            width: 100%;
+            border: none;
+            top: 80px;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .toggleuibtn {
+            position: fixed;
+            top: -100px;
+            border-radius: 0px 0px 12px 12px;
+            width: 100px;
+            height: 2em;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .toggleuibtn:hover {
+            background-color: #404040;
+        }
+    </style>
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
 <script>
@@ -18,78 +214,123 @@
 
   gtag('config', 'G-MZ5T2ZY0DZ');
 </script>
-
 <body>
-  <iframe id="result" src="" onkeydown="panic()" allowfullscreen></iframe>
-  <div class="flex-box">
     <center>
-      <div class="notification">
-        <h3 class="title"></h3>
-        <p class="content"></p>
-      </div>
-    </center>
-  </div>
-  <div class="settingspanel">
-    <button style="float: right; font-size: 17px; margin-top: -10px; margin-right: -10px;" onclick="showsettings()">Exit
-      menu</button>
-    <h1 style="margin-top: -1px;">Settings Panel</h1>
-    <p style="margin-top: -7px; font-size: 18px;">A Settings Menu that can be used for your customization.</p>
-    <br />
-    <div class="card">
-      <center>
-        <button onclick="togglenavbar()" id="hideuibtn">Automatically hide navbar</button>
-        <button class="settingsbtn" id="aboutblank">About:blank cloak</button>
-        <button class="settingsbtn" onclick="proxyURL()" id="proxybtn">Show encoded URL</button>
-        <button class="settingsbtn" onclick="showorhidedevtools()">Enable/disable Devtools</button>
-        <button class="settingsbtn" id="aboutblankwithoutcloak">About:blank cloak without google classroom</button>
-        <p>Background changer</p>
-        <input id="loaderinput" placeholder="Add background URL...">
-        <button style="padding: 9px;" onclick="changeloader()">Save background</button>
-      </center>
-      <br />
-    </div>
-  </div>
-  <div>
-    <center>
-      <div class="mainbtns" onmouseover="detecthiddenui()" onmouseleave="hideui()">
-        <button class="navbtn" onclick="backPX()"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="navbtn" onclick="forwardPX()"><i class="fa-solid fa-arrow-right"></i></button>
-        <button class="navbtn" onclick="reloadPX()"><i class="fa-solid fa-rotate-right"></i></button>
-        <button class="navbtn" onclick="location.href = '/dashboard';"><i class="fa-solid fa-house"></i></button>
-        <button class="navbtn" onclick="searchshow()"><i class="fa-solid fa-search"></i></button>
-        <button class="navbtn" onclick="fullscreen()"><i class="fa-solid fa-expand"></i></button>
-        <button class="navbtn" onclick="popoutRes()"><i class="fa-solid fa-up-right-from-square"></i></button>
-        <button class="navbtn" onclick="showsettings()"><i class="fa-solid fa-gear"></i></button>
-        <button class="navbtn" id="devtools" onclick="devTools()"><i class="fa-solid fa-code"></i></button>
-      </div>
-    </center>
-    <!--<div style="display: flex; justify-content: center;">
-    <div class="dropdown" onclick="showui()" onmouseleave="hideshowhiddenui()">
-      Show UI
-    </div>
-  </div>-->
-    <div class="searchbar">
-      <form id="searchform" style="display: flex; justify-content: center;">
-        <input type="text" class="searchinput" placeholder="Search the web freely..." />
-        <button class="searchbtn" style="margin-left: 5px;">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-  <div class="flex-box">
-    <div class="proxyurl">
-      <input placeholder="Processing . . ." id="proxyurl" value="" title="Click to copy link." style="color: #909090;"
-        onclick="CopyLink('proxyurl');" readonly />
-    </div>
-  </div>
-  </div>
-  <script src="./uv/uv.bundle.js"></script>
-  <script src="./uv/uv.config.js"></script>
-  <script src="./js/learninginit.js"></script>
-  <script src="./js/learning.js"></script>
+        <div>
+            <div class="displayiframe">
+                <iframe src="" id="result" height="50vh"></iframe>
+            </div>
+            <div class="main" onmouseover=" detecthiddenui()" onmouseleave="inputlostfocus = 0; hideui()">
+                <div class="align-left">
+                    <button class="navbtn" onclick="document.getElementById('result').contentWindow.history.go(-1);">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                    <button class="navbtn"
+                        onclick="document.getElementById('result').contentWindow.location.reload(true);">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                    <button class="navbtn" onclick="document.getElementById('result').contentWindow.history.go(1);">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                    <button class="navbtn" onclick="popoutWindow()">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </button>
+                    <button class="navbtn" onclick="devTools()">
+                        <i class="fa-solid fa-code"></i>
+                    </button>
+                </div>
 
-  <script>
+                <div style="display: flex; justify-content: center;
+                margin-left: 20px; margin-right: 20px;">
+                    <form id="searchform">
+                        <input class="searchinput" placeholder="Search the web or enter a URL. . ."
+                            onfocus="keepuiopen = 1; dontchangeurl = 1"
+                            onblur="keepuiopen = 0; dontchangeurl = 0; inputlostfocus = 1; hideui()">
+                    </form>
+                </div>
+
+                <div class="align-right">
+                    <button class="navbtn" onclick="location.replace('/dashboard')">
+                        <i class="fa-solid fa-home"></i>
+                    </button>
+                    <button class="navbtn" onclick="toggleui()">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </button>
+                    <button class="navbtn" onclick="aboutBlank()">
+                        <i class="fa-solid fa-masks-theater"></i>
+                    </button>
+                    <button class="navbtn" onclick="fullscreen()">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                    <button class="navbtn" onclick="togglesettings()">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                </div>
+            </div>
+    </center>
+    <button class="toggleuibtn" onclick="toggleui()">
+        <p style="margin-top: -10px;">Show UI</p>
+    </button>
+    <div class="menu">
+        <h1 style="margin-top: -1px;">Settings Panel</h1>
+        <p style="margin-top: -7px; text-align: start;">A Settings Menu that can be used for your customization.</p>
+        <center class="container">
+            <div>
+                <button onclick="toggleClock()">Toggle Clock</button>
+                <button id="navbarbtn" onclick="
+                if (localStorage.getItem('autohideui') == 0) {
+                    localStorage.setItem('autohideui', 1);
+                    alert('Reloading the page for changes to take effect..')
+                location.reload();
+                } else if (localStorage.getItem('autohideui') == 1) {
+                    localStorage.setItem('autohideui', 0);
+                    alert('Reloading the page for changes to take effect..');
+                location.reload();
+                }
+                ">Auto-hide Navbar</button>
+
+                <button id="copy" onclick="    
+                let temp = document.createElement('input');
+                temp.value = document.getElementById('result').contentWindow.location.href;
+                document.body.appendChild(temp);
+                temp.select();
+                temp.setSelectionRange(0, 99999);
+                document.execCommand('copy');
+                document.body.removeChild(temp);
+                getElementById('copy').innerHTML = 'Copied!';
+                delay(2000).then(() => {
+                    getElementById('copy').innerHTML = 'Copy Encoded URL';
+                });
+                doc">Copy Encoded URL</button>
+
+                <button onclick="
+                document.querySelector('.main').style.display = 'none';
+                document.querySelector('.menu').style.display = 'none';
+                document.querySelector('.clockdisplay').style.display = 'none';
+                document.getElementById('result').style.top = 0;
+                document.getElementById('result').style.height = 'calc(100vh)';
+                ">Destroy UI</button>
+            </div>
+            <h2>== Other stuff ==</h2>
+            <button onclick="window.open('https://discord.com/invite/rqBgxP9Gnj').focus();">Join Discord Server</button>
+            <button
+                onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdwOhdF3YtIx6IVQE5UA81bmQ_4a8QkIOu-WaC8mAyG9YHT6A/viewform?usp=sf_link').focus();">Report
+                a bug</button>
+        </center>
+        <br />
+    </div>
+    <center>
+        <div class="clockdisplay">
+            <p id="clock">12:00:00 A.M.</p>
+        </div>
+    </center>
+    </div>
+</body>
+<script src="./js/learninginit.js"></script>
+<script src="./js/clock.js"></script>
+<script src="./uv/uv.bundle.js"></script>
+<script src="./uv/uv.config.js"></script>
+<script>
     let savedTitle = localStorage.getItem("tabName");
     let savedBG = localStorage.getItem("BG");
     let savedFavicon = localStorage.getItem("favicon");
@@ -99,51 +340,260 @@
     let savedIframeBackground = localStorage.getItem("loader");
 
     if (savedTitle) {
-      document.title = savedTitle;
+        document.title = savedTitle;
     }
     if (savedFavicon) {
-      favicon.href = savedFavicon;
+        favicon.href = savedFavicon;
     }
 
     if (savedBG) {
-      document.body.style.backgroundImage = `url("${savedBG}")`;
-      document.body.style.backgroundRepeat = "no-repeat";
-      document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundImage = `url("${savedBG}")`;
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
     }
 
     if (savedIframeBackground) {
-      iframe.style.backgroundImage = `url('${savedIframeBackground}')`;
-      iframe.style.backgroundSize = "cover";
-      iframe.style.backgroundRepeat = "no-repeat";
+        iframe.style.backgroundImage = `url('${savedIframeBackground}')`;
+        iframe.style.backgroundSize = "cover";
+        iframe.style.backgroundRepeat = "no-repeat";
     }
 
     let tabclosingval = localStorage.getItem("tabcloseval");
 
     window.onbeforeunload = () => {
-      if (tabclosingval == "true") {
-        return "Do you want to leave the current tab?";
-      }
+        if (tabclosingval == "true") {
+            return "Do you want to leave the current tab?";
+        }
     }
 
     function panic(event) {
-      if (event.key === savedKey) {
-        focusIframe();
-        if (savedLink.includes("https://")) {
-          window.location.href = savedLink;
-        } else {
-          window.location.href = "https://" + savedLink;
+        if (event.key === savedKey) {
+            focusIframe();
+            if (savedLink.includes("https://")) {
+                location.replace(savedLink);
+            } else {
+                location.replace("https://" + savedLink);
+            }
         }
-      }
     }
 
     function focusIframe() {
-      document.getElementById("result").focus();
+        document.getElementById("result").focus();
     }
 
     document.addEventListener("keydown", panic);
-  </script>
+</script>
+<script>
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+        });
+    }
+    let dontchangeurl = 0;
+    let inputlostfocus = 0;
+    let isShown = 0;
+    let isHidden = 0;
+    let keepuiopen = 2;
+    if (localStorage.getItem("autohideui") == 1) {
+        document.querySelector(".main").style.top = "-50px";
+        document.querySelector(".toggleuibtn").style.transition = "0.3s";
+        document.querySelector(".toggleuibtn").style.top = "0";
+        document.getElementById("result").style.height = "calc(100vh - 1.8em)";
+        document.getElementById("result").style.top = "27px";
+        document.querySelector(".toggleuibtn").style.display = "none";
+        document.getElementById('navbarbtn').innerHTML = 'Show Navbar';
+        isHidden = 1;
+        keepuiopen = 0;
+    } else {
+        isHidden = 2;
+        document.getElementById('navbarbtn').innerHTML = 'Auto-hide Navbar';
+    }
 
+    if (!localStorage.getItem("autohideui")) {
+        localStorage.setItem("autohideui", 0);
+    }
 
-</body>
+    if (localStorage.getItem("hiddenClock") == 1) {
+        document.querySelector(".clockdisplay").style.display = "none";
+    }
+
+    function togglesettings() {
+        if (isShown == 0) {
+            document.querySelector(".menu").style.visibility = "visible";
+            document.querySelector(".menu").style.opacity = "1";
+            document.querySelector(".menu").style.transition = "0.2s ease-out";
+            isShown = 1;
+            keepuiopen = 1;
+        } else {
+            document.querySelector(".menu").style.visibility = "hidden";
+            document.querySelector(".menu").style.opacity = "0";
+            isShown = 0;
+            keepuiopen = 0;
+        }
+    }
+    function toggleui() {
+        document.querySelector(".main").style.transition = "0.3s ease-in";
+        document.getElementById("result").style.transition = "0.23s ease-in";
+        if (localStorage.getItem("hideui") == 1) {
+            document.querySelector(".main").style.top = "0px";
+            document.getElementById("result").style.height = "calc(100vh - 5em)";
+            document.getElementById("result").style.top = "80px";
+            localStorage.setItem("hideui", 0);
+            document.querySelector(".toggleuibtn").style.transition = "0.3s";
+            document.querySelector(".toggleuibtn").style.top = "-100px";
+        } else {
+            document.querySelector(".main").style.top = "-120px";
+            document.getElementById("result").style.height = "calc(100vh)";
+            document.getElementById("result").style.top = "0";
+            localStorage.setItem("hideui", 1);
+            document.querySelector(".menu").style.visibility = "hidden";
+            document.querySelector(".menu").style.opacity = "0";
+            delay(1000).then(() => {
+                document.querySelector(".toggleuibtn").style.transition = "0.3s";
+                document.querySelector(".toggleuibtn").style.top = "0";
+                document.querySelector(".main").style.transition = "none";
+                document.getElementById("result").style.transition = "none";
+            });
+        }
+    }
+
+    function detecthiddenui() {
+        document.querySelector(".main").style.transition = "0.2s ease-in";
+        document.getElementById("result").style.transition = "0.23s ease-in";
+        if (isHidden == 1) {
+            isHidden = 0;
+            document.querySelector(".main").style.top = "0px";
+            document.getElementById("result").style.height = "calc(100vh - 5em)";
+            document.getElementById("result").style.top = "80px";
+            localStorage.setItem("hideui", 0);
+            document.querySelector(".toggleuibtn").style.transition = "0.3s";
+            document.querySelector(".toggleuibtn").style.top = "-100px";
+        }
+        delay(300).then(() => {
+            document.querySelector(".main").style.transition = "none";
+            document.getElementById("result").style.transition = "none";
+        });
+    }
+
+    function hideui() {
+        if (keepuiopen == 0) {
+            if (isHidden == 0) {
+                if (inputlostfocus == 0) {
+                    document.querySelector(".main").style.top = "-50px";
+                    document.querySelector(".toggleuibtn").style.transition = "0.3s";
+                    document.querySelector(".toggleuibtn").style.top = "0";
+                    document.getElementById("result").style.height = "calc(100vh - 1.8em)";
+                    document.getElementById("result").style.top = "27px";
+                    document.querySelector(".toggleuibtn").style.display = "none";
+                    isHidden = 1;
+                }
+            }
+            delay(500).then(() => {
+                document.querySelector(".main").style.transition = "none";
+                document.getElementById("result").style.transition = "none";
+            });
+        }
+    }
+
+    function popoutWindow() {
+        let popupWindow = window.open("", "Popup", "width=600,height=400");
+        popupWindow.document.write(`<iframe src="${document.getElementById('result').contentWindow.location.href}" width="100%" height="100%" frameborder="0" style="top: 0; bottom: 0; left: 0; right: 0; position: fixed; margin: 0; border: none; padding: 0;"></iframe>`);
+        if (!popupWindow || popupWindow.closed || typeof popupWindow.closed == 'undefined') {
+            alert("The popup window has been blocked. Please allow popups for this page, or refresh the page to try again.");
+        }
+    }
+    function fullscreen() {
+        let doc = document.documentElement;
+        if (doc.requestFullscreen) {
+            doc.requestFullscreen();
+        } else if (doc.mozRequestFullScreen) {
+            doc.mozRequestFullScreen();
+        } else if (doc.webkitRequestFullscreen) {
+            doc.webkitRequestFullscreen();
+        } else if (docElm.msRequestFullscreen) {
+            doc.msRequestFullscreen();
+        }
+    }
+
+    function aboutBlank() {
+        let win = window.open();
+        let url = window.location.href;
+        let popoutIframe = win.document.createElement("iframe");
+        let faviconLink = win.document.createElement('link');
+        popoutIframe.style.position = "fixed";
+        popoutIframe.style.width = "100%";
+        popoutIframe.style.height = "100%";
+        popoutIframe.style.border = "none";
+        popoutIframe.style.top = "0";
+        popoutIframe.style.bottom = "0";
+        popoutIframe.style.left = "0";
+        popoutIframe.style.right = "0";
+        popoutIframe.style.margin = "0";
+        popoutIframe.style.padding = "0";
+        popoutIframe.style.overflow = "hidden";
+        popoutIframe.style.backgroundColor = "#000";
+        popoutIframe.src = url;
+        if (!localStorage.getItem("tabName")) {
+            win.document.title = "Mathematics";
+        } else {
+            win.document.title = localStorage.getItem("tabName");
+        }
+        faviconLink.rel = 'shortcut icon';
+        if (localStorage.getItem("favicon")) {
+            faviconLink.href = localStorage.getItem("favicon");
+        } else {
+            faviconLink.href = "";
+        }
+        win.document.head.appendChild(faviconLink);
+        win.document.body.appendChild(popoutIframe);
+        location.replace("https://classroom.google.com");
+    }
+
+    function toggleClock() {
+        var clockDisplay = document.querySelector(".clockdisplay");
+        if (clockDisplay.style.display === "") {
+            clockDisplay.style.display = "none";
+            localStorage.setItem("hiddenClock", 1);
+        } else {
+            clockDisplay.style.display = "";
+            localStorage.setItem("hiddenClock", 0);
+        }
+    }
+
+    function devTools() {
+        if (!document.getElementById("result")) return
+        let erudaWindow = document.getElementById("result").contentWindow
+        let erudaDocument = document.getElementById("result").contentDocument
+
+        if (!erudaWindow || !erudaDocument) return
+
+        if (erudaWindow.eruda?._isInit) {
+            erudaWindow.eruda.destroy()
+        } else {
+            let script = erudaDocument.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/eruda'
+            script.onload = function () {
+                if (!erudaWindow) return
+                erudaWindow.eruda.init();
+                erudaWindow.eruda.show();
+            }
+            erudaDocument.head.appendChild(script);
+        }
+    }
+    function saveContentWindow() {
+        setTimeout(function () {
+            localStorage.setItem("savedURL", document.getElementById('result').contentWindow.location.href);
+            if (dontchangeurl == 0) {
+                let tempurl = document.getElementById('result').contentWindow.location.href;
+                let parts = tempurl.split('/');
+                let lastPart = parts[parts.length - 1];
+                document.querySelector(".searchinput").value = __uv$config.decodeUrl(lastPart);
+            }
+            saveContentWindow();
+        }, 250);
+    }
+    saveContentWindow();
+
+</script>
 
 </html>

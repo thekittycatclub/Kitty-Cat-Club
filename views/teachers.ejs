@@ -85,7 +85,7 @@
     <script>
         const isLoggedIn = localStorage.getItem("loggedin");
         if (isLoggedIn) {
-            location.href = "/dashboard";
+            location.replace("/dashboard");
         }
         const err = document.getElementById("error");
         document.addEventListener("DOMContentLoaded", function () {
