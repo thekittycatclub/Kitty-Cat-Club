@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kitty Cat Club | <%= title %>
   </title>
-  <link rel="stylesheet" href="./css/navbar.css" />
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -46,7 +45,7 @@
         </div>
         <div class="content" style="width: 2000px">
           <h1>Kitty Cat Unblocker</h1>
-          <img src="./img/logo.png" style="width: 15%;" /><br /><br />
+          <img src="./img/logo.png" style="width: 13em;" /><br /><br />
           <form style="width: 100%; display: flex; justify-content: center;" id="indexform">
             <input type="text" id="searchbar" placeholder="Search the web freely..." />
             <button id="searchbtn" style="margin-left: 5px;">
@@ -69,7 +68,14 @@
             <button onclick="openApp('https://start.duckduckgo.com/')" class="browserbtn">
               <img src="./img/duckduckgo.png" />
             </button>
+            <button onclick="openApp('https://https://www.ask.com/')" class="browserbtn">
+              <img src="./img/ask.png" />
+            </button>
+            <button onclick="openApp('https://yandex.com/')" class="browserbtn">
+              <img src="./img/yendex.png" />
+            </button>
           </div>
+          <p id="timePeriod"></p>
         </div>
         <div style="margin-right: auto;">
           <script type="text/javascript">
@@ -124,7 +130,7 @@
     }
 
     let tabclosingval = localStorage.getItem("tabcloseval");
-    
+
     window.onbeforeunload = () => {
       if (tabclosingval == "true") {
         return "Do you want to leave the current tab?";
@@ -148,6 +154,35 @@
     }
 
     document.addEventListener("keydown", panic);
+
+    ////////////////
+
+    // Update the content of the HTML element with the detected time period
+    function displayCurrentTime() {
+      setTimeout(function () {
+        function getTimePeriod() {
+          let time = new Date();
+          let hour = time.getHours();
+
+          let tp;
+
+          if (hour >= 0 && hour < 5) {
+            tp = "Midnight (12 A.M. to 6 A.M.)";
+          } else if (hour >= 5 && hour < 12) {
+            tp = "Morning (6 A.M. to 12 P.M.)";
+          } else if (hour >= 12 && hour < 18) {
+            tp = "Afternoon (12 A.M. to 6 P.M.)";
+          } else {
+            tp = "Evening (6 P.M. to 12 A.M.)";
+          }
+
+          return tp;
+        }
+        document.getElementById("timePeriod").innerHTML = "Current time: " + getTimePeriod();
+        foreverloop();
+      }, 1000);
+    }
+    displayCurrentTime();
   </script>
 </body>
 

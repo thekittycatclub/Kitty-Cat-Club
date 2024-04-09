@@ -40,7 +40,7 @@ function notify(title, content) {
   });
 }
 
-function setTabTitle() {
+function settabandfavicon() {
   let input = document.getElementById("changetitle");
   let newTabName = input.value;
 
@@ -51,10 +51,6 @@ function setTabTitle() {
     document.title = newTabName;
     localStorage.setItem("tabName", newTabName);
   }
-}
-
-
-function setFavicon() {
   let url = document.getElementById("changefavicon").value;
   if (url === "" || url === null || !url) {
     favicon.href = "./img/logo.png";
@@ -63,6 +59,11 @@ function setFavicon() {
     favicon.href = url;
     localStorage.setItem("favicon", url);
   }
+  document.querySelector(".curtain").style.opacity = 0;
+  delay(300).then(() => {
+    document.querySelector(".curtain").style.visibility = "hidden";
+    document.getElementById('customtabck').setAttribute('hidden', true);
+  });
 }
 
 function openAboutBlack() {
@@ -203,3 +204,10 @@ function toggleClockVisiblity() {
   }
   notify("Changes Saved", "Changes has been saved!");
 }
+
+/*document.getElementById("cancelchange").addEventListener("click", function() {
+  localStorage.setItem("displaypanel", 3);
+  localStorage.setItem("savedLink", "");
+  localStorage.setItem("savedKey", "");
+  location.reload();
+})*/

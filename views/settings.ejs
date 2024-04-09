@@ -155,8 +155,8 @@
         <div class="settingsList" style="margin-top: 5%; justify-content: center;">
             <div class="card">
                 <center>
-                    <h1 style="font-size: 30px;">Change title and icon</h1>
-                    <p>Allows you to change the title of the tab, or change the favicon.</p>
+                    <h1 style="font-size: 30px;">Tab Cloaking</h1>
+                    <p>Changes the title of webite, or changes the favicon.</p>
                     <br />
                     <div>
                         <button onclick="changeFaviconToGoogle()" style="width: auto;" class="tabbtn"><img
@@ -167,15 +167,11 @@
                                 src="./img/google_drive.png" alt="" style="width: 26px;"></button>
                         <button onclick="changeFaviconToGoogleDocs()" style="width: auto;" class="tabbtn"><img
                                 src="./img/google_docs.ico" alt="" style="width: 26px;"></button>
-                    </div>
-                    <div>
-                        <p>Custom tab cloaking:</p>
-                        <br />
-                        <input id="changetitle" onkeyup="setTabTitle()" type="text"
-                            placeholder="Your educational title.." />
-                        <br /><br />
-                        <input id="changefavicon" onkeyup="setFavicon()" type="text"
-                            placeholder="Paste Favicon URL.." />
+                        <button style="width: auto;" class="tabbtn" onclick="document.querySelector('.curtain').style.visibility = 'visible'
+                        document.querySelector('.curtain').style.opacity = '1'
+                        document.getElementById('customtabck').removeAttribute('hidden');
+                        ">
+                            <i style="font-size: 2em;" class="fa-solid fa-screwdriver-wrench"></i></button>
                     </div>
                 </center>
             </div>
@@ -188,36 +184,30 @@
             <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Panic key system</h1>
-                    <p>Redirects you to the inputted website whenever you pressed on the recorded keystroke.</p>
+                    <p>Self explainatory, but when you press the recorded keystroke it will redirect you to the inputted
+                        link.</p>
                     <div class="keystrokebtns">
-                        <button id="recordbtn" id="clearbtn" style="padding: 12px;">
+                        <button id="recordbtn" id="clearbtn" style="padding: 12px; margin-top: 5px;">
                             Record keystroke
                         </button>
                         <button
                             onclick="localStorage.removeItem('savedKey'); localStorage.removeItem('savedLink'); location.reload();"
-                            style="padding: 12px;">
-                            Clear all
+                            style="padding: 12px; margin-top: 5px;">
+                            Reset P.K.S.
                         </button>
-                    </div>
-                    <br /><br />
-                    <div id="RecordPanel">
-                        <p>Recorded keystroke:</p>
-                        <p id="ksText">Record a keystroke!</p>
-                    </div>
-                    <br />
-                    <input id="eduInput" type="text" placeholder="Add educational link..." />
-                    <button id="changeUrl" style="margin-left: 10px; padding: 9px; width: 25%;">Save link</button>
-                    <br />
+                        <!--</div><br />
+                    -->
                 </center>
             </div>
             <div class="card">
                 <center>
                     <h1 style="font-size: 30px;">Change Credentials</h1>
                     <p>Changes your username and password.</p>
-                    <br />
                     <div>
-                        <input placeholder="New username..." type="text" id="username" /><br /><br />
-                        <input placeholder="New password..." type="password" id="password" /><br /><br />
+                        <input placeholder="New username..." type="text" id="username"
+                            style="width: 15em; margin-left: 5px;  margin-right: 5px;" />
+                        <input placeholder="New password..." type="password" id="password"
+                            style="width: 15em; margin-left: 5px;  margin-right: 5px;" /><br />
                         <script>
                             let userInput = document.getElementById("username");
                             let passInput = document.getElementById("password");
@@ -234,6 +224,8 @@
                             function savePass() {
                                 if (!passInput.value) {
                                     notify("Password error", "You can't set a blank password!");
+                                } else if (!(passInput.value.length >= 10)) {
+                                    notify("Password error", `Your new password must be at least 10 characters.`);
                                 } else {
                                     localStorage.setItem("savedPass", passInput.value);
                                     notify("Password saved", `Password has been saved! <br/> (New password: ${localStorage.getItem("savedPass")})`);
@@ -252,16 +244,13 @@
                                 }
                             }
                         </script>
-                        <button onclick="saveUser()">
+                        <button onclick="saveUser()" style="margin-top: 5px; margin-right: 5em;">
                             Save Username
                         </button>
-                        <button onclick="savePass()">
+                        <button onclick="savePass()" style="margin-top: 5px;">
                             Save Password
                         </button>
                         <br /><br />
-                        <button onclick="savedBoth()">
-                            Save Both Credentials
-                        </button>
                     </div>
                 </center>
             </div>
@@ -269,7 +258,6 @@
                 <center>
                     <h1 style="font-size: 30px;">Search engine</h1>
                     <p>Switches the proxy search engine. (Default is Google)</p>
-                    <br />
                     <div class="text-center" style="display: flexbox;">
                         <div class="center">
                             <div class="dropdown"><br>
@@ -294,6 +282,16 @@
                                     <label for="id14">
                                         <span>DuckDuckGo</span>
                                     </label>
+
+                                    <input type="radio" name="drop1" id="id15" class="radio">
+                                    <label for="id15">
+                                        <span>Ask.com</span>
+                                    </label>
+
+                                    <input type="radio" name="drop1" id="id16" class="radio">
+                                    <label for="id16">
+                                        <span>Yandex</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -301,6 +299,7 @@
                             placeholder="[Add search engine link]" value="[Add search engine here]">
                     </div>
             </div>
+
             </center>
             <div class="card">
                 <center>
@@ -362,6 +361,59 @@
                             style="padding: 15px; font-size: 15px;" id="logout">Log out</button>
                     </div>
                 </center>
+            </div>
+            <div class="curtain">
+                <div class="centerct">
+                    <div class="cardfixed" id="recCard" hidden>
+                        <div id="RecordPanel" style=" margin-top: 20px;">
+                            <p>Recorded keystroke:</p>
+                            <p id="ksText">Record a keystroke!</p>
+                        </div><br />
+                        <div class="centermargin">
+                            <input id="eduInput" type="text" placeholder="Add educational link..." />
+                            <button id="changeUrl" style="margin-left: 10px; padding: 9px; width: 25%;">Save
+                                link</button>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="centerct">
+                    <div class="cardfixed" id="customtabck" hidden>
+                        <h1 style="display: flex; justify-content: center;">Custom Tab Cloaking</h1><br />
+                        <div style="display: flex; justify-content: center;">
+                            <input id="changetitle" type="text" placeholder="Your educational title.." />
+                            <br /><br />
+                        </div><br />
+                        <div style="display: flex; justify-content: center;">
+                            <input id="changefavicon" type="text" placeholder="Paste Favicon URL.." />
+                        </div><br />
+                        <div style="display: flex; justify-content: center; margin-top: 5px;">
+                            <button style="padding: 0.7em; margin-right: 5px; margin-left: 5px;" id="savechanges"
+                                onclick="settabandfavicon()">Save Changes</button>
+                            <button style="padding: 0.7em; margin-left: 5px; margin-right: 5px;" id="cancelchanges"
+                                onclick="
+                                document.getElementById('changetitle').value = '';
+                                document.getElementById('changefavicon').value = '';
+                                document.querySelector('.curtain').style.opacity = 0;
+                                delay(300).then(() => {
+                                    document.querySelector('.curtain').style.visibility = 'hidden';
+                                    document.getElementById('customtabck').setAttribute('hidden', true);
+                                });
+                            ">Cancel Changes</button>
+                            <button style="padding: 0.7em; margin-left: 5px; margin-right: 5px;" id="clearall" onclick="
+                            document.title = 'Kitty Cat Club | Settings';
+                            document.getElementById('icon').href = './img/logo.png';
+                            localStorage.setItem('favicon', './img/logo.png');
+                            localStorage.setItem('tabName', '');
+                            document.querySelector('.curtain').style.opacity = 0;
+                                delay(300).then(() => {
+                                    document.querySelector('.curtain').style.visibility = 'hidden';
+                                    document.getElementById('customtabck').setAttribute('hidden', true);
+                                });
+                            ">Clear all</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="./js/settings.js"></script>
@@ -462,6 +514,12 @@
                         case "duckduckgo":
                             localStorage.setItem("searchengine", 'https://start.duckduckgo.com/?q=');
                             return "https://start.duckduckgo.com/?q=";
+                        case "ask.com":
+                            localStorage.setItem("searchengine", 'https://www.ask.com/web?q=');
+                            return "https://start.duckduckgo.com/?q=";
+                        case "yandex":
+                            localStorage.setItem("searchengine", 'https://yandex.com/search/?text=');
+                            return "https://yandex.com/search/?text=";
                         default:
                             return "";
                     }

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     .panel {
-      width: 25%;
+      width: 25em;
       padding: 20px;
       border: 2px solid #000;
       background-color: rgba(20, 20, 20, 0.612);
@@ -26,98 +26,104 @@
     location.href = "/";
   }
 </script>
+
 <body>
-    <center>
-      <div>
-        <div class="panel">
-          <h1>Loading site...</h1>
-          <div>
-            <img id="kitty" src="" alt="kitty!!!!" style="width: 20%; border-radius: 20px;">
-          </div>
-          <p>
-            If it dosen't load at all, please report it in our discord.
-            <br />
-          </p>
+  <center>
+    <div>
+      <div class="panel">
+        <h1>Loading site...</h1>
+        <div>
+          <img id="kitty" src="" alt="kitty!!!!" style="width: 10em; border-radius: 20px;">
         </div>
+        <p id="text">
+          If it dosen't load at all, please report it in our discord.
+          <br />
+        </p>
       </div>
-    </center>
-    <script>
-      let savedTitle = localStorage.getItem("tabName");
-      let savedBG = localStorage.getItem("BG");
-      let savedFavicon = localStorage.getItem("favicon");
-      let favicon = document.getElementById("icon");
-      let savedLink = localStorage.getItem("savedLink");
-      let savedKey = localStorage.getItem("savedKey");
+    </div>
+  </center>
+  <script>
+    let savedTitle = localStorage.getItem("tabName");
+    let savedBG = localStorage.getItem("BG");
+    let savedFavicon = localStorage.getItem("favicon");
+    let favicon = document.getElementById("icon");
+    let savedLink = localStorage.getItem("savedLink");
+    let savedKey = localStorage.getItem("savedKey");
 
-      if (savedTitle) {
-        document.title = savedTitle;
-      }
-      if (savedFavicon) {
-        favicon.href = savedFavicon;
-      }
+    if (savedTitle) {
+      document.title = savedTitle;
+    }
+    if (savedFavicon) {
+      favicon.href = savedFavicon;
+    }
 
-      if (savedBG) {
-        document.body.style.backgroundImage = `url("${savedBG}")`;
-        document.body.style.backgroundRepeat = "no-repeat"
-        document.body.style.backgroundSize = "cover";
-      }
+    if (savedBG) {
+      document.body.style.backgroundImage = `url("${savedBG}")`;
+      document.body.style.backgroundRepeat = "no-repeat"
+      document.body.style.backgroundSize = "cover";
+    }
 
-      function panic(event) {
-        if (event.key === savedKey || event.key === savedKey) {
-          if (savedLink.includes("https://")) {
-            location.replace(savedLink);
-          } else {
-            location.replace("https://" + savedLink);
-          }
+    function panic(event) {
+      if (event.key === savedKey || event.key === savedKey) {
+        if (savedLink.includes("https://")) {
+          location.replace(savedLink);
+        } else {
+          location.replace("https://" + savedLink);
         }
       }
+    }
 
-      document.addEventListener("keydown", panic);
-    </script>
-    <script>
-      let kitty = document.getElementById("kitty");
-      let newLoader = localStorage.getItem("loader");
+    document.addEventListener("keydown", panic);
+  </script>
+  <script>
+    let kitty = document.getElementById("kitty");
+    let newLoader = localStorage.getItem("loader");
+    let Mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-      let kitties = [
-        "./img/kitty/kitty1.gif",
-        "./img/kitty/kitty2.gif",
-        "./img/kitty/kitty3.gif",
-        "./img/kitty/kitty4.gif",
-        "./img/kitty/kitty5.gif",
-        "./img/kitty/kitty6.gif",
-        "./img/kitty/kitty7.gif",
-        "./img/kitty/kitty8.gif",
-        "./img/kitty/kitty9.gif",
-        "./img/kitty/kitty10.gif",
-      ];
+    if (Mobile) {
+      document.getElementById("text").style.display = "none";
+    }
+
+    let kitties = [
+      "./img/kitty/kitty1.gif",
+      "./img/kitty/kitty2.gif",
+      "./img/kitty/kitty3.gif",
+      "./img/kitty/kitty4.gif",
+      "./img/kitty/kitty5.gif",
+      "./img/kitty/kitty6.gif",
+      "./img/kitty/kitty7.gif",
+      "./img/kitty/kitty8.gif",
+      "./img/kitty/kitty9.gif",
+      "./img/kitty/kitty10.gif",
+    ];
 
 
-      let randomKitty = Math.floor(Math.random() * kitties.length);
+    let randomKitty = Math.floor(Math.random() * kitties.length);
 
+    kitty.src = kitties[randomKitty];
+
+    if (newLoader) {
+      kitty.src = `${newLoader}`;
+    } else {
       kitty.src = kitties[randomKitty];
+    }
 
-      if (newLoader) {
-        kitty.src = `${newLoader}`;
-      } else {
-        kitty.src = kitties[randomKitty];
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function delay(milliseconds) {
+        return new Promise(resolve => {
+          setTimeout(resolve, milliseconds);
+        });
       }
 
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        function delay(milliseconds) {
-          return new Promise(resolve => {
-            setTimeout(resolve, milliseconds);
-          });
-        }
-
-        delay(500).then(() => {
-          location.replace("/learning");
-        });
+      delay(250).then(() => {
+        location.replace("/learning");
       });
-      
-    </script>
-    <script src="./js/index.js"></script>
+    });
+
+  </script>
+  <script src="./js/index.js"></script>
 </body>
 
 </html>

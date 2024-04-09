@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 * {
     font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
 }
 body {
     background-color: #1c1c1c;
@@ -17,6 +18,7 @@ button {
     color: #fff;
     font-size: 0.7em;
     font-size: 15px;
+    transition: 0.3s;
 }
 
 button img {
@@ -25,6 +27,7 @@ button img {
 
 button:hover {
     background-color: #252525;
+    cursor: pointer;
 }
 
 input {
@@ -80,4 +83,5 @@ input:focus {
     transition: opacity 0.2s ease;
     border: 2px solid #101010;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    z-index: 99999;
   }
