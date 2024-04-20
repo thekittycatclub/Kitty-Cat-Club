@@ -116,10 +116,15 @@
           setTimeout(resolve, milliseconds);
         });
       }
-
-      delay(250).then(() => {
-        location.replace("/learning");
-      });
+      if (Mobile) {
+        delay(250).then(() => {
+          location.replace("/learningMB");
+        });
+      } else {
+        delay(250).then(() => {
+          location.replace("/learning");
+        });
+      }
     });
 
   </script>

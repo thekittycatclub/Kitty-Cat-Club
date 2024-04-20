@@ -74,14 +74,14 @@
             </div>
     </center>
     <button class="toggleuibtn" onclick="toggleui()">
-        <p style="margin-top: -10px;">Show UI</p>
+        <p style="margin-top: -10px;"><i class="fa-solid fa-x"></i></p>
     </button>
     <div class="menu">
         <h1 style="margin-top: -1px;">Settings Panel</h1>
         <p style="margin-top: -7px; text-align: start;">A Settings Menu that can be used for your customization.</p>
         <center class="container">
             <div>
-                <button onclick="toggleClock()">Toggle Clock</button>
+                <!--<button onclick="toggleClock()">Toggle Clock</button>-->
                 <button id="navbarbtn" onclick="
                 if (localStorage.getItem('autohideui') == 0) {
                     localStorage.setItem('autohideui', 1);
@@ -131,6 +131,12 @@
     </center>
     </div>
 </body>
+<script>
+    const isLoggedIn = localStorage.getItem("loggedin");
+    if (!isLoggedIn) {
+      location.href = "/";
+    }
+  </script>
 <script src="./js/learninginit.js"></script>
 <script src="./js/clock.js"></script>
 <script src="./uv/uv.bundle.js"></script>

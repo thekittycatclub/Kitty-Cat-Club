@@ -12,9 +12,11 @@
         * {
             font-family: 'Montserrat', sans-serif;
         }
+
         h1 {
             font-size: 2em;
         }
+
         body {
             background-color: aliceblue;
             color: #000;
@@ -61,6 +63,7 @@
 
         button:hover {
             background-color: rgb(0, 111, 181);
+            cursor: pointer;
         }
     </style>
 </head>
@@ -77,7 +80,7 @@
         <div class="panel">
             <h1>EduVista: Student Login</h1>
             <br>
-            <form>
+            <form onsubmit="loginSystem()" id="form">
                 <br><input placeholder="Username" id="username" type="text" />
                 <br><br>
                 <input placeholder="Password" id="password" type="password" />
@@ -122,18 +125,31 @@
         function loginSystem() {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-
-            if (username === saveduser && password === savedpass) {
-                location.replace("/dashboard");
-                localStorage.setItem("loggedin", true);
-            } else {
-                error.innerHTML = "Error: Invalid credentials!";
+            if (!username || !password) {
+                error.innerHTML = "The input fields can't have a blank value!";
                 error.style.display = "";
                 delay(2000).then(() => {
                     error.style.display = "none";
                 });
+            } else {
+                if (username === saveduser && password === savedpass) {
+                    location.replace("/dashboard");
+                    localStorage.setItem("loggedin", true);
+                } else {
+                    error.innerHTML = "Invalid credentials!";
+                    error.style.display = "";
+                    delay(2000).then(() => {
+                        error.style.display = "none";
+                    });
+                }
             }
         }
+        document.getElementById("form").addEventListener("keypress", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent form submission
+                loginSystem(); // Call your function
+            }
+        });
     </script>
 </body>
 

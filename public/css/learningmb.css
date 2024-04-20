@@ -165,7 +165,7 @@ p {
   width: 8.5em;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  visibility: hidden;
+  visibility: visible;
 }
 
 iframe {
@@ -183,15 +183,11 @@ iframe {
 .toggleuibtn {
   position: fixed;
   top: -100px;
-  border-radius: 12px;
-  width: 4em;
-  height: 3.5em;
-  right: 2em;
-  padding: 20px;
-}
-
-.fa-x {
-  margin-top: 7px;
+  border-radius: 0px 0px 12px 12px;
+  width: 100px;
+  height: 2em;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .toggleuibtn:hover {

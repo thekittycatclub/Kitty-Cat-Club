@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics
+    </title>
+    <link rel="stylesheet" href="./css/all.css" />
+    <link id="icon" rel="icon" type="image/x-icon" href="./img/math.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="./css/learning.css" />
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MZ5T2ZY0DZ');
+</script>
+
+<body>
+    <center>
+        <div>
+            <div class="displayiframe">
+                <iframe src="" id="result" height="50vh"></iframe>
+            </div>
+            <div class="main" onmouseover=" detecthiddenui()" onmouseleave="inputlostfocus = 0; hideui()">
+                <div class="align-left">
+                    <button class="navbtn" onclick="location.replace('/dashboard')">
+                        <i class="fa-solid fa-home"></i>
+                    </button>
+                </div>
+
+                <div style="display: flex; justify-content: center;
+                margin-left: 20px; margin-right: 20px;">
+                    <form id="searchform">
+                        <input class="searchinput" placeholder="Search the web..."
+                            onfocus="keepuiopen = 1; dontchangeurl = 1"
+                            onblur="keepuiopen = 0; dontchangeurl = 0; inputlostfocus = 1; hideui()">
+                    </form>
+                </div>
+
+                <div class="align-right">
+                    <button class="navbtn"
+                        onclick="document.getElementById('result').contentWindow.location.reload(true);">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+            </div>
+    </center>
+    </div>
+</body>
+<script>
+    const isLoggedIn = localStorage.getItem("loggedin");
+    if (!isLoggedIn) {
+      location.href = "/";
+    }
+  </script>
+<script src="./js/learninginit.js"></script>
+<script src="./js/clock.js"></script>
+<script src="./uv/uv.bundle.js"></script>
+<script src="./uv/uv.config.js"></script>
+<script src="./js/learning.js"></script>
+<script>
+    let savedTitle = localStorage.getItem("tabName");
+    let savedBG = localStorage.getItem("BG");
+    let savedFavicon = localStorage.getItem("favicon");
+    let favicon = document.getElementById("icon");
+    let savedLink = localStorage.getItem("savedLink");
+    let savedKey = localStorage.getItem("savedKey");
+    let savedIframeBackground = localStorage.getItem("loader");
+
+    if (savedTitle) {
+        document.title = savedTitle;
+    }
+    if (savedFavicon) {
+        if (savedFavicon == './img/logo.png') {
+            favicon.href = './img/math.png';
+        } else {
+            favicon.href = savedFavicon;
+        }
+    }
+
+    if (savedBG) {
+        document.body.style.backgroundImage = `url("${savedBG}")`;
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+    }
+
+    if (savedIframeBackground) {
+        iframe.style.backgroundImage = `url('${savedIframeBackground}')`;
+        iframe.style.backgroundSize = "cover";
+        iframe.style.backgroundRepeat = "no-repeat";
+    }
+
+    let tabclosingval = localStorage.getItem("tabcloseval");
+
+    window.onbeforeunload = () => {
+        if (tabclosingval == "true") {
+            return "Do you want to leave the current tab?";
+        }
+    }
+
+    function panic(event) {
+        if (event.key === savedKey) {
+            focusIframe();
+            if (savedLink.includes("https://")) {
+                location.replace(savedLink);
+            } else {
+                location.replace("https://" + savedLink);
+            }
+        }
+    }
+
+    function focusIframe() {
+        document.getElementById("result").focus();
+    }
+
+    document.addEventListener("keydown", panic);
+</script>
+
+</html>

@@ -28,8 +28,19 @@
   <body>
     <center style="margin-top: 15%;">
       <br>
-      <div id="searchdiv">
-        <input onkeyup="search()" placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" />
+      <div style="display: flex; justify-content: center;">
+        <input placeholder="Search..." id="searchbar" type="text" onkeyup="search();"
+          style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px;">
+        <select id="filter" name="filter" onchange="filterGames()">
+          <option value="all">All Games</option>
+          <option value="adv">Adventure</option>
+          <option value="fps">Guns/Shooting</option>
+          <option value="simulator">Simulators</option>
+          <option value="BP">Strategy</option>
+          <option value="parkour">Parkour</option>
+          <option value="GP">Gaming Platform</option>
+          <option value="sports">Sports</option>
+        </select>
       </div>
       <div style="display: flex; align-content: center; width: 95%;">
         <div style="margin-left: auto;">
@@ -45,166 +56,166 @@
           </script>
         </div>
         <div class="gxmes">
-          <button class="card resizable-card" onclick="openApp('https://1v1.lol/')">
-            <img src="./img/gxmes/1v1lol.png" />
+          <button class="card resizable-card fps GP" onclick="openApp('https://1v1.lol/')">
+            <img src="./img/gxmes/1v1lol.png"/>
             <br />
-            <p>1v1.lol</p>
+            <p class="title">1v1.lol</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://eli-schwartz.github.io/cookieclicker')">
+          <button class="card resizable-card simulator" onclick="openApp('https://eli-schwartz.github.io/cookieclicker')">
             <img src="./img/gxmes/cookieclicker.png" />
             <br />
-            <p>Cookie clicker</p>
+            <p class="title">Cookie clicker</p>
           </button>
-          <button class="card resizable-card"
-            onclick="
+          <button class="card resizable-card GP adv" onclick="
             if (!localStorage.getItem('hasalert')) {
               alert('Credits go to @xderpman on Discord! (This is a one-time alert)');
               localStorage.setItem('hasalert', 1);
             }
-            openApp('https://now.derpman.lol');
+            openApp('https://shuttle.lol/apps/roblox-corporation/5349/roblox.html');
             ">
             <img src="./img/gxmes/roblox.webp" />
             <br />
-            <p>Roblox</p>
+            <p class="title">Roblox</p>
           </button>
-          <button class="card resizable-card"
-            onclick="openApp('https://bloxd.io')">
+          <button class="card resizable-card GP" onclick="openApp('https://bloxd.io')">
             <img src="./img/gxmes/bloxd.png" />
             <br />
-            <p>Bloxd.io</p>
+            <p class="title">Bloxd.io</p>
           </button>
-          <button class="card resizable-card"
+          <button class="card resizable-card 2D sports"
             onclick="openApp('https://game316009.konggames.com/gamez/0031/6009/live/index.html')">
             <img src="./img/gxmes/retrobowl.webp" />
             <br />
-            <p>Retro Bowl</p>
+            <p class="title">Retro Bowl</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://sd592g.github.io/zj684od4lfg/')">
+          <button class="card resizable-card GP adv" onclick="openApp('https://sd592g.github.io/zj684od4lfg/')">
             <img src="./img/gxmes/minecraft.webp" />
             <br />
-            <p>Minecraft</p>
+            <p class="title">Minecraft</p>
           </button>
-          <button class="card resizable-card"
+          <button class="card resizable-card adv"
             onclick="openApp('https://ubg365.github.io/bitlife-life-simulator/play.html')">
             <img src="./img/gxmes/bitlife.jpg" />
             <br />
-            <p>Bitlife</p>
+            <p class="title">Bitlife</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://run3.io/popgame/fnaf/fnaf1/')">
+          <button class="card resizable-card adv" onclick="openApp('https://run3.io/popgame/fnaf/fnaf1/')">
             <img src="./img/gxmes/fnaf.png" />
             <br />
-            <p>FNAF</p>
+            <p class="title">Five nights at freddys</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://www.getgames.io/games/gm/MonkeyMart/index.html')">
+          <button class="card resizable-card 2D simulator"
+            onclick="openApp('https://www.getgames.io/games/gm/MonkeyMart/index.html')">
             <img src="./img/gxmes/monkeymart.png" />
             <br />
-            <p>Monkey Mart</p>
+            <p class="title">Monkey Mart</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://webglmath.github.io/moto-x3m/')">
+          <button class="card resizable-card 2D adv" onclick="openApp('https://webglmath.github.io/moto-x3m/')">
             <img src="./img/gxmes/motox3m.avif" />
             <br />
-            <p>Moto X3M</p>
+            <p class="title">Moto X3M</p>
           </button>
-          <button class="card resizable-card"
+          <button class="card resizable-card 2D BP"
             onclick="openApp('https://watchdocumentaries.com/wp-content/uploads/games/worlds-hardest-game/')">
             <img src="./img/gxmes/whg.png" />
             <br />
-            <p>Worlds Hardest Game</p>
+            <p class="title">Worlds Hardest Game</p>
           </button>
-          <button class="card resizable-card"
-            onclick="openApp('https://google-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/version@f8de953e5d955baef80e3994a1105d74ad76315b/Rooftop-Snipers.xml')">
+          <button class="card resizable-card 2D"
+            onclick="openApp('https://htmlxm.github.io/h/rooftop-snipers/')">
             <img src="./img/gxmes/rooftop_snipers.avif" />
             <br />
-            <p>Rooftop Snipers</p>
+            <p class="title">Rooftop Snipers</p>
           </button>
-          <button class="card resizable-card"
+          <button class="card resizable-card 2D fps BP"
             onclick="openApp('https://www.silvergames.com/en/bloons-tower-defense-4/gameframe')">
             <img src="./img/gxmes/bloontd4.jpg" />
             <br />
-            <p>Bloons TD 4</p>
+            <p class="title">Bloons TD 4</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://subwaysurfersgame.io/subway-surfers.embed')">
+          <button class="card resizable-card adv parkour" onclick="openApp('https://subwaysurfersgame.io/subway-surfers.embed')">
             <img src="./img/gxmes/ss.webp" />
             <br />
-            <p>Subway Surfers</p>
+            <p class="title">Subway Surfers</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://smashkarts.io/')">
+          <button class="card resizable-card GP" onclick="openApp('https://smashkarts.io/')">
             <img src="./img/gxmes/smashkarts.avif" />
             <br />
-            <p>Smash Karts</p>
+            <p class="title">Smash Karts</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://shellshock.io')">
+          <button class="card resizable-card fps" onclick="openApp('https://shellshock.io')">
             <img src="./img/gxmes/shellshockers.png" />
             <br />
-            <p>Shell Shockers</p>
+            <p class="title">Shell Shockers</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://games-online.io/game/HappyWheels/')">
+          <button class="card resizable-card adv 2d" onclick="openApp('https://games-online.io/game/HappyWheels/')">
             <img src="./img/gxmes/happywheels.png" />
             <br />
-            <p>Happy Wheels</p>
+            <p class="title">Happy Wheels</p>
           </button>
-          <button class="card resizable-card"
+          <button class="card resizable-card parkour 2d adv"
             onclick="openApp('https://ext.minijuegosgratis.com/jetpack-joyride/index.html?mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=4100&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=224491&mp_game_uid=jetpack-joyride&mp_game_url=https%3A%2F%2Fwww.miniplay.com%2Fembed%2Fjetpack-joyride&mp_int=1&mp_locale=en_US&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_site_name=miniplay.com&mp_site_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_timezone=America%2FChicago&mp_view_type=&mini_signature=5cf17550a654849f15716dc389b6c6ea&xdm_e=https%3A%2F%2Fwww.miniplay.com&xdm_c=default8394&xdm_p=1')">
             <img src="./img/gxmes/jj.png" />
             <br />
-            <p>Jetpack Joyride</p>
+            <p class="title">Jetpack Joyride</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://chess.com')">
+          <button class="card resizable-card BP" onclick="openApp('https://chess.com')">
             <img src="./img/gxmes/chess.png" />
             <br />
-            <p>Chess.com</p>
+            <p class="title">Chess.com</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://www.twoplayergames.org/embed/time-shooter-2')">
+          <button class="card resizable-card fps" onclick="openApp('https://www.twoplayergames.org/embed/time-shooter-2')">
             <img src="./img/gxmes/time-shooter-2.png" />
             <br />
-            <p>Time Shooter 2</p>
+            <p class="title">Time Shooter 2</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://kdata1.com/2020/05/slope/')">
+          <button class="card resizable-card adv parkour" onclick="openApp('https://kdata1.com/2020/05/slope/')">
             <img src="./img/gxmes/slope.png" />
             <br />
-            <p>Slope</p>
+            <p class="title">Slope</p>
           </button>
-          <button class="card resizable-card" onclick="openApp('https://vtune.net')">
+          <button class="card resizable-card sports" onclick="openApp('https://vtune.net')">
             <img src="./img/gxmes/basketbros.jpeg" />
             <br />
-            <p>Basketbros</p>
+            <p class="title">Basketbros</p>
           </button>
-          <button class="card" onclick="openApp('https://www.google.com/logos/2019/july4th19/r6/july4th19.html?hl=en')">
+          <button class="card sports" onclick="openApp('https://www.google.com/logos/2019/july4th19/r6/july4th19.html?hl=en')">
             <img src="./img/gxmes/googleb.png" />
             <br />
-            <p>Google Baseball</p>
+            <p class="title">Google Baseball</p>
           </button>
-          <button class="card" onclick="openApp('https://gnhustgames.org/the-binding-of-isaac-source/')">
+          <button class="card BP adv" onclick="openApp('https://gnhustgames.org/the-binding-of-isaac-source/')">
             <img src="./img/gxmes/tboi.avif" />
             <br />
-            <p>The Binding of Issac</p>
+            <p class="title">The Binding of Issac</p>
           </button>
-          <button class="card" onclick="openApp('https://deadshot.io')">
+          <button class="card fps" onclick="openApp('https://deadshot.io')">
             <img src="./img/gxmes/deadshot-io.png" />
             <br />
-            <p>Deadshot.io</p>
+            <p class="title">Deadshot.io</p>
           </button>
-          <button class="card" onclick="openApp('https://games.voodoo.com/paperio2')">
+          <button class="card BP" onclick="openApp('https://games.voodoo.com/paperio2')">
             <img src="./img/gxmes/paperio2.png" />
             <br />
-            <p>Paper.io</p>
+            <p class="title">Paper.io</p>
           </button>
-          <button class="card" onclick="openApp('https://www.coolmathgames.com/0-ovo/play')">
+          <button class="card adv parkour BP" onclick="openApp('https://www.coolmathgames.com/0-ovo/play')">
             <img src="./img/gxmes/ovo.png" />
             <br />
-            <p>OvO</p>
+            <p class="title">OvO</p>
           </button>
-          <button class="card" onclick="openApp('https://www.mathplayground.com/drift-boss-v3/index.html')">
+          <button class="card adv simulator" onclick="openApp('https://www.mathplayground.com/drift-boss-v3/index.html')">
             <img src="./img/gxmes/driftboss.png" />
             <br />
-            <p>Drift Boss</p>
+            <p class="title">Drift Boss</p>
           </button>
-          <button class="card" onclick="openApp('https://w8.snokido.com/games/unity-webgl/cluster-rush/index.html')">
+          <button class="card parkour" onclick="openApp('https://w8.snokido.com/games/unity-webgl/cluster-rush/index.html')">
             <img src="./img/gxmes/clusterrush.png" />
             <br />
-            <p>Cluster Rush</p>
+            <p class="title">Cluster Rush</p>
           </button>
-          <button class="card" onclick="
+          <button class="card simulator"
+            onclick="
           if (!localStorage.getItem('fnfalert')) {
             alert('In order for the game to load, you have to click on the black screen! (This is a one-time alert)');
             localStorage.setItem('fnfalert', 1);
@@ -212,37 +223,47 @@
           openApp('https://uploads.ungrounded.net/alternate/1528000/1528775_alternate_113347_r88.zip/?NewgroundsAPI_PublisherID=1&NewgroundsAPI_SandboxID=661197f20386c&NewgroundsAPI_SessionID=&NewgroundsAPI_UserName=%26lt%3Bdeleted%26gt%3B&NewgroundsAPI_UserID=0&ng_username=%26lt%3Bdeleted%26gt%3B')">
             <img src="./img/gxmes/fnf.jpg" />
             <br />
-            <p>Friday Night Funkin</p>
+            <p class="title">Friday Night Funkin</p>
           </button>
-          <button class="card" onclick="openApp('https://wrestlebros.io')">
+          <button class="card sports" onclick="openApp('https://wrestlebros.io')">
             <img src="./img/gxmes/wreslebros.png" />
             <br />
-            <p>Wrestle Bros</p>
+            <p class="title">Wrestle Bros</p>
           </button>
-          <button class="card" onclick="openApp('https://soccerbros.gg')">
+          <button class="card sports" onclick="openApp('https://soccerbros.gg')">
             <img src="./img/gxmes/soccerbros.png" />
             <br />
-            <p>Soccer Bros</p>
+            <p class="title">Soccer Bros</p>
           </button>
-          <button class="card" onclick="openApp('https://geometrylite.io/game/geometry-lite/')">
+          <button class="card GP" onclick="openApp('https://geometrylite.io/game/geometry-lite/')">
             <img src="./img/gxmes/geodash.svg" />
             <br />
-            <p>Geometry Dash</p>
+            <p class="title">Geometry Dash</p>
           </button>
-          <button class="card" onclick="openApp('https://bonk.io')">
+          <button class="card parkour" onclick="openApp('https://bonk.io')">
             <img src="./img/gxmes/bonk.io.jpg" />
             <br />
-            <p>Bonk.io</p>
+            <p class="title">Bonk.io</p>
           </button>
-          <button class="card" onclick="openApp('https://drift-hunters.pages.dev/')">
+          <button class="card adv" onclick="openApp('https://drift-hunters.pages.dev/')">
             <img src="./img/gxmes/dh.png" />
             <br />
-            <p>Drift Hunters</p>
+            <p class="title">Drift Hunters</p>
           </button>
-          <button class="card" onclick="openApp('https://backrooms-ad8.pages.dev/')">
+          <button class="card adv" onclick="openApp('https://backrooms-ad8.pages.dev/')">
             <img src="./img/gxmes/backrooms.png" />
             <br />
-            <p>Backrooms</p>
+            <p class="title">Backrooms</p>
+          </button>
+          <button class="card fps GP" onclick="openApp('https://frivwtf.com/games/buildnow-gg/index.html')">
+            <img src="./img/gxmes/buildnowGG.png" />
+            <br />
+            <p class="title">Buildnow GG</p>
+          </button>
+          <button class="custom-card-copy" hidden>
+            <img src="./img/gxmes/backrooms.png" class="custom-card-img" />
+            <br />
+            <p class="custom-card-title">Backrooms</p>
           </button>
         </div>
         <div style="margin-right: auto;">
@@ -257,28 +278,48 @@
             document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
           </script>
         </div>
-    </center><br/>
+    </center><br />
     <center>
       <div style="border: 2px solid #000; border-radius: 12px; width: 30em; padding: 10px;">
         <h2>Cant find your game?</h2>
         <p>It seems that your game wasn't added to our site yet.</p>
-        <p>(If you want a game on here, <a href="https://docs.google.com/forms/d/e/1FAIpQLScCXe-HBWW5WmP87kQR8fqMU6RLFLMN4Tl0ILENfK6UtU3A-g/viewform?usp=sf_link" target="_blank" style="color: rgb(0, 132, 255);">click this text!</a>)</p>
+        <p>(If you want a game on here, <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScCXe-HBWW5WmP87kQR8fqMU6RLFLMN4Tl0ILENfK6UtU3A-g/viewform?usp=sf_link"
+            target="_blank" style="color: rgb(0, 132, 255);">click this text!</a>)</p>
       </div>
     </center>
     <%- include("partials/footer") -%>
       <script>
         function search() {
           var input, list, btn, p, i;
-          input = document.getElementById("searchbar").value.toUpperCase();
+          input = document.getElementById("searchbar").value;
           list = document.querySelector(".gxmes");
-          btn = list.getElementsByTagName("button");
+          btn = list.getElementsByClassName("card");
+
+          var filter = document.getElementById("filter").value;
 
           for (i = 0; i < btn.length; i++) {
             p = btn[i].getElementsByTagName("p")[0];
-            if (p.innerHTML.toUpperCase().indexOf(input) > -1) {
+            if ((p.innerHTML.toUpperCase().indexOf(input.toUpperCase()) > -1) && (filter === "all" || btn[i].classList.contains(filter))) {
               btn[i].style.display = "";
             } else {
               btn[i].style.display = "none";
+            }
+          }
+        }
+
+        function filterGames() {
+          var filter = document.getElementById("filter").value;
+          var cards = document.getElementsByClassName("card");
+
+          var input = document.getElementById("searchbar").value.toUpperCase();
+
+          for (var i = 0; i < cards.length; i++) {
+            var p = cards[i].getElementsByTagName("p")[0];
+            if ((p.innerHTML.toUpperCase().indexOf(input) > -1) && (filter === "all" || cards[i].classList.contains(filter))) {
+              cards[i].style.display = "";
+            } else {
+              cards[i].style.display = "none";
             }
           }
         }
@@ -328,7 +369,6 @@
       <script src="./uv/uv.bundle.js"></script>
       <script src="./uv/uv.config.js"></script>
       <script src="./js/index.js"></script>
-
   </body>
 
 </html>

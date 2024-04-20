@@ -4,6 +4,17 @@
     font-family: "Poppins", sans-serif;
 }
 
+select {
+    background-color: #202020;
+    color: #FFF;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+select:hover {
+    cursor: pointer;
+}
 
 body {
     background-color: #1c1c1c;
@@ -35,7 +46,7 @@ form {
     width: 100%;
 }
 
-.gxmes {
+.gxmes, .apps {
     display: flex;
     justify-content: center; 
     margin-top: 30px;
@@ -45,11 +56,38 @@ form {
 }
 
 
+
 a {
     text-decoration: none;
 }
 
 .card {
+    background-color: rgb(32, 32, 32, 0);
+    border: none;
+    width: 150px;
+    transition: transform 0.2s ease;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 1em;
+    margin-left: 25px;
+    margin-top: 25px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.add-game-card {
     background-color: rgb(32, 32, 32, 0.75);
     padding: 15px;
     border: 2px solid #101010;
@@ -62,20 +100,63 @@ a {
     margin-top: 20px;
     transition: 0.2s;
 }
-
-.card img {
-    width: 150px;
-    border-radius: 20px;
+.add-game-card i {
+    font-size: 10em;
 }
 
 .card:hover {
-    background-color: rgb(37, 37, 37);
-    transform: scale(1.1);
+    transform: scale(1.05);
     cursor: pointer;
+    border: 1px solid #FFF;
 }
+
+
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::after .title {
+    opacity: 1;
+}
+
+.card:hover::after {
+    opacity: 1; /* Adjust the opacity as desired */
+}
+
 
 @media screen and (max-width: 600px) {
     .resize-card {
         transform: scale(0.8);
     }
+}
+
+.title {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center; /* Optional: Center align the text */
+    opacity: 0;
+    transition: 0.2s;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.card:hover .title {
+    opacity: 1;
+    
 }

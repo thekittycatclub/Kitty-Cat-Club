@@ -48,7 +48,7 @@ app.get('/mobile', (req, res) => {
   res.render('mobile',  { title: "Mobile" });
 });
 
-app.get('/testingfortnite012948', (req, res) => {
+app.get('/e/e/e/testingfortnite012948', (req, res) => {
   res.render('extra/testing');
 });
 
@@ -62,6 +62,14 @@ app.get('/teachers', (req, res) => {
 
 app.get('/tos', (req, res) => {
   res.render('tos');
+});
+
+app.get('/learningMB', (req, res) => {
+  res.render('learningmobile')
+});
+
+app.get('/byod', (req, res) => {
+  res.render('aboutus')
 });
 
 app.use((req, res) => {

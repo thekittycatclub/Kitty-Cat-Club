@@ -46,74 +46,77 @@
             document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/92e37525b44e4820b9da8c1d40df81ad/invoke.js"></scr' + 'ipt>');
           </script>
         </div>
-        <div class="apps">
+        <div class="gxmes">
           <button class="card" onclick="openApp('https://youtube.com')">
             <img src="./img/gxmes/youtube.png" />
             <br />
-            <p>Youtube</p>
+            <p class="title">Youtube</p>
           </button>
           <button class="card" onclick="openApp('https://discord.com/app')">
             <img src="./img/gxmes/discord.jpg" />
             <br />
-            <p>Discord</p>
+            <p class="title">Discord</p>
           </button>
           <button class="card" onclick="openApp('https://tiktok.com')">
             <img src="./img/gxmes/Tiktok.png" />
             <br />
-            <p>Tiktok</p>
+            <p class="title">Tiktok</p>
           </button>
           <button class="card resizable-card" onclick="openApp('https://discord.gg/qZsSATqjFg')">
             <img src="./img/gxmes/movieweb.png" />
             <br />
-            <p>Movie River</p>
+            <p class="title">Movie River [DISCORD]</p>
           </button>
           <button class="card resizable-card" onclick="openApp('https://ai.kitty.boats')">
             <img src="./img/gxmes/movieweb.png" />
             <br />
-            <p>River AI</p>
-          </button>
-          <button class="card resizable-card" onclick="openApp('https://anura.pro/')">
-            <img src="./img/gxmes/AnuraOS.png" />
-            <br />
-            <p>AnuraOS</p>
+            <p class="title">River AI</p>
           </button>
           <button class="card resizable-card" onclick="openApp('https://www.github.com')">
             <img src="./img/gxmes/github.jpg" />
             <br />
-            <p>Github</p>
+            <p class="title">Github</p>
           </button>
           <button class="card" onclick="openApp('https://poki.com')">
             <img src="./img/gxmes/poki.png" />
             <br />
-            <p>Poki</p>
+            <p class="title">Poki</p>
           </button>
           <button class="card" onclick="openApp('https://www.crazygames.com/')">
             <img src="./img/gxmes/crazygames.png" />
             <br />
-            <p>Crazygames</p>
+            <p class="title">Crazygames</p>
           </button>
           <button class="card" onclick="openApp('https://twitter.com/home')">
             <img src="./img/gxmes/twitter.png" />
             <br />
-            <p>Twitter</p>
+            <p class="title">Twitter</p>
+          </button>
+          <button class="card" onclick="openApp('https://netflix.com')">
+            <img src="./img/gxmes/netflix.png" />
+            <br />
+            <p class="title">Netflix</p>
+          </button>
+          <button class="card" onclick="openApp('https://play.geforcenow.com/mall/#/loginwall')">
+            <img src="./img/gxmes/gfnow.png" />
+            <br />
+            <p class="title">GeForce NOW</p>
           </button>
           <button class="card" onclick="openApp('https://vscode.dev')">
             <img src="./img/gxmes/vsc.png" />
             <br />
-            <p>Visual Studio Code</p>
+            <p class="title">Visual Studio Code</p>
           </button>
           <button class="card"
             onclick="openApp('https://https://now.gg/iframe/snippet?app_pkg=com.aptoide.partners.nowgg.store&partner=interstellar')">
-            <!---I bare-->
             <img src="./img/gxmes/aptoide.png" />
             <br />
-            <p>Aptoide</p>
+            <p class="title">Aptoide</p>
           </button>
-          <!--if you see this, you like balls-->
           <button class="card" onclick="openApp('https://www.coolmathgames.com/')">
             <img src="./img/gxmes/cmg.png" />
             <br />
-            <p>Cool math games</p>
+            <p class="title">Cool math games</p>
           </button>
         </div>
         <div style="margin-right: auto;">
@@ -178,7 +181,7 @@
         function search() {
           var input, list, btn, p, i;
           input = document.getElementById("searchbar").value.toUpperCase();
-          list = document.querySelector(".apps");
+          list = document.querySelector(".gxmes");
           btn = list.getElementsByTagName("button");
 
           for (i = 0; i < btn.length; i++) {

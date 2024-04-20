@@ -44,9 +44,11 @@ body {
     color: #FFFFFF;
 }
 
-#logout:hover {
-    background-color: rgb(242, 74, 74);
-  }
+#cancel:hover, #logout:hover {
+    background-color: crimson;
+}
+
+
 
   .curtain {
     position: fixed;

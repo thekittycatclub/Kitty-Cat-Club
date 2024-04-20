@@ -78,3 +78,13 @@ function keyPressed(event) {
     }
 }
 document.addEventListener("keydown", keyPressed);
+
+document.getElementById("cancel").addEventListener("click", function() {
+    notify("Panic Key System", "New Changes has been canceled.");
+    document.querySelector(".curtain").style.opacity = "0";
+    delay(300).then(() => {
+        document.querySelector(".curtain").style.visibility = "hidden";
+        document.getElementById('recCard').setAttribute('hidden', true);
+    });
+    localStorage.setItem("displaypanel", 0);
+});

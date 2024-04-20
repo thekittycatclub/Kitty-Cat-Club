@@ -64,7 +64,7 @@ function toggleui() {
       document.querySelector(".menu").style.opacity = "0";
       delay(1000).then(() => {
           document.querySelector(".toggleuibtn").style.transition = "0.3s";
-          document.querySelector(".toggleuibtn").style.top = "0";
+          document.querySelector(".toggleuibtn").style.top = "10px";
           document.querySelector(".main").style.transition = "none";
           document.getElementById("result").style.transition = "none";
       });
@@ -179,7 +179,7 @@ function devTools() {
   let erudaWindow = document.getElementById("result").contentWindow
   let erudaDocument = document.getElementById("result").contentDocument
 
-  if (!erudaWindow || !erudaDocument) return
+  if (!erudaWindow || !erudaDocument) console.error("The Iframe was not found.")
 
   if (erudaWindow.eruda?._isInit) {
       erudaWindow.eruda.destroy()
@@ -202,8 +202,11 @@ function saveContentWindow() {
           let parts = tempurl.split('/');
           let lastPart = parts[parts.length - 1];
           document.querySelector(".searchinput").value = __uv$config.decodeUrl(lastPart);
+          if (document.querySelector(".searchinput").value == "a`owt8bnalk" || !document.querySelector(".searchinput").value) {
+            document.querySelector(".searchinput").value = "Loading URL...";
+          }
       }
       saveContentWindow();
-  }, 250);
+  }, 10);
 }
 saveContentWindow();

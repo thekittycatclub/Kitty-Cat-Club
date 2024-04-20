@@ -83,10 +83,25 @@
   .align-right a:hover i {
     background: #FFF;
   }
+  .align-right img {
+    background-color: #252525;
+    width: 19px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+  }
+  
+  .align-right a:hover img {
+    background: #FFF;
+  }
   
   h2, p {
     color: #FFF;
     transition: color 0.2s ease;
+  }
+
+  #timer {
+    visibility: hidden;
   }
   
   #esad:hover {
@@ -101,6 +116,9 @@
   @media screen and (max-width: 1140px) {
     #esad {
       display: none;
+    }
+    #timer {
+      visibility: hidden;
     }
   }
 
