@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mathematics
+    <title>Kitty Cat Club | <%= title %>
     </title>
     <link rel="stylesheet" href="./css/all.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -31,7 +31,11 @@
             margin-right: 10px;
             margin-top: 20px;
         }
-
+        button {
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
         .project-cards {
             background-color: rgb(30, 30, 30);
             width: 25%;
@@ -165,7 +169,10 @@
                     </button>
                     <button onclick="location.replace('/byod')">
                         Make your own link
-                    </button>
+                    </button><br/>
+                    <button
+                    onclick="alert('Please email us your bug to kittycatclub@yappers.lol')">Report
+                    a bug</button>
                     <br />
                 </div>
             </div>
@@ -176,9 +183,6 @@
                 let savedBG = localStorage.getItem("BG");
                 let savedFavicon = localStorage.getItem("favicon");
                 let favicon = document.getElementById("icon");
-                let savedLink = localStorage.getItem("savedLink");
-                let savedKey = localStorage.getItem("savedKey");
-
                 if (savedTitle) {
                     document.title = savedTitle;
                 }
@@ -190,25 +194,39 @@
                     document.body.style.backgroundImage = `url("${savedBG}")`;
                     document.body.style.backgroundRepeat = "no-repeat"
                     document.body.style.backgroundSize = "cover";
+                    document.body.style.backgroundAttachment = "fixed";
+                    document.body.style.backgroundSize = "100% 100%";
                 }
-                let tabclosingval = localStorage.getItem("tabcloseval");
+                if (localStorage.getItem("advCloak") == 1) {
+                    if (window === window.top) {
+                        let popup = window.open('about:blank', '_blank');
+                        let doc = popup.document;
+                        let aboutiframe = doc.createElement('iframe');
+                        let faviconabout = doc.createElement('link');
+                        doc.title = name;
+                        faviconabout.rel = 'icon';
+                        faviconabout.href = icon;
+                        aboutiframe.src = location.href;
+                        aboutiframe.style.position = 'fixed';
+                        aboutiframe.style.top = 0;
+                        aboutiframe.style.bottom = 0;
+                        aboutiframe.style.left = 0;
+                        aboutiframe.style.right = 0;
+                        aboutiframe.style.border = 'none';
+                        aboutiframe.style.width = "100%";
+                        aboutiframe.style.height = '100%';
+                        doc.head.appendChild(faviconabout);
+                        doc.body.appendChild(aboutiframe);
+                        location.replace('https://classroom.google.com/');
+                    }
+                }
 
                 window.onbeforeunload = () => {
                     if (tabclosingval == "true") {
                         return "Do you want to leave the current tab?";
                     }
                 }
-                function panic(event) {
-                    if (event.key === savedKey || event.key === savedKey) {
-                        if (savedLink.includes("https://")) {
-                            location.replace(savedLink);
-                        } else {
-                            location.replace("https://" + savedLink);
-                        }
-                    }
-                }
-
-                document.addEventListener("keydown", panic);
+                
             </script>
 </body>
 

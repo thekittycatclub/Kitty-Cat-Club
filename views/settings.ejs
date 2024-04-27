@@ -170,6 +170,7 @@
                         <button style="width: auto;" class="tabbtn" onclick="document.querySelector('.curtain').style.visibility = 'visible'
                         document.querySelector('.curtain').style.opacity = '1'
                         document.getElementById('customtabck').removeAttribute('hidden');
+                        document.getElementById('recCard').setAttribute('hidden', true);
                         ">
                             <i style="font-size: 2em;" class="fa-solid fa-screwdriver-wrench"></i></button>
                     </div>
@@ -314,6 +315,27 @@
             </div>
             <div class="card">
                 <center>
+                    <h1 style="font-size: 30px;">Advanced about:blank cloaking</h1>
+                    <p>Automatically cloaks the site when loaded. (This will hide the website from your search history!)</p><br />
+                    <div>
+                        <button id="advcloakbtn" onclick="
+                            if (localStorage.getItem('advCloak') == 0 || !localStorage.getItem('advCloak')) {
+                                localStorage.setItem('advCloak', 1);
+                                alert('Please note that you will need to enable popups for this to work.'); 
+                                localStorage.setItem('windowurl', window.location.href);
+                                location.reload();
+                            } else {
+                                localStorage.setItem('advCloak', 0);
+                                window.location.href = localStorage.getItem('windowurl');
+                            }
+                            ">
+                            Toggle Cloaker
+                        </button>
+                    </div>
+                </center>
+            </div>`
+            <div class="card">
+                <center>
                     <h1 style="font-size: 30px;">Change Background</h1>
                     <p>Changes the background to the specified URL.</p><br />
                     <div>
@@ -366,8 +388,8 @@
                 <div class="centerct">
                     <div class="cardfixed" id="recCard">
                         <div class="centermargin">
-                            <button id="cancel" style="position: fixed; left: 40%; transform: translateX(-50%);"
-                            >Cancel Changes</button>
+                            <button id="cancel" style="position: fixed; left: 40%; transform: translateX(-50%);">Cancel
+                                Changes</button>
                         </div>
                         <div id="RecordPanel" style=" margin-top: 70px;">
                             <p>Recorded keystroke:</p>
@@ -442,7 +464,34 @@
                     document.body.style.backgroundImage = `url("${savedBG}")`;
                     document.body.style.backgroundRepeat = "no-repeat"
                     document.body.style.backgroundSize = "cover";
+                    document.body.style.backgroundAttachment = "fixed";
+                    document.body.style.backgroundSize = "100% 100%";
                 }
+                if (localStorage.getItem("advCloak") == 1) {
+                    document.getElementById("advcloakbtn").innerHTML = "Disable Cloaker";
+                    if (window === window.top) {
+                        let popup = window.open('about:blank', '_blank');
+                        let doc = popup.document;
+                        let aboutiframe = doc.createElement('iframe');
+                        let faviconabout = doc.createElement('link');
+                        doc.title = name;
+                        faviconabout.rel = 'icon';
+                        faviconabout.href = icon;
+                        aboutiframe.src = location.href;
+                        aboutiframe.style.position = 'fixed';
+                        aboutiframe.style.top = 0;
+                        aboutiframe.style.bottom = 0;
+                        aboutiframe.style.left = 0;
+                        aboutiframe.style.right = 0;
+                        aboutiframe.style.border = 'none';
+                        aboutiframe.style.width = "100%";
+                        aboutiframe.style.height = '100%';
+                        doc.head.appendChild(faviconabout);
+                        doc.body.appendChild(aboutiframe);
+                        location.replace('https://classroom.google.com/');
+                    }
+                }
+
                 window.onbeforeunload = () => {
                     if (tabclosingval == "true") {
                         return "Do you want to leave the current tab?";

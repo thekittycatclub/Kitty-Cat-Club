@@ -120,8 +120,6 @@
     let savedBG = localStorage.getItem("BG");
     let savedFavicon = localStorage.getItem("favicon");
     let favicon = document.getElementById("icon");
-    let savedLink = localStorage.getItem("savedLink");
-    let savedKey = localStorage.getItem("savedKey");
     if (savedTitle) {
       document.title = savedTitle;
     }
@@ -129,31 +127,42 @@
       favicon.href = savedFavicon;
     }
 
-    let tabclosingval = localStorage.getItem("tabcloseval");
+    if (savedBG) {
+      document.body.style.backgroundImage = `url("${savedBG}")`;
+      document.body.style.backgroundRepeat = "no-repeat"
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundAttachment = "fixed";
+      document.body.style.backgroundSize = "100% 100%";
+    }
+    if (localStorage.getItem("advCloak") == 1) {
+      if (window === window.top) {
+        let popup = window.open('about:blank', '_blank');
+        let doc = popup.document;
+        let aboutiframe = doc.createElement('iframe');
+        let faviconabout = doc.createElement('link');
+        doc.title = name;
+        faviconabout.rel = 'icon';
+        faviconabout.href = icon;
+        aboutiframe.src = location.href;
+        aboutiframe.style.position = 'fixed';
+        aboutiframe.style.top = 0;
+        aboutiframe.style.bottom = 0;
+        aboutiframe.style.left = 0;
+        aboutiframe.style.right = 0;
+        aboutiframe.style.border = 'none';
+        aboutiframe.style.width = "100%";
+        aboutiframe.style.height = '100%';
+        doc.head.appendChild(faviconabout);
+        doc.body.appendChild(aboutiframe);
+        location.replace('https://classroom.google.com/');
+      }
+    }
 
     window.onbeforeunload = () => {
       if (tabclosingval == "true") {
         return "Do you want to leave the current tab?";
       }
     }
-
-    if (savedBG) {
-      document.body.style.backgroundImage = `url("${savedBG}")`;
-      document.body.style.backgroundRepeat = "no-repeat"
-      document.body.style.backgroundSize = "cover";
-    }
-
-    function panic(event) {
-      if (event.key === savedKey || event.key === savedKey) {
-        if (savedLink.includes("https://")) {
-          location.replace(savedLink);
-        } else {
-          location.replace("https://" + savedLink);
-        }
-      }
-    }
-
-    document.addEventListener("keydown", panic);
 
     ////////////////
 

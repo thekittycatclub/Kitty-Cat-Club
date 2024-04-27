@@ -30,7 +30,7 @@
       <br>
       <div style="align-content: center;" id="searchdiv">
         <form>
-          <input placeholder="Search..." id="searchbar" style="width: 500px; height: 30px;" onkeyup="search()" />
+          <input placeholder="Search..." id="searchbar" style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;" onkeyup="search()" />
         </form>
       </div>
       <div style="display: flex; justify-content: center;">
@@ -47,7 +47,7 @@
           </script>
         </div>
         <div class="gxmes">
-          <button class="card" onclick="openApp('https://youtube.com')">
+          <button class="card" onclick="openApp('https://shuttle.lol/apps/google-llc/1395/youtube.html')">
             <img src="./img/gxmes/youtube.png" />
             <br />
             <p class="title">Youtube</p>
@@ -107,16 +107,25 @@
             <br />
             <p class="title">Visual Studio Code</p>
           </button>
-          <button class="card"
-            onclick="openApp('https://https://now.gg/iframe/snippet?app_pkg=com.aptoide.partners.nowgg.store&partner=interstellar')">
+          <button class="card" onclick="openApp('https://shuttle.lol/apps/aptoide/5874/aptoide.html')">
             <img src="./img/gxmes/aptoide.png" />
             <br />
             <p class="title">Aptoide</p>
+          </button>
+          <button class="card" onclick="openApp('https://shuttle.lol/apps/instagram/1228/instagram.html')">
+            <img src="./img/gxmes/insta.png" />
+            <br />
+            <p class="title">Instagram</p>
           </button>
           <button class="card" onclick="openApp('https://www.coolmathgames.com/')">
             <img src="./img/gxmes/cmg.png" />
             <br />
             <p class="title">Cool math games</p>
+          </button>
+          <button class="card" onclick="openApp('https://shuttle.lol')">
+            <img src="./img/gxmes/shuttle.png" />
+            <br />
+            <p class="title">Shuttle.lol</p>
           </button>
         </div>
         <div style="margin-right: auto;">
@@ -138,44 +147,53 @@
       <script src="./uv/uv.config.js"></script>
       <script src="./js/index.js"></script>
       <script>
-        let savedTitle = localStorage.getItem("tabName");
-        let savedBG = localStorage.getItem("BG");
-        let savedFavicon = localStorage.getItem("favicon");
-        let favicon = document.getElementById("icon");
-        let savedLink = localStorage.getItem("savedLink");
-        let savedKey = localStorage.getItem("savedKey");
+                let savedTitle = localStorage.getItem("tabName");
+                let savedBG = localStorage.getItem("BG");
+                let savedFavicon = localStorage.getItem("favicon");
+                let favicon = document.getElementById("icon");
+                if (savedTitle) {
+                    document.title = savedTitle;
+                }
+                if (savedFavicon) {
+                    favicon.href = savedFavicon;
+                }
 
-        if (savedTitle) {
-          document.title = savedTitle;
-        }
-        if (savedFavicon) {
-          favicon.href = savedFavicon;
-        }
+                if (savedBG) {
+                    document.body.style.backgroundImage = `url("${savedBG}")`;
+                    document.body.style.backgroundRepeat = "no-repeat"
+                    document.body.style.backgroundSize = "cover";
+                    document.body.style.backgroundAttachment = "fixed";
+                    document.body.style.backgroundSize = "100% 100%";
+                }
+                if (localStorage.getItem("advCloak") == 1) {
+                    if (window === window.top) {
+                        let popup = window.open('about:blank', '_blank');
+                        let doc = popup.document;
+                        let aboutiframe = doc.createElement('iframe');
+                        let faviconabout = doc.createElement('link');
+                        doc.title = name;
+                        faviconabout.rel = 'icon';
+                        faviconabout.href = icon;
+                        aboutiframe.src = location.href;
+                        aboutiframe.style.position = 'fixed';
+                        aboutiframe.style.top = 0;
+                        aboutiframe.style.bottom = 0;
+                        aboutiframe.style.left = 0;
+                        aboutiframe.style.right = 0;
+                        aboutiframe.style.border = 'none';
+                        aboutiframe.style.width = "100%";
+                        aboutiframe.style.height = '100%';
+                        doc.head.appendChild(faviconabout);
+                        doc.body.appendChild(aboutiframe);
+                        location.replace('https://classroom.google.com/');
+                    }
+                }
 
-        if (savedBG) {
-          document.body.style.backgroundImage = `url("${savedBG}")`;
-          document.body.style.backgroundRepeat = "no-repeat"
-          document.body.style.backgroundSize = "cover";
-        }
-        let tabclosingval = localStorage.getItem("tabcloseval");
-
-        window.onbeforeunload = () => {
-          if (tabclosingval == "true") {
-            return "Do you want to leave the current tab?";
-          }
-        }
-
-        function panic(event) {
-          if (event.key === savedKey || event.key === savedKey) {
-            if (savedLink.includes("https://")) {
-              location.replace(savedLink);
-            } else {
-              location.replace("https://" + savedLink);
-            }
-          }
-        }
-
-        document.addEventListener("keydown", panic);
+                window.onbeforeunload = () => {
+                    if (tabclosingval == "true") {
+                        return "Do you want to leave the current tab?";
+                    }
+                }
       </script>
       <script>
         function search() {

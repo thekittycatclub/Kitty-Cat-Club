@@ -2,82 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service</title>
-    <link id="icon" rel="icon" type="image/x-icon" href="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="./css/all.css">
-    <style>
-        .terms {
-            background-color: #151515;
-            border: 2px solid #100000;
-            border-radius: 12px;
-            margin-top: 10%;
-            width: 75%;
-        }
-        .terms p {
-            margin-left: -30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service</title>
+  <link id="icon" rel="icon" type="image/x-icon" href="" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/all.css">
+  <style>
+    .terms {
+      background-color: #151515;
+      border: 2px solid #100000;
+      border-radius: 12px;
+      margin-top: 10%;
+      width: 75%;
+    }
+
+    .terms p {
+      margin-left: -30px;
+    }
+  </style>
 </head>
 <%- include("partials/navbar") -%>
-<script>
-  const isLoggedIn = localStorage.getItem("loggedin");
-  if (!isLoggedIn) {
+  <script>
+    const isLoggedIn = localStorage.getItem("loggedin");
+    if (!isLoggedIn) {
       location.href = "/";
-  }
-</script>
-<body>
+    }
+  </script>
+
+  <body>
     <center style="margin-top: 5%;">
-        <div class="terms">
-            <h1 style="font-weight: bolder;" >Terms of Service</h1>
-            <ul>
-                <p>1. Thou art prohibited from disseminating the links bestowed upon us by our esteemed link dispenser within the confines of Discord to others. However, thou art permitted to graciously<br/> share community links with thy peers.</p>
-                <br>
-                <p>2. Let it be known that any spurious assertions of proprietorship shall find no harbor within our realm, for they are expressly forbidden.</p>
-                <br>
-                <p>3. Verily, I declare that no alterations to the sanctity of the site shall be countenanced, save with the express blessing of its rightful stewards.</p>
-                <br>
-                <p>4. Be it known that the utilization of this service for commercial purposes is strictly proscribed, and only those endeavors consonant with its intended purpose shall be countenanced</p>
-                <br>
-                <p>5. Please be apprised that we reserve the prerogative to amend these terms at our discretion. Failure to remain abreast of such alterations rests solely upon your responsibility.</p>
-            </ul>
-        </div>
+      <div class="terms">
+        <h1 style="font-weight: bolder;">Terms of Service</h1>
+        <ul>
+          <p>1. Thou art prohibited from disseminating the links bestowed upon us by our esteemed link dispenser within
+            the confines of Discord to others. However, thou art permitted to graciously<br /> share community links
+            with thy peers.</p>
+          <br>
+          <p>2. Let it be known that any spurious assertions of proprietorship shall find no harbor within our realm,
+            for they are expressly forbidden.</p>
+          <br>
+          <p>3. Verily, I declare that no alterations to the sanctity of the site shall be countenanced, save with the
+            express blessing of its rightful stewards.</p>
+          <br>
+          <p>4. Be it known that the utilization of this service for commercial purposes is strictly proscribed, and
+            only those endeavors consonant with its intended purpose shall be countenanced</p>
+          <br>
+          <p>5. Please be apprised that we reserve the prerogative to amend these terms at our discretion. Failure to
+            remain abreast of such alterations rests solely upon your responsibility.</p>
+        </ul>
+      </div>
     </center>
     <script>
-        localStorage.setItem("visited", true);
-        let savedTitle = localStorage.getItem("tabName");
-        let savedBG = localStorage.getItem("BG");
-        let savedFavicon = localStorage.getItem("favicon");
-        let favicon = document.getElementById("icon");
-        let savedLink = localStorage.getItem("savedLink");
-        let savedKey = localStorage.getItem("savedKey");
-    
-        if (savedTitle) {
-          document.title = savedTitle;
+      let savedTitle = localStorage.getItem("tabName");
+      let savedBG = localStorage.getItem("BG");
+      let savedFavicon = localStorage.getItem("favicon");
+      let favicon = document.getElementById("icon");
+      if (savedTitle) {
+        document.title = savedTitle;
+      }
+      if (savedFavicon) {
+        favicon.href = savedFavicon;
+      }
+
+      if (savedBG) {
+        document.body.style.backgroundImage = `url("${savedBG}")`;
+        document.body.style.backgroundRepeat = "no-repeat"
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundAttachment = "fixed";
+        document.body.style.backgroundSize = "100% 100%";
+      }
+      if (localStorage.getItem("advCloak") == 1) {
+      if (window === window.top) {
+        let popup = window.open('about:blank', '_blank');
+        let doc = popup.document;
+        let aboutiframe = doc.createElement('iframe');
+        let faviconabout = doc.createElement('link');
+        doc.title = name;
+        faviconabout.rel = 'icon';
+        faviconabout.href = icon;
+        aboutiframe.src = location.href;
+        aboutiframe.style.position = 'fixed';
+        aboutiframe.style.top = 0;
+        aboutiframe.style.bottom = 0;
+        aboutiframe.style.left = 0;
+        aboutiframe.style.right = 0;
+        aboutiframe.style.border = 'none';
+        aboutiframe.style.width = "100%";
+        aboutiframe.style.height = '100%';
+        doc.head.appendChild(faviconabout);
+        doc.body.appendChild(aboutiframe);
+        location.replace('https://classroom.google.com/');
+      }
+    }
+
+      window.onbeforeunload = () => {
+        if (tabclosingval == "true") {
+          return "Do you want to leave the current tab?";
         }
-        if (savedFavicon) {
-          favicon.href = savedFavicon;
-        }
-    
-        if (savedBG) {
-          document.body.style.backgroundImage = `url("${savedBG}")`;
-          document.body.style.backgroundRepeat = "no-repeat"
-          document.body.style.backgroundSize = "cover";
-        }
-    
-        function panic(event) {
-          if (event.key === savedKey || event.key === savedKey) {
-            if (savedLink.includes("https://")) {
-              location.replace(savedLink);
-            } else {
-              location.replace("https://" + savedLink);
-            }
-          }
-        }
-    
-        document.addEventListener("keydown", panic);
-      </script>
-</body>
+      }
+    </script>
+  </body>
+
 </html>

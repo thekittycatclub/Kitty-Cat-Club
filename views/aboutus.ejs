@@ -35,65 +35,60 @@
       <div class="terms">
         <h1 style="font-weight: bolder;">Make your own link! (BYOD)</h1>
         <p>
-          1. Go to <a>https://freedns.afraid.org/</a> and scroll down and click on sign up for free or sign up. <br/><br/>
-          2. When you click on the first and last name use <a href="https://www.behindthename.com/random/">https://www.behindthename.com/random/</a> for the name and click
+          1. Go to <a>https://freedns.afraid.org/</a> and scroll down and click on sign up for free or sign up.
+          <br /><br />
+          2. When you click on the first and last name use <a
+            href="https://www.behindthename.com/random/">https://www.behindthename.com/random/</a> for the name and
+          click
           generate a name.
-          <br/><br/>
+          <br /><br />
           3. For the username, use a random name e.g. "Timothy Johnson" and change it to "TimothyJohnson43".
-          <br/><br/>
+          <br /><br />
           4. Put whatever you want for the password. (MAKE SURE YOU CAN REMEMBER IT)
-          <br/><br/>
-          5. For the email, you may create an outlook/hotmail account at <a href="https://outlook.com">https://outlook.com</a> (Or use a temp. email)
-          <br/><br/>
+          <br /><br />
+          5. For the email, you may create an outlook/hotmail account at <a
+            href="https://outlook.com">https://outlook.com</a> (Or use a temp. email)
+          <br /><br />
           6. Once you have filled everything out that is needed, create your account.
-          <br/><br/>
+          <br /><br />
           7. Click on "Add a subdomain" and click on the domain list and click on "many many more available.”
-          <br/><br/>
+          <br /><br />
           8. After clicking "many many more available.”, Click on the shared domain registry.
-          <br/><br/>
+          <br /><br />
           9. Choose any domain you want, but make sure it is unblocked by your school filter.
-          <br/><br/>
+          <br /><br />
           10. Remove the current destination and replace the IP with "66.94.122.218".
-          <br/><br/>
+          <br /><br />
           11. Put whatever name you want for the subdomain, do the captcha, and then save.
-          <br/><br/>
+          <br /><br />
           12. Join our Discord Server, or email kittycatclub@yappers.lol with your link.
         </p>
       </div>
     </center>
     <script>
-      localStorage.setItem("visited", true);
-      let savedTitle = localStorage.getItem("tabName");
-      let savedBG = localStorage.getItem("BG");
-      let savedFavicon = localStorage.getItem("favicon");
-      let favicon = document.getElementById("icon");
-      let savedLink = localStorage.getItem("savedLink");
-      let savedKey = localStorage.getItem("savedKey");
-
-      if (savedTitle) {
-        document.title = savedTitle;
-      }
-      if (savedFavicon) {
-        favicon.href = savedFavicon;
-      }
-
-      if (savedBG) {
-        document.body.style.backgroundImage = `url("${savedBG}")`;
-        document.body.style.backgroundRepeat = "no-repeat"
-        document.body.style.backgroundSize = "cover";
-      }
-
-      function panic(event) {
-        if (event.key === savedKey || event.key === savedKey) {
-          if (savedLink.includes("https://")) {
-            location.replace(savedLink);
-          } else {
-            location.replace("https://" + savedLink);
-          }
+      if (localStorage.getItem("advCloak") == 1) {
+        if (window === window.top) {
+          let popup = window.open('about:blank', '_blank');
+          let doc = popup.document;
+          let aboutiframe = doc.createElement('iframe');
+          let faviconabout = doc.createElement('link');
+          doc.title = name;
+          faviconabout.rel = 'icon';
+          faviconabout.href = icon;
+          aboutiframe.src = location.href;
+          aboutiframe.style.position = 'fixed';
+          aboutiframe.style.top = 0;
+          aboutiframe.style.bottom = 0;
+          aboutiframe.style.left = 0;
+          aboutiframe.style.right = 0;
+          aboutiframe.style.border = 'none';
+          aboutiframe.style.width = "100%";
+          aboutiframe.style.height = '100%';
+          doc.head.appendChild(faviconabout);
+          doc.body.appendChild(aboutiframe);
+          location.replace('https://classroom.google.com/');
         }
       }
-
-      document.addEventListener("keydown", panic);
     </script>
   </body>
 

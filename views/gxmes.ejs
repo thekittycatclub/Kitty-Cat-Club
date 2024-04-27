@@ -30,8 +30,8 @@
       <br>
       <div style="display: flex; justify-content: center;">
         <input placeholder="Search..." id="searchbar" type="text" onkeyup="search();"
-          style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px;">
-        <select id="filter" name="filter" onchange="filterGames()">
+          style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;">
+        <!--<select id="filter" name="filter" onchange="filterGames()">
           <option value="all">All Games</option>
           <option value="adv">Adventure</option>
           <option value="fps">Guns/Shooting</option>
@@ -40,7 +40,7 @@
           <option value="parkour">Parkour</option>
           <option value="GP">Gaming Platform</option>
           <option value="sports">Sports</option>
-        </select>
+        </select>-->
       </div>
       <div style="display: flex; align-content: center; width: 95%;">
         <div style="margin-left: auto;">
@@ -57,11 +57,12 @@
         </div>
         <div class="gxmes">
           <button class="card resizable-card fps GP" onclick="openApp('https://1v1.lol/')">
-            <img src="./img/gxmes/1v1lol.png"/>
+            <img src="./img/gxmes/1v1lol.png" />
             <br />
             <p class="title">1v1.lol</p>
           </button>
-          <button class="card resizable-card simulator" onclick="openApp('https://eli-schwartz.github.io/cookieclicker')">
+          <button class="card resizable-card simulator"
+            onclick="openApp('https://eli-schwartz.github.io/cookieclicker')">
             <img src="./img/gxmes/cookieclicker.png" />
             <br />
             <p class="title">Cookie clicker</p>
@@ -121,8 +122,7 @@
             <br />
             <p class="title">Worlds Hardest Game</p>
           </button>
-          <button class="card resizable-card 2D"
-            onclick="openApp('https://htmlxm.github.io/h/rooftop-snipers/')">
+          <button class="card resizable-card 2D" onclick="openApp('https://htmlxm.github.io/h/rooftop-snipers/')">
             <img src="./img/gxmes/rooftop_snipers.avif" />
             <br />
             <p class="title">Rooftop Snipers</p>
@@ -133,7 +133,8 @@
             <br />
             <p class="title">Bloons TD 4</p>
           </button>
-          <button class="card resizable-card adv parkour" onclick="openApp('https://subwaysurfersgame.io/subway-surfers.embed')">
+          <button class="card resizable-card adv parkour"
+            onclick="openApp('https://subwaysurfersgame.io/subway-surfers.embed')">
             <img src="./img/gxmes/ss.webp" />
             <br />
             <p class="title">Subway Surfers</p>
@@ -164,7 +165,8 @@
             <br />
             <p class="title">Chess.com</p>
           </button>
-          <button class="card resizable-card fps" onclick="openApp('https://www.twoplayergames.org/embed/time-shooter-2')">
+          <button class="card resizable-card fps"
+            onclick="openApp('https://www.twoplayergames.org/embed/time-shooter-2')">
             <img src="./img/gxmes/time-shooter-2.png" />
             <br />
             <p class="title">Time Shooter 2</p>
@@ -179,7 +181,8 @@
             <br />
             <p class="title">Basketbros</p>
           </button>
-          <button class="card sports" onclick="openApp('https://www.google.com/logos/2019/july4th19/r6/july4th19.html?hl=en')">
+          <button class="card sports"
+            onclick="openApp('https://www.google.com/logos/2019/july4th19/r6/july4th19.html?hl=en')">
             <img src="./img/gxmes/googleb.png" />
             <br />
             <p class="title">Google Baseball</p>
@@ -204,12 +207,14 @@
             <br />
             <p class="title">OvO</p>
           </button>
-          <button class="card adv simulator" onclick="openApp('https://www.mathplayground.com/drift-boss-v3/index.html')">
+          <button class="card adv simulator"
+            onclick="openApp('https://www.mathplayground.com/drift-boss-v3/index.html')">
             <img src="./img/gxmes/driftboss.png" />
             <br />
             <p class="title">Drift Boss</p>
           </button>
-          <button class="card parkour" onclick="openApp('https://w8.snokido.com/games/unity-webgl/cluster-rush/index.html')">
+          <button class="card parkour"
+            onclick="openApp('https://w8.snokido.com/games/unity-webgl/cluster-rush/index.html')">
             <img src="./img/gxmes/clusterrush.png" />
             <br />
             <p class="title">Cluster Rush</p>
@@ -260,10 +265,42 @@
             <br />
             <p class="title">Buildnow GG</p>
           </button>
-          <button class="custom-card-copy" hidden>
-            <img src="./img/gxmes/backrooms.png" class="custom-card-img" />
+          <button class="card fps GP" onclick="openApp('https://airmash.online')">
+            <img src="./img/gxmes/airmash.png" />
             <br />
-            <p class="custom-card-title">Backrooms</p>
+            <p class="title">Airmash</p>
+          </button>
+          <button class="card fps" onclick="openApp('https://zombsroyale.io/')">
+            <img src="./img/gxmes/zomb.jpg" />
+            <br />
+            <p class="title">Zombs Royale</p>
+          </button>
+          <button class="card adv" onclick="openApp('https://toughlovearena.com/')">
+            <img src="./img/gxmes/tla.png" />
+            <br />
+            <p class="title">Tough Love Arena</p>
+          </button>
+          <button class="card adv" onclick="openApp('https://house-of-hazards.github.io/file/')">
+            <img src="./img/gxmes/hoh.jpg" />
+            <br />
+            <p class="title">House of Hazards</p>
+          </button>
+          <button class="card adv"
+            onclick="openApp('https://games.crazygames.com/en_US/madalin-cars-multiplayer/index.html?v=1.281')">
+            <img src="./img/gxmes/msc.png" />
+            <br />
+            <p class="title">Madalin Stunt Cars</p>
+          </button>
+          <button class="card adv"
+            onclick="openApp('https://games.crazygames.com/en_US/pixel-gun-3d/index.html?gid=pixel-gun-3d')">
+            <img src="./img/gxmes/px3d.png" />
+            <br />
+            <p class="title">Pixel gun 3D</p>
+          </button>
+          <button class="card adv" onclick="openApp('https://territorial.io')">
+            <img src="./img/gxmes/tt.webp" />
+            <br />
+            <p class="title">Territorial.io</p>
           </button>
         </div>
         <div style="margin-right: auto;">
@@ -290,7 +327,7 @@
     </center>
     <%- include("partials/footer") -%>
       <script>
-        function search() {
+        /*function search() {
           var input, list, btn, p, i;
           input = document.getElementById("searchbar").value;
           list = document.querySelector(".gxmes");
@@ -322,6 +359,22 @@
               cards[i].style.display = "none";
             }
           }
+        }*/
+
+        function search() {
+          var input, list, btn, p, i;
+          input = document.getElementById("searchbar").value.toUpperCase();
+          list = document.querySelector(".gxmes");
+          btn = list.getElementsByTagName("button");
+
+          for (i = 0; i < btn.length; i++) {
+            p = btn[i].getElementsByTagName("p")[0];
+            if (p.innerHTML.toUpperCase().indexOf(input) > -1) {
+              btn[i].style.display = "";
+            } else {
+              btn[i].style.display = "none";
+            }
+          }
         }
       </script>
       <script>
@@ -329,9 +382,6 @@
         let savedBG = localStorage.getItem("BG");
         let savedFavicon = localStorage.getItem("favicon");
         let favicon = document.getElementById("icon");
-        let savedLink = localStorage.getItem("savedLink");
-        let savedKey = localStorage.getItem("savedKey");
-
         if (savedTitle) {
           document.title = savedTitle;
         }
@@ -343,27 +393,38 @@
           document.body.style.backgroundImage = `url("${savedBG}")`;
           document.body.style.backgroundRepeat = "no-repeat"
           document.body.style.backgroundSize = "cover";
+          document.body.style.backgroundAttachment = "fixed";
+          document.body.style.backgroundSize = "100% 100%";
         }
-
-        let tabclosingval = localStorage.getItem("tabcloseval");
+        if (localStorage.getItem("advCloak") == 1) {
+          if (window === window.top) {
+            let popup = window.open('about:blank', '_blank');
+            let doc = popup.document;
+            let aboutiframe = doc.createElement('iframe');
+            let faviconabout = doc.createElement('link');
+            doc.title = name;
+            faviconabout.rel = 'icon';
+            faviconabout.href = icon;
+            aboutiframe.src = location.href;
+            aboutiframe.style.position = 'fixed';
+            aboutiframe.style.top = 0;
+            aboutiframe.style.bottom = 0;
+            aboutiframe.style.left = 0;
+            aboutiframe.style.right = 0;
+            aboutiframe.style.border = 'none';
+            aboutiframe.style.width = "100%";
+            aboutiframe.style.height = '100%';
+            doc.head.appendChild(faviconabout);
+            doc.body.appendChild(aboutiframe);
+            location.replace('https://classroom.google.com/');
+          }
+        }
 
         window.onbeforeunload = () => {
           if (tabclosingval == "true") {
             return "Do you want to leave the current tab?";
           }
         }
-
-        function panic(event) {
-          if (event.key === savedKey || event.key === savedKey) {
-            if (savedLink.includes("https://")) {
-              location.replace(savededulink);
-            } else {
-              location.replace("https://" + savedLink);
-            }
-          }
-        }
-
-        document.addEventListener("keydown", panic);
       </script>
       <script src="./js/mobile.js"></script>
       <script src="./uv/uv.bundle.js"></script>

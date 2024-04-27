@@ -13,12 +13,13 @@
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZ5T2ZY0DZ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-MZ5T2ZY0DZ');
+    gtag('config', 'G-MZ5T2ZY0DZ');
 </script>
+
 <body>
     <center>
         <div>
@@ -107,7 +108,7 @@
                     getElementById('copy').innerHTML = 'Copy Encoded URL';
                 });
                 doc">Copy Encoded URL</button>
-
+                <button onclick="bookmarklet();">Execute JS code</button>
                 <button onclick="
                 document.querySelector('.main').style.display = 'none';
                 document.querySelector('.menu').style.display = 'none';
@@ -119,8 +120,8 @@
             <h2>== Other stuff ==</h2>
             <button onclick="window.open('https://discord.com/invite/rqBgxP9Gnj').focus();">Join Discord Server</button>
             <button
-                onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdwOhdF3YtIx6IVQE5UA81bmQ_4a8QkIOu-WaC8mAyG9YHT6A/viewform?usp=sf_link').focus();">Report
-                a bug</button>
+            onclick="alert('Please email us your bug to kittycatclub@yappers.lol')">Report
+            a bug</button>
         </center>
         <br />
     </div>
@@ -134,9 +135,9 @@
 <script>
     const isLoggedIn = localStorage.getItem("loggedin");
     if (!isLoggedIn) {
-      location.href = "/";
+        location.href = "/";
     }
-  </script>
+</script>
 <script src="./js/learninginit.js"></script>
 <script src="./js/clock.js"></script>
 <script src="./uv/uv.bundle.js"></script>
@@ -147,57 +148,49 @@
     let savedBG = localStorage.getItem("BG");
     let savedFavicon = localStorage.getItem("favicon");
     let favicon = document.getElementById("icon");
-    let savedLink = localStorage.getItem("savedLink");
-    let savedKey = localStorage.getItem("savedKey");
-    let savedIframeBackground = localStorage.getItem("loader");
-
     if (savedTitle) {
         document.title = savedTitle;
     }
     if (savedFavicon) {
-        if (savedFavicon == './img/logo.png') {
-            favicon.href = './img/math.png';
-        } else {
-            favicon.href = savedFavicon;
-        }
+        favicon.href = savedFavicon;
     }
 
     if (savedBG) {
         document.body.style.backgroundImage = `url("${savedBG}")`;
-        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundRepeat = "no-repeat"
         document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundAttachment = "fixed";
+        document.body.style.backgroundSize = "100% 100%";
     }
-
-    if (savedIframeBackground) {
-        iframe.style.backgroundImage = `url('${savedIframeBackground}')`;
-        iframe.style.backgroundSize = "cover";
-        iframe.style.backgroundRepeat = "no-repeat";
+    if (localStorage.getItem("advCloak") == 1) {
+      if (window === window.top) {
+        let popup = window.open('about:blank', '_blank');
+        let doc = popup.document;
+        let aboutiframe = doc.createElement('iframe');
+        let faviconabout = doc.createElement('link');
+        doc.title = name;
+        faviconabout.rel = 'icon';
+        faviconabout.href = icon;
+        aboutiframe.src = location.href;
+        aboutiframe.style.position = 'fixed';
+        aboutiframe.style.top = 0;
+        aboutiframe.style.bottom = 0;
+        aboutiframe.style.left = 0;
+        aboutiframe.style.right = 0;
+        aboutiframe.style.border = 'none';
+        aboutiframe.style.width = "100%";
+        aboutiframe.style.height = '100%';
+        doc.head.appendChild(faviconabout);
+        doc.body.appendChild(aboutiframe);
+        location.replace('https://classroom.google.com/');
+      }
     }
-
-    let tabclosingval = localStorage.getItem("tabcloseval");
 
     window.onbeforeunload = () => {
         if (tabclosingval == "true") {
             return "Do you want to leave the current tab?";
         }
     }
-
-    function panic(event) {
-        if (event.key === savedKey) {
-            focusIframe();
-            if (savedLink.includes("https://")) {
-                location.replace(savedLink);
-            } else {
-                location.replace("https://" + savedLink);
-            }
-        }
-    }
-
-    function focusIframe() {
-        document.getElementById("result").focus();
-    }
-
-    document.addEventListener("keydown", panic);
 </script>
 
 </html>
