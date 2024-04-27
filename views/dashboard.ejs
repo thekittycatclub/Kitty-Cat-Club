@@ -168,28 +168,25 @@
 
     // Update the content of the HTML element with the detected time period
     function displayCurrentTime() {
-      setTimeout(function () {
-        function getTimePeriod() {
-          let time = new Date();
-          let hour = time.getHours();
+      function getTimePeriod() {
+        let time = new Date();
+        let hour = time.getHours();
 
-          let tp;
+        let tp;
 
-          if (hour >= 0 && hour < 5) {
-            tp = "Midnight (12 A.M. to 6 A.M.)";
-          } else if (hour >= 5 && hour < 12) {
-            tp = "Morning (6 A.M. to 12 P.M.)";
-          } else if (hour >= 12 && hour < 18) {
-            tp = "Afternoon (12 A.M. to 6 P.M.)";
-          } else {
-            tp = "Evening (6 P.M. to 12 A.M.)";
-          }
-
-          return tp;
+        if (hour >= 0 && hour < 5) {
+          tp = "Why are you here at midnight 🤨";
+        } else if (hour >= 5 && hour < 12) {
+          tp = "Good morning 🌅";
+        } else if (hour >= 12 && hour < 18) {
+          tp = "Good afternoon ☀️";
+        } else {
+          tp = "Good evening 🌙";
         }
-        document.getElementById("timePeriod").innerHTML = "Current time: " + getTimePeriod();
-        foreverloop();
-      }, 1000);
+
+        return tp;
+      }
+      document.getElementById("timePeriod").innerHTML = "" + getTimePeriod();
     }
     displayCurrentTime();
   </script>
