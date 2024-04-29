@@ -7,6 +7,7 @@
   <title>Kitty Cat Club | <%= title %>
   </title>
   <link rel="stylesheet" href="./css/gxmes.css">
+  <link rel="stylesheet" href="./css/gxmes.css">
   <link rel="stylesheet" href="./css/all.css" />
   <link id="icon" rel="icon" type="image/x-icon" href="./img/logo.png" />
 </head>
@@ -26,8 +27,8 @@
   </script>
 
   <body>
-    <center style="margin-top: 15%;">
-      <br>
+    <center style="margin-top: 10%;">
+      <h2 id="gamecount">Total Games: </h2>
       <div style="display: flex; justify-content: center;">
         <input placeholder="Search..." id="searchbar" type="text" onkeyup="search();"
           style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;">
@@ -46,14 +47,15 @@
         <div style="margin-left: auto;">
           <script type="text/javascript">
             atOptions = {
-              'key' : '3b0e26879afd5e3e7d6dd6d4d2565dff',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
+              'key': '3b0e26879afd5e3e7d6dd6d4d2565dff',
+              'format': 'iframe',
+              'height': 600,
+              'width': 160,
+              'params': {}
             };
           </script>
-          <script type="text/javascript" src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
+          <script type="text/javascript"
+            src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
         </div>
         <div class="gxmes">
           <button class="card resizable-card fps GP" onclick="openApp('https://1v1.lol/')">
@@ -302,81 +304,69 @@
             <br />
             <p class="title">Territorial.io</p>
           </button>
+          <br>
         </div>
         <div style="margin-right: auto;">
           <script type="text/javascript">
             atOptions = {
-              'key' : '3b0e26879afd5e3e7d6dd6d4d2565dff',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
+              'key': '3b0e26879afd5e3e7d6dd6d4d2565dff',
+              'format': 'iframe',
+              'height': 600,
+              'width': 160,
+              'params': {}
             };
           </script>
-          <script type="text/javascript" src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
+          <script type="text/javascript"
+            src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
         </div>
     </center><br />
+    <center>
+      <div class="curtain">
+        <div class="panel" id="customgamepanel" hidden>
+          <h1>Add Custom Game</h1><br />
+          <div style="margin-top: -15px;">
+            <input placeholder="Custom Game Name" id="customGameName" />
+            <input placeholder="Custom Game Link..." id="customGameUrl" />
+            <input placeholder="Custom Image URL..." id="customImgUrl" />
+          </div>
+          <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <button onclick="addGame().then(() => {
+                  document.querySelector('.gxmes').removeChild(document.querySelector('.custom-card'));
+                  let customGameButton = document.createElement('button');
+                  customGameButton.className = 'card custom-card';
+                  customGameButton.setAttribute('onclick', `customuishow();`);
+                  let customimage = document.createElement('img');
+                  customimage.src = './img/gxmes/plus.png';
+                  customGameButton.appendChild(customimage);
+                  let customtitle = document.createElement('p');
+                  customtitle.className = 'title';
+                  customtitle.textContent = 'Custom Game';
+                  customGameButton.appendChild(customtitle);
+                  document.querySelector('.gxmes').appendChild(customGameButton);
+            })">Add Game</button>
+            <button id="cancel" onclick="cancelchanges()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </center>
     <center>
       <div style="border: 2px solid #000; border-radius: 12px; width: 30em; padding: 10px;">
         <h2>Cant find your game?</h2>
         <p>It seems that your game wasn't added to our site yet.</p>
-        <p>(If you want a game on here, <a
+        <p>(If you want a game on here, you can add your own or <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScCXe-HBWW5WmP87kQR8fqMU6RLFLMN4Tl0ILENfK6UtU3A-g/viewform?usp=sf_link"
             target="_blank" style="color: rgb(0, 132, 255);">click this text!</a>)</p>
       </div>
     </center>
+    <center>
+      <div class="flex-box">
+        <div class="notification">
+          <h3 class="title"></h3>
+          <p class="content"></p>
+        </div>
+      </div>
+    </center>
     <%- include("partials/footer") -%>
-      <script>
-        /*function search() {
-          var input, list, btn, p, i;
-          input = document.getElementById("searchbar").value;
-          list = document.querySelector(".gxmes");
-          btn = list.getElementsByClassName("card");
-
-          var filter = document.getElementById("filter").value;
-
-          for (i = 0; i < btn.length; i++) {
-            p = btn[i].getElementsByTagName("p")[0];
-            if ((p.innerHTML.toUpperCase().indexOf(input.toUpperCase()) > -1) && (filter === "all" || btn[i].classList.contains(filter))) {
-              btn[i].style.display = "";
-            } else {
-              btn[i].style.display = "none";
-            }
-          }
-        }
-
-        function filterGames() {
-          var filter = document.getElementById("filter").value;
-          var cards = document.getElementsByClassName("card");
-
-          var input = document.getElementById("searchbar").value.toUpperCase();
-
-          for (var i = 0; i < cards.length; i++) {
-            var p = cards[i].getElementsByTagName("p")[0];
-            if ((p.innerHTML.toUpperCase().indexOf(input) > -1) && (filter === "all" || cards[i].classList.contains(filter))) {
-              cards[i].style.display = "";
-            } else {
-              cards[i].style.display = "none";
-            }
-          }
-        }*/
-
-        function search() {
-          var input, list, btn, p, i;
-          input = document.getElementById("searchbar").value.toUpperCase();
-          list = document.querySelector(".gxmes");
-          btn = list.getElementsByTagName("button");
-
-          for (i = 0; i < btn.length; i++) {
-            p = btn[i].getElementsByTagName("p")[0];
-            if (p.innerHTML.toUpperCase().indexOf(input) > -1) {
-              btn[i].style.display = "";
-            } else {
-              btn[i].style.display = "none";
-            }
-          }
-        }
-      </script>
       <script>
         let savedTitle = localStorage.getItem("tabName");
         let savedBG = localStorage.getItem("BG");
@@ -426,11 +416,13 @@
           }
         }
       </script>
+      <script src="./js/gxmes.js"></script>
       <script src="./js/mobile.js"></script>
       <script src="./uv/uv.bundle.js"></script>
       <script src="./uv/uv.config.js"></script>
       <script src="./js/index.js"></script>
-      <script type='text/javascript' src='//pl23174647.highcpmgate.com/48/16/2d/48162d567f70d48b225079396fb78e10.js'></script>
+      <script type='text/javascript'
+        src='//pl23174647.highcpmgate.com/48/16/2d/48162d567f70d48b225079396fb78e10.js'></script>
   </body>
 
 </html>

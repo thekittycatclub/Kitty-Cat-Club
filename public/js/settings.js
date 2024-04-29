@@ -14,6 +14,20 @@ if (tabclosingval == "true") {
   tab_Close.innerHTML = "Enable Tab Closing Preventer";
 }
 
+function notify(title, content) {
+  let notifTitle = document.querySelector(".title");
+  let notifContent = document.querySelector(".content");
+  notification.style.visibility = "visible";
+  notification.style.transition = "0.2s";
+  notification.style.opacity = "1";
+  notifTitle.innerHTML = title;
+  notifContent.innerHTML = content;
+  delay(2000).then(() => {
+    notification.style.opacity = "0";
+    notification.style.visibility = "hidden";
+  });
+}
+
 
 ////Functions////
 document.addEventListener("DOMContentLoaded", function () {

@@ -83,5 +83,9 @@ input:focus {
     transition: opacity 0.2s ease;
     border: 2px solid #101010;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-    z-index: 99999;
+    z-index: 999999999;
+  }
+
+  #cancel:hover {
+    background-color: crimson;
   }

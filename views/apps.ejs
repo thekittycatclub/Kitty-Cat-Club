@@ -30,21 +30,24 @@
       <br>
       <div style="align-content: center;" id="searchdiv">
         <form>
-          <input placeholder="Search..." id="searchbar" style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;" onkeyup="search()" />
+          <input placeholder="Search..." id="searchbar"
+            style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;"
+            onkeyup="search()" />
         </form>
       </div>
       <div style="display: flex; justify-content: center;">
         <div style="margin-left: auto;">
           <script type="text/javascript">
             atOptions = {
-              'key' : '3b0e26879afd5e3e7d6dd6d4d2565dff',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
+              'key': '3b0e26879afd5e3e7d6dd6d4d2565dff',
+              'format': 'iframe',
+              'height': 600,
+              'width': 160,
+              'params': {}
             };
           </script>
-          <script type="text/javascript" src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
+          <script type="text/javascript"
+            src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
         </div>
         <div class="gxmes">
           <button class="card" onclick="openApp('https://shuttle.lol/apps/google-llc/1395/youtube.html')">
@@ -127,23 +130,61 @@
             <br />
             <p class="title">Shuttle.lol</p>
           </button>
- <button class="card" onclick="openApp('https://quack.cool')">
+          <button class="card" onclick="openApp('https://quack.cool')">
             <img src="./img/partners/Quack.webp" />
             <br />
-            <p class="title">quack!</p>
+            <p class="title">Quack!</p>
           </button>
         </div>
         <div style="margin-right: auto;">
           <script type="text/javascript">
             atOptions = {
-              'key' : '3b0e26879afd5e3e7d6dd6d4d2565dff',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
+              'key': '3b0e26879afd5e3e7d6dd6d4d2565dff',
+              'format': 'iframe',
+              'height': 600,
+              'width': 160,
+              'params': {}
             };
           </script>
-          <script type="text/javascript" src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
+          <script type="text/javascript"
+            src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
+        </div>
+      </div>
+    </center>
+    <center>
+      <div class="curtain">
+        <div class="panel" id="customgamepanel" hidden>
+          <h1>Add Custom App</h1><br />
+          <div style="margin-top: -15px;">
+            <input placeholder="Custom App Name" id="customGameName" />
+            <input placeholder="Custom App Link..." id="customGameUrl" />
+            <input placeholder="Custom Image URL..." id="customImgUrl" />
+          </div>
+          <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <button onclick="addGame().then(() => {
+                  document.querySelector('.gxmes').removeChild(document.querySelector('.custom-card'));
+                  let customGameButton = document.createElement('button');
+                  customGameButton.className = 'card custom-card';
+                  customGameButton.setAttribute('onclick', `customuishow();`);
+                  let customimage = document.createElement('img');
+                  customimage.src = './img/gxmes/plus.png';
+                  customGameButton.appendChild(customimage);
+                  let customtitle = document.createElement('p');
+                  customtitle.className = 'title';
+                  customtitle.textContent = 'Custom App';
+                  customGameButton.appendChild(customtitle);
+                  document.querySelector('.gxmes').appendChild(customGameButton);
+            })">Add App</button>
+            <button id="cancel" onclick="cancelchanges()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </center>
+    <center>
+      <div class="flex-box">
+        <div class="notification">
+          <h3 class="title"></h3>
+          <p class="content"></p>
         </div>
       </div>
     </center>
@@ -152,55 +193,172 @@
       <script src="./uv/uv.config.js"></script>
       <script src="./js/index.js"></script>
       <script>
-                let savedTitle = localStorage.getItem("tabName");
-                let savedBG = localStorage.getItem("BG");
-                let savedFavicon = localStorage.getItem("favicon");
-                let favicon = document.getElementById("icon");
-                if (savedTitle) {
-                    document.title = savedTitle;
-                }
-                if (savedFavicon) {
-                    favicon.href = savedFavicon;
-                }
+        let savedTitle = localStorage.getItem("tabName");
+        let savedBG = localStorage.getItem("BG");
+        let savedFavicon = localStorage.getItem("favicon");
+        let favicon = document.getElementById("icon");
+        if (savedTitle) {
+          document.title = savedTitle;
+        }
+        if (savedFavicon) {
+          favicon.href = savedFavicon;
+        }
 
-                if (savedBG) {
-                    document.body.style.backgroundImage = `url("${savedBG}")`;
-                    document.body.style.backgroundRepeat = "no-repeat"
-                    document.body.style.backgroundSize = "cover";
-                    document.body.style.backgroundAttachment = "fixed";
-                    document.body.style.backgroundSize = "100% 100%";
-                }
-                if (localStorage.getItem("advCloak") == 1) {
-                    if (window === window.top) {
-                        let popup = window.open('about:blank', '_blank');
-                        let doc = popup.document;
-                        let aboutiframe = doc.createElement('iframe');
-                        let faviconabout = doc.createElement('link');
-                        doc.title = name;
-                        faviconabout.rel = 'icon';
-                        faviconabout.href = icon;
-                        aboutiframe.src = location.href;
-                        aboutiframe.style.position = 'fixed';
-                        aboutiframe.style.top = 0;
-                        aboutiframe.style.bottom = 0;
-                        aboutiframe.style.left = 0;
-                        aboutiframe.style.right = 0;
-                        aboutiframe.style.border = 'none';
-                        aboutiframe.style.width = "100%";
-                        aboutiframe.style.height = '100%';
-                        doc.head.appendChild(faviconabout);
-                        doc.body.appendChild(aboutiframe);
-                        location.replace('https://classroom.google.com/');
-                    }
-                }
+        if (savedBG) {
+          document.body.style.backgroundImage = `url("${savedBG}")`;
+          document.body.style.backgroundRepeat = "no-repeat"
+          document.body.style.backgroundSize = "cover";
+          document.body.style.backgroundAttachment = "fixed";
+          document.body.style.backgroundSize = "100% 100%";
+        }
+        if (localStorage.getItem("advCloak") == 1) {
+          if (window === window.top) {
+            let popup = window.open('about:blank', '_blank');
+            let doc = popup.document;
+            let aboutiframe = doc.createElement('iframe');
+            let faviconabout = doc.createElement('link');
+            doc.title = name;
+            faviconabout.rel = 'icon';
+            faviconabout.href = icon;
+            aboutiframe.src = location.href;
+            aboutiframe.style.position = 'fixed';
+            aboutiframe.style.top = 0;
+            aboutiframe.style.bottom = 0;
+            aboutiframe.style.left = 0;
+            aboutiframe.style.right = 0;
+            aboutiframe.style.border = 'none';
+            aboutiframe.style.width = "100%";
+            aboutiframe.style.height = '100%';
+            doc.head.appendChild(faviconabout);
+            doc.body.appendChild(aboutiframe);
+            location.replace('https://classroom.google.com/');
+          }
+        }
 
-                window.onbeforeunload = () => {
-                    if (tabclosingval == "true") {
-                        return "Do you want to leave the current tab?";
-                    }
-                }
+        window.onbeforeunload = () => {
+          if (tabclosingval == "true") {
+            return "Do you want to leave the current tab?";
+          }
+        }
       </script>
       <script>
+        let gamelist = document.querySelectorAll(".card");
+        function delay(milliseconds) {
+          return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+          });
+        }
+        function notify(title, content) {
+          let notifTitle = document.querySelector(".title");
+          let notifContent = document.querySelector(".content");
+          let notification = document.querySelector(".notification");
+          notification.style.visibility = "visible";
+          notification.style.transition = "0.2s";
+          notification.style.opacity = "1";
+          notifTitle.innerHTML = title;
+          notifContent.innerHTML = content;
+          delay(2000).then(() => {
+            notification.style.opacity = "0";
+            notification.style.visibility = "hidden";
+          });
+        }
+
+
+        function addGame() {
+          let name = document.getElementById("customGameName").value;
+          let url = document.getElementById("customGameUrl").value;
+          let img = document.getElementById("customImgUrl").value;
+
+          if (!name || !url || !img) {
+            notify("Game Error", "Please fill out all of the input fields.");
+          } else if (!(img.startsWith("https://") || img.startsWith("http://"))) {
+            notify("Game Error", "Please input a valid image URL starting with https:// or http://");
+          } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
+            notify("Game Error", "Please input a valid game URL starting with https:// or http://");
+          } else {
+            let newGame = {
+              name: name,
+              url: url,
+              img: img
+            };
+            let games = JSON.parse(localStorage.getItem("apps")) || [];
+            games.push(newGame);
+            localStorage.setItem("apps", JSON.stringify(games));
+            addGameToDOM(newGame);
+            notify("Game Added", `${name} has been added successfully.`);
+            cancelchanges();
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                resolve(games);
+              }, 10);
+            });
+          }
+        }
+
+        function addGameToDOM(game) {
+          let newGame = document.createElement('button');
+          newGame.className = "card";
+          newGame.setAttribute('onclick', `openApp('${game.url}')`);
+          let gameImg = document.createElement('img');
+          gameImg.src = game.img;
+          newGame.appendChild(gameImg);
+          let gameTitle = document.createElement('p');
+          gameTitle.className = "title";
+          gameTitle.textContent = game.name;
+          newGame.appendChild(gameTitle);
+          document.querySelector('.gxmes').appendChild(newGame);
+        }
+
+        function loadGamesFromStorage() {
+          let games = JSON.parse(localStorage.getItem("apps")) || [];
+          games.forEach(game => {
+            addGameToDOM(game);
+          });
+
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve(games);
+            }, 250);
+          });
+        }
+
+        window.addEventListener('load', function () {
+          loadGamesFromStorage().then(() => {
+            let customGameButton = document.createElement('button');
+            customGameButton.className = "card custom-card";
+            customGameButton.setAttribute('onclick', `customuishow();`);
+            let customimage = document.createElement('img');
+            customimage.src = "./img/gxmes/plus.png";
+            customGameButton.appendChild(customimage);
+            let customtitle = document.createElement('p');
+            customtitle.className = "title";
+            customtitle.textContent = "Custom App";
+            customGameButton.appendChild(customtitle);
+            document.querySelector('.gxmes').appendChild(customGameButton);
+          });
+        });
+
+        function customuishow() {
+          let curtain = document.querySelector(".curtain");
+          let gamepanel = document.getElementById("customgamepanel");
+
+          curtain.style.visibility = "visible";
+          curtain.style.opacity = "1";
+          gamepanel.removeAttribute("hidden");
+          gamepanel.style.opacity = "1";
+        }
+
+        function cancelchanges() {
+          let curtain = document.querySelector(".curtain");
+          let gamepanel = document.getElementById("customgamepanel");
+          curtain.style.opacity = "0";
+          gamepanel.style.opacity = "0";
+          delay(300).then(() => {
+            curtain.style.visibility = "hidden";
+            gamepanel.setAttribute("hidden", true);
+          });
+        }
+
         function search() {
           var input, list, btn, p, i;
           input = document.getElementById("searchbar").value.toUpperCase();
@@ -218,7 +376,8 @@
         }
       </script>
       <script src="./js/mobile.js"></script>
-      <script type='text/javascript' src='//pl23174647.highcpmgate.com/48/16/2d/48162d567f70d48b225079396fb78e10.js'></script>
+      <script type='text/javascript'
+        src='//pl23174647.highcpmgate.com/48/16/2d/48162d567f70d48b225079396fb78e10.js'></script>
   </body>
 
 </html>
