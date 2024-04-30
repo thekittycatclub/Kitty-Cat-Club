@@ -26,29 +26,14 @@
   </script>
 
   <body>
-    <center>
+    <center style="margin-top: 8%;">
       <br>
-      <div style="align-content: center;" id="searchdiv">
-        <form>
-          <input placeholder="Search..." id="searchbar"
-            style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;"
-            onkeyup="search()" />
-        </form>
-      </div>
+      <h2 id="gamecount">Total Apps: </h2>
       <div style="display: flex; justify-content: center;">
-        <div style="margin-left: auto;">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '3b0e26879afd5e3e7d6dd6d4d2565dff',
-              'format': 'iframe',
-              'height': 600,
-              'width': 160,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
-        </div>
+        <input placeholder="Search..." id="searchbar" type="text" onkeyup="search();"
+          style="margin-left: 5px; margin-right: 5px; width: 30em; border-radius: 5px; padding: 10px;">
+      </div>
+      <div style="display: flex; justify-content: center; width: 95%;">
         <div class="gxmes">
           <button class="card" onclick="openApp('https://shuttle.lol/apps/google-llc/1395/youtube.html')">
             <img src="./img/gxmes/youtube.png" />
@@ -137,15 +122,6 @@
           </button>
         </div>
         <div style="margin-right: auto;">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '3b0e26879afd5e3e7d6dd6d4d2565dff',
-              'format': 'iframe',
-              'height': 600,
-              'width': 160,
-              'params': {}
-            };
-          </script>
           <script type="text/javascript"
             src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
         </div>
@@ -243,6 +219,9 @@
       </script>
       <script>
         let gamelist = document.querySelectorAll(".card");
+        let gamecount = document.getElementById("gamecount");
+
+        gamecount.innerHTML = `Total Apps: ${gamelist.length}`;
         function delay(milliseconds) {
           return new Promise(resolve => {
             setTimeout(resolve, milliseconds);
@@ -307,6 +286,7 @@
           gameTitle.textContent = game.name;
           newGame.appendChild(gameTitle);
           document.querySelector('.gxmes').appendChild(newGame);
+          gamecount.innerHTML = `Total Apps: ${document.querySelectorAll(".card").length}`;
         }
 
         function loadGamesFromStorage() {
