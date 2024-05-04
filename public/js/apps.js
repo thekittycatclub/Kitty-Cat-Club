@@ -42,9 +42,9 @@ function addGame() {
       url: url,
       img: img
     };
-    let games = JSON.parse(localStorage.getItem("games")) || [];
+    let games = JSON.parse(localStorage.getItem("apps")) || [];
     games.push(newGame);
-    localStorage.setItem("games", JSON.stringify(games));
+    localStorage.setItem("apps", JSON.stringify(games));
     addGameToDOM(newGame);
     notify("Game Added", `${name} has been added successfully.`);
     cancelchanges();
@@ -100,7 +100,7 @@ function editgame(gn, is, gl) {
 }
 
 function loadGamesFromStorage() {
-  let games = JSON.parse(localStorage.getItem("games")) || [];
+  let games = JSON.parse(localStorage.getItem("apps")) || [];
   games.forEach(game => {
     addGameToDOM(game);
   });
@@ -113,7 +113,7 @@ function loadGamesFromStorage() {
 }
 
 function loadGamesintoPanel() {
-  let games = JSON.parse(localStorage.getItem("games")) || [];
+  let games = JSON.parse(localStorage.getItem("apps")) || [];
   games.forEach(game => {
     addGameToPanel(game);
   });
@@ -143,7 +143,7 @@ function refreshCustomGames() {
     customGameButton.appendChild(customimage);
     let customtitle = document.createElement('p');
     customtitle.className = "title";
-    customtitle.textContent = "Custom Game";
+    customtitle.textContent = "Custom App";
     customGameButton.appendChild(customtitle);
     document.querySelector('.gxmes').appendChild(customGameButton);
   });
@@ -162,7 +162,7 @@ function saveGameEdits() {
   } else if (!(editedUrl.startsWith("https://") || editedUrl.startsWith("http://"))) {
     notify("Game Error", "Please input a valid game URL starting with https:// or http://");
   } else {
-    let games = JSON.parse(localStorage.getItem("games")) || [];
+    let games = JSON.parse(localStorage.getItem("apps")) || [];
     let gameIndex = games.findIndex(game => game.name.trim().toLowerCase() === editedName2.trim().toLowerCase());
 
     if (gameIndex !== -1) {
@@ -170,14 +170,12 @@ function saveGameEdits() {
       games[gameIndex].name = editedName;
       games[gameIndex].url = editedUrl;
       games[gameIndex].img = editedImg;
-      localStorage.setItem("games", JSON.stringify(games));
+      localStorage.setItem("apps", JSON.stringify(games));
       let editedGameCard = document.querySelector(`.editgames .card:nth-child(${gameIndex + 1})`);
       editedGameCard.querySelector("img").src = editedImg;
       editedGameCard.querySelector(".title").textContent = editedName2;
       exit_editing();
       refreshCustomGames();
-    } else {
-      notify("Game Error", "The game to be edited was not found.");
     }
   }
 }
@@ -185,12 +183,12 @@ function saveGameEdits() {
 function deleteGame() {
   let editedName = document.getElementById("editGameName2").value;
 
-  let games = JSON.parse(localStorage.getItem("games")) || [];
+  let games = JSON.parse(localStorage.getItem("apps")) || [];
   let gameIndex = games.findIndex(game => game.name === editedName);
 
   if (gameIndex !== -1) {
     games.splice(gameIndex, 1);
-    localStorage.setItem("games", JSON.stringify(games));
+    localStorage.setItem("apps", JSON.stringify(games));
     let deletedGameCard = document.querySelector(`.editgames .card:nth-child(${gameIndex + 1})`);
     deletedGameCard.remove();
 
@@ -212,7 +210,7 @@ function exit_editing() {
   document.getElementById("editgamediv").style.display = "none";
   document.getElementById("addgamediv").style.display = "";
   document.querySelector(".addgamebtns").style.display = "";
-  document.getElementById("paneltitle").innerHTML = "Add Custom Game";
+  document.getElementById("paneltitle").innerHTML = "Add Custom App";
   
   delay(300).then(() => {
     curtain.style.visibility = "hidden";
@@ -262,12 +260,12 @@ function search() {
 function switchpanel() {
   document.querySelectorAll(".custom").forEach((card) => {
     if (!card) {
-      notify("Editing Error", "You currently have no custom games. To edit a game, first make one.")
+      notify("Editing Error", "You currently have no custom apps. To edit a game, first make one.")
     } else {
       document.getElementById("addgamediv").style.display = "none";
       document.querySelector(".addgamebtns").style.display = "none";
       document.querySelector(".editgamesdiv").style.display = "";
-      document.getElementById("paneltitle").innerHTML = "Select a game";
+      document.getElementById("paneltitle").innerHTML = "Select an app";
       document.querySelector(".panel").style.width = "35em";
     }
   });
@@ -308,22 +306,24 @@ for (var i = 0; i < cards.length; i++) {
 }
 }*/
 let breakloop = 0;
-
-document.querySelectorAll(".card .image").forEach(image => {
-  image.addEventListener("load", function() {
-    document.getElementById("loadgame").style.opacity = "1";
-    document.getElementById("loadinggames").style.visibility = "hidden";
-    document.getElementById("loadinggames").style.opacity = "0";
-    setTimeout(() => {
-      document.getElementById("loadgame").style.transition = "opacity 0.3s";
-      document.getElementById("loadgame").style.opacity = "0";
-      document.getElementById("loadinggames").style.transition = "opacity 0.3s, visibility 0.3s";
-      document.getElementById("loadinggames").style.visibility = "visible";
-      document.getElementById("loadinggames").style.opacity = "1";
-    }, 100); 
+function loadassets() {
+  document.querySelectorAll(".card .image").forEach(image => {
+    image.addEventListener("load", function() {
+      document.getElementById("loadgame").style.opacity = "1";
+      document.getElementById("loadinggames").style.visibility = "hidden";
+      document.getElementById("loadinggames").style.opacity = "0";
+      setTimeout(() => {
+        document.getElementById("loadgame").style.transition = "opacity 0.3s";
+        document.getElementById("loadgame").style.opacity = "0";
+        document.getElementById("loadinggames").style.transition = "opacity 0.3s, visibility 0.3s";
+        document.getElementById("loadinggames").style.visibility = "visible";
+        document.getElementById("loadinggames").style.opacity = "1";
+      }, 100); 
+    });
   });
-});
+}
 
+loadassets();
 window.addEventListener('load', function () {
   loadGamesFromStorage().then(() => {
     let customGameButton = document.createElement('button');
@@ -334,7 +334,7 @@ window.addEventListener('load', function () {
     customGameButton.appendChild(customimage);
     let customtitle = document.createElement('p');
     customtitle.className = "title";
-    customtitle.textContent = "Custom Game";
+    customtitle.textContent = "Custom App";
     customGameButton.appendChild(customtitle);
     document.querySelector('.gxmes').appendChild(customGameButton);
   });

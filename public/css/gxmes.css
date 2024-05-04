@@ -55,6 +55,27 @@ form {
     max-width: 100%;
 }
 
+.editgames {
+    display: flex;
+    justify-content: center; 
+    margin-top: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 170%;
+    width: 30em;
+    height: 50%;
+}
+
+.editgamesdiv {
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+#loadinggames {
+    visibility: hidden;
+    opacity: 0;
+}
+
 
 
 a {
@@ -177,7 +198,7 @@ a {
 
 .panel {
     background-color: #1c1c1c;
-    top: 27%;
+    top: 25%;
     position: fixed;
     padding: 20px;
     transform: translateX(-50%);
@@ -204,4 +225,11 @@ a {
 input {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+#loadgame {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
 }

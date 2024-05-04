@@ -48,7 +48,7 @@ app.get('/mobile', (req, res) => {
   res.render('mobile',  { title: "Mobile" });
 });
 
-app.get('/e/e/e/testingfortnite012948', (req, res) => {
+app.get('/skibiditoilet12549s', (req, res) => {
   res.render('extra/testing');
 });
 
