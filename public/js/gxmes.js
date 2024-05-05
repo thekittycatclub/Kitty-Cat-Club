@@ -309,22 +309,31 @@ for (var i = 0; i < cards.length; i++) {
 }*/
 let breakloop = 0;
 
-document.querySelectorAll(".card .image").forEach(image => {
-  image.addEventListener("load", function() {
-    document.getElementById("loadgame").style.opacity = "1";
-    document.getElementById("loadinggames").style.visibility = "hidden";
-    document.getElementById("loadinggames").style.opacity = "0";
-    setTimeout(() => {
-      document.getElementById("loadgame").style.transition = "opacity 0.3s";
-      document.getElementById("loadgame").style.opacity = "0";
-      document.getElementById("loadinggames").style.transition = "opacity 0.3s, visibility 0.3s";
-      document.getElementById("loadinggames").style.visibility = "visible";
-      document.getElementById("loadinggames").style.opacity = "1";
-    }, 100); 
+function areAllImagesLoaded() {
+  const images = document.querySelectorAll(".card .image");
+  for (const image of images) {
+      if (!image.complete) {
+          return false;
+      }
+  }
+  return true;
+}
+function handleTransition() {
+  document.getElementById("loadgame").style.transition = "opacity 0.3s";
+  document.getElementById("loadgame").style.opacity = "0";
+  document.getElementById("loadinggames").style.transition = "opacity 0.3s, visibility 0.3s";
+  document.getElementById("loadinggames").style.visibility = "visible";
+  document.getElementById("loadinggames").style.opacity = "1";
+}
+if (areAllImagesLoaded()) {
+  handleTransition();
+} else {
+  document.querySelectorAll(".card .image").forEach(image => {
+      image.addEventListener("load", function() {
+          setTimeout(handleTransition, 500);
+      });
   });
-});
-
-window.addEventListener('load', function () {
+}
   loadGamesFromStorage().then(() => {
     let customGameButton = document.createElement('button');
     customGameButton.className = "card custom-card";
@@ -339,4 +348,3 @@ window.addEventListener('load', function () {
     document.querySelector('.gxmes').appendChild(customGameButton);
   });
   loadGamesintoPanel();
-});

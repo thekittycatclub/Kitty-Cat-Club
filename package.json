@@ -17,7 +17,6 @@
   "license": "",
   "dependencies": {
     "@tomphttp/bare-server-node": "^1.2.6",
-    "bare-server-node": "^2.0.0",
     "ejs": "^3.1.9",
     "express": "^4.18.2"
   },
