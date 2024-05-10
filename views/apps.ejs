@@ -27,7 +27,10 @@
 
   <body>
     <center style="margin-top: 8%;">
-      <br>
+      <div id="loadgame">
+        <h1 id="loadgamename">Loading Assets...</h1>
+      </div>
+      <div id="loadinggames">
       <h2 id="gamecount">Total Apps: </h2>
       <div style="display: flex; justify-content: center;">
         <input placeholder="Search..." id="searchbar" type="text" onkeyup="search();"
@@ -35,11 +38,6 @@
       </div>
       <div style="display: flex; justify-content: center; width: 95%;">
         <div class="gxmes">
-          <button class="card" onclick="openApp('https://hw.billigerhost.com/games')">
-            <img src="./img/partners/hwhelp.gif" />
-            <br />
-            <p class="title">hwhelp.cc</p>
-          </button>
           <button class="card" onclick="openApp('https://shuttle.lol/apps/google-llc/1395/youtube.html')">
             <img src="./img/gxmes/youtube.png" />
             <br />
@@ -125,12 +123,18 @@
             <br />
             <p class="title">quack!</p>
           </button>
+          <button class="card" onclick="openApp('https://hw.billigerhost.com/games')">
+            <img src="./img/partners/hwhelp.gif" />
+            <br />
+            <p class="title">hwhelp.cc</p>
+          </button>
         </div>
         <div style="margin-right: auto;">
           <script type="text/javascript"
             src="//www.topcreativeformat.com/3b0e26879afd5e3e7d6dd6d4d2565dff/invoke.js"></script>
         </div>
       </div>
+    </div>
     </center>
     <center>
       <div class="curtain">

@@ -307,7 +307,6 @@ for (var i = 0; i < cards.length; i++) {
   }
 }
 }*/
-let breakloop = 0;
 
 function areAllImagesLoaded() {
   const images = document.querySelectorAll(".card .image");
@@ -319,9 +318,9 @@ function areAllImagesLoaded() {
   return true;
 }
 function handleTransition() {
-  document.getElementById("loadgame").style.transition = "opacity 0.3s";
+  document.getElementById("loadgame").style.transition = "0.3s";
   document.getElementById("loadgame").style.opacity = "0";
-  document.getElementById("loadinggames").style.transition = "opacity 0.3s, visibility 0.3s";
+  document.getElementById("loadinggames").style.transition = "1s";
   document.getElementById("loadinggames").style.visibility = "visible";
   document.getElementById("loadinggames").style.opacity = "1";
 }
@@ -334,6 +333,7 @@ if (areAllImagesLoaded()) {
       });
   });
 }
+
   loadGamesFromStorage().then(() => {
     let customGameButton = document.createElement('button');
     customGameButton.className = "card custom-card";

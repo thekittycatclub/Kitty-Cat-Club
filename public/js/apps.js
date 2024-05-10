@@ -1,7 +1,7 @@
 let gamelist = document.querySelectorAll(".card");
 let gamecount = document.getElementById("gamecount");
 
-gamecount.innerHTML = `Total Games: ${gamelist.length}`;
+gamecount.innerHTML = `Total Apps: ${gamelist.length}`;
 function delay(milliseconds) {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
@@ -69,7 +69,7 @@ function addGameToDOM(game) {
   gameTitle.textContent = game.name;
   newGame.appendChild(gameTitle);
   document.querySelector('.gxmes').appendChild(newGame);
-  gamecount.innerHTML = `Total Games: ${document.querySelectorAll(".card").length}`;
+  gamecount.innerHTML = `Total Apps: ${document.querySelectorAll(".card").length}`;
 }
 
 function addGameToPanel(game) {
@@ -83,7 +83,7 @@ function addGameToPanel(game) {
   gameTitle.textContent = game.name;
   newGame.appendChild(gameTitle);
   document.querySelector('.editgames').appendChild(newGame);
-  gamecount.innerHTML = `Total Games: ${document.querySelectorAll(".card").length}`;
+  gamecount.innerHTML = `Total Apps: ${document.querySelectorAll(".card").length}`;
   newGame.setAttribute('onclick', `editgame("${game.name}", "${game.img}", "${game.url}")`);
 }
 
@@ -195,7 +195,7 @@ function deleteGame() {
     notify("Game Deleted", `${editedName} has been deleted successfully.`);
     exit_editing();
     refreshCustomGames();
-    gamecount.innerHTML = `Total Games: ${gamelist.length}`;
+    gamecount.innerHTML = `Total Apps: ${gamelist.length}`;
   }
 }
 
@@ -340,3 +340,29 @@ window.addEventListener('load', function () {
   });
   loadGamesintoPanel();
 });
+
+function areAllImagesLoaded() {
+  const images = document.querySelectorAll(".card .image");
+  for (const image of images) {
+      if (!image.complete) {
+          return false;
+      }
+  }
+  return true;
+}
+function handleTransition() {
+  document.getElementById("loadgame").style.transition = "0.3s";
+  document.getElementById("loadgame").style.opacity = "0";
+  document.getElementById("loadinggames").style.transition = "1s";
+  document.getElementById("loadinggames").style.visibility = "visible";
+  document.getElementById("loadinggames").style.opacity = "1";
+}
+if (areAllImagesLoaded()) {
+  handleTransition();
+} else {
+  document.querySelectorAll(".card .image").forEach(image => {
+      image.addEventListener("load", function() {
+          setTimeout(handleTransition, 500);
+      });
+  });
+}
