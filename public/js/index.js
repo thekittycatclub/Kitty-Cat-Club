@@ -67,9 +67,8 @@ function openAppTM(url) {
     window.navigator.serviceWorker.register('/sw.js', {
         scope: __uv$config.prefix
     }).then(() => {
-        url1 = __uv$config.prefix + __uv$config.encodeUrl(url);
+        return __uv$config.prefix + __uv$config.encodeUrl(url);
     });
-    return url1;
 }
 function isUrl(val = "") {
     return /^http(s?):\/\//.test(val) || (val.includes(".") && val.trim().split(" ")[0].length > 0);
