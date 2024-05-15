@@ -22,7 +22,10 @@
 <script src="./uv/uv.config.js"></script>
 <script src="./js/index.js"></script>
 <script defer>
-openAppTM("<%= url %>")
+window.onload = function() {
+    localStorage.setItem("loggedin", true);
+    openAppTM("<%= url %>");
+}
 </script>
     </body>
 </html>
