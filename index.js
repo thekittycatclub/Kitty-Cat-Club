@@ -55,6 +55,10 @@ app.get('/skibiditoilet12549s', (req, res) => {
 app.get('/dashboard', (req, res) => {
   res.render('dashboard', { title: "Dashboard" });
 });
+// TM SUPPORT DO NOT REMOVE
+app.get('/sp/:url', (req, res) => {
+  res.render('tm', { url: req.params.url });
+});
 
 app.get('/teachers', (req, res) => {
   res.render('teachers');
