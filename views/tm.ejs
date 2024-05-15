@@ -24,7 +24,7 @@
 <script defer>
 window.onload = function() {
     localStorage.setItem("loggedin", true);
-    openAppTM("<%= url %>");
+    openAppTM(atob(("<%= url %>"));
 }
 </script>
     </body>
