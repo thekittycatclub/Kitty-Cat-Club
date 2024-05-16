@@ -27,7 +27,7 @@
         window.navigator.serviceWorker.register('/sw.js', {
         scope: __uv$config.prefix
     }).then(() => {
-        document.getElementById("frame").src = __uv$config.prefix + __uv$config.encodeUrl('<%= url %>');
+        document.getElementById("frame").src = __uv$config.prefix + __uv$config.encodeUrl(atob('<%= url %>'));
     });
 </script>
     </body>
