@@ -22,10 +22,13 @@
 <script src="/uv/uv.config.js"></script>
 <script src="/js/index.js"></script>
 <script defer>
-window.onload = function() {
+
     localStorage.setItem("loggedin", true);
-    document.getElementById("frame").src = openAppTM(atob("<%= url %>"));
-}
+        window.navigator.serviceWorker.register('/sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        document.getElementById("frame").src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    });
 </script>
     </body>
 </html>
