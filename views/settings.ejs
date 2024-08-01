@@ -225,8 +225,8 @@
                             function savePass() {
                                 if (!passInput.value) {
                                     notify("Password error", "You can't set a blank password!");
-                                } else if (!(passInput.value.length >= 10)) {
-                                    notify("Password error", `Your new password must be at least 10 characters.`);
+                                } else if (!(passInput.value.length >= 8)) {
+                                    notify("Password error", `Your new password must be at least 8 characters.`);
                                 } else {
                                     localStorage.setItem("savedPass", passInput.value);
                                     notify("Password saved", `Password has been saved! <br/> (New password: ${localStorage.getItem("savedPass")})`);
