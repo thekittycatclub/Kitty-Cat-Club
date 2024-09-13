@@ -1,0 +1,97 @@
+<div class="settings">
+    <div class="page-settings-list">
+        <div class="settings-card">
+            <h2>Tab Cloaking</h2>
+            <p>This will change the current document's favicon and title to your preference.</p>
+            <div class="settings-button-list">
+                <button class="tab-btn" onclick="tabCloak('Google')"><img src="./img/google.png"></button>
+                <button class="tab-btn" onclick="tabCloak('Classroom')"><img src="./img/Google_Classroom.png"></button>
+                <button class="tab-btn" onclick="tabCloak('Docs')"><img src="./img/google_docs.ico"></button>
+                <button class="tab-btn" onclick="tabCloak('KA')"><img src="./img/ka.png"></button>
+                <button class="tab-btn" onclick="tabCloak('Canvas')"><img src="./img/canvas.png"></button>
+                <button class="tab-btn" onclick="showTabPanel()"><i class="fa-solid fa-screwdriver-wrench"
+                        style="font-size: 2em; margin: 6px;"></i></button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Panic Key System</h2>
+            <p>Makes it so that if you press the panic key, it will redirect you to the panic URL you've set it to.</p>
+            <div class="settings-button-list">
+                <button onclick="initPK()">
+                    <p>Record Keystroke</p>
+                </button>
+                <button id="cancel-btn" onclick="resetPK()">
+                    <p>Reset System</p>
+                </button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Change Background Image</h2>
+            <p>Changes the tabs favicon and title.</p>
+            <div class="settings-button-list">
+                <input placeholder="Type your URL..." id="bgImage-input">
+                <button onclick="changeBG(document.getElementById('bgImage-input'))">
+                    <p>Change BG</p>
+                </button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Theme</h2>
+            <p>Select which background you like that was provided by the devs of KCC.</p><br />
+            <div class="settings-button-list" style="margin-top: -20px;">
+                <select id="bg-selection">
+                    <option value="none">None (Default)</option>
+                    <option value="KCC Background">KCC Background</option>
+                </select>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Website Cloaking</h2>
+            <p>This tool will make any website you specify cloaked in a new about:blank tab.</p>
+            <div class="settings-button-list">
+                <input placeholder="Type your URL..." id="webCK-input">
+                <button onclick="webCloak(document.getElementById('webCK-input').value)">
+                    <p>Open Website</p>
+                </button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>About:blank Cloak</h2>
+            <p>Opens Kitty Cat Club in a new about:blank tab.</p><br />
+            <div class="settings-button-list">
+                <button onclick="aboutBlank()">
+                    <p>Open in new about:blank tab</p>
+                </button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Advanced about:blank cloaking</h2>
+            <p>By enabling this, the site will get automatically cloaked if you try visiting KCC.</p>
+            <div class="settings-button-list">
+                <button id="advCloak-btn">
+                    <p>Toggle on</p>
+                </button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Tab closing prevention</h2>
+            <p>By enabling this, you will get a popup saying if you want to leave the tab or not.</p>
+            <div class="settings-button-list">
+                <button onclick="tabPrev(document.getElementById('prev-p'))">
+                    <p id="prev-p">Enable Prevention</p>
+                </button>
+            </div>
+        </div>
+        <div class="settings-card">
+            <h2>Navigation Bar Position</h2>
+            <p>Choose which orientation you want the navigation bar to be.</p>
+            <div class="settings-button-list">
+                <select id="nav-bar-selection">
+                    <option value="nav-left">Position Left (Default)</option>
+                    <option value="nav-right">Position Right</option>
+                    <option value="nav-top">Position Top</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="home">
+    <div class="content">
+        <div class="home-panel">
+            <p style="margin: 0;">July 12nd, 2024 | 7/12/2024</p>
+        </div>
+        <div class="home-panel" style="margin-top: -15px;">
+            <div class="title">
+                <img src="./img/KCC.jpg" id="logo-home">
+                <div>
+                    <h1>Kitty Cat Club</h1>
+                    <p id="timeperiod"></p>
+                </div>
+            </div>
+            <div class="search">
+                <form id="uv-form">
+                    <input type="text" id="uv-form-input" placeholder="Search the web freely..." />
+                    <button id="searchbtn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div>
+                    <button
+                        onclick="NavigateToProxy('form', 'https://www.google.com/', selected_choice)"
+                        class="browserbtn">
+                        <img src="/img/google.webp" />
+                    </button>
+                    <button onclick="NavigateToProxy('form', 'https://www.bing.com/', selected_choice)" class="browserbtn">
+                        <img src="/img/bing.webp" />
+                    </button>
+                    <button onclick="NavigateToProxy('form', 'https://www.yahoo.com/', selected_choice)" class="browserbtn">
+                        <img src="/img/yahoo.png" />
+                    </button>
+                    <button onclick="NavigateToProxy('form', 'https://start.google.com/', selected_choice)" class="browserbtn">
+                        <img src="/img/duckduckgo.png" />
+                    </button>
+                    <button onclick="NavigateToProxy('form', 'https://www.ask.com/', selected_choice)" class="browserbtn">
+                        <img src="/img/ask.png" />
+                    </button>
+                    <button onclick="NavigateToProxy('form', 'https://www.yandex.com/', selected_choice)" class="browserbtn">
+                        <img src="/img/yendex.png" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="home-panel" style="margin-top: -15px;">
+            <p style="margin: 0;">12:00:00 A.M. (CST)</p>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Screen with Rotating Circle -->
+<div class="loading-screen" id="loading-screen">
+    <div class="loading-panel">
+        <h1>Initializing Proxy. . . </h1><br/>
+        <div class="loading-circle"></div>
+    </div>
+</div>
+

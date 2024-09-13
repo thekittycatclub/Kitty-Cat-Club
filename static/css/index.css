@@ -1,0 +1,861 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+/* Main CSS */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #050505;
+
+    --normal: #090909;
+    --normal_outline: #1f1f1f;
+    --error_red: #cb2222;
+    --error_red_outline: #e68787;
+
+    --warning_yellow: #bcbc17;
+    --warning_yellow_outline: #717222;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #101010;
+    color: #FFF;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* background-image: url("https://media.discordapp.net/attachments/1196299394232885298/1272325401275924511/Untitled_design_15.png?ex=66c66e5e&is=66c51cde&hm=5fa5d3f4229ad359bea8454b8235ab7a4e4a44c52620d7f49859df31b0be7d34&=&format=webp&quality=lossless&width=1595&height=897");*/
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+input {
+    color: #FFF;
+    background-color: #1c1c1c;
+    padding: 7px;
+    border: 2px solid #151515;
+    text-align: center;
+    border-radius: 2.5px;
+}
+
+.notif-div {
+    display: flex;
+    justify-content: center;
+    z-index: 9999999;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    flex-direction: column;
+}
+
+.notification {
+    z-index: 9999999;
+    background-color: #101010ae;
+    color: #FFF;
+    width: auto;
+    max-width: 15em;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px 0px rgb(0, 0, 0);
+    border: 2px solid #1c1c1c;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.25s;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.notification p {
+    text-align: center;
+    font-size: 0.7em;
+    margin: 5px;
+}
+
+.input {
+    background-color: #1c1c1c;
+    border: 2px solid #151515;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.4rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    width: 0.4rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b7b7b7c0;
+    border-radius: 2px;
+    width: 0.4rem;
+    height: 0.5rem;
+}
+
+.holder {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.25s ease;
+}
+
+.home,
+.games,
+.apps,
+.settings,
+.extra {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75vw;
+    height: 100vh;
+    left: 25vw;
+    transition: 0.25s ease;
+}
+
+.games,
+.apps {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+
+    max-height: 100%;
+    height: 75vw;
+}
+
+.curtain {
+    background-color: #000000c8;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.25s ease;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.curtain-card {
+    padding: 10px;
+    width: auto;
+    height: auto;
+    background-color: #0c0c0c;
+    border-radius: 5px;
+    transition: 0.25s ease;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    user-select: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    text-align: center;
+    transform: scale(0.1);
+}
+
+.pks-recPanel {
+    background-color: #00000050;
+    border: 2px solid #000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.25s ease;
+    width: 30em;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.curtain-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 15px;
+    margin-top: -5px;
+}
+
+.curtain-btns button {
+    background-color: #151515;
+    color: #FFF;
+    border: 2px solid #000000;
+    border-radius: 2.5px;
+    padding: 5px;
+    margin: 5px;
+    transition: 0.25s ease;
+}
+
+.curtain-btns button:hover {
+    background-color: #1c1c1c;
+    cursor: pointer;
+}
+
+.curtain-btns button:active {
+    background-color: #FFF;
+    color: #000;
+    border: 2px solid #FFF;
+    transform: scale(0.9);
+}
+
+.curtain-btns button:active {
+    background-color: #FFF;
+    color: #000;
+    border: 2px solid #FFF;
+    transform: scale(0.9);
+}
+
+
+.curtain-btns button p {
+    margin: 2.5px;
+    font-size: 1.1em;
+}
+
+#keystroke-display {
+    font-size: 30px;
+    margin: 0;
+    margin-bottom: 15px;
+    color: #FFF;
+}
+
+.curtain-card h1 {
+    text-align: center;
+}
+
+#pks_input {
+    background-color: #151515;
+    border: 2px solid #000;
+    margin-top: 15px;
+    width: 20em;
+    margin-bottom: 5px;
+}
+
+/* Home page CSS */
+
+.content {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.home-panel {
+    background-color: #1c1c1cAB;
+    border: none;
+    padding: 20px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 10px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+.title div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.title div h1,
+.title p {
+    margin: 0;
+}
+
+.title div p {
+    color: #939393;
+}
+
+.search {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.search form {
+    display: flex;
+    gap: 10px;
+}
+
+.search form input {
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    flex: 1;
+    border: none;
+    box-sizing: border-box;
+    background-color: #404040;
+    border-radius: 7.5px 0 0 7.5px;
+    text-align: center;
+}
+
+.search form button {
+    width: 50px;
+    height: 50px;
+    background-color: #1f1f1f;
+    border-radius: 0px 7.5px 7.5px 0;
+    border: none;
+    color: #858585;
+    transition: 0.2s ease;
+}
+
+.search form button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.search form button:active {
+    color: #000;
+    background-color: #FFF;
+}
+
+.search div {
+    display: flex;
+    gap: 10px;
+}
+
+.search div button {
+    flex: 1;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0;
+    transition: 0.2s ease;
+}
+
+.search div button img {
+    width: 30px;
+    height: 30px;
+}
+
+.search div button:nth-child(1) {
+    background-color: #fff;
+}
+
+.search div button:nth-child(2) {
+    background-color: #dffffe;
+}
+
+.search div button:nth-child(3) {
+    background-color: #7C1EFB;
+}
+
+.search div button:nth-child(4) {
+    background-color: #fff;
+}
+
+.search div button:nth-child(5) {
+    background-color: #fff;
+}
+
+.search div button:nth-child(6) {
+    background-color: #fc3f1e;
+    border-bottom-left-radius: 5px;
+}
+
+.search div button:hover {
+    border: 1px solid #FFF;
+}
+
+.search div button:active {
+    transform: scale(0.9);
+}
+
+#logo-home {
+    width: 5em;
+    margin: 7.5px 15px 0px 0px;
+    border-radius: 5px;
+    transition: 0.25s ease;
+}
+
+#logo-home:hover {
+    border: 1px solid #FFF;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* Game Page CSS */
+
+.games,
+.apps,
+.settings,
+.extra {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 75vw;
+    min-height: 100vh;
+    left: 25vw;
+    transition: 0.25s ease;
+}
+
+.games-list,
+.apps-list,
+.proxy-settings-list,
+.page-settings-list,
+.extra-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: flex-start;
+    width: 100%;
+    padding: 25px;
+}
+
+.card {
+    background-color: #151515AB;
+    border: none;
+    max-width: 150px;
+    height: 150px;
+    transition: transform 0.2s ease, background 0.25s ease;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1em;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    padding: 0;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    border: 1px solid #FFF;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease
+}
+
+.card:active {
+    transform: scale(0.95);
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    margin-top: 0px;
+}
+
+.card:hover .card-title {
+    opacity: 1;
+}
+
+.card:active::after {
+    background: rgba(0, 0, 0, 0.75);
+    transition: 0.25s ease;
+}
+
+@media screen and (max-width: 600px) {
+    .resize-card {
+        transform: scale(0.8);
+    }
+}
+
+.game-search-div,
+.apps-search-div {
+    display: flex;
+    justify-content: center;
+}
+
+.panel-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: auto;
+    max-width: 35em;
+    flex-wrap: wrap;
+    max-height: 250px;
+    overflow: auto;
+}
+
+.panel-cards .card {
+    max-width: 125px;
+    max-height: 125px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.panel-cards .card img {
+    border-radius: 15px;
+}
+
+/* Settings CSS */
+
+.settings {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+}
+
+.page-settings-list {
+    margin-top: 10em;
+}
+
+.settings-button-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.settings-button-list button {
+    background-color: #151515;
+    color: #FFF;
+    border: none;
+    border-radius: 2.5px;
+    padding: 5px;
+    margin: 5px;
+    transition: 0.25s ease;
+}
+
+.settings-button-list select {
+    padding: 5px;
+    color: #FFF;
+    background-color: #151515;
+    border: 2px solid #101010;
+    border-radius: 2.5px;
+    cursor: pointer;
+}
+
+option {
+    background-color: #1c1c1c;
+    cursor: pointer;
+}
+
+.settings-button-list button p {
+    margin: 2.5px;
+    font-size: 1.1em;
+}
+
+.settings-button-list button img {
+    width: 2.5em;
+    margin: 5px;
+    margin-top: 1px;
+    margin-bottom: -2px;
+}
+
+.settings-button-list button:hover {
+    background-color: #1c1c1c;
+    cursor: pointer;
+}
+
+.settings-button-list .tab-btn:nth-child(1):hover {
+    background-color: #bdbdbd;
+    cursor: pointer;
+}
+
+.settings-button-list .tab-btn:nth-child(2):hover {
+    background-color: #C4A93E;
+    cursor: pointer;
+}
+
+.settings-button-list .tab-btn:nth-child(3):hover {
+    background-color: #8d9de6;
+    cursor: pointer;
+}
+
+.settings-button-list .tab-btn:nth-child(4):hover {
+    background-color: #66b68d;
+    cursor: pointer;
+}
+
+.settings-button-list .tab-btn:nth-child(5):hover {
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+
+.settings-button-list button:hover {
+    background-color: #1c1c1c;
+    cursor: pointer;
+}
+
+.settings-button-list button:active {
+    background-color: #FFF;
+    color: #000;
+    transform: scale(0.925);
+}
+
+.settings-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0c0c0cae;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 7.5px;
+    padding: 10px;
+    width: 25em;
+    height: 10em;
+}
+
+.settings-card h2 {
+    margin-top: 5px;
+}
+
+.settings-card p {
+    margin-top: -10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+
+#cancel-btn:active {
+    background-color: crimson;
+    color: #FFF;
+    border: none;
+}
+
+/* Extra page CSS */
+.extra {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 75vw;
+    min-height: 100vh;
+    left: 25vw;
+    transition: 0.25s ease;
+}
+
+.extra-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: flex-start;
+    width: 100%;
+    padding: 25px;
+}
+
+.extra-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0c0c0cae;
+    color: #FFF;
+    width: 25em;
+    margin: 15px;
+    padding: 5px;
+    border-radius: 2.5px;
+    border: 2px solid #101010;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.partner-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allow wrapping to keep items in a row */
+    width: 100%;
+}
+
+.partner-card {
+    background-color: #101010;
+    color: #FFF;
+    border-radius: 5px;
+    width: 157px;
+    margin: 2%;
+    user-select: none;
+    transition: 0.25s ease;
+}
+
+.partner-card:hover {
+    cursor: pointer;
+    background-color: #151515;
+    transform: scale(0.9);
+}
+
+.partner-card img {
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.partner-card p {
+    text-align: center;
+    font-size: 1em;
+}
+
+.extra-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.extra-btns button {
+    padding: 5px;
+    background-color: #1c1c1c;
+    border: 2px solid #101010;
+    color: #FFF;
+    margin: 5px;
+}
+
+.credits-p {
+    margin: 10px;
+    user-select: none;
+}
+
+/* Loading screen CSS */
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    z-index: 100;
+}
+
+.loading-panel {
+    padding: 25px;
+    padding-top: 0;
+    background-color: #1c1c1cb3;
+    border: 2px solid #1c1c1c;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-circle {
+    border: 6px solid #FFF;
+    border-top: 6px solid transparent;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fade out animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.1s forwards;
+}
+
+.fade-in {
+    display: flex;
+    animation: fadeIn 0.1s forwards;
+}

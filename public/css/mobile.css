@@ -1,9 +1,0 @@
-.mobilesearch {
-    width: 25px;
-    border-radius: 10px;
-    margin-top: 15%;
-}
-
-.mobilesearch:hover {
-    transform: 0.5 ease;
-}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" id="favicon">
+    <link rel="stylesheet" href="./css/proxy.css">
+    <script src="./chemical.js" data-script-id="chemScript" defer></script>
+    <script src="./chemical.components.js" defer></script>
+    <title>Textbook</title>
+</head>
+
+<body>
+    <div id="px-holder" class="fade-out">
+        <button id="show-navbar-btn" onclick="hsnavbar('show')">
+            Show Navbar
+        </button>
+        <button id="show-tabs-btn" onclick="hstabs()">
+            Show Tabs
+        </button>
+        <div class="navigation">
+            <div class="align-left">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://example.com&size=64"
+                    id="faviconProxy">
+                <!--<a id="proxyLink">Loading...</a>-->
+            </div>
+            <form id="proxy_uv_form">
+                <input type="text" id="proxy_uv_input" placeholder="Search or Type a URL . . ."
+                    onfocus="inputFocus = 1; ahui_NAVHOVER = 1" onblur="ahui_NAVHOVER = 0; inputFocus = 0">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class="align-right">
+                <button class="nav-btn" onclick="proxy_iframe.contentWindow.history.go(-1);">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn"
+                    onclick="if (context_menu.style.visibility === 'hidden') { context('show'); } else {context('hide')}">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="nav-btn" id="add" onclick="pxy.addTab();">
+                    <i class="fa-solid fa-plus-large"></i>
+                </button>
+                <button class="nav-btn" onclick="proxy_iframe.contentWindow.location.reload();">
+                    <i class="fa-solid fa-rotate-right" style="font-size: 1.1em;"></i>
+                </button>
+                <button class="nav-btn" onclick="pxy.deleteTab(pxy.ctix);">
+                    <i class="fa-solid fa-xmark-large"></i>
+                </button>
+                <button class="nav-btn" onclick="settingsPanel('show')">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <button class="nav-btn" onclick="proxy_iframe.contentWindow.history.go(1);">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="tabs">
+            <div class="tabs-list">
+            </div>
+            <button id="tab-close-btn" onclick="hstabs()">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+        <div class="context-menu">
+            <button onclick="context('hide'); location.replace('/')">
+                Go Home
+            </button>
+            <button onclick="context('hide'); devTools();">
+                Devtools
+            </button>
+            <button onclick="context('hide'); window.open(proxy_iframe.src, '_blank', 'width=800,height=600');">
+                Popout Display
+            </button>
+            <button onclick="context('hide'); toggleFullscreen()">
+                Fullscreen
+            </button>
+            <button onclick="context('hide'); hsnavbar('hide')">
+                Hide Navbar
+            </button>
+        </div>
+        <div class="proxy-curtain">
+            <div class="proxy-panel" id="settings-panel">
+                <div class="proxy-panel-title">
+                    <div class="pp-al">
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="pp-ar" onclick="settingsPanel('hide')">
+                        <button class="pp-exit-btn">
+                            <i class="fa-regular fa-xmark-large"></i>
+                        </button>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; height: 100%; overflow-y: auto;">
+                    <div class="proxy-panel-content web-proxy">
+                        <div class="proxy-panel-panel">
+                            <div class="panel-AL">
+                                <p><strong>Search engine</strong></p>
+                                <p>Pick or change the engine used to make search querys.</p>
+                            </div>
+                            <div class="panel-AR">
+                                <select id="se-select">
+                                    <option value="google">Google</option>
+                                    <option value="bing">Bing</option>
+                                    <option value="yahoo">Yahoo</option>
+                                    <option value="duckduckgo">Duckduckgo</option>
+                                    <option value="ask">Ask.com</option>
+                                    <option value="yandex">Yandex</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="proxy-panel-panel">
+                            <div class="panel-AL">
+                                <p><strong>Transporter</strong></p>
+                                <p>Pick which proxy transport you want to use.</p>
+                            </div>
+                            <div class="panel-AR">
+                                <select id="t-select">
+                                    <option value="libcurl">Libcurl Transport</option>
+                                    <option value="epoxy">Epoxy Transport</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="proxy-panel-panel">
+                            <div class="panel-AL">
+                                <p><strong>Embedding</strong></p>
+                                <p>Choose how you want your URL/Query to open as when searching on the home page: </p>
+                            </div>
+                            <div class="panel-AR">
+                                <select id="emb-select">
+                                    <option value="normal">Open Normally</option>
+                                    <option value="ab">About:blank</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="proxy-panel-panel">
+                            <div class="panel-AL">
+                                <p><strong>WISP server</strong></p>
+                                <p>Changes your WISP server to another websocket connection.</p>
+                            </div>
+                            <div class="panel-AR">
+                                <input type="text" placeholder="wss://example.com/" style="border-radius: 2.5px;"
+                                    id="wisp-input">
+                            </div>
+                        </div>
+                        <div class="proxy-panel-panel">
+                            <div class="panel-AL">
+                                <p><strong>Clear All Tabs</strong></p>
+                                <p>This will clear all the tabs existing. This action is irreversible.</p>
+                            </div>
+                            <div class="panel-AR">
+                                <button id="danger"
+                                    onclick="localStorage.setItem('tabsJSON', '[]'); location.reload()">Clear All
+                                    Tabs</button>
+                            </div>
+                        </div>
+                        <div class="proxy-panel-panel">
+                            <div class="panel-AL">
+                                <p><strong>Destroy UI</strong></p>
+                                <p>This will completely remove the UI from the page. Refresh the page if you want the UI
+                                    back.</p>
+                            </div>
+                            <div class="panel-AR">
+                                <button id="danger"
+                                    onclick="document.body.removeChild(document.querySelector('#px-holder'))">Destroy
+                                    UI</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe src="" frameborder="0" id="temp" style="display: none;"></iframe>
+    <div class="loading-curtain fade-in">
+        <div class="loading-circle"></div>
+    </div>
+    <script src="./js/proxy.js" defer></script>
+    <script src="./js/proxy-page.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!--<div class="proxy-panel-panel">
+    <div class="panel-AL">
+        <p><strong>Example Option</strong></p>
+        <p>This is a test.</p>
+    </div>    
+    <div class="panel-AR">
+        <button>Click me!</button>
+    </div>
+</div>-->

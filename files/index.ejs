@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <title>Kitty Cat Club</title>
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" id="favicon">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/nav-bar.css">
+    <link rel="stylesheet" href="./css/input.css">
+    <script src="/chemical.js" defer></script>
+    <script src="/chemical.components.js" defer></script>
+</head>
+
+<body>
+    <div class="notif-div">
+    </div>
+    <br />
+    <div class="holder">
+        <%- include("partials/navbar") %>
+            <div class="pages">
+                <%- include("partials/home-section") %>
+                    <%- include("partials/games-section") %>
+                        <%- include("partials/apps-section") %>
+                            <%- include("partials/settings-section") %>
+                                <!--<%- include("partials/extra-section") %>-->
+            </div>
+            <div class="curtain">
+                <div class="curtain-card" id="panic-key-system" style="display: none;">
+                    <h1 style="margin: 15px;">Panic Key System</h1>
+                    <div class="curtain-btns">
+                        <button onclick="recordPK()">
+                            <p>Record Keystroke</p>
+                        </button>
+                        <button onclick="savePK()">
+                            <p>Save System</p>
+                        </button>
+                        <button id="cancel-btn" onclick="cancelPK()">
+                            <p>Cancel Changes</p>
+                        </button>
+                    </div>
+                    <div class="pks-recPanel">
+                        <p>Recorded Keystroke:</p>
+                        <p id="keystroke-display">Record a Keystroke!</p>
+                    </div>
+                    <input type="text" placeholder="Panic URL..." id="pks_input">
+
+                </div>
+                <div class="curtain-card" id="custom-tab-cloaking" style="display: none;">
+                    <h1 style="margin: 15px;">Custom Tab Cloaking</h1>
+                    <input type="text" placeholder="Your Tab Name. . ." id="tab-input"
+                        style="width: 60%; margin: 10px;">
+                    <input type="text" placeholder="Your Favicon URL. . ." id="favicon-input"
+                        style="width: 60%; margin: 10px;">
+                    <div class="curtain-btns" style="margin: 15px; flex-wrap: wrap; width: 25em;">
+                        <button onclick="saveCustomTab()">
+                            <p>Save Tab Changes</p>
+                        </button>
+                        <button id="cancel-btn" onclick="cancelTabChanges()">
+                            <p>Cancel Changes</p>
+                        </button><br />
+                        <button id="cancel-btn" onclick="resetTabFavicon()">
+                            <p>Reset Tab and Favicon</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="curtain-card" id="custom-game-panel">
+                    <h1 style="margin: 15px;" id="game-h1">Add New Game</h1>
+                    <div id="game-main-content">
+                        <input type="text" placeholder="Your Game Name. . ." id="game-name-input"
+                            style="width: 60%; margin: 10px;">
+                        <input type="text" placeholder="Your Image URL. . ." id="game-image-input"
+                            style="width: 60%; margin: 10px;">
+                        <input type="text" placeholder="Your Game URL. . ." id="game-url-input"
+                            style="width: 60%; margin: 10px;">
+                        <div class="curtain-btns" style="margin: 15px; flex-wrap: wrap;" id="game-main-btns">
+                            <button onclick="addCustomGame()">
+                                <p>Add Game</p>
+                            </button>
+                            <button onclick="
+                            if (document.querySelectorAll(`[data-game-id]`).length === 0) {
+                                notify('error', 'You need to make a game first before you can edit your games!')
+                                return;
+                            } else {
+                                editPanel();
+                            }
+                            ">
+                                <p>Edit A Game</p>
+                            </button>
+                            <button id="cancel-btn" onclick="exitGamePanel()">
+                                <p>Cancel</p>
+                            </button>
+                            <button id="cancel-btn" onclick="clearAllGames()">
+                                <p>Clear All Games</p>
+                            </button>
+                        </div>
+                        <div class="curtain-btns" style="margin: 15px; flex-wrap: wrap;" id="game-edit-btns">
+                            <button onclick="saveGame()">
+                                <p>Save Game</p>
+                            </button>
+                            <button id="cancel-btn" onclick="deleteGame()">
+                                <p>Delete Game</p>
+                            </button>
+                            <button id="cancel-btn" onclick="exitGamePanel()">
+                                <p>Cancel</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-cards">
+
+                    </div>
+                </div>
+            </div>
+            <div style="position: fixed; bottom: 2.5px; right: 15px;">
+                <p>© 2024 Kitty Cat Club.</p>
+            </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/proxy.js"></script>
+    <script src="./js/games.js"></script>
+    <script src="./js/apps.js"></script>
+    <script src="./js/settings.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/pks.js"></script>
+    <script type='text/javascript'
+        src='//pl24014140.cpmrevenuegate.com/5f/30/c5/5f30c506f84f10ca436b5bc6ea4aa95c.js'></script>
+</body>
+
+</html>
