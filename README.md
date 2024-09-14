@@ -1,7 +1,7 @@
 
 # Kitty Cat Club v2
 
-Kitty Cat Club is a UV powered proxy with the idea of speed and privacy!
+Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to all students, bypassing restrictions so you can explore the endless boundaries of the internet with lighting-fast speeds and extreme stealth.
 
 ## Deployment
 <a target="_blank" href="https://heroku.com/deploy/?template=https://github.com/thekittycatclub/Kitty-Cat-Club"><img alt="Deploy to Heroku" src="https://binbashbanana.github.io/deploy-buttons/buttons/official/heroku.svg"></a>
