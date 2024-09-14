@@ -13,7 +13,7 @@ Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to a
 ## Local Deployment
 ```
 git clone https://github.com/thekittycatclub/Kitty-Cat-Club
-cd kcc
+cd Kitty-Cat-Club
 npm i
 npm start
 ```
