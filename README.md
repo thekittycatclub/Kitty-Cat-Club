@@ -23,10 +23,14 @@ What we have to offer:<br/>
 ## Local Deployment
 First, make sure if you are using NodeJS v20.17.0+ before you locally deploy the project.
 ```bash
-node -v # This should be above v20.17.0! 
+node -v # This should be above v20.17.0!
+
 git clone https://github.com/thekittycatclub/Kitty-Cat-Club
+
 cd Kitty-Cat-Club
-npm i
+
+npm install # You can also do "npm i"
+
 npm start
 ```
 
