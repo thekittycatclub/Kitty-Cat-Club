@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./static/img/logowithbg_rounded.png" width="350">
-  <h1>Kitty Cat Club</h1>
+  <h1>Kitty Cat Club | [V2 RELEASED!]</h1>
 </div>
 
 ## What is Kitty Cat Club?
