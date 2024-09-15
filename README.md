@@ -29,7 +29,7 @@ git clone https://github.com/thekittycatclub/Kitty-Cat-Club
 
 cd Kitty-Cat-Club
 
-npm install # You can also do "npm i"
+npm install
 
 npm start
 ```
