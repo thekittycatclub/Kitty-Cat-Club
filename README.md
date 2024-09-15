@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./static/img/logowithbg.png" style="">
+  <img src="./static/img/logowithbg_rounded.png" width="50%">
 <h1>Kitty Cat Club</h1>
 </div>
 Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to all students, bypassing restrictions so you can explore the endless boundaries of the internet with lighting-fast speeds and extreme stealth.
@@ -13,13 +13,14 @@ Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to a
 
 ## Local Deployment
 First, make sure if you are using NodeJS v20.17.0+ before you locally deploy the project.
-```
-node -v :: Shouldn't be below v20.17.0!
+```bash
+node -v # This should be above v20.17.0! 
 git clone https://github.com/thekittycatclub/Kitty-Cat-Club
 cd Kitty-Cat-Club
 npm i
 npm start
 ```
+
 
 ## Community
 [![Join us on Discord](https://invidget.switchblade.xyz/zw7GaBCsHt?theme=dark)](https://discord.gg/zw7GaBCsHt)
