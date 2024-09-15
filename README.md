@@ -4,14 +4,14 @@
 </div>
 
 ## What is Kitty Cat Club?
-Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to all students, bypassing restrictions so you can explore the endless boundaries of the internet with lighting-fast speeds and extreme stealth.
+Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to all students, bypassing restrictions so you can explore the endless boundaries of the internet with lighting-fast speeds and extreme stealth.<br/><br/>
 
-What we have to offer:
-🚀 | A fast UV proxy.
-💻 | Sleek and Modern UI which is easy to use.
-🎮 | A lot of games and applications.
-🔗 | Dozens of links from our link-bot and from the community.
-🐱 | Kitty Cats.
+What we have to offer:<br/>
+🚀 | A fast UV proxy.<br/>
+💻 | Sleek and Modern UI which is easy to use.<br/>
+🎮 | A lot of games and applications.<br/>
+🔗 | Dozens of links from our link-bot and from the community.<br/>
+🐱 | Kitty Cats.<br/>
 
 ## Deployment
 <a target="_blank" href="https://heroku.com/deploy/?template=https://github.com/thekittycatclub/Kitty-Cat-Club"><img alt="Deploy to Heroku" src="https://binbashbanana.github.io/deploy-buttons/buttons/official/heroku.svg"></a>
