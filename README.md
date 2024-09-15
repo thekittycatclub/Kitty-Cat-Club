@@ -11,7 +11,9 @@ Kitty Cat Club is a fast, yet simple UV-based proxy that provides the needs to a
 <a target="_blank" href="https://render.com/deploy?repo=https://github.com/thekittycatclub/Kitty-Cat-Club"><img alt="Deploy to Render" src="https://binbashbanana.github.io/deploy-buttons/buttons/official/render.svg"></a>
 
 ## Local Deployment
+First, make sure if you are using NodeJS v20.17.0+ before you locally deploy the project.
 ```
+node -v :: Shouldn't be below v20.17.0!
 git clone https://github.com/thekittycatclub/Kitty-Cat-Club
 cd Kitty-Cat-Club
 npm i
